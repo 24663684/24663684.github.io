@@ -1,0 +1,3511 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/CSharp_MD_files/docfx-projects/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/Class.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/Class.html",
+          "hash": "DJWE3pY6u+alMJnOx9o2EA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/DistinctAttribute/Constructor/DistinctAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/DistinctAttribute/Constructor/DistinctAttribute.html",
+          "hash": "aWFBnjBIvnJlnBJhKihTbg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/DistinctAttribute/DistinctAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/DistinctAttribute/DistinctAttribute.html",
+          "hash": "QOj1WO3daQoWSTsv/M6kPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Constructor/FromTableAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Constructor/FromTableAttribute1.html",
+          "hash": "ZYu5yQ7FII+NmvOtY5LfGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Constructor/FromTableAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Constructor/FromTableAttribute2.html",
+          "hash": "a8iFsZFI+DRRK/GA3rxUFg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/FromTableAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/FromTableAttribute.html",
+          "hash": "a9sQsNVBzqmH3Jgh7EG8vw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/Alias.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/Alias.html",
+          "hash": "xPyd+YDKVv0vbidF9+Vn/Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/AliasDefined.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/AliasDefined.html",
+          "hash": "L6lSTSTDVrSTDzl/cdoesQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/Id.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/Id.html",
+          "hash": "2qCC7e4LTpYfBJ5uyu30zA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/WhereRaw.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/FromTableAttribute/Property/WhereRaw.html",
+          "hash": "EuTwvF0dkyj3S0BzWcHYpQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Constructor/JoinTableAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Constructor/JoinTableAttribute1.html",
+          "hash": "2o1xgk5g42GRqz6L1ic4+Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Constructor/JoinTableAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Constructor/JoinTableAttribute2.html",
+          "hash": "6msZPx1E4k7mubmu52PtcA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/JoinTableAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/JoinTableAttribute.html",
+          "hash": "8EdYsKW0fUmSlDKbTXM+sA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/Alias.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/Alias.html",
+          "hash": "N0VGMAeqfLsgy5uRqQ95eA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/AliasDefined.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/AliasDefined.html",
+          "hash": "ekpL+JWFrt6ejzaq+hH61g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/Id.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/Id.html",
+          "hash": "EHhZ39rKu4PnzuJu8BkQ0Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/JoinType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/JoinType.html",
+          "hash": "+z6OzItolEO0BojemHupBg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/OnRaw.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/JoinTableAttribute/Property/OnRaw.html",
+          "hash": "vPipvbUfMxuIplU75CPuEg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndHavingAttribute/Constructor/SqlAndHavingAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndHavingAttribute/Constructor/SqlAndHavingAttribute1.html",
+          "hash": "jUUZoTGUQzmKPhe8mU7Mug=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndHavingAttribute/Constructor/SqlAndHavingAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndHavingAttribute/Constructor/SqlAndHavingAttribute2.html",
+          "hash": "YIU/9p1sgcydyjePzuWokQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndHavingAttribute/SqlAndHavingAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndHavingAttribute/SqlAndHavingAttribute.html",
+          "hash": "EuE4CPL/P922o4VASVsIVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndWhereAttribute/Constructor/SqlAndWhereAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndWhereAttribute/Constructor/SqlAndWhereAttribute1.html",
+          "hash": "/e0oOfci8HnDojWeDMGIkg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndWhereAttribute/Constructor/SqlAndWhereAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndWhereAttribute/Constructor/SqlAndWhereAttribute2.html",
+          "hash": "aegDHtVd8stlS0ncWY0IgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndWhereAttribute/SqlAndWhereAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlAndWhereAttribute/SqlAndWhereAttribute.html",
+          "hash": "LgykeKJO6jEPczsRbsXRzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlGroupByAttribute/Constructor/SqlGroupByAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlGroupByAttribute/Constructor/SqlGroupByAttribute.html",
+          "hash": "Qtj39KAP8P5rr3PuzoV4wQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlGroupByAttribute/Property/GroupByExpressions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlGroupByAttribute/Property/GroupByExpressions.html",
+          "hash": "Y32U2Rcdbl833ecVN4xRjQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlGroupByAttribute/SqlGroupByAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlGroupByAttribute/SqlGroupByAttribute.html",
+          "hash": "tgPXzi0OLkAJ8SHBB1t11A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlHavingAttribute/Constructor/SqlHavingAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlHavingAttribute/Constructor/SqlHavingAttribute1.html",
+          "hash": "yr4h1IAqLJFlx7rc2H+ZbA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlHavingAttribute/Constructor/SqlHavingAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlHavingAttribute/Constructor/SqlHavingAttribute2.html",
+          "hash": "+iyxvIpzaQKaOuxXTlyjaA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlHavingAttribute/SqlHavingAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlHavingAttribute/SqlHavingAttribute.html",
+          "hash": "UtkWcz6nwYhthE9MYLd+iA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrHavingAttribute/Constructor/SqlOrHavingAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrHavingAttribute/Constructor/SqlOrHavingAttribute1.html",
+          "hash": "1fgUsf2C4m1RJq49xGk7Rw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrHavingAttribute/Constructor/SqlOrHavingAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrHavingAttribute/Constructor/SqlOrHavingAttribute2.html",
+          "hash": "m1aHZJfsCzibF4zXLkkHWA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrHavingAttribute/SqlOrHavingAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrHavingAttribute/SqlOrHavingAttribute.html",
+          "hash": "MA3t0I+VAZbbzXHiiqaRbw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrWhereAttribute/Constructor/SqlOrWhereAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrWhereAttribute/Constructor/SqlOrWhereAttribute1.html",
+          "hash": "XcBlwgYwedEwLxArjNvGbw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrWhereAttribute/Constructor/SqlOrWhereAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrWhereAttribute/Constructor/SqlOrWhereAttribute2.html",
+          "hash": "1r01bkF1nj5T1NsqfO0rfA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrWhereAttribute/SqlOrWhereAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrWhereAttribute/SqlOrWhereAttribute.html",
+          "hash": "+i1mVGJGcg1VUV2KjKyBVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrderByAttribute/Constructor/SqlOrderByAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrderByAttribute/Constructor/SqlOrderByAttribute.html",
+          "hash": "Q8iOubC0XHbYX9THyU30gg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrderByAttribute/Property/OrderByExpressions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrderByAttribute/Property/OrderByExpressions.html",
+          "hash": "4edyX83c3rS7r4YSadLceA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrderByAttribute/SqlOrderByAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlOrderByAttribute/SqlOrderByAttribute.html",
+          "hash": "h8+/qjkbTS87pKwv/4eqfg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/Constructor/SqlParameterAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/Constructor/SqlParameterAttribute.html",
+          "hash": "sQvsewF5cU1XOMnnByYMiQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/Property/DataType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/Property/DataType.html",
+          "hash": "MgJ0012Ph2TitD/OrdozaA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/Property/Name.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/Property/Name.html",
+          "hash": "OiMTQTVnVODWoNGY3kOhsw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/SqlParameterAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlParameterAttribute/SqlParameterAttribute.html",
+          "hash": "pafj1LKg2gygHBq1PrIFjA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/Constructor/SqlSelectAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/Constructor/SqlSelectAttribute.html",
+          "hash": "w7zLEy+4nGJqlOfg+PVyuw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/Property/RawSelect.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/Property/RawSelect.html",
+          "hash": "ShFhw+WMeUfs3j8Qq1+/GQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/Property/SelectName.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/Property/SelectName.html",
+          "hash": "iJdUfdGpvjmHVwSHE1AK8g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/SqlSelectAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlSelectAttribute/SqlSelectAttribute.html",
+          "hash": "fxxzkSnDUD7NANK4IqmlUw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Constructor/SqlUnionAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Constructor/SqlUnionAttribute1.html",
+          "hash": "mf3llLKI3b//TecacbELIQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Constructor/SqlUnionAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Constructor/SqlUnionAttribute2.html",
+          "hash": "JN8MJK7fU0DQ2pA6r11Onw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Constructor/SqlUnionAttribute3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Constructor/SqlUnionAttribute3.html",
+          "hash": "unm6ua7CEg3c1vn+Z37fog=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/IsRawSql.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/IsRawSql.html",
+          "hash": "4km6GAM3XfIjArhUtGTQoQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/ModelType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/ModelType.html",
+          "hash": "QW6iEiEejlmg2g7+sYL9Gw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/RawSql.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/RawSql.html",
+          "hash": "96yz2lHSsRTCXs6I9dw1wg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/SelectName.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/SelectName.html",
+          "hash": "rq4eY2qXKeXzfbaY3pgeBw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/UnionAll.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/Property/UnionAll.html",
+          "hash": "fwYk8s9Eg5/elOYZNpY7lg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/SqlUnionAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlUnionAttribute/SqlUnionAttribute.html",
+          "hash": "8xJ290CgPArgZ4prdLM6DQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Constructor/SqlWhereAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Constructor/SqlWhereAttribute1.html",
+          "hash": "QBcxnK3dVETrmMirNNBA7w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Constructor/SqlWhereAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Constructor/SqlWhereAttribute2.html",
+          "hash": "0jjgn3m6ZGGdGiXSNMJ3sQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/Left.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/Left.html",
+          "hash": "1iFa2wdkbemjEuRsvd1+CQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/Operator.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/Operator.html",
+          "hash": "nbg0ZPyVNnmfS3EsdHYhzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/RawCondition.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/RawCondition.html",
+          "hash": "oq0jpvb73BNeJA9m+6Bm5g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/RawConditionDefined.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/RawConditionDefined.html",
+          "hash": "n4C4QSE8xhdrK+jrS0jHEQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/Right.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/Property/Right.html",
+          "hash": "tAgvaPlkqeXbwRRf94AFlQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/SqlWhereAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SqlWhereAttribute/SqlWhereAttribute.html",
+          "hash": "b8s1mX/1qS+KFzo96ihCCw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Constructor/SubQueryAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Constructor/SubQueryAttribute1.html",
+          "hash": "s89S//rzQp6sa8LCPRtw7g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Constructor/SubQueryAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Constructor/SubQueryAttribute2.html",
+          "hash": "kZuMgIk6PW2YSWlj/qt4IA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Constructor/SubQueryAttribute3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Constructor/SubQueryAttribute3.html",
+          "hash": "xiNO9UiL9zcByMSG9sX75w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/IsRawSql.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/IsRawSql.html",
+          "hash": "hbJF0AgXOvjICkT7OD13IQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/ModelType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/ModelType.html",
+          "hash": "sOvkrgkrTRd0WoN9/+depg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/Name.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/Name.html",
+          "hash": "i42D/+do+3Kz5BxrHxYcwg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/RawSql.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/RawSql.html",
+          "hash": "5GhonIDCRHjhn369qdSdvg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/SelectName.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/Property/SelectName.html",
+          "hash": "otnVeSHvexjJaTRbZTUulA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/SubQueryAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/SubQueryAttribute/SubQueryAttribute.html",
+          "hash": "74tPjcdf9U3MOkYCStXQKQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/TopAttribute/Constructor/TopAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/TopAttribute/Constructor/TopAttribute.html",
+          "hash": "YNrwDbtyFt09KzmIWv57+g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/TopAttribute/Property/TopRows.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/TopAttribute/Property/TopRows.html",
+          "hash": "ol+vGkQdf9qa6ZldCLeGuw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/TopAttribute/TopAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/TopAttribute/TopAttribute.html",
+          "hash": "jW4l0GllgAJx+/xgAV44nw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/UpdateWhereStrategyAttribute/Constructor/UpdateWhereStrategyAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/UpdateWhereStrategyAttribute/Constructor/UpdateWhereStrategyAttribute.html",
+          "hash": "mXbZW5ryB6G8oRltHQiS7g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/UpdateWhereStrategyAttribute/Property/UpdateWhereStrategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/UpdateWhereStrategyAttribute/Property/UpdateWhereStrategy.html",
+          "hash": "NYTYYt8uTZjJhFgzx7zTBw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Class/UpdateWhereStrategyAttribute/UpdateWhereStrategyAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Class/UpdateWhereStrategyAttribute/UpdateWhereStrategyAttribute.html",
+          "hash": "/LKkbeXCO5GUDFCWPbzNVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/IdentityAttribute/IdentityAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/IdentityAttribute/IdentityAttribute.html",
+          "hash": "AJ2bBmSGmU9eESM65JJqLw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Constructor/ModelEmbeddedAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Constructor/ModelEmbeddedAttribute.html",
+          "hash": "iEwahZNAgeGxxLvW6WOxjg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html",
+          "hash": "U3XDCippa6t4UogGxpwJTA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/CascadeCreate.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/CascadeCreate.html",
+          "hash": "UcNwbHlYQO9T5qC2y6L96w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/CascadeDelete.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/CascadeDelete.html",
+          "hash": "6QLJN23DGL30XvoLnHBC2Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/ModelType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/ModelType.html",
+          "hash": "Z9QuSqZYhcuxCsbQ20sphw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/ParamValue.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/ParamValue.html",
+          "hash": "lIMBAvo6gNX8pCUGJ1Dhhg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/QueryExpression.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/QueryExpression.html",
+          "hash": "p5jwVDTQN5hlxeQ8jN0uIQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/QuerySelector.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/ModelEmbeddedAttribute/Property/QuerySelector.html",
+          "hash": "z4hPKqqC5bzmEya+FoetAQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/NotInWhereAttribute/NotInWhereAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/NotInWhereAttribute/NotInWhereAttribute.html",
+          "hash": "7lLjnNyQKILPWpFnHPjpOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/Property.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/Property.html",
+          "hash": "6Rc2sOAtM9zKZ/aLE9Bz0A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/PropertySaveAttribute/Constructor/PropertySaveAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/PropertySaveAttribute/Constructor/PropertySaveAttribute.html",
+          "hash": "kbDSiEYFm/OQ5SeccxsjPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/PropertySaveAttribute/Property/SaveStrategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/PropertySaveAttribute/Property/SaveStrategy.html",
+          "hash": "0qLNjTvBatbUtbYe16jmJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/PropertySaveAttribute/PropertySaveAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/PropertySaveAttribute/PropertySaveAttribute.html",
+          "hash": "Ax/ewK9fDL30mJo11RkcJA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Constructor/SetValueAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Constructor/SetValueAttribute1.html",
+          "hash": "D/bLvW84AojBAKfqJqgu1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Constructor/SetValueAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Constructor/SetValueAttribute2.html",
+          "hash": "y45NKTg2qxPMWte/piGwJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Constructor/SetValueAttribute3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Constructor/SetValueAttribute3.html",
+          "hash": "SvFmEQKY1m1mg890zOyG3Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/ModelSelector.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/ModelSelector.html",
+          "hash": "azC5IMh2sMalBNPpVZmT2Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/SetValueStrategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/SetValueStrategy.html",
+          "hash": "dHuukR+COVqiRodSHgwewA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/Source.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/Source.html",
+          "hash": "65VHDG5oGjjAQzdwjDxlgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/Target.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/Property/Target.html",
+          "hash": "W2UUDxXCwKMJnNicsT1C+w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/SetValueAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SetValueAttribute/SetValueAttribute.html",
+          "hash": "RA0iKDWfV88OXm3/6fh1lA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Constructor/SqlColumnAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Constructor/SqlColumnAttribute1.html",
+          "hash": "BRlkka5Rm31n1XJkKJEZmw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Constructor/SqlColumnAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Constructor/SqlColumnAttribute2.html",
+          "hash": "gR06QLuoXk1yFMwgm/3hxA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Constructor/SqlColumnAttribute3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Constructor/SqlColumnAttribute3.html",
+          "hash": "MbwzVBoyUPDCB0ZeRpGHVQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/Column.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/Column.html",
+          "hash": "9Sv03oYSWuGY6pUwKbEQ0g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/ColumnAlias.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/ColumnAlias.html",
+          "hash": "gjqCS31VGOtYqPmWGhkPlA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/ColumnAliasDefined.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/ColumnAliasDefined.html",
+          "hash": "fmGstH8hoGJDUOWlecPakg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/Order.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/Order.html",
+          "hash": "4yTZcuZfJuQoiTXCow1dHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/TableAlias.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/TableAlias.html",
+          "hash": "NkDcaHnXpgypCV8Ti9Uddw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/TableAliasDefined.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/TableAliasDefined.html",
+          "hash": "eKIuW7bJU/0wsvcCVvXP6w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/TypeName.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/Property/TypeName.html",
+          "hash": "ulojDRXsuwEVtvq7svKiVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/SqlColumnAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlColumnAttribute/SqlColumnAttribute.html",
+          "hash": "96nhMInx2zu9ueV7Jt4GWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Constructor/SqlComputeAttribute1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Constructor/SqlComputeAttribute1.html",
+          "hash": "pjyRaGgWHGfotBJqJHSW5g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Constructor/SqlComputeAttribute2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Constructor/SqlComputeAttribute2.html",
+          "hash": "kQlXup742zGqg2/QSd0DbA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/Alias.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/Alias.html",
+          "hash": "sPrcyKTWjjUERotQkXyQUw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/AliasDefined.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/AliasDefined.html",
+          "hash": "U2cKPv0ItbTS8kDEgyyiKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/Expression.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/Expression.html",
+          "hash": "7nPClPYOjufeEtzqrEnILA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/Order.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/Order.html",
+          "hash": "IDYnh8f+AEIzLwc69bI4BQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/TypeName.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/Property/TypeName.html",
+          "hash": "Zjbh3YIrJn6N8ZNuZ4TJRA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/SqlComputeAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlComputeAttribute/SqlComputeAttribute.html",
+          "hash": "SwadF/MtwSiCJsTw3AtJMQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/Constructor/SqlEmbeddedAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/Constructor/SqlEmbeddedAttribute.html",
+          "hash": "7ZkpqROKjXl5Tr8IbCd5sg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/Property/ParamValue.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/Property/ParamValue.html",
+          "hash": "xMg8iQOVGt+61RHOctbcaw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/Property/RawSql.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/Property/RawSql.html",
+          "hash": "JsqfwRHJJSnt+KPCBnkMxQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/SqlEmbeddedAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlEmbeddedAttribute/SqlEmbeddedAttribute.html",
+          "hash": "CSJKXma5q6zUSnRLz59HIQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinAndOnAttribute/Constructor/SqlJoinAndOnAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinAndOnAttribute/Constructor/SqlJoinAndOnAttribute.html",
+          "hash": "fzcuRD+3LKjIRHfHYOnutA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinAndOnAttribute/Property/OnType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinAndOnAttribute/Property/OnType.html",
+          "hash": "sRZd/5AXgxa9tos+aefCPQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinAndOnAttribute/SqlJoinAndOnAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinAndOnAttribute/SqlJoinAndOnAttribute.html",
+          "hash": "8v2LXj7p0GSY6Hpb0pipPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Constructor/SqlJoinOnAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Constructor/SqlJoinOnAttribute.html",
+          "hash": "ksLjRzcPxP5fn7IsbP0jIg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/JoinColumn.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/JoinColumn.html",
+          "hash": "ukrBYV7axotdQRp156UMyA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/OnType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/OnType.html",
+          "hash": "yoHilielPItGpU79XJzOyg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/SqlOperator.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/SqlOperator.html",
+          "hash": "pcdi/AajGlhCQ3FYsocvGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/TableAlias.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/Property/TableAlias.html",
+          "hash": "mrdW8Z+h6Nt74A+k6lyhhA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/SqlJoinOnAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOnAttribute/SqlJoinOnAttribute.html",
+          "hash": "sWaFlYAz80mZPl3yTKEZmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOrOnAttribute/Constructor/SqlJoinOnAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOrOnAttribute/Constructor/SqlJoinOnAttribute.html",
+          "hash": "OQtyIPCEZrgvzcDLnPd4XA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOrOnAttribute/Property/OnType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOrOnAttribute/Property/OnType.html",
+          "hash": "CkunQY33C2QVq6GdWE/2hQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOrOnAttribute/SqlJoinOrOnAttribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelAttribute/Property/SqlJoinOrOnAttribute/SqlJoinOrOnAttribute.html",
+          "hash": "fZti1e5m7jHBUPMStJyrbw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/IDbResult.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/IDbResult.html",
+          "hash": "pG1VhpxuGuitFQ+KMXQTVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/AffectedCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/AffectedCount.html",
+          "hash": "DeNkbjep6+Hv60zN2MJRJQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/Cancelled.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/Cancelled.html",
+          "hash": "kMYGZwnVh7M4TczWNUoulA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/DeletedCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/DeletedCount.html",
+          "hash": "ERlCS8ep8GBn/ALGo57qwg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/InsertedCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/InsertedCount.html",
+          "hash": "RpzYP0/kXhgsAd4vWKv+Tw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/ModifiedCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDbResult/Property/ModifiedCount.html",
+          "hash": "7JpIXkE9shM/nBIPE1g7yw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/IDetailTracker.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/IDetailTracker.html",
+          "hash": "ck4Y5Z8Y8wBzTLcJrtPYGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/SaveChanges.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/SaveChanges.html",
+          "hash": "A03Kt8rln51lY73M9wcebA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetail.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetail.html",
+          "hash": "VgTkoYuOTR4lVdY8ZUvHgQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetailAndGrandDetail.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetailAndGrandDetail.html",
+          "hash": "Y0LxcD0RUkPV9/+EGp9Vkw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetailAndGrandDetails.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetailAndGrandDetails.html",
+          "hash": "tL+z1eCBZp7hV6wnxhcGOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetails.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Method/TrackDetails.html",
+          "hash": "OF4GNxH3fxDw0ObtCuyYuw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Property/MasterModel.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IDetailTracker/Property/MasterModel.html",
+          "hash": "AjMUKJk7t3jEdIafNe1j+Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/IEmbeddedLoadable.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/IEmbeddedLoadable.html",
+          "hash": "SAJzBfJGPvY3/8pNKUjDUg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/Method/Include.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/Method/Include.html",
+          "hash": "ZGRYiLXfn+vIoHiAvjaZUA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/Method/IncludeAll.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/Method/IncludeAll.html",
+          "hash": "FHpwBIFWcdonQFQvhRcyQA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/Property/MasterModel.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IEmbeddedLoadable/Property/MasterModel.html",
+          "hash": "06B/+Jz+adO08emtMkbLvQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/ILoadable.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/ILoadable.html",
+          "hash": "dzb9CTn9xnvBg5r/WBt1eA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/FirstOrDefault.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/FirstOrDefault.html",
+          "hash": "kwwRwVWFOda25xfUcQXyug=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Include1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Include1.html",
+          "hash": "h93/2M41rjgKRLs9IFGxEQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Include2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Include2.html",
+          "hash": "mN/9rMalw4vN0w63LMiCeg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/IncludeAll1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/IncludeAll1.html",
+          "hash": "sNp90GX/RWLRsXtONdG8aQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/IncludeAll2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/IncludeAll2.html",
+          "hash": "2LEcjhSuwhlY9cdQN0hzRg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Load1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Load1.html",
+          "hash": "qTYg0bkQgvgvAWY8pCjVrA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Load2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/Load2.html",
+          "hash": "+ITaosDCRUlqs/aDwv9MhA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/LoadByKey.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/LoadByKey.html",
+          "hash": "IJlYOLlfwF+r2Cb3E5WDUg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/ToArray.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/ToArray.html",
+          "hash": "aYbCxCYvF6zcK6NFBEj/3g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/ToDictionary.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/ToDictionary.html",
+          "hash": "arqp9IaX3IiglQegiyworw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/ToList.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ILoadable/Method/ToList.html",
+          "hash": "hTNxEi9PUxrDtiubkKaW2Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Event/CurrentValueChanged.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Event/CurrentValueChanged.html",
+          "hash": "Ll3AN6KOzq1nM0PJN+6kgQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/IModelEntry.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/IModelEntry.html",
+          "hash": "edUhxCrCIJ4c87x8H6Ngtw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/GetCurrentValue.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/GetCurrentValue.html",
+          "hash": "FVdqzKQIQuj095Y64JsM9Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/GetOriginalValue.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/GetOriginalValue.html",
+          "hash": "sVGSXQDUotsdZ5rJvQHDzw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/GetPropertyState.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/GetPropertyState.html",
+          "hash": "+phtcBuJRR9Fw8A9pMf/tg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/SetCurrentValue.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Method/SetCurrentValue.html",
+          "hash": "6FZlLWSSJj0hDIjfViNQkQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Property/ModelState.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Property/ModelState.html",
+          "hash": "arxbiIOosYcgZHQcAeFJMg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Property/Properties.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry1/Property/Properties.html",
+          "hash": "QIaSnPADmvTgW5EMVMY/fg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry2/IModelEntry.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelEntry2/IModelEntry.html",
+          "hash": "hBOmoFlcBaDiaS7DsyVijg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/IModelMapper.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/IModelMapper.html",
+          "hash": "BiQzDJ2AhKKHv18i3HSPAw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Avg.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Avg.html",
+          "hash": "nIbPl2v1ei77xjBnG9Ym+Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Count.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Count.html",
+          "hash": "COozi4+hrL0l+QMh275ynw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/DistinctCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/DistinctCount.html",
+          "hash": "jBFdbWTeNNqVPkq7CtoraA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Exists.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Exists.html",
+          "hash": "xl9As6g+ZwZOk5ktm300Mw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/KeyExists.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/KeyExists.html",
+          "hash": "b81EGa0gXrr3g6l5duCajQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Load1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Load1.html",
+          "hash": "SiKeZbkoytwUQJRqg63wtQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Load2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Load2.html",
+          "hash": "V3tdMzhS0pZ+7d1ZyEbSzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/LoadByKey.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/LoadByKey.html",
+          "hash": "PNAUZgYrocHhCl2v5IBuJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/LoadEmbedded.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/LoadEmbedded.html",
+          "hash": "uZqFq00wqnzY4w6uzsrUIw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Max.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Max.html",
+          "hash": "4tfInRFpXguFaB6RTbOQzQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Min.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Min.html",
+          "hash": "0M0XER6UWZrSM7lL25LuGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/SaveChanges.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/SaveChanges.html",
+          "hash": "l6u9sabomDBpxS/XKGayFg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Scalar.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Scalar.html",
+          "hash": "5nvdRZOJe5EL8CKyuqXVgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/ScalarByKey.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/ScalarByKey.html",
+          "hash": "IYkzXGrr9t9p4sOeQi9B0Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Track1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Track1.html",
+          "hash": "T9d1TbtcDXQE3cMCjzSoZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Track2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Track2.html",
+          "hash": "27cNQiSRHHniOCpl5jcycg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Track3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Track3.html",
+          "hash": "vOKzGbNZQtjyJAFuLrR+kQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackCreate1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackCreate1.html",
+          "hash": "0E8DPJAJbUsb7Syn6HdPRA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackCreate2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackCreate2.html",
+          "hash": "XUcG/1OSVs7f+bQPFdXICw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackCreateRange.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackCreateRange.html",
+          "hash": "RqJ0oqWtCfh+raMjF/xeKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDelete1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDelete1.html",
+          "hash": "vijEIfCdlQzQ2uiHlbLMfQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDelete2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDelete2.html",
+          "hash": "Y6yI6udMdAyHr2wQUsqmcg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDelete3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDelete3.html",
+          "hash": "tEvFY/XfrBbdJUHT/VVOvQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDeleteByKey.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDeleteByKey.html",
+          "hash": "XOndAe3kSqJjfL23WXXcbg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDeleteRange.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackDeleteRange.html",
+          "hash": "QpKXpagVSn6xeXyCL+TVyg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackInsert.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackInsert.html",
+          "hash": "2lQ+dac/1rY3PjStkVWc0A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackMaster1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackMaster1.html",
+          "hash": "QbYAAMFxphPSjlY/aL9hkw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackMaster2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackMaster2.html",
+          "hash": "z11CCiz0hj2fGV9dRYkMZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackRange.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackRange.html",
+          "hash": "Y3HvBF3T75TmfU0yeAYVEw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackSqlCUD.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackSqlCUD.html",
+          "hash": "HYM8A09ITtXTIpr+y5ldRA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdate1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdate1.html",
+          "hash": "Gk9M+l/tSTHKNsflsKKlZw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdate2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdate2.html",
+          "hash": "faiO2o9uazLB1TsH9VxAKQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdate3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdate3.html",
+          "hash": "hpSKkIAOu70j+t/rbiWeIw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdateRange.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/TrackUpdateRange.html",
+          "hash": "OttQpeKMqDm/aOB062fCsg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Validation1.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Validation1.html",
+          "hash": "bpgDaRwRsK/2RMyE5oXodQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Validation2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/IModelMapper/Method/Validation2.html",
+          "hash": "2IDEMfykywCp5p5WvTYTIw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/ISaveContext.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/ISaveContext.html",
+          "hash": "9A3wmz3wbWjSf8RIt0oJSQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Add.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Add.html",
+          "hash": "URpizm49DTxuqdnXaQJUNw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/CancelSave.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/CancelSave.html",
+          "hash": "EPLzxWV6xjCeyXK2ThlGWQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Contains.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Contains.html",
+          "hash": "0xRerfBuURmIRJwRJJnGpQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Get.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Get.html",
+          "hash": "8KjSA2kZUHJSKMFG5hKS+g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Remove.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/Remove.html",
+          "hash": "KD1pohmaPiic1xc1RKERAw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/RemoveAll.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Method/RemoveAll.html",
+          "hash": "k/q3B6LBJk73GoRv3BKUKA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Property/Count.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Property/Count.html",
+          "hash": "NIW0vmCBsFrBwEsBBKlbZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Property/LastDbResult.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Property/LastDbResult.html",
+          "hash": "qzxI0/joNQNP7AJuVTTqkQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Property/Names.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ISaveContext/Property/Names.html",
+          "hash": "33YgdavSTV5odGDCWr71mg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ModelSelector/ModelSelector.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ModelSelector/ModelSelector.html",
+          "hash": "mauTXgI28xOzKreZ18Q32w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/ModelState/ModelState.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/ModelState/ModelState.html",
+          "hash": "VfdjsloLFu72tk+835ah6w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/PropertyState/PropertyState.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/PropertyState/PropertyState.html",
+          "hash": "KlMQUyI47ONwqo7rNMOaSQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/SaveStrategy/SaveStrategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/SaveStrategy/SaveStrategy.html",
+          "hash": "AwzPhZnynzhTAaXXpJWdLQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/ModelMapper/SetValueStrategy/SetValueStrategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/ModelMapper/SetValueStrategy/SetValueStrategy.html",
+          "hash": "WUrQvwrnB3YGH9Dtuesucw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/SqlBuilder/SqlJoinOnType/SqlJoinOnType.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/SqlBuilder/SqlJoinOnType/SqlJoinOnType.html",
+          "hash": "T+95x1jUuKx8jSJKC0TGcQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreService.Data/SqlBuilder/SqlOperator/SqlOperator.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreService.Data/SqlBuilder/SqlOperator/SqlOperator.html",
+          "hash": "55DuE5O4pj1xD5dsR483YQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "VZsL7OIUNfhfsBEyU+BYjw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "8wme0fbwX0hh3GWbXOBI+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "XvmT/TdbOEqf2ZWdlg9k9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "poCp6JL/hGGYqxUTdTNv7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

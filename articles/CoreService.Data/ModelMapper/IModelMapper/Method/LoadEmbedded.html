@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IModelMapper.LoadEmbedded&lt;TModel&gt;(TModel model, params object[] parameters) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IModelMapper.LoadEmbedded&lt;TModel&gt;(TModel model, params object[] parameters) Method ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="imodelmapperloadembeddedtmodeltmodel-model-params-object-parameters-method"><strong>IModelMapper.LoadEmbedded&lt;TModel&gt;(TModel model, params object[] parameters) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>获取一个可以用于加载TModel实例中的嵌套属性的接口。</p>
+<p>Obtains the IEmbeddedLoadable&lt;TModel&gt; interface which can be used to load the embedded property of a TModel instance.</p>
+<p><strong>Namespace:</strong> Appeon.CoreService.Data</p>
+<p><strong>Assembly:</strong> Appeon.CoreService.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public IEmbeddedLoadable&lt;TModel&gt; LoadEmbedded&lt;TModel&gt;(TModel model, params object[] parameters);
+</code></pre>
+<p><strong>Type Parameters</strong></p>
+<p><code>TModel</code></p>
+<p>The type of a model class that conforms to the Appeon standards.</p>
+<p><strong>Parameters</strong></p>
+<p><code>model</code> System.TModel</p>
+<p>一个定义了一个或者多个嵌套属性(Using ModelEmbededAttribute or SqlEmbeddedAttribute)的TModel实例。</p>
+<p>A TModel instance which has defined one or more embedded properties (by applying the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute or the <a href="../../ModelAttribute/Property/SqlEmbeddedAttribute/SqlEmbeddedAttribute.html">SqlEmbedded</a> attribute).</p>
+<p><code>parameters</code> System.Object[]</p>
+<p>(Optional) One or more values that you want to use as retrieval arguments in the SQL SELECT statement defined in TModel.</p>
+<p>这些参数并不会被用于检索TModel,而是仅用于处理嵌套属性，因为嵌套属性的定义中有可能引用到TModel中的参数。</p>
+<p>These parameters will not be used to retrieve TModel, but used to process the embedded property, because the embedded property may have reference to these TModel parameters.</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../IEmbeddedLoadable/IEmbeddedLoadable.html">Appeon.CoreService.Data.IEmbeddedLoadable&lt;TModel&gt;</a></p>
+<p>返回一个可以加载TModel实例中的嵌套属性的接口。</p>
+<p>利用该接口的 Method，可以对TModel中定义的一个或者多个嵌套属性进行加载。</p>
+<p>Returns an interface that can load the embedded property of a TModel instance. The method of this interface can load one or more embedded properties.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>该 Method并未对主Model或者其嵌套属性进行实际的检索，需要通过该 Method返回的接口IEmbeddedLoadable&lt;TModel&gt;的具体 Method数据检索和加载。</p>
+<p>This method does not actually retrieve the master model or its embedded property, instead it returns the IEmbeddedLoadable&lt;TModel&gt; interface whose methods will be used to retrieve and load data.</p>
+<p>如果需要同时对主model和明细model进行检索并加载数据，请使用IModelMapper.Load&lt;TModel&gt; Method代替。</p>
+<p>To retrieve and load data of the master model and the detail model at the same time, use the IModelMapper.Load&lt;TModel&gt; method instead.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

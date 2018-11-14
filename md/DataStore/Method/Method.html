@@ -1,0 +1,1012 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DataStore &#26041;&#27861; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DataStore &#26041;&#27861; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../index.html">
+        	<img id="logo" src="../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="datastore-方法"><strong>DataStore 方法</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>DatasStore初始化时调用。</p>
+<p><strong>命名空间：</strong> Appeon.PowerBuilder</p>
+<p><strong>程序集：</strong> Appeon.PowerBuilder.dll</p>
+<h3 id="方法"><strong>方法</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../images/method.jpeg" alt="">       </td>
+<td>Add(TModel item)</td>
+<td>void</td>
+<td>在末尾处添加数据项。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Addrow()</td>
+<td>int</td>
+<td>在末尾处添加空数据项并返回索引值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>AddRow&lt;TModel&gt;(TModel model)</td>
+<td>int</td>
+<td>在末尾添加数据并返回索引值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>AddRow&lt;TModel&gt;(IEnumerable&lt;TModel&gt; list)</td>
+<td>int</td>
+<td>添加一个数据集合并返回开始位置的索引值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>AsEnumerable&lt;TModel&gt;(DwBuffer dwBuffer = DwBuffer.Primary)</td>
+<td>IEnumerable&lt;TModel&gt;</td>
+<td>指定缓冲区的数据集合转换为IEnumerable,默认为Primary缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Avg&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector)</td>
+<td>decimal</td>
+<td>计算DataStore某列的平均值decimal通过对输入序列中的每个元素的转换函数获得的值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Avg&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector, Predicate&lt;TModel&gt; predicate)</td>
+<td>decimal</td>
+<td>计算DataStore某列的满足条件的平均值decimal通过对输入序列中的每个元素的转换函数获得的值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Cast()</td>
+<td>IEnumerable&lt;TResult&gt;</td>
+<td>把数据转换为IEnumerable&lt;TResult&gt;。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Contains(TModel item)</td>
+<td>bool</td>
+<td>确认某项数据是否存在DataStore中。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>CopyTo(TModel[] array, int arrayIndex)</td>
+<td>void</td>
+<td>从目标数组的指定索引处开始, 把DataStore的所有数据复制到兼容的一维数组。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Count&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</td>
+<td>int</td>
+<td>返回一个数字来表示一个多少个元素满足指定序列中的条件。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>DeleteRow(int row)</td>
+<td>bool</td>
+<td>删除指定行位置的项, 被删除的数据会被移动到删除缓冲区中。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>DeleteRow&lt;TModel&gt;(TModel model)</td>
+<td>bool</td>
+<td>从DataStore中删除项, 被删除的数据会被移动到删除缓冲区中。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>DeleteRow&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</td>
+<td>bool</td>
+<td>删除满足指定序列中的条件的元素, 被删除的数据会被移动到删除缓冲区中。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Dispose()</td>
+<td>void</td>
+<td>释放资源。(继承自IDisposable)</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Equals(Object obj)</td>
+<td>bool</td>
+<td>确定指定的对象是否和当前对象相等。(继承自Object)</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Evaluate&lt;TValue&gt;(string expression)</td>
+<td>TValue</td>
+<td>根据提供的表达式计算结果。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Evaluate&lt;TValue&gt;(string expression, int row)</td>
+<td>TValue</td>
+<td>将提供的表达式应用到指定行计算结果。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Exists&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</td>
+<td>bool</td>
+<td>确定是否存在指定条件的元素。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson()</td>
+<td>string</td>
+<td>导出非格式化的json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(bool format)</td>
+<td>string</td>
+<td>指定是否导出格式化json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(bool changeOnly, bool format)</td>
+<td>string</td>
+<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(DwBuffer dwbuffer, bool changedOnly, bool format)</td>
+<td>string</td>
+<td>指定缓冲区导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata)</td>
+<td>string</td>
+<td>指定要导出Json数据的缓冲区并且指定是否导出子数据窗口的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata, bool format)</td>
+<td>string</td>
+<td>指定要导出Json数据的缓冲区并且指定是否导出子数据窗口的数据以及导出的Json数据是否格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(DwBuffer dwbuffer)</td>
+<td>string</td>
+<td>导出指定缓冲区的非格式化Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(DwBuffer dwbuffer, int startRow)</td>
+<td>string</td>
+<td>从指定行开始导出指定缓冲区的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(DwBuffer dwbuffer, int startRow, int endRow)</td>
+<td>string</td>
+<td>给定开起始和结束行从指定缓冲区中导出Json数据，导出的Json数据不包含结束。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn)</td>
+<td>string</td>
+<td>给定起始行，结束行和起始列从指定的缓冲区中导出Json数据，但导出的Json数据不包含结束行。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, short endColumn)</td>
+<td>string</td>
+<td>给定起始行，结束行，起始列和结束列从指定的缓冲区中导出Json数据，但导出的Json数据不包含结束行和结束列。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, short endColumn, bool format)</td>
+<td>string</td>
+<td>给定起始行，结束行，起始列和结束列从指定的缓冲区中导出是否格式化Json数据，但导出的Json数据不包含结束行和结束列。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportString(bool colheading = true)</td>
+<td>string</td>
+<td>将数据导出为字符串数据，默认导出列名。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportString(int startRow, int endRow, bool colheading = true)</td>
+<td>string</td>
+<td>指定开始行和结束行导出字符串数据，默认导出列名，导出的数据不包含结束行。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ExportString(int startRow, int endRow, short startColumn, short endColumn, bool colheading = true)</td>
+<td>string</td>
+<td>指定开始行，结束行，起始列和结束列导出字符串数据，默认导出列名，导出的数据不包含结束行和结束列。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Filter(string format = null)</td>
+<td>void</td>
+<td>过滤数据，可以指定过虑条件。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Filter&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</td>
+<td>bool</td>
+<td>过虑满足指定序列中的条件的元素。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>FilterEx(Expression&lt;Predicate&lt;TModel&gt;&gt; expression)</td>
+<td>bool</td>
+<td>过滤满足指定lambda表达式的元素。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>FilterEx&lt;TModel&gt;(Expression&lt;Predicate&lt;TModel&gt;&gt; expression)</td>
+<td>void</td>
+<td>泛型方法，过滤满足指定lambda表达式的元素。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Find&lt;TModel&gt;(string expression, int start = -1, int end = -1)</td>
+<td>&lt;TModel&gt;</td>
+<td>泛型方法，可以指定开始和结束位置查找数据，返回满足表达式的第一个结果。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Find&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, int start = -1, int end = -1)</td>
+<td>&lt;TModel&gt;</td>
+<td>泛型方法，查找满足指定序列中的条件的数据，返回满足条件的第一个结果。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>FindIndex(string expression, int start = -1, int end = -1)</td>
+<td>int</td>
+<td>可以指定开始和结束位置查找数据，返回满足表达式的第一个结果的索引。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>FindIndex&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, int start = -1, int end = -1)</td>
+<td>int</td>
+<td>泛型方法，查找满足指定序列中的条件的数据，返回满足条件的第一个结果的索引。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>FirstOrDefault&lt;TModel&gt;()</td>
+<td>TModel</td>
+<td>返回DataStore中第一个元素，如果未找到元素，则返回默认值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>FirstOrDefault&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</td>
+<td>TModel</td>
+<td>返回DataStore中满足条件的第一个元素，如果未找到元素，则返回默认值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetChild(string name)</td>
+<td>IDataStore</td>
+<td>获取指定名称的子数据窗口。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetEnumerator()</td>
+<td>IEnumerator</td>
+<td>返回循环访问DataStore的枚举器。(继承自IEnumerator&lt;T&gt;)</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetHashCode()</td>
+<td>int</td>
+<td>获取对象的哈希值。(继承自Object。)</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItem&lt;TValue&gt;(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>TValue</td>
+<td>泛型方法，获取指定行和列索引位置的数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItem&lt;TValue&gt;(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>TValue</td>
+<td>泛型方法，获取指定行索引和列名位置的数据。可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItem(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>object</td>
+<td>获取指定行和列索引位置的数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItem(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>object</td>
+<td>获取指定行索引和列名位置的数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemBoolean(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>bool?</td>
+<td>获取指定行和列索引位置的bool数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemBoolean(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>bool?</td>
+<td>获取指定行索引和列名位置的bool数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemDate(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>DateTime?</td>
+<td>获取指定行和列索引位置的Date数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemDate(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>DateTime?</td>
+<td>获取指定行索引和列名位置的Date数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemDateTime(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>DateTime?</td>
+<td>获取指定行和列索引位置的DateTime数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemDateTime(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>DateTime?</td>
+<td>获取指定行索引和列名位置的DateTime数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemDecimal(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>decimal?</td>
+<td>获取指定行和列索引位置的decimal数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemDecimal(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>decimal?</td>
+<td>获取指定行索引和列名位置的decimal数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemNumber(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>double?</td>
+<td>获取指定行和列索引位置的double数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemNumber(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>double?</td>
+<td>获取指定行索引和列名位置的double数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemStatus(int row, short column, DwBuffer dwbuffer = DwBuffer.Primary)</td>
+<td>PropertyState</td>
+<td>获取指定行和列索引位置的项状态，可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemStatus(int row, string column, DwBuffer dwbuffer = DwBuffer.Primary)</td>
+<td>PropertyState</td>
+<td>获取指定行索引和列名位置的项状态，可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemStatus&lt;TModel&gt;(int row, Expression&lt;Func&lt;TModel, object&gt;&gt; selector, DwBuffer dwbuffer = DwBuffer.Primary)</td>
+<td>PropertyState</td>
+<td>获取指定行和使用表达式得到的项的状态，可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemString(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>string</td>
+<td>获取指定行和列索引位置的字符串数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemString(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>string</td>
+<td>获取指定行索引和列名位置的字符串数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemTime(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>TimeSpan?</td>
+<td>获取指定行和列索引位置的TimeSpan数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetItemTime(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</td>
+<td>TimeSpan?</td>
+<td>获取指定行索引和列名位置的TimeSpan数据，可以指定缓冲区和是否获取原始值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetRow&lt;TModel&gt;(int row)</td>
+<td>TModel</td>
+<td>返回指定行索引的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetRowByRowId&lt;TModel&gt;(int rowid)</td>
+<td>&lt;TModel&gt;</td>
+<td>根据行的ID获取数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetRowFromRowId(int rowid, DwBuffer dwBuffer = DwBuffer.Primary)</td>
+<td>int</td>
+<td>指定行的Id获取行索引，可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetRowIdFromRow(int rownumber, DwBuffer dwBuffer = DwBuffer.Primary)</td>
+<td>int</td>
+<td>从指定行索引中获取行的Id，可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetRowStatus(int row, DwBuffer dwbuffer = DwBuffer.Primary)</td>
+<td>ModelState</td>
+<td>从指定行索引中得到行的状态，可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetSqlSelect()</td>
+<td>string</td>
+<td>获取DataWindow的Sql语句。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetType()</td>
+<td>Type</td>
+<td>获取当前实例的类型。（继承自Objec。）</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetValues(short column, DwBuffer bufferType = DwBuffer.Primary)</td>
+<td>IEnumerable&lt;object&gt;</td>
+<td>根据列索引获取列的可迭代枚举。可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GetValues(string column, DwBuffer bufferType = DwBuffer.Primary)</td>
+<td>IEnumerable&lt;object&gt;</td>
+<td>根据列名获取整列的可迭代枚举。可以指定缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GroupBy()</td>
+<td>IEnumerable&lt;IGrouping&lt;object, IGroupingGetter&gt;&gt;</td>
+<td>使用DataWindow中的分组进行分组。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GroupBy&lt;TModel&gt;()</td>
+<td>IEnumerable&lt;IGrouping&lt;object, IGroupingGetter&lt;TModel&gt;&gt;&gt;</td>
+<td>泛型方法，使用DataWindow中的分组进行分组。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GroupBy(int level, string sortKey = null)</td>
+<td>IEnumerable&lt;IGrouping&lt;object, IModelGetter&gt;&gt;</td>
+<td>指定DataWindow中的某个分组级别进行分组，可以指定排序。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GroupBy&lt;TModel&gt;(int level, string sortKey = null)</td>
+<td>IEnumerable&lt;IGrouping&lt;object, TModel&gt;&gt;</td>
+<td>泛型方法，指定DataWindow中的某个分组级别进行分组，可以指定排序条件。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GroupBy(string selectorKey, string sortKey = null)</td>
+<td>IEnumerable&lt;IGrouping&lt;object, IModelGetter&gt;&gt;</td>
+<td>自定义分组，并且可以指定排序。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GroupBy&lt;TModel&gt;(string selectorKey, string sortKey = null)</td>
+<td>IEnumerable&lt;IGrouping&lt;object, TModel&gt;&gt;</td>
+<td>泛型方法，自定义分组，并且可以指定排序。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>GroupBy&lt;TModel&gt;(Func&lt;TModel, object&gt; selectorKey)</td>
+<td>IEnumerable&lt;IGrouping&lt;object, TModel&gt;&gt;</td>
+<td>使用委托定义分组。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJson(string json)</td>
+<td>int</td>
+<td>导入json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJson(string json, DwBuffer dwbuffer)</td>
+<td>int</td>
+<td>导入指定缓冲区的json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJson(string json, DwBuffer dwbuffer, int startRow)</td>
+<td>int</td>
+<td>从指定的行开始导入指定缓冲区的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow)</td>
+<td>int</td>
+<td>从指定的开始和结束行导入指定缓冲区的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn)</td>
+<td>int</td>
+<td>从指定的开始和结束行导入指定缓冲区的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn, int endColumn)</td>
+<td>int</td>
+<td>从指定的起始行，起始列和结束行导入指定缓冲区的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn, int endColumn, int dwStartColumn)</td>
+<td>int</td>
+<td>从指定的起始行，起始列，结束行和结束列导入指定缓冲区的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td><a href="">ImportJsonByKey(string json)</a></td>
+<td>int</td>
+<td>按照json数据的key来导入Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td><a href="">ImportJsonByKey(string json, DwBuffer dwbuffer)</a></td>
+<td>int</td>
+<td>按照json数据的key来导入指定缓冲区的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJsonByKey(string json, DwBuffer dwbuffer, int startRow)</td>
+<td>int</td>
+<td>从指定的行开始按照Json数据的key来导入指定缓冲区的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportJsonByKey(string json, DwBuffer dwbuffer, int startRow, int endRow)</td>
+<td>int</td>
+<td>指定起始行和结束行按照Json数据的key来导入指定缓冲区的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportString(string value)</td>
+<td>int</td>
+<td>从字符串中导入数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportString(string value, int startRow, int endRow = -1)</td>
+<td>int</td>
+<td>从指定行开始导入字符串数据，可以指定结束行。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ImportString(string value, int startRow, int endRow, short startColumn, short endColumn)</td>
+<td>int</td>
+<td>指定起始行，起始列，结束行和结束列导入字符串数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>IndexOf(TModel item)</td>
+<td>int</td>
+<td>获取数据项的索引。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Initialized()</td>
+<td>void</td>
+<td>DataStore初始化后调用。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Insert(int index, TModel item)</td>
+<td>void</td>
+<td>在指定索引处插入数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>InsertRow(int row)</td>
+<td>int</td>
+<td>在指定索引处插入默认数据项并返回项的索引。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>InsertRow&lt;TModel&gt;(int row, TModel model)</td>
+<td>int</td>
+<td>在指定索引处插入数据项并返回项的索引。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>LastOrDefault&lt;TModel&gt;()</td>
+<td>TModel</td>
+<td>返回DataStore中的最后一个数据项，如果不存在则返回默认值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>LastOrDefault&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</td>
+<td>TModel</td>
+<td>返回DataStore中满足条件的最后一个数据项，如果不存在则返回默认值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Max&lt;TModel, TResult&gt;(Func&lt;TModel, TResult&gt; selector)</td>
+<td>TResult</td>
+<td>调用转换函数对DataStore中的每行并返回TResult的最大值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Max&lt;Tmodel, TResult&gt;(Func&lt;Tmodel, TResult&gt; selector, Predicate&lt;Tmodel&gt; predicate)</td>
+<td>TResult</td>
+<td>调用转换函数对DataStore中满足条件的每行并返回TResult的最大值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Min&lt;TModel, TResult&gt;(Func&lt;TModel, TResult&gt; selector)</td>
+<td>TResult</td>
+<td>调用转换函数对DataStore中的每行并返回TResult的最小值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Min&lt;TModel, TResult&gt;(Func&lt;TModel, TResult&gt; selector, Predicate&lt;TModel&gt; predicate)</td>
+<td>TResult</td>
+<td>调用转换函数对DataStore中满足条件的每行并返回TResult的最小值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>MoveNext()</td>
+<td>bool</td>
+<td>使枚举数前进到DataStore的下一个元素。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>OrderBy&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</td>
+<td>IOrderable&lt;TModel&gt;</td>
+<td>按照某个列对DataStore的行进行排序。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>OrderByDescending&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</td>
+<td>IOrderable&lt;TModel&gt;</td>
+<td>按照某个列对DataStore的行进行排序。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Remove(TModel item)</td>
+<td>bool</td>
+<td>从DataStore中移除匹配指定项的第一项。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RemoveAt(int index)</td>
+<td>void</td>
+<td>移除指定索引处的行。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ReselectRow(int row)</td>
+<td>int</td>
+<td>会刷新指定行的可更新列和timestamp列数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Reset()</td>
+<td>void</td>
+<td>重置DataStore和其子DataStore的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ResetUpdate()</td>
+<td>bool</td>
+<td>清除主缓冲区和过滤缓冲区的更新标志并且清空删除缓冲区的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Retrieve(params object[] arguments)</td>
+<td>int</td>
+<td>从数据库中检索数据，如果DataWindow中指定了检索参数则应该传入对应的数。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RetrieveEnd(object sender, DwRetrieveEventArgs e)</td>
+<td>void</td>
+<td>DataStore完成数据检索之后调用。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RetrieveStart(object sender, DwRetrieveEventArgs e)</td>
+<td>void</td>
+<td>DataStore进行数据检索之前调用。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RowDeleted(object sender, DwRowChangeEventArgs e)</td>
+<td>void</td>
+<td>方法的调用发生在行被删除后，会执行OnRowDeleted事件。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RowDeleting(object sender, DwRowChangeEventArgs e)</td>
+<td>void</td>
+<td>方法的调用发生在行被删除之前，会执行OnRowDeleting事件。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RowsCopy(int startrow, int endrow, DwBuffer copybuffer, IDataStore targetdw, int beforerow, DwBuffer targetbuffer)</td>
+<td>bool</td>
+<td>从DataStore的一个缓冲区的指定范围内的数据行复制到另一个DataStore的一个缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RowsDiscard(int startrow, int endrow, DwBuffer buffer)</td>
+<td>bool</td>
+<td>丢弃DataStore的一个缓冲区的指定范围内的数据行，一旦使用了RowsDiscard数据将不会再恢复，必需重新Retrieve数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>RowsMove(int startrow, int endrow, DwBuffer movebuffer, IDataStore targetdw, int beforerow, DwBuffer targetbuffer)</td>
+<td>bool</td>
+<td>从DataStore的一个缓冲区的指定范围内的数据行移动到另一个DataStore的一个缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetDataContext(DataContext context)</td>
+<td>bool</td>
+<td>设置数据上下文。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetFilter(string format)</td>
+<td>bool</td>
+<td>为DataStore过滤数据设置规则。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetItem(int row, short column, object value)</td>
+<td>bool</td>
+<td>设置DataStore某项数据的值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetItem(int row, string column, object value)</td>
+<td>bool</td>
+<td>设置DataStore某项数据的值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetItemStatus(int row, short column, DwBuffer dwbuffer, PropertyState status)</td>
+<td>bool</td>
+<td>设置行的列状态值，该值会在调用Update方法生成哪种类型的Sql语句。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetItemStatus(int row, string column, DwBuffer dwbuffer, PropertyState status)</td>
+<td>bool</td>
+<td>设置行的列状态值，该值会在调用Update方法生成哪种类型的Sql语句。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetRow&lt;TModel&gt;(int row, TModel model)</td>
+<td>void</td>
+<td>设置行的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetSort(string format)</td>
+<td>bool</td>
+<td>为DataStore排序设置规则。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetSqlSelect(string statement, bool isValidation = true)</td>
+<td>bool</td>
+<td>为DataStore指定Sql语句。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetValidate(short column, string rule)</td>
+<td>bool</td>
+<td>设置列的较验规则。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>SetValidate(string column, string rule)</td>
+<td>bool</td>
+<td>设置列的较验规则。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Sort(string format = null)</td>
+<td>bool</td>
+<td>使用SetSort设置的排序规则或者传入排序规则进行数据排序。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Sum&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector)</td>
+<td>decimal</td>
+<td>计算DataStore某列的汇总值decimal通过对输入序列中的每个元素的转换函数获得的值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Sum&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector, Predicate&lt;TModel&gt; predicate)</td>
+<td>decimal</td>
+<td>计算DataStore某列的满足条件的汇总值decimal通过对输入DataStore中的每个元素的转换函数获得的值。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>ToString()</td>
+<td>string</td>
+<td>返回当前对象类型的完全限定名。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Track&lt;TModel&gt;(IModelEntry modelEntry)</td>
+<td>TModel</td>
+<td>跟踪数据的状态，在update时可根据数据的状态信息生成对应的Sql语句。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Track&lt;TModel&gt;(IEnumerable&lt;IModelEntry&gt; modelEntries)</td>
+<td>IEnumerable&lt;TModel&gt;</td>
+<td>跟踪数据的状态，在update时可根据数据的状态信息生成对应的Sql语句。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Update(bool resetflag = true)</td>
+<td>int</td>
+<td>把对DataStore的修改更新到数据库，默认会重置更新标志，并返回修改的数据行数。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>UpdateEnd(object sender, DwUpdateEventArgs e)</td>
+<td>void</td>
+<td>方法的调用发生在DataStore更新数据之后,会执行OnUpdateEnd事件。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>UpdateStart(object sender, DwUpdateEventArgs e)</td>
+<td>void</td>
+<td>方法的调用发生在DataStore更新数据之前，会执行OnUpdateStart事件。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Validation()</td>
+<td>bool</td>
+<td>使用DataWindow中设置的数据较验规则对数据的合法性进行验证。</td>
+</tr>
+<tr>
+<td><img src="../../../images/method.jpeg" alt=""></td>
+<td>Validation(out DataValidationResult result)</td>
+<td>bool</td>
+<td>使用DataWindow中设置的数据较验规则对数据的合法性进行验证。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="版本信息"><strong>版本信息</strong></h3>
+<p>.Net Standard</p>
+<p>自2.x起可用</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

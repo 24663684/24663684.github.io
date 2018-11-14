@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IEmbeddedLoadable.Include(Expression&lt;Func&lt;TModel, object&gt;&gt; property, bool cascade = false) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IEmbeddedLoadable.Include(Expression&lt;Func&lt;TModel, object&gt;&gt; property, bool cascade = false) Method ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="iembeddedloadableincludeexpressionfunctmodel-object-property-bool-cascade--false-method"><strong>IEmbeddedLoadable.Include(Expression&lt;Func&lt;TModel, object&gt;&gt; property, bool cascade = false) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>Loads所有行的TModel中指定的实例化了ModelEmbeddedAttribute 或者SqlEmbeddedAttribute的属性的数据。</p>
+<p>当该属性实例化了ModelEmbedded时，将根据ModelEmbedded的ModelType属性对应detail model中定义的 SQL query从数据库检索数据。可使用cascade参数是控制是否级联Load该detail model中实例化了ModelEmbeddedAttribute或者SqlEmbeddedAttribute的属性。</p>
+<p>Loads data for the specified embedded property (where the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute or the <a href="../../ModelAttribute/Property/SqlEmbeddedAttribute/SqlEmbeddedAttribute.html">SqlEmbedded</a> attribute is applied) in TModel for all rows.</p>
+<p>If the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute is applied in the property, the property will use the SQL query (defined in the detail model class specified by the ModelType property of the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute) to retrieve data from database. The cascade parameter can be used to decide whether to retrieve data for the embedded properties in the detail model or the granddetail model.</p>
+<p><strong>Namespace:</strong> Appeon.CoreService.Data</p>
+<p><strong>Assembly:</strong> Appeon.CoreService.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  ILoadable&lt;TModel&gt; Include(Expression&lt;Func&lt;TModel, object&gt;&gt; property, bool cascade = false);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>property</code> System.Linq.Expressions.Expression</p>
+<p>TModel的一个需要load数据的属性，其上实例化了ModelEmbeddedAttribute或者SqlEmbeddedAttribute。</p>
+<p>该属性由一个表达式指定。</p>
+<p>A property of TModel where the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute or the <a href="../../ModelAttribute/Property/SqlEmbeddedAttribute/SqlEmbeddedAttribute.html">SqlEmbedded</a> attribute is applied.</p>
+<p>This property is specified by an expression.</p>
+<p><code>cascade</code> System.Boolean</p>
+<p>Only when the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute is applied in the property, the cascade parameter can be used to decide whether to retrieve data for the embedded properties in the detail model or the granddetail model.</p>
+<p>The default value is false.</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../ILoadable/ILoadable.html">Appeon.CoreService.Data.ILoadable&lt;TModel&gt;</a></p>
+<p>Returns the ILoadable&lt;TModel&gt; interface whose methods can be used to further obtain the data result set or perform data operations such as embedded queries.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>IEmbeddedLoadable.Include Method可以根据需要加载一个实例化了ModelEmbedded或者SqlEmbedded特性的属性的数据，而不必把所有属性的数据都加载出来，这样有利于提升数据的查询效率。</p>
+<p>The IEmbeddedLoadable.Include method can be used to load the data for the specified embedded property (where the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute or the <a href="../../ModelAttribute/Property/SqlEmbeddedAttribute/SqlEmbeddedAttribute.html">SqlEmbedded</a> attribute is applied) rather than loading data for all properties. This can greatly improve the data retrieval efficiency.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>
