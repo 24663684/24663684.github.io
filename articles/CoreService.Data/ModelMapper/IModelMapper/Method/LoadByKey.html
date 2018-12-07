@@ -94,6 +94,48 @@
 <p>如果TModel中定义的SQL查询是多表查询，那么该 Method仅会检索并得到主表的数据。</p>
 <p>If the SQL query defined in TModel makes query from multiple tables, then this method only retrieves and loads data from the primary table.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何按主键加载部门。</p>
+<p>The following code example demonstrates how to load the department according to the key.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class LoadByKeyExample
+    {
+        private SchoolContext _context;
+
+        public LoadByKeyExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Loads the department of Engineering according to the key (Department ID = 1).
+            var engineering = mapper.LoadByKey&lt;Department&gt;(1)
+                                    .FirstOrDefault();
+
+            Console.WriteLine(&quot;The department of Engineering:&quot;);
+            Console.WriteLine(&quot;Department ID is {0}&quot;, engineering.DepartmentID);
+            Console.WriteLine(&quot;Name is {0}&quot;, engineering.Name);
+            Console.WriteLine(&quot;Budget is {0}&quot;, engineering.Budget.ToString(&quot;N0&quot;));
+
+            // The code produces the following output:
+            // 
+            // The department of Engineering:
+            // Department ID is 1
+            // Name is Engineering
+            // Budget is 350,000
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

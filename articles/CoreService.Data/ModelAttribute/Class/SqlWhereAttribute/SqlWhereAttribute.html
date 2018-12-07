@@ -152,6 +152,79 @@
 <p>SqlWhereAttribute的作用相当在Model class产生的SQL SELECT语句中使用WHERE Clause来定义结果集需要满足的条件。</p>
 <p>The SqlWhere attribute is equivalent to adding a WHERE clause (that defines the condition for the result set) to the SQL SELECT statement of the model class.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>在sql语句中如果包括查询条件时，我们可以在sql中用where连接查询，
+在model中我们用SqlWhere标注实现增加查询条件的功能</p>
+<h5 id="model-departmentsqlwhere">Model: DepartmentSqlWhere</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlWhere(&quot;DepartmentID =1&quot;)]
+    public class DepartmentSqlWhere
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlWhereAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlWhereAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression. 
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlWhere&gt;(_context).QuerySql;
+            var department = _context.SqlExecutor.Select&lt;DepartmentSqlWhere&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([DepartmentID] =1)
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

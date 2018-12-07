@@ -93,6 +93,55 @@ A ModelEntry&lt;TModel&gt; instance including data and state.</p>
 <p>Returns a tracked model instance which includes the data in ModelEntry instance.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何注册新学生。</p>
+<p>它跟踪新学生的插入操作，因为IModelEntry的ModelState属性是NewModified。</p>
+<p>The following code example demonstrates how to register a new student.</p>
+<p>It tracks the Insert operation for the new student because the ModelState property of
+IModelEntry is NewModified.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackExample
+    {
+        private SchoolContext _context;
+
+        public TrackExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example2(IModelEntry&lt;Person&gt; newStudent)
+        {
+            var mapper = _context.ModelMapper;
+
+            Console.WriteLine(&quot;The state of the student record is {0}.&quot;,
+                newStudent.ModelState.ToString());
+
+            // Tracks the Insert operation for the new student.
+            mapper.Track(newStudent);
+
+            // Saves to the database.
+            var dbResult = mapper.SaveChanges();
+
+            Console.WriteLine(&quot;{0} student record has been inserted into the &quot; +
+                                &quot;database.&quot;,
+                                dbResult.InsertedCount);
+
+            /* The code produces the following output:
+            
+            The state of the student record is NewModified.
+            1 student record has been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IModelMapper/TrackExampleController.html">TrackExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

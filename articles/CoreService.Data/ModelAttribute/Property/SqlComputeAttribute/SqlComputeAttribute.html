@@ -151,6 +151,148 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>When you define the computed column, the value is calculated by the DBMS when the data is retrieved.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>SqlCompute(expression)。
+SqlCompute标注表示model中的属性值由expression计算得出</p>
+<p>The following code example demonstrates how to use the constructor:
+SqlCompute (expression). When a property in the model is applied with
+SqlCompute (expression), it indicates the value of that property comes
+from the computed result of the expression.</p>
+<h5 id="model-personsqlcompute">Model: PersonSqlCompute</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    
+    [Table(&quot;Person&quot;, Schema = &quot;dbo&quot;)]
+    public class PersonSqlCompute
+    {
+        [Key]
+        [Identity]
+        public Int32 PersonID { get; set; }
+
+        [SqlCompute(&quot;LastName +'.' + FirstName&quot;)]
+        public String FullName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlComputeAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlComputeAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+
+            // Gets the SQL expression.
+            string sql =
+                ModelSqlBuilder.GetBuilder&lt;PersonSqlCompute&gt;(_context).QuerySql;
+
+            var department = _context.SqlExecutor.Select&lt;PersonSqlCompute&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /* The code produces the following output:
+            
+            SQL expression:
+            SELECT
+             [PersonID],
+            [LastName] +'.' + [FirstName],
+            [HireDate],
+            [EnrollmentDate],
+            [Discriminator]
+            FROM [dbo].[Person]
+            */
+
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>SqlCompute(expression, alias)。
+SqlCompute(expression)。
+SqlCompute标注表示model中的属性值由expression计算得出
+alias表示计算列的别名</p>
+<p>The following code example demonstrates how to use the constructor:
+SqlCompute (expression, alias). When a property in the model is applied with
+SqlCompute (expression, alias), it indicates the value of that property comes
+from the computed result of the expression. alias indicates the alias name
+of the computed field.</p>
+<h5 id="model-personsqlcompute2">Model: PersonSqlCompute2</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+
+    [Table(&quot;Person&quot;, Schema = &quot;dbo&quot;)]
+    public class PersonSqlCompute2
+    {
+        [Key]
+        [Identity]
+        public Int32 PersonID { get; set; }
+
+        [SqlCompute(&quot;LastName +'.' + FirstName&quot;, &quot;FullName&quot;)]
+        public String FullName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Gets the SQL expression.
+            string sql =
+                ModelSqlBuilder.GetBuilder&lt;PersonSqlCompute2&gt;(_context).QuerySql;
+            var department = _context.SqlExecutor.Select&lt;PersonSqlCompute2&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /* The code produces the following output:
+            
+            SQL expression:
+            SELECT
+             [PersonID],
+            [LastName] +'.' + [FirstName] AS [FullName],
+            [HireDate],
+            [EnrollmentDate],
+            [Discriminator]
+            FROM [dbo].[Person]
+            */
+        }
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

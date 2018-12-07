@@ -95,6 +95,83 @@
 <p>Returns the ILoadable&lt;TModel&gt; interface whose methods can be used to further obtain the data result set or perform data operations such as embedded queries.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何通过SQL Query Builder加载部门。</p>
+<p>The following code example demonstrates how to load departments by a SQL Query Builder.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class LoadExample
+    {
+        private SchoolContext _context;
+
+        public LoadExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example2()
+        {
+            // Get SQL Query Builder from the model class of department.
+            ISqlQueryBuilder queryBuilder =
+                ModelSqlBuilder.GetBuilder&lt;Department&gt;(_context).QueryBuilder;
+
+            Console.WriteLine(&quot;Original SQL is:&quot;);
+            Console.WriteLine(queryBuilder.ToSqlString(_context));
+
+            // Add a SQL WHERE clause dynamically.
+            queryBuilder.Where(&quot;Name&quot;, SqlOperator.Equals, &quot;'Engineering'&quot;);
+
+            Console.WriteLine();
+            Console.WriteLine(&quot;Current SQL is:&quot;);
+            Console.WriteLine(queryBuilder.ToSqlString(_context));
+
+            var engineering = _context.ModelMapper
+                                      .Load&lt;Department&gt;(queryBuilder)
+                                      .FirstOrDefault();
+
+            Console.WriteLine();
+            Console.WriteLine(&quot;The department of Engineering:&quot;);
+            Console.WriteLine(&quot;DepartmentID is {0}&quot;, engineering.DepartmentID);
+            Console.WriteLine(&quot;Name is {0}&quot;, engineering.Name);
+            Console.WriteLine(&quot;Budget is {0}&quot;, engineering.Budget.ToString(&quot;N0&quot;));
+
+            /* This code produces the following output:
+            
+            Original SQL is:
+            SELECT
+            [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM[dbo].[Department]
+            
+            Current SQL is:
+            SELECT
+            [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM[dbo].[Department]
+            WHERE([Name] = 'Engineering')
+            
+            The department of Engineering:
+            DepartmentID is 1
+            Name is Engineering
+            Budget is 350,000
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

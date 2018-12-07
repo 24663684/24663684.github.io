@@ -158,6 +158,215 @@
 <p>SqlUnionAttribute 指明一个Model Class将在SQL SELECT语句中使用UNION operator来将两个或者更多个查询的结果合并为单个结果集。</p>
 <p>The SqlUnion attribute denotes that a model class should use an UNION operator in the SQL SELECT statement to combine the results of two or more queries into one single result.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>使用原始SQL SELECT作为UNION运算符的一部分。</p>
+<p>The following code example demonstrates how to use
+a raw SQL SELECT as part of the UNION operator.</p>
+<h5 id="model-departmentsqlunion">Model: DepartmentSqlUnion</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department and dbo.Person tables.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlUnion(&quot;select LastName as Name from person&quot;)]
+    public class DepartmentSqlUnion
+    {
+        public String Name { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlUnionAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlUnionAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Gets the SQL expression.           
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlUnion&gt;(_context).QuerySql;
+
+            var names = _context.SqlExecutor.Select&lt;DepartmentSqlUnion&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+                [Name]
+            FROM [dbo].[Department]
+            UNION SELECT
+                [LastName] AS [Name]
+            FROM [person]
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>使用其SQL SELECT语句是UNION运算符的一部分的model类。</p>
+<p>The following code example demonstrates how to use use a model class
+whose SQL SELECT statement is part of the UNION operator.</p>
+<h5 id="model-departmentsqlunion2">Model: DepartmentSqlUnion2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department and dbo.Person tables.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlUnion(typeof(PersonSqlUnion4), UnionAll = true)]
+    public class DepartmentSqlUnion2
+    {
+        public String Name { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-personsqlunion4">Model: PersonSqlUnion4</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Person table.
+    /// &lt;/summary&gt;
+    [Table(&quot;Person&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class PersonSqlUnion4
+    {        
+        [SqlColumn(&quot;Person&quot;, &quot;LastName&quot;)]
+        public String Name { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Gets the SQL expression.          
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlUnion2&gt;(_context).QuerySql;
+
+            var names = _context.SqlExecutor.Select&lt;DepartmentSqlUnion2&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [Name]
+            FROM [dbo].[Department]
+            UNION ALL
+             SELECT
+             [Person].[LastName]
+            FROM [dbo].[Person]
+            */
+        }
+</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>使用model类并指定预定义的“SelectName”。</p>
+<p>The following code example demonstrates how to use
+a model class and specify the predefined Select Name.</p>
+<h5 id="model-departmentsqlunion3">Model: DepartmentSqlUnion3</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlUnion(typeof(DepartmentSqlSelect), &quot;sqlselectname&quot;, UnionAll = true)]
+    public class DepartmentSqlUnion3
+    {
+        public String Name { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-departmentsqlselect">Model: DepartmentSqlSelect</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlSelect(&quot;sqlselect&quot;, RawSelect = &quot;DepartmentID, Name&quot;)]
+    [SqlSelect(&quot;sqlselect2&quot;, RawSelect = &quot;DepartmentID, Name, Budget, StartDate&quot;)]
+    [SqlSelect(&quot;sqlselectname&quot;, RawSelect = &quot;Name&quot;)]
+
+    public class DepartmentSqlSelect
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example3">Example Method: Example3</h5>
+<pre><code class="lang-C#">        public void Example3()
+        {
+            // Gets the SQL expression.          
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlUnion3&gt;(_context).QuerySql;
+            var names = _context.SqlExecutor.Select&lt;DepartmentSqlUnion3&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [Name]
+            FROM [dbo].[Department]
+            UNION ALL
+             SELECT
+             [Name]
+            FROM [dbo].[Department]
+            */
+        }
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

@@ -90,6 +90,63 @@
 <p>当执行IModeMapper.Savechanges Method时，也会验证已追踪的所有Model的数据， 但是验证失败时将会throw an instance of the ValidationException Class。</p>
 <p>When the IModeMapper.SaveChanges method is executed, it will also validate all of the data tracked by the model. If validation failed, it will throw an instance of the ValidationException class.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示了如何执行有效性检查。</p>
+<p>The following code example demonstrates how to perform validity check.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class ValidationExample
+    {
+        private SchoolContext _context;
+
+        public ValidationExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // The LastName is required.
+            // The FirstName must be more than one character.
+
+            var modelMapper = _context.ModelMapper;
+
+            var person = new PersonValidation()
+            {
+                FirstName = &quot;Kim&quot;
+            };
+
+            modelMapper.TrackCreate(person);
+
+            // The LastName is required. Verification failed.
+            bool validation = modelMapper.Validation();
+
+            Console.WriteLine(&quot;The Validation function returns {0}&quot;, validation);
+
+            // Set LastName.
+            person.LastName = &quot;Abercrombie&quot;;
+
+            // The LastName is required. Verification passed.
+            validation = modelMapper.Validation();
+
+            Console.WriteLine(&quot;The Validation function returns {0}&quot;, validation);
+
+            /*The code example produces the following output:
+            
+            The Validation function returns false.
+            The Validation function returns true.
+            */
+
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/PersonValidation.html">PersonValidation</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

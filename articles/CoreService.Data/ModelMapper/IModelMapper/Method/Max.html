@@ -99,6 +99,41 @@
 <p>由于该 Method仅返回首行首列数据，请避免在TModel的定义中存在分组时使用。</p>
 <p>This method only returns the data of the first column in the first row of the retrieved data, therefore, please avoid using this method when groups are defined in TModel.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何计算部门的最大预算。</p>
+<p>The following code example demonstrates how to calculate the maximum budget for departments.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class MaxExample
+    {
+        private SchoolContext _context;
+
+        public MaxExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Calculates the maximum budget for departments.
+            decimal maxBudget = (decimal)_context.ModelMapper
+                                                 .Max&lt;Department&gt;(&quot;Budget&quot;);
+
+            Console.WriteLine(&quot;The maximum budget is {0}.&quot;,
+                maxBudget.ToString(&quot;N0&quot;));
+
+            // The code produces the following output:
+            //
+            // The maximum budget is 350,000.
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

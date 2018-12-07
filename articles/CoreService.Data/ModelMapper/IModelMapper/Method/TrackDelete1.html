@@ -93,6 +93,60 @@
 <p>Returns an IModelMapper interface, which can be used for executing other methods with the current ModelMapper instance.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何删除学生记录。</p>
+<p>The following code example demonstrates how to delete a student record.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackDeleteExample
+    {
+        private SchoolContext _context;
+
+        public TrackDeleteExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Creates a new student.
+            var newStudent = new Person()
+            {
+                LastName = &quot;Senior&quot;,
+                FirstName = &quot;Letitia&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            // Tracks the new student and saves changes to the database.
+            var dbResult = mapper.TrackCreate(newStudent)
+                                 .SaveChanges();
+
+            Console.WriteLine(&quot;{0} record has been inserted into the database.&quot;,
+                dbResult.InsertedCount);
+
+            // Deletes the student from the database.
+            dbResult = mapper.TrackDelete(newStudent).SaveChanges();
+
+            Console.WriteLine(&quot;{0} record has been deleted from the database.&quot;,
+                dbResult.DeletedCount);
+
+            /* The code produces the following output:
+            
+            1 record has been inserted into the database.
+            1 record has been deleted from the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

@@ -94,6 +94,57 @@
 <p>该 Method执行的SQL是根据TModel中定义的主表和它的主键生成的。</p>
 <p>The SQL statement that is executed is formulated according to the main table and primary key defined in TModel.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何检查在线课程中是否存在诗歌课程。</p>
+<p>The following code example demonstrates how to check if the poetry course exists in the online courses.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class KeyExistsExample
+    {
+        private SchoolContext _context;
+
+        public KeyExistsExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Gets the course ID of the poetry course.
+            int courseId = mapper.Load&lt;CourseByTitle&gt;(&quot;Poetry&quot;)
+                                 .FirstOrDefault()
+                                 .CourseID;
+
+            Console.WriteLine(&quot;The course ID of the poetry course is {0}.&quot;,
+                courseId);
+
+            // Checks if the poetry course exists in the online courses.
+            bool hasCourse = mapper.KeyExists&lt;OnlineCourse&gt;(courseId);
+
+            if (hasCourse)
+            {
+                Console.WriteLine(&quot;The poetry course exists in the online courses.&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;The poetry course doesn't exist in the online courses.&quot;);
+            }
+
+            // The code produces the following output:
+            //
+            // The course ID of the poetry course is 2030.
+            // The poetry course exists in the online courses.
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Query/CourseByTitle.html">CourseByTitle</a> <a href="../../../SourceCode/Examples/Models/School/OnlineCourse.html">OnlineCourse</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

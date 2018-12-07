@@ -94,6 +94,43 @@
 <p>Returns an IModelMapper interface, which can be used for executing other methods with the current ModelMapper instance.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码为TrackSqlCUD方法的使用案例</p>
+<p>The following code example demonstrates how to use the TrackSqlCUD method.</p>
+<pre><code class="lang-C#">using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackSqlCUDExample
+    {
+        private SchoolContext _context;
+
+        public TrackSqlCUDExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var modelmapper = _context.ModelMapper;
+
+            // Update a record.
+            var master = modelmapper.TrackSqlCUD(&quot;update OnlineCourse&quot; +
+                                                  &quot; set URL =&quot; +
+                                                  &quot;'http://www.fineartschool.net/Poetry/test'&quot; +
+                                                  &quot; where courseID = :id&quot;, 2030);
+
+            var dbResult = master.SaveChanges();
+
+            // Shows the saving result.
+            Console.WriteLine(&quot;{0} records have been updated into the database.&quot;,
+                              dbResult.AffectedCount);
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/OnlineCourse.html">OnlineCourse</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

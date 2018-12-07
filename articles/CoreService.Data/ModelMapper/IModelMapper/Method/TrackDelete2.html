@@ -100,6 +100,66 @@
 <p>在实例化Action Delegate时，可以使用ISaveContext泛型参数来读写保存数据过程中内部使用的上下文，具体请参考ISaveContext。</p>
 <p>When instantiating the Action delegate, the generic parameter of ISaveContext can be used for reading and writing the context which is used internally for saving data. See ISaveContext for more info.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何删除学生记录并使用一个Action。</p>
+<p>The following code example demonstrates how to delete a student record and use an Action.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackDeleteExample
+    {
+        private SchoolContext _context;
+
+        public TrackDeleteExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example2()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Sets the properties of the new student.
+            var newStudent = new Person()
+            {
+                LastName = &quot;Sherwood&quot;,
+                FirstName = &quot;Lena&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            // Tracks the new student and saves changes to the database.
+            var dbResult = mapper.TrackCreate(newStudent)
+                                 .SaveChanges();
+
+            Console.WriteLine(&quot;{0} record has been inserted into the database.&quot;,
+                dbResult.InsertedCount);
+
+            var deletedCount = 0;
+            mapper.TrackDelete(newStudent,
+                (saveContext) =&gt;
+                {
+                    // Gets the last DB result.
+                    deletedCount = saveContext.LastDbResult.DeletedCount;
+                });
+
+            mapper.SaveChanges();
+
+            Console.WriteLine(&quot;{0} record has been deleted from the database.&quot;,
+                deletedCount);
+
+            /* The code produces the following output:
+            1 record has been inserted into the database.
+            1 record has been deleted from the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

@@ -93,6 +93,70 @@ Tracks one or more database table delete operations. The data that will be delet
 <p>Returns an IModelMapper interface, which can be used for executing other methods with the current ModelMapper instance.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何删除学生列表。</p>
+<p>The following code example demonstrates how to delete a list of students.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackDeleteRangeExample
+    {
+        private SchoolContext _context;
+
+        public TrackDeleteRangeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Creates two new students.
+            var newStudentA = new Person()
+            {
+                LastName = &quot;Ruskin&quot;,
+                FirstName = &quot;Lionel&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            var newStudentB = new Person()
+            {
+                LastName = &quot;Effie&quot;,
+                FirstName = &quot;Lilith&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            var students = new List&lt;Person&gt;() { newStudentA, newStudentB };
+
+            // Tracks the new students and saves changes to the database.
+            var dbResult = mapper.TrackCreateRange(students)
+                                 .SaveChanges();
+
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                dbResult.InsertedCount);
+
+            // Deletes these students from the database.
+            dbResult = mapper.TrackDeleteRange(students).SaveChanges();
+
+            Console.WriteLine(&quot;{0} records have been deleted from the database.&quot;,
+                dbResult.DeletedCount);
+
+            /* The code produces the following output:
+            2 records have been inserted into the database.
+            2 records have been deleted from the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

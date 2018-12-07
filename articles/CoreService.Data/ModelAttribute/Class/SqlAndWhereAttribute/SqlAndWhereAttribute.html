@@ -111,6 +111,88 @@
 <p>SqlAndWhereAttribute 指明一个Model Class将在SQL SELECT语句中的WHERE Clause中添加AND logical operator and another search condition。</p>
 <p>The SqlAndWhere attribute denotes that a model class should add an AND logical operator and another search condition in the WHERE clause of the SQL SELECT statement.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>在sql语句中如果包括多个逻辑与查询条件，我们可以在where后加and连接，
+在model中我们用SqlAndWhere标注来达到多个逻辑与查询条件的功能</p>
+<h5 id="model-departmentsqlwhere2">Model: DepartmentSqlWhere2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlWhere(&quot;Budget &gt; 1&quot;)]
+    [SqlAndWhere(&quot;Administrator = 2&quot;)]
+    [SqlOrWhere(&quot;Administrator &gt; 4&quot;)]
+    [SqlOrderBy(&quot;DepartmentID asc&quot;)]
+    public class DepartmentSqlWhere2
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlAndWhereAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlAndWhereAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlWhere2&gt;(_context).QuerySql;
+
+            // Executes the SQL expression.
+            var department = _context.SqlExecutor.Select&lt;DepartmentSqlWhere2&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([Budget] &gt; 1
+            AND [Administrator] = 2
+            OR [Administrator] &gt; 4)
+            ORDER BY
+             [DepartmentID] ASC
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

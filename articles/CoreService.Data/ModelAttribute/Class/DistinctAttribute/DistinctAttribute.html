@@ -104,6 +104,65 @@
 <p>DistinctAttribute的作用相当在Model class产生的SQL SELECT语句中add DISTINCT to removes duplicate values.</p>
 <p>The Distinct attribute is equivalent to add DISTINCT in the SQL SELECT statement to removes duplicate values.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>在Model上加Distinct标注后，
+生成sql语句会包含DISTINCT关键字。</p>
+<h5 id="model-persondistinct">Model: PersonDistinct</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Person table.
+    /// The Distinct attribute will filter the duplicate records when doing the data query.
+    /// &lt;/summary&gt;
+    [Table(&quot;Person&quot;, Schema = &quot;dbo&quot;)]
+    [Distinct]
+    public class PersonDistinct
+    {
+        public String LastName { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class DistinctAttributeExample
+    {
+        private SchoolContext _context;
+
+        public DistinctAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.GetBuilder&lt;PersonDistinct&gt;(_context).QuerySql;
+            var names = _context.SqlExecutor.Select&lt;PersonDistinct&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             DISTINCT [LastName]
+            FROM [dbo].[Person]
+             */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

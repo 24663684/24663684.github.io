@@ -113,6 +113,54 @@
 <p>The IModelMapper.TrackMaster method will track the master model and return the IDetailTracker interface. Then the IDetailTracker.TrackDetail method can be used to track the detail model.</p>
 <p>For more about the TrackMaster method, refer to IModelMapper.TrackMaster.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>同步保存主从表数据，且主表数据为一条，从表数据为两条</p>
+<p>The following code example demonstrates how to save the master table and the
+detail table synchronously; the master table has only one affected record<br>
+and the detail table has two affected records.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IDetailTracker
+{
+    public class TrackDetailsExample
+    {
+        private readonly SchoolContext _context;
+
+        public TrackDetailsExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example(IModelEntry&lt;DepartmentInfo&gt; depart,
+            IEnumerable&lt;IModelEntry&lt;CourseInfo&gt;&gt; coures)
+        {
+            // Saves both the master table and the detail table; the master table has 
+            // only one affected record and the detail table has two.
+            var modelmapper = _context.ModelMapper;
+
+            var master = modelmapper.TrackMaster(depart)
+                                   .TrackDetails(m =&gt; m.Courses, coures)
+                                   .MasterModel;
+
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the saving result.
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                              dbResult.AffectedCount);
+
+            /* This code example produces the following output:
+            
+            3 records have been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/DepartmentInfo.html">DepartmentInfo</a> <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IDetailTrack/TrackDetailsExampleController.html">TrackDetailsExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

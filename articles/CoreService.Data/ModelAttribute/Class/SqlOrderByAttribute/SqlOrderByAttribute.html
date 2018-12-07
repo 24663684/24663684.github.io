@@ -124,6 +124,86 @@
 <p>SqlOrderByAttribute指明一个Model Class将在SQL SELECT语句中使用ORDER BY Clause来对查询的结果集进行排序。</p>
 <p>The SqlOrderBy attribute denotes that a model class should use the ORDER BY clause in the SQL SELECT statement to sort the result set of the query.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>sql语句中用order by 加列名来排序数据
+在model中我们用order by标注来实现数据排序功能</p>
+<h5 id="model-departmentsqlwhere2">Model: DepartmentSqlWhere2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlWhere(&quot;Budget &gt; 1&quot;)]
+    [SqlAndWhere(&quot;Administrator = 2&quot;)]
+    [SqlOrWhere(&quot;Administrator &gt; 4&quot;)]
+    [SqlOrderBy(&quot;DepartmentID asc&quot;)]
+    public class DepartmentSqlWhere2
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlOrderByAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlOrderByAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlWhere2&gt;(_context).QuerySql;
+            var department = _context.SqlExecutor.Select&lt;DepartmentSqlWhere2&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([Budget] &gt; 1
+            AND [Administrator] = 2
+            OR [Administrator] &gt; 4)
+            ORDER BY
+             [DepartmentID] ASC
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

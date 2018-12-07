@@ -86,6 +86,67 @@
 <p>IModelMapper.Load，IModelMapper.LoadByKey数据加载 Method返回ILoadable接口对象，可以利用ILoadable接口提供的 Method操作加载的数据，ILoadable.FirstOrDefault Method用于获取加载数据的第一条数据。</p>
 <p>IModelMapper.Load and IModelMapper.LoadByKey methods return the ILoadable object whose methods can be used to manipulate the loaded data. The ILoadable.FirstOrDefault method is used to obtain the first data record that is loaded.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何加载工程部门。</p>
+<p>The following code example demonstrates how to load the department of Engineering.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.ILoadable
+{
+    public class FirstOrDefaultExample
+    {
+        private SchoolContext _context;
+
+        public FirstOrDefaultExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Loads all departments and gets the list.
+            List&lt;Department&gt; depts = mapper.Load&lt;Department&gt;().ToList();
+
+            Console.WriteLine(&quot;The list of departments:&quot;);
+            foreach (Department dept in depts)
+            {
+                Console.WriteLine(dept.Name);
+            }
+
+            Console.WriteLine();
+
+            // Loads the department of Engineering.
+            var engineering = mapper.Load&lt;DepartmentByName&gt;(&quot;Engineering&quot;)
+                                    .FirstOrDefault();
+
+            Console.WriteLine(&quot;The department of Engineering:&quot;);
+            Console.WriteLine(&quot;DepartmentID is {0}.&quot;, engineering.DepartmentID);
+            Console.WriteLine(&quot;Name is {0}.&quot;, engineering.Name);
+            Console.WriteLine(&quot;Budget is {0}.&quot;, engineering.Budget.ToString(&quot;N0&quot;));
+
+            /* The code produces the following output:
+            
+            The list of departments:
+            Engineering
+            English
+            Economics
+            Mathematics
+             
+            The department of Engineering:
+            Department ID is 1.
+            Name is Engineering.
+            Budget is 350,000.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <a href="../../../SourceCode/Examples/Models/School/Query/DepartmentByName.html">DepartmentByName</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

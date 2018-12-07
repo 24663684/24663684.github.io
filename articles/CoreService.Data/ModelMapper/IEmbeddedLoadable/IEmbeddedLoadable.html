@@ -113,13 +113,13 @@ IEmbeddedLoadable接口提供了一系列用于对嵌入属性(实例化了Model
 <tr>
 <td><img src="../../../../images/method.jpeg" alt="">       </td>
 <td><a href="Method/Include.html">Include(Expression&lt;Func&lt;TModel, object&gt;&gt; property, bool cascade = false)</a></td>
-<td><a href="../ILoadable/ILoadable.html">ILoadable&lt;TModel&gt;</a></td>
+<td><a href="../IEmbeddedLoadable/IEmbeddedLoadable.html">IEmbeddedLoadable&lt;TModel&gt;</a></td>
 <td>Loads data for the specified embedded property in TModel for all rows.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/IncludeAll.html">IncludeAll(bool cascade = false)</a></td>
-<td><a href="../ILoadable/ILoadable.html">ILoadable&lt;TModel&gt;</a></td>
+<td><a href="../IEmbeddedLoadable/IEmbeddedLoadable.html">IEmbeddedLoadable&lt;TModel&gt;</a></td>
 <td>Loads data for the embedded properties in TModel for all rows.</td>
 </tr>
 </tbody>
@@ -138,6 +138,56 @@ IEmbeddedLoadable接口提供了一系列用于对嵌入属性(实例化了Model
 </tbody>
 </table>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何加载选择了诗歌课程的学生。</p>
+<p>The following code example demonstrates how to load students who have selected the Poetry course.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IEmbeddedLoadable
+{
+    public class IEmbeddedLoadableExample
+    {
+        private SchoolContext _context;
+
+        public IEmbeddedLoadableExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Loads the course of Poetry (Course ID = 2030).
+            var course = mapper.LoadByKey&lt;CourseInfo&gt;(2030).FirstOrDefault();
+
+            // Loads students.
+            var students = mapper.LoadEmbedded(course)
+                                .Include(o=&gt;o.Students)
+                                .MasterModel
+                                .Students;
+
+            foreach (CourseStudentInfo student in students)
+            {
+                Console.WriteLine(&quot;Course ID: {0}&quot;,
+                    student.CourseID);
+                Console.WriteLine(&quot;Student ID: {0}&quot;,
+                    student.StudentID);
+            }
+
+            // The code produces the following output:
+            //
+            // Course ID: 2030
+            // Student ID: 2
+            // Course ID: 2030
+            // Student ID: 3
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <a href="../../SourceCode/Examples/Models/School/Embedded/CourseStudentInfo.html">CourseStudentInfo</a> <br></p>
 </article>
           </div>
           

@@ -95,6 +95,60 @@
 <p>需要在TModel中定义ModelEmbedded attribute来表示Master-Detail relationship，具体参考ModelEmbedded中的相关说明。</p>
 <p>The <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute must be applied in TModel to create the master-detail relationship. Refer to the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute for more.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>主从表数据保存：为从表设置主键值，并执行保存。</p>
+<p>The following code example demonstrates how to set the value of the primary key
+for the detail table and save changes.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackMasterExample
+    {
+        private readonly SchoolContext _context;
+
+        public TrackMasterExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1(IModelEntry&lt;CourseAndOnlineInfo&gt; course,
+            IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            // Sets the value of CourseID of the master table to the CourseID of the detail table.
+            // Saves the changes.
+            var modelmapper = _context.ModelMapper;
+
+            var master =
+                modelmapper.TrackMaster(course,
+                                    (saveAction) =&gt;
+                                    {
+                                        onlineCourse.SetCurrentValue(&quot;CourseID&quot;,
+                                            course.GetCurrentValue(&quot;CourseID&quot;));
+                                
+                                    })
+                       .TrackDetail(m =&gt; m.OnlineCourse, onlineCourse)
+                       .MasterModel;
+
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the saving result.
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                              dbResult.AffectedCount);
+
+            /* The code example produces the following output:
+            
+            2 records have been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseAndOnlineInfo.html">CourseAndOnlineInfo</a> <a href="../../../SourceCode/Examples/Models/School/OnlineCourse.html">OnlineCourse</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IModelMapper/TrackMasterExampleController.html">TrackMasterExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

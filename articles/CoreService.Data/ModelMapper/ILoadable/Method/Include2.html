@@ -101,6 +101,76 @@
 <p>ILoadable.Include Method可以根据需要加载某行的一个实例化了ModelEmbedded或者SqlEmbedded特性的属性的数据，而不必把所有属性的数据都加载出来，这样有利于提升数据的查询效率。</p>
 <p>The ILoadable.Include method can be used to load the data for the specified embedded property (where the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute or the <a href="../../ModelAttribute/Property/SqlEmbeddedAttribute/SqlEmbeddedAttribute.html">SqlEmbedded</a> attribute is applied) for the specified row, rather than loading data for all of the properties. This can greatly improve the data retrieval efficiency.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>加载指定行的数据。</p>
+<p>The following code example demonstrates how to load data for the specified row.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ILoadable
+{
+    public class IncludeExample
+    {
+        private SchoolContext _context;
+
+        public IncludeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example2()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Loads the information of all departments.
+            var loadable = mapper.Load&lt;DepartmentInfo&gt;();
+
+            // Gets the index of the English department.
+            int index = loadable.ToList().FindIndex(o =&gt; o.Name == &quot;English&quot;);
+
+            // Loads courses for the English department only.
+            // Retrieves students who have selected the course and online flags. 
+            var depts = loadable.Include(index, o =&gt; o.Courses, cascade: true)
+                                .ToList();
+
+            Console.WriteLine(&quot;Courses of {0} Deparment:&quot;,
+                depts[index].Name);
+            foreach (CourseInfo course in depts[index].Courses)
+            {
+                Console.WriteLine(course.Title);
+                Console.WriteLine(&quot; Student IDs:&quot;);
+                foreach (CourseStudentInfo student in course.Students)
+                {
+                    Console.WriteLine(&quot;  &quot; + student.StudentID);
+                }
+            }
+
+            /* The code produces the following output:
+
+            Courses of English Deparment:
+            Composition
+             Student IDs:
+              2
+              3
+              6
+              7
+              8
+            Poetry
+             Student IDs:
+              2
+              3
+            Literature
+             Student IDs:
+              6
+              7
+              8
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/DepartmentInfo.html">DepartmentInfo</a> <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseStudentInfo.html">CourseStudentInfo</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

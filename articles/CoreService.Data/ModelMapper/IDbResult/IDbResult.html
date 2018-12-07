@@ -132,11 +132,143 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>IDbResult can be used after calling IModelStore.Savechanges method, IModelMapper.Savechanges method, or accessing ISaveContext.LastDbResult property.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>使用IModelMapper创建新部门。</p>
+<p>The following code example demonstrates how to use IModelMapper<br>
+to create a new department.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IDbResult
+{
+    public class IDbResultExample
+    {
+        private SchoolContext _context;
+
+        public IDbResultExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            var newDept = new Department()
+            {
+                DepartmentID = 10,
+                Name = &quot;Chemistry&quot;,
+                Budget = 190000,
+                StartDate = new DateTime(2019, 1, 1)
+            };
+
+            var dbResult = _context.ModelMapper.TrackCreate(newDept)
+                                                .SaveChanges();
+
+            Console.WriteLine(&quot;The count of the affected records is {0}.&quot;,
+                dbResult.AffectedCount);
+            Console.WriteLine(&quot;The count of the inseted records is {0}.&quot;,
+                dbResult.InsertedCount);
+
+            /* The code produces the following output:
+            
+            The count of the affected records is 1.
+            The count of the inseted records is 1.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>使用ModelStore创建和修改新部门。</p>
+<p>The following code example demonstrates how to use ModelStore
+to create and modify a new department.</p>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            var newDept = new Department()
+            {
+                DepartmentID = 12,
+                Name = &quot;Geography&quot;,
+                Budget = 170000,
+                StartDate = new DateTime(2019, 1, 1)
+            };
+
+            var modelStore =
+                new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
+
+            modelStore.Retrieve(_context);
+
+            // Creates the new department.
+            modelStore.Add(newDept);
+            var dbResult = modelStore.SaveChanges(_context);
+
+            Console.WriteLine(&quot;The count of the inseted records is {0}.&quot;,
+                dbResult.InsertedCount);
+
+            // Modifies the budget for the new deparment.
+            int index = modelStore.FindIndex(o =&gt; o.Name == &quot;Geography&quot;);
+            modelStore.SetValue(index, &quot;Budget&quot;, 180000m);
+            dbResult = modelStore.SaveChanges(_context);
+
+            Console.WriteLine(&quot;The count of the modified records is {0}.&quot;,
+                dbResult.ModifiedCount);
+
+            /* The code produces the following output:
+            
+            The count of the inseted records is 1.
+            The count of the modified records is 1.
+            */
+        }
+</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>使用IModelMapper和ISaveContext获取最后的DB结果。</p>
+<p>The following code example demonstrates how to use IModelMapper
+and ISaveContext to get the last DB result.</p>
+<pre><code class="lang-C#">        public void Example3()
+        {
+            var newDept = new Department()
+            {
+                DepartmentID = 11,
+                Name = &quot;Literature&quot;,
+                Budget = 140000,
+                StartDate = new DateTime(2019, 1, 1)
+            };
+
+            int affectedCount = 0;
+            var dbResult = _context.ModelMapper.TrackCreate(newDept,
+                (saveContext) =&gt;
+                {
+                    // Gets the count of the affected records.
+                    affectedCount = saveContext.LastDbResult.AffectedCount;
+
+                    // Cancels the save operation and it will roll back the database
+                    // transaction.
+                    saveContext.CancelSave();
+                })
+                .SaveChanges();
+
+            Console.WriteLine(&quot;The count of the affected records is {0}.&quot;,
+                 affectedCount);
+            Console.WriteLine(&quot;The count of the real affected records is {0}.&quot;,
+                dbResult.AffectedCount);
+            Console.WriteLine(&quot;The save operation was cancelled: {0}.&quot;,
+                dbResult.Cancelled);
+
+            /* The code produces the following output:
+            
+            The count of the affected records is 1.
+            The count of the real affected records is 0.
+            The save operation was cancelled: True.
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
+<p>Model Class: <a href="../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 </article>
           </div>
           

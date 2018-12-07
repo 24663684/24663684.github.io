@@ -99,6 +99,62 @@
 <p>由于该 Method仅返回首行首列数据，请避免在TModel的定义中存在分组时使用。</p>
 <p>This method only returns the data of the first column in the first row of the retrieved data, therefore, please avoid using this method when groups are defined in TModel.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何计算所有课程的有区别的学分的数量。</p>
+<p>The following code example demonstrates how to calculate the distinct credits for all courses.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class DistinctCountExample
+    {
+        private SchoolContext _context;
+
+        public DistinctCountExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Lists credits for all courses.
+            var courses = mapper.Load&lt;Course&gt;().ToList();
+            Console.WriteLine(&quot;Credits of courses:&quot;);
+            foreach (var course in courses)
+            {
+                Console.WriteLine(course.Title + &quot; &quot; + course.Credits.ToString());
+            }
+
+            // Counts the the distinct credits for all courses.
+            int count = mapper.DistinctCount&lt;Course&gt;(&quot;Credits&quot;);
+
+            Console.WriteLine();
+            Console.WriteLine(&quot;The number of the distinct credits is {0}.&quot;,
+                count.ToString());
+
+            /* The code produces the following output:
+            Credits of courses: 
+            Chemistry: 4
+            Physics: 4
+            Composition: 3
+            Poetry: 2
+            Literature: 4
+            Trigonometry: 4
+            Microeconomics: 3
+            Macroeconomics: 3
+            Quantitative: 2
+
+            The number of the distinct credits is 3.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

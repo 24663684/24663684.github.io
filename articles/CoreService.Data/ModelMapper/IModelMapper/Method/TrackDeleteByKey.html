@@ -95,6 +95,61 @@
 <p>如需同时删除主表和明细表中关联的记录，可在TModel中定义主表和明细表的级联删除规则，具体参考关于ModelEmbeddedAttrubute的说明。</p>
 <p>If the record in the master table and its associated records in the detail table must be deleted at the same time, you can define the cascade deletion rule for the master and the detail tables in TModel. Refer to the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute for more.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何通过主键删除学生记录。</p>
+<p>The following code example demonstrates how to delete a student record by the primary key.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackDeleteByKeyExample
+    {
+        private SchoolContext _context;
+
+        public TrackDeleteByKeyExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Creates a new student.
+            var newStudent = new Person()
+            {
+                LastName = &quot;Senior&quot;,
+                FirstName = &quot;Letitia&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            // Tracks the new student and saves changes to the database.
+            var dbResult = mapper.TrackCreate(newStudent)
+                                 .SaveChanges();
+
+            Console.WriteLine(&quot;{0} record has been inserted into the database.&quot;,
+                dbResult.InsertedCount);
+
+            // Deletes the student from the database according to the person ID.
+            dbResult = mapper.TrackDeleteByKey&lt;Person&gt;(newStudent.PersonID)
+                            .SaveChanges();
+
+            Console.WriteLine(&quot;{0} record has been deleted from the database.&quot;,
+                dbResult.DeletedCount);
+
+            /* The code produces the following output:
+            
+            1 record has been inserted into the database.
+            1 record has been deleted from the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

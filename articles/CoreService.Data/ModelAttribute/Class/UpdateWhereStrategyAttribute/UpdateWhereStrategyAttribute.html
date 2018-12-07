@@ -125,6 +125,202 @@
 <p>如果没有为某个Model Class指定UpdateWhereStrategyAttribute, 将默认采用UpdateWhereStrategy.KeyColumns (WHERE statement only including key columns).</p>
 <p>If no UpdateWhereStrategy attribute is applied to a model class, the enumaration value UpdateWhereStrategy.KeyColumns (WHERE statement only includes key columns) will be used by default.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>UpdateWhereStrategy(UpdateWhereStrategy.KeyAndModifiedColumns)
+UpdateWhereStrategy.KeyAndModifiedColumns表示update数据时，生成update sql
+where 条件会包括主键和修改列</p>
+<h5 id="model-departmentupdatewherestrategy">Model: DepartmentUpdateWhereStrategy</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyAndModifiedColumns)]
+
+    public class DepartmentUpdateWhereStrategy
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+        
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        [ConcurrencyCheck]
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class UpdateWhereStrategyAttributeExample
+    {
+        private SchoolContext _context;
+
+        public UpdateWhereStrategyAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            var modelMapper = _context.ModelMapper;
+
+            // Gets the department record where id=1 from the database
+            // id=1, name=Engineering 
+            var department = modelMapper.LoadByKey&lt;DepartmentUpdateWhereStrategy&gt;(1)
+                                        .FirstOrDefault();
+
+            modelMapper.TrackUpdate(department);
+
+            department.Name = &quot;Engineering_test&quot;;
+
+            modelMapper.SaveChanges();
+
+            /* Internally generated T-SQL:
+            
+            exec sp_executesql N'UPDATE [dbo].[Department] SET [Name] = @p0
+            WHERE [DepartmentID] = @_p1 AND [Name] = @_p2;
+            SELECT @@ROWCOUNT;
+
+            ',N'@_p1 int,@p0 nvarchar(4000),@_p2 nvarchar(4000)',
+            @_p1=1,@p0=N'Engineering_test',@_p2=N'Engineering'           
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)
+UpdateWhereStrategy.KeyColumns表示update数据时，生成update sql
+where 条件会只包括主键</p>
+<h5 id="model-departmentupdatewherestrategy2">Model: DepartmentUpdateWhereStrategy2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+
+    public class DepartmentUpdateWhereStrategy2
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        [ConcurrencyCheck]
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            var modelMapper = _context.ModelMapper;
+
+            // Gets the department record where id=1 from the database
+            // id=1, name=Engineering 
+            var department = modelMapper.LoadByKey&lt;DepartmentUpdateWhereStrategy2&gt;(1).FirstOrDefault();
+
+            modelMapper.TrackUpdate(department);
+
+            department.Name = &quot;Engineering_test&quot;;
+
+            modelMapper.SaveChanges();
+
+            /* Internally generated T-SQL:
+            
+            exec sp_executesql N'UPDATE [dbo].[Department] SET [Name] = @p0
+            WHERE [DepartmentID] = @_p1;
+            SELECT @@ROWCOUNT;
+
+            ',N'@_p1 int,@p0 nvarchar(4000)',@_p1=1,@p0=N'Engineering_test'            
+            */
+        }
+</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>UpdateWhereStrategy(UpdateWhereStrategy.KeyAndConcurrencyCheckColumns)
+UpdateWhereStrategy.KeyAndConcurrencyCheckColumns表示update数据时，生成update sql
+where 条件会包括主键和model加[ConcurrencyCheck]的属性列</p>
+<h5 id="model-departmentupdatewherestrategy3">Model: DepartmentUpdateWhereStrategy3</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyAndConcurrencyCheckColumns)]
+
+    public class DepartmentUpdateWhereStrategy3
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        [ConcurrencyCheck]
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example3">Example Method: Example3</h5>
+<pre><code class="lang-C#">        public void Example3()
+        {
+            var modelMapper = _context.ModelMapper;
+
+            // Gets the department record where id=1 from the database
+            // id=1, name=Engineering 
+            var department = modelMapper.LoadByKey&lt;DepartmentUpdateWhereStrategy3&gt;(1).FirstOrDefault();
+
+            modelMapper.TrackUpdate(department);
+
+            department.Name = &quot;Engineering_test&quot;;
+
+            modelMapper.SaveChanges();
+
+            /* Internally generated T-SQL:
+            
+            exec sp_executesql N'UPDATE [dbo].[Department] SET [Name] = @p0
+            WHERE [DepartmentID] = @_p1 AND [StartDate] = @_p2;
+            SELECT @@ROWCOUNT;
+
+            ',N'@_p1 int,@p0 nvarchar(4000),@_p2 datetime2(7)',@_p1=1,
+            @p0=N'Engineering_test', @_p2='2007-09-01 00:00:00'
+            */
+        }
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

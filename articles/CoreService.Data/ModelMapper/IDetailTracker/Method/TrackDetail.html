@@ -113,6 +113,53 @@
 <p>The IModelMapper.TrackMaster method will track the master model and return the IDetailTracker interface. Then the IDetailTracker.TrackDetail method can be used to track the detail model.</p>
 <p>For more about the TrackMaster method, refer to IModelMapper.TrackMaster.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>同步保存主从表数据，且主表与从表数据均为一条</p>
+<p>The following code example demonstrates how to save the master table and the
+detail table synchronously and both the master table and the detail table
+have only one affected record.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IDetailTracker
+{
+    public class TrackDetailExample
+    {
+        private readonly SchoolContext _context;
+
+        public TrackDetailExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example(IModelEntry&lt;CourseAndOnlineInfo&gt; course,
+            IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            // Saves both the master table and the detail table and both have only one affected record.
+            var modelmapper = _context.ModelMapper;
+
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.OnlineCourse, onlineCourse)
+                       .MasterModel;
+
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the saving result.
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                              dbResult.AffectedCount);
+
+            /* This code example produces the following output:
+            
+            2 records have been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseAndOnlineInfo.html">CourseAndOnlineInfo</a> <a href="../../../SourceCode/Examples/Models/School/OnlineCourse.html">OnlineCourse</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IDetailTrack/TrackDetailExampleController.html">TrackDetailExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

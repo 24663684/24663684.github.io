@@ -152,6 +152,121 @@
 </table>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码为展示了ModelEmbedded特性</p>
+<p>The following code example demonstrates how to use the ModelEmbedded attribute.</p>
+<h5 id="model-courseandonlineinfo">Model: CourseAndOnlineInfo</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Course table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// 
+    /// The OnlineCourses property is applied with the ModelEmbedded attribute.
+    /// The ModelEmbedded attribute defines the one-to-one relationship between the Course and the OnlineCourse record.
+    /// &lt;/summary&gt;
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class CourseAndOnlineInfo
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        public Int32 Credits { get; set; }
+
+        public Int32 DepartmentID { get; set; }
+
+        [JsonIgnore]
+        [SetValue(&quot;$CourseID&quot;, &quot;$CourseID&quot;, SetValueStrategy.Always)]
+        [ModelEmbedded(typeof(OnlineCourse), ParamValue = &quot;$CourseID&quot;, 
+            CascadeCreate = true, CascadeDelete = true)]
+        public OnlineCourse OnlineCourse { get; set; }
+    }
+}
+</code></pre>
+<h5 id="model-onlinecourse">Model: OnlineCourse</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.OnlineCourse table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// &lt;/summary&gt;
+    [Table(&quot;OnlineCourse&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class OnlineCourse
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String URL { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class ModelEmbeddedAttributeExample
+    {
+        private SchoolContext _context;
+
+        public ModelEmbeddedAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example(IModelEntry&lt;CourseAndOnlineInfo&gt; course, IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+
+            var modelmapper = _context.ModelMapper;
+
+            /// Course is set as the master model, and OnlineCourse is set as the detail model.
+            /// In the definition of the master model, apply the ModelEmbedded attribute to define 
+            /// OnlineCourse as the embedded model of Course.
+
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.OnlineCourse, onlineCourse)
+                       .MasterModel;
+
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the saving result.
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                              dbResult.AffectedCount);
+
+            /* This code example produces the following output:
+            
+            2 records have been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Controller Class: <a href="../../../../SourceCode/Examples/Controllers/ModelAttribute/ModelEmbeddedAttributeExampleController.html">ModelEmbeddedAttributeExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

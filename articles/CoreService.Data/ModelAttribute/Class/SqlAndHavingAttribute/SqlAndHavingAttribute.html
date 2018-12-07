@@ -111,6 +111,78 @@
 <p>SqlAndHavingAttribute 指明一个Model Class将在原有SQL SELECT语句中的HAVING Clause中添加AND logical operator and another search condition。</p>
 <p>The SqlAndHaving attribute denotes that a model class should add an AND logical operator and another search condition in the HAVING clause of the SQL SELECT statement.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>在sql语句中我们可以用GROUP BY来分组查询数据，
+sql中having 后跟分组查询条件，多个逻辑与分组条件用and连接
+在model中我们用SqlAndHaving标注来实现sql 多个逻辑与分组条件的功能</p>
+<h5 id="model-studentgradesqlhaving">Model: StudentGradeSqlHaving</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.StudentGrade table.
+    /// &lt;/summary&gt;
+    [Table(&quot;StudentGrade&quot;, Schema = &quot;dbo&quot;)]
+    [SqlGroupBy(&quot;StudentID&quot;)]
+    [SqlHaving(&quot;Sum(Grade) is not null&quot;)]
+    [SqlAndHaving(&quot;Sum(Grade) &lt; 5&quot;)]
+    [SqlAndHaving(&quot;Sum(Grade)&quot;, &quot;2&quot;, Operator = SqlOperator.GreaterThan)]
+
+    public class StudentGradeSqlHaving
+    {
+        public Int32 StudentID { get; set; }
+
+        [SqlCompute(alias: &quot;SumGrade&quot;, expression: &quot;Sum(Grade)&quot;)]
+        public decimal? SumGrade { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlAndHavingAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlAndHavingAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.GetBuilder&lt;StudentGradeSqlHaving&gt;(_context).QuerySql;
+            var names = _context.SqlExecutor.Select&lt;StudentGradeSqlHaving&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [StudentID],
+            SUM([Grade]) AS [SumGrade]
+            FROM [dbo].[StudentGrade]
+            GROUP BY
+             [StudentID]
+            HAVING (SUM([Grade]) IS NOT NULL
+            AND SUM([Grade]) &lt; 5
+            AND SUM([Grade]) &gt; = 2)
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

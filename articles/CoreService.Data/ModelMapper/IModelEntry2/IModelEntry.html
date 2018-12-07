@@ -96,6 +96,82 @@
 </tbody>
 </table>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何使用IModelEntry来获取或设置包含数据和状态的学生记录的详细信息。</p>
+<p>The following code example demonstrates how to use IModelEntry to get
+and set details for a student record which contains data and state.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.IModelEntry
+{
+    public class IModelEntryExample
+    {
+        private SchoolContext _context;
+
+        public IModelEntryExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example(IModelEntry&lt;Person&gt; student)
+        {
+            // Gets the model state.
+            Console.WriteLine(&quot;Model State: {0}&quot;,
+                 student.ModelState.ToString());
+
+            // Gets the properties.
+            Console.WriteLine(&quot;Properties:&quot;);
+            foreach (var propertyName in student.Properties)
+            {
+                Console.WriteLine(propertyName);
+            }
+
+            // Gets the property state of Enrollment Date.
+            Console.WriteLine(&quot;Enrollment Date State: {0}&quot;,
+                student.GetPropertyState(&quot;EnrollmentDate&quot;).ToString());
+
+            // Gets the current value of Enrollment Date.
+            Console.WriteLine(&quot;Current Enrollment Date: {0}&quot;,
+                 student.GetCurrentValue(&quot;EnrollmentDate&quot;));
+
+            // Gets the original value of Enrollment Date.
+            Console.WriteLine(&quot;Original Enrollment Date: {0}&quot;,
+                 student.GetOriginalValue(&quot;EnrollmentDate&quot;));
+
+            student.CurrentValueChanged += showValueChanges;
+
+            // Sets Enrollment Date with a new value.
+            student.SetCurrentValue(&quot;Enrollment Date&quot;, new DateTime(2019, 1, 3));
+
+            /* The code produces the following output:
+            
+            Model State: Modified
+            Properties:
+            PersonID
+            LastName
+            FirstName
+            HireDate
+            EnrollmentDate
+            Discriminator
+            Enrollment Date State: Modified
+            Current Enrollment Date: 1/2/2019 12:00:00 AM
+            Original Enrollment Date: 1/1/2019 12:00:00 AM
+            EnrollmentDate Changed to 1/3/2019 12:00:00 AM
+            */
+        }
+
+        private void showValueChanges(string name, object value)
+        {
+            Console.WriteLine(&quot;{0} changed to {1}&quot;,
+                name, value);
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../SourceCode/Examples/Models/School/Student.html">Student</a> <br></p>
 </article>
           </div>
           

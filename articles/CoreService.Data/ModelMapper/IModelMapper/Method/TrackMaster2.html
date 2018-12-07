@@ -102,6 +102,47 @@
 <p>在实例化Action Delegate时，可以使用ISaveContext泛型参数来读写保存数据过程中内部使用的上下文，具体请参考ISaveContext。</p>
 <p>When instantiating the Action delegate, the generic parameter of ISaveContext can be used for reading and writing the context which is used internally for saving data. See ISaveContext for more info.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>单表更新。</p>
+<p>The following code example demonstrates how to update a single table.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackMasterExample
+    {
+        private readonly SchoolContext _context;
+
+        public TrackMasterExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example2(IModelEntry&lt;CourseAndOnlineInfo&gt; course)
+        {
+            // Saves the changes.
+            var modelmapper = _context.ModelMapper;
+
+            var dbResult = modelmapper.TrackMaster(course)
+                          .SaveChanges();
+
+            // Shows the saving result.
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                              dbResult.AffectedCount);
+
+            /* The code example produces the following output:
+
+            1 records have been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseAndOnlineInfo.html">CourseAndOnlineInfo</a> <a href="../../../SourceCode/Examples/Models/School/OnlineCourse.html">OnlineCourse</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IModelMapper/TrackMasterExampleController.html">TrackMasterExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

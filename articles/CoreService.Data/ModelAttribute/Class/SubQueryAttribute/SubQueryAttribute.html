@@ -158,6 +158,84 @@
 <p>可以在为该Model Class中其他特性的允许编写SQL Expression的参量中通过Name引用该subquery, 格式: $SubQuery(Name).</p>
 <p>The subquery can be referenced by its name in the SQL expression parameter for the other attributes in the model class. The format to make reference: $SubQuery(Name).</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>在sql 语句中可能包括exist, in...子查询
+在model中我们用SubQuery标注来实现子查询</p>
+<h5 id="model-departmentsubquery">Model: DepartmentSubQuery</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlWhere(&quot;DepartmentID in $SubQuery(sb_department)&quot;)]
+    [SubQuery(&quot;sb_department&quot;, rawSql: @&quot;select DepartmentID from Course&quot;)]
+
+    public class DepartmentSubQuery
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SubQueryAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SubQueryAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression. 
+            string sql = ModelSqlBuilder.GetBuilder&lt;DepartmentSubQuery&gt;(_context)
+                                        .QuerySql;
+
+            var department = _context.SqlExecutor.Select&lt;DepartmentSubQuery&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([DepartmentID] IN (SELECT
+             [DepartmentID]
+            FROM [Course]))
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

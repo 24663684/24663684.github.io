@@ -130,6 +130,101 @@
 <p>可以在为该Model Class中其他特性的允许编写SQL Expression的参量中通过Name引用该Parameter，格式: $Param(paramName) 或者:paramName.</p>
 <p>The parameter can be referenced by its name in the SQL expression parameter for the other attributes in the model class. The format to make reference: $Param(paramName) or :paramName.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>在查询中，可能查询条件包含需要外部传入的参数，
+用SqlParameter标注就可以指定参数类型，
+同时加多个SqlParameter标注表示需要从外部传入多个参数</p>
+<h5 id="model-departmentbyname">Model: DepartmentByName</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// The SqlParameter attribute defines an argument: nameArgument.
+    /// The SqlWhere attribute adds a Where clause using the titleArgument argument.
+    /// 
+    /// DepartmentID is the primary key.
+    /// &lt;/summary&gt;
+    [SqlParameter(&quot;nameArgument&quot;, typeof(string))]
+    [Table(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    [SqlWhere(&quot;Name = :nameArgument&quot;)]
+    public class DepartmentByName
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlParameterAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlParameterAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression.
+            string sql =
+                ModelSqlBuilder.GetBuilder&lt;DepartmentByName&gt;(_context).QuerySql;
+            var department =
+                _context.SqlExecutor.Select&lt;DepartmentByName&gt;(sql, &quot;English&quot;);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /* This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([Name] = @nameArgument)
+            */
+
+            /* Internally generated T-SQL:
+            
+            exec sp_executesql N'SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator] 
+            FROM [dbo].[Department] 
+            WHERE ([Name] = @nameArgument)',N'@nameArgument nvarchar(4000)',@nameArgument=N'English'
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

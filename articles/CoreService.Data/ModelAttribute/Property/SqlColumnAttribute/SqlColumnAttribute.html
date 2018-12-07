@@ -171,6 +171,202 @@
 <p>如果Model Class中只有一个需要映射的表，且Model class中Properties的Name和数据库中的列名一致(不区分大小写)，则可省略SqlColumnAttribute。</p>
 <p>If there is only one table in the model class that needs to be mapped, and the property name of the model class is the same as the column name of the database table (case is insensitive), then the SqlColumn attribute can be ignored.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>SqlColumn(columnname)
+SqlColumn标注表示model中的属性对应于数据表中的columnname列</p>
+<p>The following code example demonstrates how to use the constructor:
+SqlColumn (columnname). When a property in the model is applied with
+SqlColumn (columnname), it indicates the property is mapped to
+that specified table column.</p>
+<h5 id="model-departmentsqlcolumn">Model: DepartmentSqlColumn</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    public class DepartmentSqlColumn
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        [SqlColumn(&quot;Name&quot;)]
+        public String DepartmentName { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+       
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlColumnAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlColumnAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlColumn&gt;(_context).QuerySql;
+            var department = _context.SqlExecutor.Select&lt;DepartmentSqlColumn&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /* The code produces the following output:
+            
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>SqlColumn(tableAlias,columnname)。
+SqlColumn标注表示model中的属性对应于数据tableAlias表中的columnname列
+tableAlias表在Table或者FromTable中定义</p>
+<p>The following code example demonstrates how to use the constructor:
+SqlColumn (tableAlias, columnname). When a property in the model is applied with
+SqlColumn (tableAlias, columnname), it indicates the property is mapped to
+the specified column in the specified table. tableAlias is defined in<br>
+Table or FromTable.</p>
+<h5 id="model-departmentsqlcolumn2">Model: DepartmentSqlColumn2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    [FromTable(&quot;depart&quot;, &quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    public class DepartmentSqlColumn2
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        [SqlColumn(&quot;depart&quot;, &quot;Name&quot;)]
+        public String DepartmentName { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlColumn2&gt;(_context).QuerySql;
+            var department = _context.SqlExecutor.Select&lt;DepartmentSqlColumn2&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /* The code produces the following output:
+            
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [depart].[Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department] AS [depart]
+            */
+        }
+</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>SqlColumn(tableAlias,columnname, columnAlias)。
+SqlColumn标注表示model中的属性对应于数据tableAlias表中的columnname列
+columnAlias表示columnname的别名</p>
+<p>The following code example demonstrates how to use the constructor:
+SqlColumn (tableAlias, columnname, columnAlias). When a property in
+the model is applied with SqlColumn (tableAlias, columnname, columnAlias),
+it indicates the property is mapped to the specified column in the
+specified table. columnAlias is the alias name of column.</p>
+<p>理论上设置columnAlias后, 在生成SQL时，对应列后面加上As columnAlias,
+但现在是加入columnAlias和不加columnAlias没有什么区别,
+可能是程序的Bug.</p>
+<h5 id="model-departmentsqlcolumn3">Model: DepartmentSqlColumn3</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    [FromTable(&quot;depart&quot;, &quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    public class DepartmentSqlColumn3
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        [SqlColumn(&quot;depart&quot;, &quot;Name&quot;, &quot;DepartName&quot;)]
+        public String DepartName { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example3">Example Method: Example3</h5>
+<pre><code class="lang-C#">        public void Example3()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;DepartmentSqlColumn3&gt;(_context).QuerySql;
+            var department = _context.SqlExecutor.Select&lt;DepartmentSqlColumn3&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /* The code produces the following output:
+            SQL expression:
+            SELECT
+             [DepartmentID],
+            [depart].[Name],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department] AS [depart]
+            */
+        }
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

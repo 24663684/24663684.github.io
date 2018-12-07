@@ -102,6 +102,56 @@
 <p>如果需要同时对主model和明细model进行检索并加载数据，请使用IModelMapper.Load&lt;TModel&gt; Method代替。</p>
 <p>To retrieve and load data of the master model and the detail model at the same time, use the IModelMapper.Load&lt;TModel&gt; method instead.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何加载属于某个部门的课程。</p>
+<p>The following code example demonstrates how to load the courses that belong to a department.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class LoadEmbeddedExample
+    {
+        private SchoolContext _context;
+
+        public LoadEmbeddedExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Loads the information for department of Engineering and
+            // it doesn't load the courses here.
+            var dept = mapper.Load&lt;DepartmentInfo&gt;()
+                            .ToList()
+                            .Find(o =&gt; o.Name == &quot;Engineering&quot;);
+            Console.WriteLine(&quot;Department: {0}&quot;,
+                dept.Name);
+
+            // Loads the courses that belong to the department of Engineering.
+            mapper.LoadEmbedded(dept).Include(o =&gt; o.Courses);
+
+            Console.WriteLine(&quot;Courses:&quot;);
+            foreach (CourseInfo course in dept.Courses)
+            {
+                Console.WriteLine(course.Title);
+            }
+
+            // The code produces the following output:
+            //
+            // Department: Engineering
+            // Courses:
+            // Chemistry
+            // Physics
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/DepartmentInfo.html">DepartmentInfo</a> <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

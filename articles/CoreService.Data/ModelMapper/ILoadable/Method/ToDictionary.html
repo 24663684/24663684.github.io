@@ -89,6 +89,35 @@
 <p>返回一个包含了数据集的所有数据的Dictionary&lt;TKey, TModel&gt;。</p>
 <p>Returns an Dictionary&lt;TKey, TModel&gt; that includes all of the data of the result set.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示了如何获取学生词典。</p>
+<p>The following code example demonstrates how to get a dictionary of students.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+
+namespace Appeon.Examples.ILoadable
+{
+    public class ToDictionaryExample
+    {
+        private SchoolContext _context;
+
+        public ToDictionaryExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var loadable = _context.ModelMapper.Load&lt;Student&gt;();
+
+            // Creates a Dictionary&lt;string,student&gt; that includes the data of the 
+            // result set.
+            var students = loadable.ToDictionary(o =&gt; o.PersonID);
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Student.html">Student</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

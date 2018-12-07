@@ -91,6 +91,49 @@
 <p>A list of TModel type instances.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何创建两个学生。</p>
+<p>The following code example demonstrates how to create two students.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackRangeExample
+    {
+        private SchoolContext _context;
+
+        public TrackRangeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example(IEnumerable&lt;IModelEntry&lt;Person&gt;&gt; newStudents)
+        {
+            var mapper = _context.ModelMapper;
+
+            // Tracks the Insert operation for the new students.
+            mapper.TrackRange(newStudents);
+
+            // Saves to the database.
+            var dbResult = mapper.SaveChanges();
+
+            Console.WriteLine(&quot;{0} student records have been inserted into the &quot; +
+                                &quot;database.&quot;,
+                                dbResult.InsertedCount);
+
+            /* The code produces the following output:
+            
+            1 student record has been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IModelMapper/TrackRangeExampleController.html">TrackRangeExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

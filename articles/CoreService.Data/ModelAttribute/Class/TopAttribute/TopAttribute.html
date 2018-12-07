@@ -123,6 +123,80 @@
 <p>TopAttribute 指明一个Model Class将在SQL SELECT语句中添加TOP Clause去限制返回的结果行数。</p>
 <p>The Top attribute denotes that a model class should adds a TOP clause to the SQL SELECT statement to limit the rows returned.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>在Model上加TOP标注后，
+生成sql语句会包含TOP关键字</p>
+<h5 id="model-departmenttop">Model: DepartmentTop</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [Top(2)]
+
+    public class DepartmentTop
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class TopAttributeExample
+    {
+        private SchoolContext _context;
+
+        public TopAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL expression.
+            string sql =
+                ModelSqlBuilder.GetBuilder&lt;DepartmentTop&gt;(_context).QuerySql;
+
+            var department = _context.SqlExecutor.Select&lt;DepartmentTop&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             TOP(2) [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

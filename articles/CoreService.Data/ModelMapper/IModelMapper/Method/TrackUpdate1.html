@@ -93,6 +93,57 @@
 <p>Returns an IModelMapper interface, which can be used for executing other methods with the current ModelMapper instance.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何跟踪数据库表更新操作。</p>
+<p>The following code example demonstrates how to tracks a database table update operation.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackUpdateExample
+    {
+        private SchoolContext _context;
+
+        public TrackUpdateExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+
+            var modelMapper = _context.ModelMapper;
+
+            // Gets the Department record whose DepartmentID is 1 from the database.
+            // DepartmentID=1, Name=Engineering 
+            var department = modelMapper.LoadByKey&lt;Department&gt;(1).FirstOrDefault();
+
+            modelMapper.TrackUpdate(department);
+
+            Console.WriteLine(&quot;The name is \&quot;{0}\&quot; for the department when DepartmentID is 1.&quot;,
+               department.Name);
+
+            department.Name = &quot;Engineering_test&quot;;
+
+            modelMapper.SaveChanges();
+
+            // Gets data from the database.
+            // DepartmentID=1, Name=Engineering_test
+            department = modelMapper.LoadByKey&lt;Department&gt;(1).FirstOrDefault();
+            Console.WriteLine(&quot;The name is \&quot;{0}\&quot; for the department when DepartmentID is 1.&quot;,
+                department.Name);
+
+            /*The code example produces the following output:
+            The name is &quot;Engineering&quot; for the department when DepartmentID is 1.
+            The name is &quot;Engineering_test&quot; for the department when DepartmentID is 1.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

@@ -149,6 +149,145 @@
 <p>当没有TableAtrribute 并且一个或者多个FromTableAtrributes被用于一个Model Class时，第一个FromTableAttibute也指明了Model Class在执行SQL DML时使用的唯一的表。</p>
 <p>When no Table attribute is applied, and one or more FromTable attributes are being applied to a model class, the first FromTable attribute denotes the only one database table that the model class should use when executing the SQL DML.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>FromTable标注用来指定model与数据库关联的表
+构造函数: FromTable(name, Propreties: Schema, WhereRaw)。
+参数name是表示表名，Schema表示表的Schema，
+WhereRaw 表示生成 sql语句的where条件
+The following code example demonstrates how to use the constructor:
+FromTable (name, Propreties: Schema, WhereRaw).</p>
+<h5 id="model-personfromtable">Model: PersonFromTable</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Person table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Person&quot;, Schema = &quot;dbo&quot;, WhereRaw = &quot;PersonID &lt; 10&quot;)]    
+    public class PersonFromTable
+    {      
+        public Int32 PersonID { get; set; }
+
+        public String LastName { get; set; }
+
+        public String FirstName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class FromTableAttributeExample
+    {
+        private SchoolContext _context;
+
+        public FromTableAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;PersonFromTable&gt;(_context).QuerySql;
+            var names = _context.SqlExecutor.Select&lt;PersonFromTable&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [PersonID],
+            [LastName],
+            [FirstName],
+            [HireDate],
+            [EnrollmentDate],
+            [Discriminator]
+            FROM [dbo].[Person]
+            WHERE ([PersonID] &lt; 10)
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>FromTable标注用来指定model与数据库关联的表
+构造函数: FromTable(alias, name, Propreties: Schema, WhereRaw)。
+alias表示生成sql时表的别名，name表示指表名，Schema表示表的Schema，
+WhereRaw 表示生成 sql语句的where条件
+The following code example demonstrates how to use the constructor:
+FromTable (alias, name, Propreties: Schema, WhereRaw).</p>
+<h5 id="model-personfromtable2">Model: PersonFromTable2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Person table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;p&quot;, &quot;Person&quot;, Schema = &quot;dbo&quot;, WhereRaw = &quot;PersonID &lt; 10&quot;)]
+    public class PersonFromTable2
+    {
+        public Int32 PersonID { get; set; }
+
+        [SqlColumn(tableAlias: &quot;p&quot;, column: &quot;LastName&quot;)]        
+        public String PersonLastName { get; set; }
+
+        public String FirstName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;PersonFromTable2&gt;(_context).QuerySql;
+            var names = _context.SqlExecutor.Select&lt;PersonFromTable2&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [PersonID],
+            [p].[LastName],
+            [FirstName],
+            [HireDate],
+            [EnrollmentDate],
+            [Discriminator]
+            FROM [dbo].[Person] AS [p]
+            WHERE ([PersonID] &lt; 10)
+            */
+        }
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

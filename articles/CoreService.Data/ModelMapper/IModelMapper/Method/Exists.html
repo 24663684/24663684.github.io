@@ -94,6 +94,46 @@
 <p>该 Method的等同于检查Count() Method返回的结果是否大于0。</p>
 <p>This method is equivalent to executing the Count() method and checking whether its return value is greater than zero (0).</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何检查课程是否存在。</p>
+<p>The following code example demonstrates how to check if a course exists.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class ExistsExample
+    {
+        private SchoolContext _context;
+
+        public ExistsExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Checks if the poetry course exists.
+            bool hasCourse = _context.ModelMapper.Exists&lt;CourseByTitle&gt;(&quot;Poetry&quot;);
+
+            if (hasCourse)
+            {
+                Console.WriteLine(&quot;The poetry course exists.&quot;);
+            }
+            else
+            {
+                Console.WriteLine(&quot;The poetry course doesn't exist.&quot;);
+            }
+
+            // The code produces the following output:
+            //
+            // The poetry course exists.
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Query/CourseByTitle.html">CourseByTitle</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

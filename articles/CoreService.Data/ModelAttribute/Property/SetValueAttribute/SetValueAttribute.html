@@ -152,6 +152,356 @@
 <p>SetValueAttribute 需要和ModelEmbeddedAttribute一同使用。</p>
 <p>The SetValue attribute must be used together with the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>当SetValueStrategy为Always时的的嵌入Model保存案例</p>
+<p>The following code example demonstates how to save the detail model when
+SetValueStrategy is Always.</p>
+<h5 id="model-coursesetvalueexample1">Model: CourseSetValueExample1</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+using Newtonsoft.Json;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Course table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class CourseSetValueExample1
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        public Int32 Credits { get; set; }
+
+        public Int32 DepartmentID { get; set; }
+
+        [JsonIgnore]
+        [SetValue(&quot;$CourseID&quot;, &quot;$CourseID&quot;, SetValueStrategy.Always)]
+        [ModelEmbedded(typeof(OnlineCourse), ParamValue = &quot;$CourseID&quot;,
+            CascadeCreate = true, CascadeDelete = true)]
+        public OnlineCourse onlineCourse { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-onlinecourse">Model: OnlineCourse</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.OnlineCourse table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// &lt;/summary&gt;
+    [Table(&quot;OnlineCourse&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class OnlineCourse
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String URL { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.IO;
+using System.Linq;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SetValueAttributeExample
+    {
+        private readonly SchoolContext _context;
+
+        public SetValueAttributeExample(SchoolContext dataContext)
+        {
+            _context = dataContext;
+        }
+
+        public void Example1(IModelEntry&lt;CourseSetValueExample1&gt; course,
+                             IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            var modelmapper = _context.ModelMapper;
+
+            /// Course is set as the master model, and OnlineCourse is set as the detail model.
+            /// In the definition of the detail model, apply the SetValue attribute 
+            /// to synchronize the CourseID for OnlineCourse and Course, 
+            /// and set SetValueStrategy to Always: SetValueStrategy.Always.
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.onlineCourse, onlineCourse)
+                       .MasterModel;
+
+            // Shows the CourseID before Course and OnlineCourse were saved.
+            var courseID = master.CourseID;
+            var onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;Before Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            // Saves data.
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the CourseID after Course and OnlineCourse were saved.
+            courseID = master.CourseID;
+            onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;After Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            /* This code example produces the following output:
+             
+             Before Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 0
+             After Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 8001
+             */
+
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>当SetValueStrategy为AfterParentCreated时的嵌入Model保存案例。</p>
+<p>The following code example demonstates how to save the detail model when
+SetValueStrategy is AfterParentCreated.</p>
+<h5 id="model-onlinecourse-1">Model: OnlineCourse</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.OnlineCourse table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// &lt;/summary&gt;
+    [Table(&quot;OnlineCourse&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class OnlineCourse
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String URL { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-coursesetvalueexample2">Model: CourseSetValueExample2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Newtonsoft.Json;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Appeon.Examples.Models.School
+{
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class CourseSetValueExample2
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        public Int32 Credits { get; set; }
+
+        public Int32 DepartmentID { get; set; }
+
+        [JsonIgnore]
+        [SetValue(&quot;$CourseID&quot;, &quot;$CourseID&quot;, SetValueStrategy.AfterParentCreated)]
+        [ModelEmbedded(typeof(OnlineCourse), ParamValue = &quot;$CourseID&quot;,
+            CascadeCreate = true, CascadeDelete = true)]
+        public OnlineCourse onlineCourse { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2(IModelEntry&lt;CourseSetValueExample2&gt; course,
+                             IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            var modelmapper = _context.ModelMapper;
+
+            /// Course is set as the master model, and OnlineCourse is set as the detail model.
+            /// In the definition of the detail model, apply the SetValue attribute 
+            /// to synchronize the CourseID for OnlineCourse and Course, and set 
+            /// SetValueStrategy to AfterParentCreated: SetValueStrategy.AfterParentCreated.
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.onlineCourse, onlineCourse)
+                       .MasterModel;
+
+            // Shows the CourseID before Course and OnlineCourse were saved.
+            var courseID = master.CourseID;
+            var onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;Before Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            // Saves data.
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the CourseID after Course and OnlineCourse were saved.
+            courseID = master.CourseID;
+            onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;After Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            /* This code example produces the following output:
+             
+             Before Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 0
+             After Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 8001
+             */
+
+        }
+</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>当SetValueStrategy为AfterParentUpdated时的嵌入Model保存案例</p>
+<p>The following code example demonstates how to save the detail model when
+SetValueStrategy is AfterParentUpdated.</p>
+<h5 id="model-onlinecourse-2">Model: OnlineCourse</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.OnlineCourse table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// &lt;/summary&gt;
+    [Table(&quot;OnlineCourse&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class OnlineCourse
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String URL { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-coursesetvalueexample3">Model: CourseSetValueExample3</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.Models.School
+{
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class CourseSetValueExample3
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        public Int32 Credits { get; set; }
+
+        public Int32 DepartmentID { get; set; }
+
+        [JsonIgnore]
+        [SetValue(&quot;Title&quot;, &quot;URL&quot;, SetValueStrategy.AfterParentUpdated)]
+        [ModelEmbedded(typeof(OnlineCourse), ParamValue = &quot;$CourseID&quot;,
+            CascadeCreate = true, CascadeDelete = true)]
+        public OnlineCourse onlineCourse { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example3">Example Method: Example3</h5>
+<pre><code class="lang-C#">        public void Example3(IModelEntry&lt;CourseSetValueExample3&gt; course,
+                             IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            var modelmapper = _context.ModelMapper;
+
+            /// Course is set as the master model, and OnlineCourse is set as the detail model.
+            /// In the definition of the detail model, apply the SetValue attribute 
+            /// to synchronize the OnlineCourse.URL for OnlineCourse and Course, and set 
+            /// SetValueStrategy to AfterParentUpdated: SetValueStrategy.AfterParentUpdated.
+            /// AfterParentUpdated can set the property values for the detail model after 
+            /// the master model is saved. AfterParentUpdated can only save the updated data. 
+            /// When AfterParentUpdated is used, it is not recommended to set values for primary key.
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.onlineCourse, onlineCourse)
+                       .MasterModel;
+
+            // Shows the Course.Title and OnlineCourse.URL before they were saved.
+            var title = master.Title;
+            var url = master.onlineCourse.URL;
+
+            Console.WriteLine(&quot;Before Save: &quot;);
+            Console.WriteLine(&quot;Course.Title = {0}&quot;, title);
+            Console.WriteLine(&quot;OnlineCourse.URL = {0}&quot;, url);
+
+            // Saves data.
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the Course.Title and OnlineCourse.URL after they were saved.
+            title = master.Title;
+            url = master.onlineCourse.URL;
+
+            Console.WriteLine(&quot;After Save: &quot;);
+            Console.WriteLine(&quot;Course.Title = {0}&quot;, title);
+            Console.WriteLine(&quot;OnlineCourse.URL = {0}&quot;, url);
+
+            /* This code example produces the following output:
+             
+            Before Save:
+            Course.Title = Test Course
+            OnlineCourse.URL = http://
+            After Save:
+            Course.Title = Test Course
+            OnlineCourse.URL = Test Course
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
+<p>Controller Class: <a href="../../../../SourceCode/Examples/Controllers/ModelAttribute/SetValueAttributeExampleController.html">SetValueAttributeExampleController</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

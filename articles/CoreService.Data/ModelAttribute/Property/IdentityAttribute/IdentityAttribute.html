@@ -84,6 +84,92 @@
 </code></pre>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>Person.PersonID已标识 [Identity]属性, 在增加Person记录时,无需要给PersonID赋值.
+由数据库自动为该表示列赋值。</p>
+<p>The following code example demonstrates how to use the [Identity] attribute.
+If Person.PersonID is applied with the [Identity] attribute, when a Person record
+is created, PersonID needs not to be assigned with a value, instead the<br>
+database will automatically assign a value to it.</p>
+<h5 id="model-person">Model: Person</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Person table. 
+    /// When Discriminator is 'Instructor', it represents an instructor record; 
+    /// when Discriminator is 'Student', it represents a student record.
+    /// 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// PersonID is the pimary key and the identity.
+    /// &lt;/summary&gt;
+    [Table(&quot;Person&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class Person
+    {
+        [Key]
+        [Identity]
+        public Int32 PersonID { get; set; }
+
+        public String LastName { get; set; }
+
+        public String FirstName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class IdentityAttributeExample
+    {
+        private SchoolContext _context;
+
+        public IdentityAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var modelMapper = _context.ModelMapper;
+
+            // Adds a Person record.
+            var person = new Person();
+            person.LastName = &quot;Walker&quot;;
+            person.FirstName = &quot;Kim&quot;;
+            person.Discriminator = &quot;Student&quot;;
+
+            modelMapper.TrackCreate(person).SaveChanges();
+
+            /* The following INSERT SQL is generated: 
+            exec sp_executesql N'INSERT 
+            INTO [dbo].[Person] ([LastName], [FirstName], [Discriminator])
+            VALUES (@p0, @p1, @p2);
+            SELECT [PersonID]
+            FROM [dbo].[Person]
+            WHERE @@ROWCOUNT = 1 AND [PersonID] = scope_identity();
+
+            ',N'@p0 nvarchar(4000),@p1 nvarchar(4000),@p2 nvarchar(4000)',
+            @p0=N'Walker',@p1=N'Kim',@p2=N'Student'         
+            */
+        }
+    }
+}
+</code></pre>
 </article>
           </div>
           

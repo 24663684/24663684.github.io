@@ -99,6 +99,41 @@
 <p>需要确保按指定的检索条件得到的结果集至少有一行记录，否则将抛出异常。</p>
 <p>At least one data row must be retrieved by the specified criteria, otherwise exceptions will be thrown.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示了获得经济系的预算。</p>
+<p>The following code example demonstrates how to get the budget for the department of Economics.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class ScalarByKeyExample
+    {
+        private SchoolContext _context;
+
+        public ScalarByKeyExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the budget for the department of Economics according to the key.
+            decimal budget = _context.ModelMapper
+                .ScalarByKey&lt;Department, decimal&gt;(&quot;Budget&quot;, 4);
+
+            Console.WriteLine(&quot;The budget of the department of Economics {0}.&quot;,
+                budget.ToString(&quot;N0&quot;));
+
+            // The code produces the following output:
+            //
+            // The budget of the department of Economics is 200,000.
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

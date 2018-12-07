@@ -91,6 +91,63 @@
 <p>Returns the ILoadable&lt;TModel&gt; interface whose methods can be used to further obtain the data result set or perform data operations such as embedded queries.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何加载有关Poetry课程的所有详细信息。</p>
+<p>The following code example demonstrates how to load the details
+about the Poetry course.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ILoadable
+{
+    public class IncludeAllExample
+    {
+        private SchoolContext _context;
+
+        public IncludeAllExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Loads students, instructor, online flag for the Poetry course 
+            // (CourseID = 2030).
+            var course = mapper.LoadByKey&lt;CourseInfo&gt;(2030)
+                                .IncludeAll()
+                                .FirstOrDefault();
+
+            Console.WriteLine(&quot;Courses: {0}&quot;,
+                course.Title);
+            Console.WriteLine(&quot;Student IDs:&quot;);
+            foreach (CourseStudentInfo student in course.Students)
+            {
+                Console.WriteLine(student.StudentID);
+            }
+            Console.WriteLine(&quot;Instructor ID(s):&quot;);
+
+            foreach (CourseInstructorInfo instructor in course.Instructors)
+            {
+                Console.WriteLine(instructor.PersonID);
+            }
+
+            /* This code produces the following output:
+
+            Courses: Poetry
+            Student IDs:
+            2
+            3
+            Instructor ID(s):
+            4
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseStudentInfo.html">CourseStudentInfo</a> <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInstructorInfo.html">CourseInstructorInfo</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

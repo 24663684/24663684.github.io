@@ -128,6 +128,95 @@
 </table>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>model中属性加SqlEmbedded标注后，表示属性值来自一个sql查询</p>
+<p>The following code example demonstrates how to use the SqlEmbedded attribute.
+When a property in the model is applied with the SqlEmbedded attribute, it
+indicates the value of that property comes from a SQL query.</p>
+<h5 id="model-personsqlembedded">Model: PersonSqlEmbedded</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+
+    [Table(&quot;Person&quot;, Schema = &quot;dbo&quot;)]
+    public class PersonSqlEmbedded
+    {
+        [Key]
+        public Int32 PersonID { get; set; }
+
+        public String LastName { get; set; }
+
+        public String FirstName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+        [SqlEmbedded(&quot;select sum(Grade) from StudentGrade &quot; +
+            &quot;where StudentID =:personid&quot;, ParamValue = &quot;$PersonID&quot;
+           )]
+        public decimal? SumGrade { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SqlEmbeddedAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlEmbeddedAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var modelMapper = _context.ModelMapper;
+
+            // Gets the person record where PersonID=2 from the database.
+            // IMPORTANT: IncludeAll() must be executed here, otherwise the raw SQL 
+            // in SqlEmbedded will not be executed.
+            var person = modelMapper.LoadByKey&lt;PersonSqlEmbedded&gt;(2).IncludeAll()
+                                        .FirstOrDefault();
+            Console.WriteLine(&quot;PersonID: {0}, SumGrade: {1}&quot;, person.PersonID,
+                person.SumGrade);
+
+            /* The code produces the following output:
+            PersonID: 2, SumGrade: 7.50
+            */
+
+            /* Internally generated T-SQL:
+            
+            exec sp_executesql N'SELECT
+                [PersonID],
+            [LastName],
+            [FirstName],
+            [HireDate],
+            [EnrollmentDate],
+            [Discriminator] 
+            FROM [dbo].[Person] 
+            WHERE ([PersonID] = @p0)',N'@p0 int',@p0=2      
+            
+            exec sp_executesql N'select sum(Grade) from StudentGrade 
+            where StudentID =@personid',N'@personid int',@personid=2
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

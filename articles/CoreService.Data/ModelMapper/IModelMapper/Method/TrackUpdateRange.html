@@ -93,6 +93,76 @@
 <p>Returns an IModelMapper interface, which can be used for executing other methods with the current ModelMapper instance.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何跟踪一个或多个数据库表更新操作。</p>
+<p>The following code example demonstrates how to tracks one or more database table update operations.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackUpdateRangeExample
+    {
+        private SchoolContext _context;
+
+        public TrackUpdateRangeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+
+            var modelMapper = _context.ModelMapper;
+            var models = new List&lt;Department&gt;();
+
+            // Gets the Department record whose DepartmentID is 1 from the database.
+            // id=1, name=Engineering 
+            var department = modelMapper.LoadByKey&lt;Department&gt;(1).FirstOrDefault();
+
+            // Gets the Department record whose DepartmentID is 2 from the database.
+            // id=2, name=English
+            var department2 = modelMapper.LoadByKey&lt;Department&gt;(2).FirstOrDefault();
+
+            models.Add(department);
+            models.Add(department2);
+
+            modelMapper.TrackUpdateRange(models);
+
+            Console.WriteLine(&quot;The name is \&quot;{0}\&quot; for the department when DepartmentID is 1.&quot;,
+               department.Name);
+            Console.WriteLine(&quot;The name is \&quot;{0}\&quot; for the department when DepartmentID is 2.&quot;,
+               department2.Name);
+
+            department.Name = &quot;Engineering Test&quot;;
+            department2.Name = &quot;English Test&quot;;
+
+            modelMapper.SaveChanges();
+
+            // Gets data from the database.
+            // DepartmentID=1, Name=Engineering Test
+            // DepartmentID=2, Name=English Test
+            department = modelMapper.LoadByKey&lt;Department&gt;(1).FirstOrDefault();
+            department2 = modelMapper.LoadByKey&lt;Department&gt;(2).FirstOrDefault();
+            Console.WriteLine(&quot;The name is \&quot;{0}\&quot; for the department when DepartmentID is 1.&quot;,
+                department.Name);
+            Console.WriteLine(&quot;The name is \&quot;{0}\&quot; for the department when DepartmentID is 2.&quot;,
+               department2.Name);
+
+            /*The code example produces the following output:
+            
+            The name is &quot;Engineering&quot; for the department when DepartmentID is 1.
+            The name is &quot;English&quot; for the department when DepartmentID is 2.
+            The name is &quot;Engineering Test&quot; for the department when DepartmentID is 1.
+            The name is &quot;English Test&quot; for the department when DepartmentID is 2.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

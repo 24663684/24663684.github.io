@@ -92,6 +92,68 @@
 <p>Returns the ILoadable&lt;TModel&gt; interface whose methods can be used to further obtain the data result set or perform data operations such as embedded queries.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何通过模型类加载部门。</p>
+<p>The following code example demonstrates how to load departments according to a model class.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class LoadExample
+    {
+        private SchoolContext _context;
+
+        public LoadExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Loads all departments and gets the list.
+            List&lt;Department&gt; depts = mapper.Load&lt;Department&gt;().ToList();
+
+            Console.WriteLine(&quot;The list of departments:&quot;);
+            foreach (Department dept in depts)
+            {
+                Console.WriteLine(dept.Name);
+            }
+
+            Console.WriteLine();
+
+            // Loads the department of Engineering.
+            var engineering = mapper.Load&lt;DepartmentByName&gt;(&quot;Engineering&quot;)
+                                    .FirstOrDefault();
+
+            Console.WriteLine(&quot;The department of Engineering:&quot;);
+            Console.WriteLine(&quot;Department ID is {0}&quot;, engineering.DepartmentID);
+            Console.WriteLine(&quot;Name is {0}&quot;, engineering.Name);
+            Console.WriteLine(&quot;Budget is {0}&quot;, engineering.Budget.ToString(&quot;N0&quot;));
+
+            /* The code produces the following output:
+            
+            The list of departments:
+            Engineering
+            English
+            Economics
+            Mathematics
+             
+            The department of Engineering:
+            Department ID is 1
+            Name is Engineering
+            Budget is 350,000
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <a href="../../../SourceCode/Examples/Models/School/Query/DepartmentByName.html">DepartmentByName</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

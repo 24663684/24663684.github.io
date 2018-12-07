@@ -99,7 +99,58 @@
 <p>由于该 Method仅返回首行首列数据，请避免在TModel的定义中存在分组时使用。</p>
 <p>This method only returns the data of the first column in the first row of the retrieved data, therefore, please avoid using this method when groups are defined in TModel.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>以下代码示例演示了如何计算所有部门的平均预算。</p>
+<p>The following code example demonstrates how to calculate the average budget for all departments.</p>
+<pre><code class="lang-C#">using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class AvgExample
+    {
+        private SchoolContext _context;
+
+        public AvgExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Calculates the average budget for all departments.
+            decimal averageBudget = (decimal)mapper.Avg&lt;Department&gt;(&quot;Budget&quot;);
+
+            Console.WriteLine(&quot;The average budget for all departments is {0}.&quot;,
+                averageBudget.ToString(&quot;N0&quot;));
+
+            // Loads all records to show budgets.
+            var depts = mapper.Load&lt;Department&gt;().ToList();
+
+            Console.WriteLine(&quot;The budgets for all departments:&quot;);
+            foreach (var dept in depts)
+            {
+                Console.WriteLine(dept.Name + &quot; &quot; + dept.Budget.ToString(&quot;N0&quot;));
+            }
+
+            /* The code produces the following output:
+            
+            The average budget for all departments is 230,000.
+            The budgets for all departments:
+            Engineering: 350,000
+            English: 120,000
+            Economics: 200,000
+            Mathematics: 250,000
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<h3 id="applies-to">Applies to**</h3>
 <p>.NET Standard</p>
 <p>2.x</p>
 </article>

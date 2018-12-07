@@ -124,13 +124,13 @@ This interface provides a way to track data for detail models after the IModelMa
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/TrackDetailAndGrandDetail.html">TrackDetailAndGrandDetail&lt;TDetailModel, TGrandDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IModelEntry&lt;TDetailModel&gt; modelEntry, Expression&lt;Func&lt;TDetailModel, object&gt;&gt; detailPropertyExpr, IModelEntry&lt;TGrandDetailModel&gt; grandModelEntry)</a></td>
+<td><a href="Method/TrackDetailAndGrandDetail.html">TrackGrandDetail&lt;TDetailModel, TGrandDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IModelEntry&lt;TDetailModel&gt; modelEntry, Expression&lt;Func&lt;TDetailModel, object&gt;&gt; detailPropertyExpr, IModelEntry&lt;TGrandDetailModel&gt; grandModelEntry)</a></td>
 <td><a href="../IDetailTracker/IDetailTracker.html">IDetailTracker&lt;TModel&gt;</a></td>
 <td>Tracks an operation on the detail table and on the granddetail table for the master-detail-granddetail models.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/TrackDetailAndGrandDetails.html">TrackDetailAndGrandDetails&lt;TDetailModel, TGrandDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IModelEntry&lt;TDetailModel&gt; modelEntry, Expression&lt;Func&lt;TDetailModel, object&gt;&gt; detailPropertyExpr, IEnumerable&lt;IModelEntry&lt;TGrandDetailModel&gt;&gt; grandModelEntries)</a></td>
+<td><a href="Method/TrackDetailAndGrandDetails.html">TrackGrandDetails&lt;TDetailModel, TGrandDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IModelEntry&lt;TDetailModel&gt; modelEntry, Expression&lt;Func&lt;TDetailModel, object&gt;&gt; detailPropertyExpr, IEnumerable&lt;IModelEntry&lt;TGrandDetailModel&gt;&gt; grandModelEntries)</a></td>
 <td><a href="../IDetailTracker/IDetailTracker.html">IDetailTracker&lt;TModel&gt;</a></td>
 <td>Tracks an operation on the detail table and one or more operations on the granddetail table for the master-detail-granddetail models.</td>
 </tr>
