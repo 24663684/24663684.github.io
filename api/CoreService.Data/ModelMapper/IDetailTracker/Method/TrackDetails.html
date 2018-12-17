@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDetailTracker.TrackDetails&lt;TDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IEnumerable&lt;IModelEntry&lt;TDetailModel&gt;&gt; modelEntry) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDetailTracker.TrackDetails&lt;TDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IEnumerable&lt;IModelEntry&lt;TDetailModel&gt;&gt; modelEntry) Method ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idetailtrackertrackdetailstdetailmodelexpressionfunctmodel-object-propertyexpr-ienumerableimodelentrytdetailmodel-modelentry-method"><strong>IDetailTracker.TrackDetails&lt;TDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IEnumerable&lt;IModelEntry&lt;TDetailModel&gt;&gt; modelEntry) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>When working with multiple models which have Master-Detail relationship by instantiating ModelEmbedded attribute in a property of the master model，追踪一个或者多个对detail model映射的数据库表的insert, update or delete操作,由数据的状态决定操作的类型，把即将被用来操纵数据库表的数据缓存于TDetailModel中。</p>
+<p>当IModelMapper.SaveChanges被调用时，一条或者多条SQL INSERT, UPDATE or DELETE statement 将用缓存在TDetailModel中的数据以及被定义在TDetailModel中的映射信息来产生并执行。</p>
+<p>Tracks one or more insert, update or delete operations on the table which the detail model is mapped to, when working with the master-detail models (where the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute is applied in a property of the master model). The data state determines which type of operation to be performed. The data to be manipulated is cached in TDetailModel.</p>
+<p>When IModelMapper.SaveChanges is called, one ore more SQL statements (INSERT, UPDATE, or DELETE) will be first generated using the data cached in TDetailModel and the mapping information defined in TDetailModel, and then executed.</p>
+<p><strong>Namespace:</strong> Appeon.CoreService.Data</p>
+<p><strong>Assembly:</strong> Appeon.CoreService.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  IDetailTracker&lt;TModel&gt; TrackDetails&lt;TDetailModel&gt;(Expression&lt;Func&lt;TModel, object&gt;&gt; propertyExpr, IEnumerable&lt;IModelEntry&lt;TDetailModel&gt;&gt; modelEntry);
+</code></pre>
+<p><strong>Type Parameters</strong></p>
+<p><code>TDetailModel</code></p>
+<p>The type of a model class that conforms to the Appeon standard.</p>
+<p><strong>Parameters</strong></p>
+<p><code>propertyExpr</code> System.Linq.Expressions.Expression&lt;Func&lt;TModel, object&gt;&gt;</p>
+<p>主model的一个属性，其上实例化了ModelEmbeddedAttribute (ModelType属性是TDetailModel, 称为detail model)。</p>
+<p>该属性的类型是a collection of TDetailModel。</p>
+<p>该属性由一个表达式指定。</p>
+<p>A property of the master model where the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute (the ModelType property is TDetailModel and is called detail model) is applied.</p>
+<p>The type of this property is a collection of TDetailModel.</p>
+<p>This property is specified by an expression.</p>
+<p><code>modelEntry</code> System.Collections.Generic.IEnumerable&lt;<a href="../../IModelEntry/IModelEntry.html">Appeon.CoreService.Data.IModelEntry</a>&lt;TDetailModel&gt;&gt;</p>
+<p>需要跟踪的一个包装了数据和数据状态的IModelEntry对象的集合。</p>
+<p>The collection of IModelEntry object which packages the data and data state and which will be tracked.</p>
+<p><strong>Returns</strong></p>
+<p>Appeon.CoreService.Data.IDetailTracker&lt;TModel&gt;</p>
+<p>返回IDetailTracker&lt;TModel&gt;接口对象。</p>
+<p>Returns the IDetailTracker&lt;TModel&gt; interface.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>需要在TModel中定义ModelEmbedded attribute来表示TModel和TDetailModel的Master-Detail relationship，具体参考ModelEmbeddedAttribute中的相关说明。</p>
+<p>The <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute must be applied in TModel to create the master-detail relationship between TModel and TDetailModel. Refer to the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute for more.</p>
+<h4 id="one-to-many">One-to-many</h4>
+<p>propertyExpr参数指定的属性的类型是a collection of TDetailModel (该属性可代表数据库表的多行数据)，IDetailTracker.TrackDetails方法适用于一行主表对应多行明细表的数据库表关系。</p>
+<p>如需使用一行主表对多行明细表的关系，可以使用IDetailTracker.TrackDetails替代。</p>
+<p>The type of the property specified by propertyExpr parameter is a collection of TDetailModel (which represents one or more records in the detail table). The IDetailTracker.TrackDetails method applies to the one-to-many table relationship (one master table record to many detail table records).</p>
+<p>For one-to-one relationship (one master table record to one detail table record), uses IDetailTracker.TrackDetail method instead.</p>
+<h4 id="trackmaster">TrackMaster</h4>
+<p>IModelMapper.TrackMaster方法会在中跟踪master model之后会返回IDetailTracker接口对象。之后可以使用IDetailTracker.TrackDetail方法跟踪detail model。</p>
+<p>The IModelMapper.TrackMaster method will track the master model and return the IDetailTracker interface. Then the IDetailTracker.TrackDetail method can be used to track the detail model.</p>
+<p>For more about the TrackMaster method, refer to IModelMapper.TrackMaster.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>同步保存主从表数据，且主表数据为一条，从表数据为两条</p>
+<p>The following code example demonstrates how to save the master table and the
+detail table synchronously; the master table has only one affected record<br>
+and the detail table has two affected records.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IDetailTracker
+{
+    public class TrackDetailsExample
+    {
+        private readonly SchoolContext _context;
+
+        public TrackDetailsExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example(IModelEntry&lt;DepartmentInfo&gt; depart,
+            IEnumerable&lt;IModelEntry&lt;CourseInfo&gt;&gt; coures)
+        {
+            // Saves both the master table and the detail table; the master table has 
+            // only one affected record and the detail table has two.
+            var modelmapper = _context.ModelMapper;
+
+            var master = modelmapper.TrackMaster(depart)
+                                   .TrackDetails(m =&gt; m.Courses, coures)
+                                   .MasterModel;
+
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the saving result.
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                              dbResult.AffectedCount);
+
+            /* This code example produces the following output:
+            
+            3 records have been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Classes: <a href="../../../SourceCode/Examples/Models/School/Embedded/DepartmentInfo.html">DepartmentInfo</a> <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IDetailTrack/TrackDetailsExampleController.html">TrackDetailsExampleController</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

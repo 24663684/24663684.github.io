@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IModelMapper.TrackRange&lt;TModel&gt;(IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt; modelEntries) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IModelMapper.TrackRange&lt;TModel&gt;(IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt; modelEntries) Method ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="imodelmappertrackrangetmodelienumerableimodelentrytmodel-modelentries-method"><strong>IModelMapper.TrackRange&lt;TModel&gt;(IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt; modelEntries) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>追踪一个或者多个数据库表的操作,由数据的状态决定如何选择insert, update or delete 操作，将被用来操纵数据库表的数据缓存于TModel中。当IModelMapper.SaveChanges被调用时，一条或者多条SQL INSERT, UPDATE or DELETE statement 将用缓存在TModel中的数据以及被定义在TModel中的映射信息来产生，并执行。</p>
+<p>Tracks one or more database table operations (insert, update or delete). The data state determines which type of operation to be performed. The data to be manipulated is cached in TModel. When IModelMapper.SaveChanges is called, one or more SQL statements (INSERT, UPDATE or DELETE) will be generated using the data cached in TModel and the mapping information defined in TModel, and then executed.</p>
+<p><strong>Namespace:</strong> Appeon.CoreService.Data</p>
+<p><strong>Assembly:</strong> Appeon.CoreService.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public IList&lt;TModel&gt; TrackRange&lt;TModel&gt;(IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt; modelEntries);
+</code></pre>
+<p><strong>Type Parameters</strong></p>
+<p><code>TModel</code></p>
+<p>The type of a model class that conforms to the Appeon standard.</p>
+<p><strong>Parameters</strong></p>
+<p><code>modelEntries</code> System.Collections.Generic.IEnumerable&lt;<a href="../../IModelEntry2/IModelEntry.html">Appeon.CoreService.Data.IModelEntry</a>&lt;TModel&gt;&gt;</p>
+<p>A collection of ModelEntries with the specified TModel type.</p>
+<p><strong>Returns</strong></p>
+<p>System.Collections.Generic.IList&lt;TModel&gt;</p>
+<p>A list of TModel type instances.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>以下代码示例演示如何创建两个学生。</p>
+<p>The following code example demonstrates how to create two students.</p>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.IModelMapper
+{
+    public class TrackRangeExample
+    {
+        private SchoolContext _context;
+
+        public TrackRangeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example(IEnumerable&lt;IModelEntry&lt;Person&gt;&gt; newStudents)
+        {
+            var mapper = _context.ModelMapper;
+
+            // Tracks the Insert operation for the new students.
+            mapper.TrackRange(newStudents);
+
+            // Saves to the database.
+            var dbResult = mapper.SaveChanges();
+
+            Console.WriteLine(&quot;{0} student records have been inserted into the &quot; +
+                                &quot;database.&quot;,
+                                dbResult.InsertedCount);
+
+            /* The code produces the following output:
+            
+            1 student record has been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="related-exampes">Related Exampes</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br>Controller Class: <a href="../../../SourceCode/Examples/Controllers/IModelMapper/TrackRangeExampleController.html">TrackRangeExampleController</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

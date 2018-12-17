@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SetValueAttribute Class </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SetValueAttribute Class ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="setvalueattribute-class"><strong>SetValueAttribute Class</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>已通过当前Properties定义Model Class嵌套关系后，指明在Model Class新增或者修改数据库后，将把本级Model Class的某一个Properties的值设置到下一级Model Class的某一个Properties。一个Property中允许指定多个SetValueAttribute实例。</p>
+<p>Specifies that when there is an insert or update operation in the master model, set the property value of the master model to the associate property of the detail model, when working with the master-detail models. One property is allowed to apply multiple SetValue attributes.</p>
+<p><strong>Namespace:</strong> Appeon.CoreService.Data</p>
+<p><strong>Assembly:</strong> Appeon.CoreService.Data.dll</p>
+<h3 id="inheritance-constructor"><strong>Inheritance Constructor</strong></h3>
+<p>System.Attribute</p>
+<p><a href="../../../ISetValue/ISetValue.html">Appeon.CoreService.Data.ISetValue</a></p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">   [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
+   public class SetValueAttribute : Attribute, ISetValue
+</code></pre>
+<h3 id="constructors"><strong>Constructors</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SetValueAttribute1.html">SetValueAttribute( string source,string target)</a></td>
+<td>Initializes a new instance of the SetValueAttribute class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SetValueAttribute2.html">SetValueAttribute(string source,string target,SetValueStrategy setValueStrategy)</a></td>
+<td>Initializes a new instance of the SetValueAttribute class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SetValueAttribute3.html">SetValueAttribute(string source, string target,  ModelSelector modelSelector)</a></td>
+<td>Initializes a new instance of the SetValueAttribute class.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties"><strong>Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/ModelSelector.html">ModelSelector</a></td>
+<td><a href="../../../ModelSelector/ModelSelector.html">ModelSelector</a></td>
+<td>Gets the ModelSelector enumerated value which determines whether to set value by the data state in the embedded model.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/SetValueStrategy.html">SetValueStrategy</a></td>
+<td><a href="../../../SetValueStrategy/SetValueStrategy.html">SetValueStrategy</a></td>
+<td>Gets the SetValueStrategy enumerated value which determines when to set value.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Source.html">Source</a></td>
+<td>string</td>
+<td>Gets the string that represents a property in the model class at the same level.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Target.html">Target</a></td>
+<td>string</td>
+<td>Gets the string that represents a property in the model class at one level lower.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>SetValueAttribute 需要和ModelEmbeddedAttribute一同使用。</p>
+<p>The SetValue attribute must be used together with the <a href="../../ModelAttribute/Property/ModelEmbeddedAttribute/ModelEmbeddedAttribute.html">ModelEmbedded</a> attribute.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>当SetValueStrategy为Always时的的嵌入Model保存案例</p>
+<p>The following code example demonstates how to save the detail model when
+SetValueStrategy is Always.</p>
+<h5 id="model-coursesetvalueexample1">Model: CourseSetValueExample1</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+using Newtonsoft.Json;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Course table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class CourseSetValueExample1
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        public Int32 Credits { get; set; }
+
+        public Int32 DepartmentID { get; set; }
+
+        [JsonIgnore]
+        [SetValue(&quot;$CourseID&quot;, &quot;$CourseID&quot;, SetValueStrategy.Always)]
+        [ModelEmbedded(typeof(OnlineCourse), ParamValue = &quot;$CourseID&quot;,
+            CascadeCreate = true, CascadeDelete = true)]
+        public OnlineCourse onlineCourse { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-onlinecourse">Model: OnlineCourse</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.OnlineCourse table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// &lt;/summary&gt;
+    [Table(&quot;OnlineCourse&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class OnlineCourse
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String URL { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+using System.IO;
+using System.Linq;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class SetValueAttributeExample
+    {
+        private readonly SchoolContext _context;
+
+        public SetValueAttributeExample(SchoolContext dataContext)
+        {
+            _context = dataContext;
+        }
+
+        public void Example1(IModelEntry&lt;CourseSetValueExample1&gt; course,
+                             IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            var modelmapper = _context.ModelMapper;
+
+            /// Course is set as the master model, and OnlineCourse is set as the detail model.
+            /// In the definition of the detail model, apply the SetValue attribute 
+            /// to synchronize the CourseID for OnlineCourse and Course, 
+            /// and set SetValueStrategy to Always: SetValueStrategy.Always.
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.onlineCourse, onlineCourse)
+                       .MasterModel;
+
+            // Shows the CourseID before Course and OnlineCourse were saved.
+            var courseID = master.CourseID;
+            var onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;Before Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            // Saves data.
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the CourseID after Course and OnlineCourse were saved.
+            courseID = master.CourseID;
+            onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;After Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            /* This code example produces the following output:
+             
+             Before Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 0
+             After Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 8001
+             */
+
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>当SetValueStrategy为AfterParentCreated时的嵌入Model保存案例。</p>
+<p>The following code example demonstates how to save the detail model when
+SetValueStrategy is AfterParentCreated.</p>
+<h5 id="model-onlinecourse-1">Model: OnlineCourse</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.OnlineCourse table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// &lt;/summary&gt;
+    [Table(&quot;OnlineCourse&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class OnlineCourse
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String URL { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-coursesetvalueexample2">Model: CourseSetValueExample2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Newtonsoft.Json;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Appeon.Examples.Models.School
+{
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class CourseSetValueExample2
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        public Int32 Credits { get; set; }
+
+        public Int32 DepartmentID { get; set; }
+
+        [JsonIgnore]
+        [SetValue(&quot;$CourseID&quot;, &quot;$CourseID&quot;, SetValueStrategy.AfterParentCreated)]
+        [ModelEmbedded(typeof(OnlineCourse), ParamValue = &quot;$CourseID&quot;,
+            CascadeCreate = true, CascadeDelete = true)]
+        public OnlineCourse onlineCourse { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2(IModelEntry&lt;CourseSetValueExample2&gt; course,
+                             IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            var modelmapper = _context.ModelMapper;
+
+            /// Course is set as the master model, and OnlineCourse is set as the detail model.
+            /// In the definition of the detail model, apply the SetValue attribute 
+            /// to synchronize the CourseID for OnlineCourse and Course, and set 
+            /// SetValueStrategy to AfterParentCreated: SetValueStrategy.AfterParentCreated.
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.onlineCourse, onlineCourse)
+                       .MasterModel;
+
+            // Shows the CourseID before Course and OnlineCourse were saved.
+            var courseID = master.CourseID;
+            var onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;Before Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            // Saves data.
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the CourseID after Course and OnlineCourse were saved.
+            courseID = master.CourseID;
+            onlineCourseID = master.onlineCourse.CourseID;
+
+            Console.WriteLine(&quot;After Save: &quot;);
+            Console.WriteLine(&quot;Course.CourseID = {0}&quot;, courseID);
+            Console.WriteLine(&quot;OnlineCourse.CourseID = {0}&quot;, onlineCourseID);
+
+            /* This code example produces the following output:
+             
+             Before Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 0
+             After Save:
+             Course.CourseID = 8001
+             OnlineCourse.CourseID = 8001
+             */
+
+        }
+</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>当SetValueStrategy为AfterParentUpdated时的嵌入Model保存案例</p>
+<p>The following code example demonstates how to save the detail model when
+SetValueStrategy is AfterParentUpdated.</p>
+<h5 id="model-onlinecourse-2">Model: OnlineCourse</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.OnlineCourse table. 
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// 
+    /// CourseID is the primary key.
+    /// &lt;/summary&gt;
+    [Table(&quot;OnlineCourse&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class OnlineCourse
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String URL { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-coursesetvalueexample3">Model: CourseSetValueExample3</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.CoreService.Data;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace Appeon.Examples.Models.School
+{
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    public class CourseSetValueExample3
+    {
+        [Key]
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        public Int32 Credits { get; set; }
+
+        public Int32 DepartmentID { get; set; }
+
+        [JsonIgnore]
+        [SetValue(&quot;Title&quot;, &quot;URL&quot;, SetValueStrategy.AfterParentUpdated)]
+        [ModelEmbedded(typeof(OnlineCourse), ParamValue = &quot;$CourseID&quot;,
+            CascadeCreate = true, CascadeDelete = true)]
+        public OnlineCourse onlineCourse { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example3">Example Method: Example3</h5>
+<pre><code class="lang-C#">        public void Example3(IModelEntry&lt;CourseSetValueExample3&gt; course,
+                             IModelEntry&lt;OnlineCourse&gt; onlineCourse)
+        {
+            var modelmapper = _context.ModelMapper;
+
+            /// Course is set as the master model, and OnlineCourse is set as the detail model.
+            /// In the definition of the detail model, apply the SetValue attribute 
+            /// to synchronize the OnlineCourse.URL for OnlineCourse and Course, and set 
+            /// SetValueStrategy to AfterParentUpdated: SetValueStrategy.AfterParentUpdated.
+            /// AfterParentUpdated can set the property values for the detail model after 
+            /// the master model is saved. AfterParentUpdated can only save the updated data. 
+            /// When AfterParentUpdated is used, it is not recommended to set values for primary key.
+            var master =
+                modelmapper.TrackMaster(course)
+                       .TrackDetail(m =&gt; m.onlineCourse, onlineCourse)
+                       .MasterModel;
+
+            // Shows the Course.Title and OnlineCourse.URL before they were saved.
+            var title = master.Title;
+            var url = master.onlineCourse.URL;
+
+            Console.WriteLine(&quot;Before Save: &quot;);
+            Console.WriteLine(&quot;Course.Title = {0}&quot;, title);
+            Console.WriteLine(&quot;OnlineCourse.URL = {0}&quot;, url);
+
+            // Saves data.
+            var dbResult = modelmapper.SaveChanges();
+
+            // Shows the Course.Title and OnlineCourse.URL after they were saved.
+            title = master.Title;
+            url = master.onlineCourse.URL;
+
+            Console.WriteLine(&quot;After Save: &quot;);
+            Console.WriteLine(&quot;Course.Title = {0}&quot;, title);
+            Console.WriteLine(&quot;OnlineCourse.URL = {0}&quot;, url);
+
+            /* This code example produces the following output:
+             
+            Before Save:
+            Course.Title = Test Course
+            OnlineCourse.URL = http://
+            After Save:
+            Course.Title = Test Course
+            OnlineCourse.URL = Test Course
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
+<p>Controller Class: <a href="../../../../SourceCode/Examples/Controllers/ModelAttribute/SetValueAttributeExampleController.html">SetValueAttributeExampleController</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

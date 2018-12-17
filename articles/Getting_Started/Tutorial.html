@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tutorial </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Tutorial ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+        	<img id="logo" src="../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial"><strong>Tutorial</strong></h1>
+
+<p>[TOC]</p>
+<h2 id="setting-up-the-essentials"><strong>Setting up the essentials</strong></h2>
+<h3 id="c-datastore">C# DataStore</h3>
+<p>With the new release of PowerBuilder 2019 comes the introduction of new objects. One of these objects is the C# DataStore! This new objects is very similar to the DataStore from PowerBuilder in a sense that:</p>
+<ul>
+<li>It uses DataObjects from PowerBuilder</li>
+<li>It has the same Properties, Events and Functions</li>
+<li>It is built the same way as PowerBuilder DataObjects (using the DataWindow Designer)</li>
+<li>Your existing DataObjects from PowerBuilder migrate over to C# Core Web API's and Assemblies</li>
+</ul>
+<p>Now the great news is that the hand coding of the C# is more of a &quot;port&quot; effort rather than a &quot;rewrite&quot; effort. So creating and using DataStore in C# is also very easy!</p>
+<p>In this article we will learn what it is, how to use it, and some of the key benefits of using it in your C# Core projects.</p>
+<p>But first we need to know:</p>
+<h4 id="what-is-it">What is it?</h4>
+<p>PowerBuilder 2018 now introduces the new C# DataStore. It is basically the same DataStore from PowerBuilder. It uses your existing DataObjects from PowerBuilder. It has the same Properties, Events and Functions as PowerBuilder. It is built using the DataWindow Designer because the core object is the DataObject; and, you can migrate your existing DataObjects too!</p>
+<p>It is a non visual object to be used on your C# Core Web API's and Assemblies. Since it uses the DataObjects from PowerBuilder, there is a dependency on PowerBuilder. But once you have them created/migrated to C# you can develop/edit/publish them from any other C# IDE (ie: PowerBuilder 2018, Appeon C# IDE, VisualStudio, VS Code, etc...)</p>
+<h4 id="what-are-the-benefits-of-using-this-object">What are the benefits of using this object?</h4>
+<p>First of all, you can easily migrate your existing business logic to the cloud! (In this Article I will guide you, step by step, on how to do it and also how to publish them to IIS!) Another key benefit of using the C# DataStore is an increased performance of your code! Plus, developing the C# DataStore is very similar to PowerBuilder's DataStore. So the hand coding of the C# is more of a &quot;port&quot; effort rather than a &quot;rewrite&quot; effort. Amongst others...</p>
+<h4 id="how-to-use-it"><strong>How to use it?</strong></h4>
+<p>So... on to the interesting part of this Article: Let's start by setting up the essentials for our project!</p>
+<h2 id="creating-a-c-web-api-target"><strong>Creating a C# Web API Target</strong></h2>
+<h3 id="1-add-a-new-c-non-visual-business-target">1. Add a new C# Non-Visual Business Target</h3>
+<p>First of all, we need to start by creating a new C# Non-Visual Business Target. In this Article, we will be creating a C# Core Web API to then publish its services to IIS. To do that, we will first need to open PowerBuilder. Then right-click on the menu option: <strong>File&gt;New</strong></p>
+<p><img src="assets/newcstarget-4825335.png" alt="New C# Target"></p>
+<h3 id="2-create-a-c-web-api">2. Create a C# Web API</h3>
+<p>Then we need to select the &quot;<strong>Target</strong>&quot; tabpage to then click on &quot;<strong>C# Web API</strong>&quot; and &quot;<strong>OK</strong>&quot;.</p>
+<p><img src="assets/cs_web_api-4825368.png" alt="C# Web API"></p>
+<h3 id="3-create-the-c-project">3. Create the C# Project</h3>
+<p>Then we need to select the type of C# Project we want to create, along with its name. Then click &quot;<strong>OK</strong>&quot;.</p>
+<p><img src="assets/webapi-4825396.png" alt="Web API"></p>
+<p>You will notice that we now have a new C# Target added along with some basic objects for our Web API. You'll also notice that there is a new C# Editor added to the PowerBuilder IDE.</p>
+<p><img src="assets/csharp_editor-4825423.png" alt="C# Editor"></p>
+<p>We have now successfuly created our C# Web API! In the next section we will learn how to Migrate Existing DataWindows...</p>
+<h2 id="migrating-existing-datawindows"><strong>Migrating Existing DataWindows</strong></h2>
+<h3 id="1-selecting-the-datawindows-to-migrate">1. Selecting the DataWindows to migrate</h3>
+<p>We will now migrate our existing DataObjects over to C#. To do that, we need to select the library where our DataObjects reside. Then right-click on it and select &quot;<strong>Generate C# Models</strong>&quot;.</p>
+<p><img src="../Getting%20Started/assets/generate_models-4825449.png" alt="Generate Models"></p>
+<h3 id="2-connecting-to-the-database">2. Connecting to the DataBase</h3>
+<p>This will bring up a new window. This window will ask us to what database we want to connect. We can modify said settings there. After we're done, we click &quot;<strong>OK</strong>&quot;.</p>
+<p><img src="../Getting%20Started/assets/db_connect.png" alt="DB Connect"></p>
+<h3 id="3-datawindowmodel-properties-for-migration">3. DataWindow/Model properties for migration</h3>
+<p>We will now be presented with the DataWindow Import Tool. This tool will enable us to set the necessary parameters for the import of the DataObjects. We will take a quick look at this tool because an advanced tutorial will be also done covering this tool more in depth. But for now, let's take a look at it's components...</p>
+<p><img src="../Getting%20Started/assets/dwimport.png" alt="DW Import"></p>
+<p>Following is a brief description of what each component is used for:</p>
+<ul>
+<li><p><strong>Filtering Tools:</strong> It is used to search and filter out the list of DataObjects we will be working with.</p>
+</li>
+<li><p><strong>Import/Export:</strong> These two buttons allow us to Import and/or Export the DataObjects into this list.</p>
+</li>
+<li><p><strong>Select Libraries:</strong> This button will show us into which C# Project libraries the Exported Objects will be saved to.</p>
+</li>
+<li><p><strong>Global Options:</strong> This button will open up another window that will give us the Global Options for the Model Export.</p>
+</li>
+<li><p><strong>Model Export:</strong> This button will do the Export of the selected Models. This is the button that we will use after setting up all the necessary setting for our Models.</p>
+</li>
+<li><p><strong>DataObjects:</strong> On the image above, this is the list of the DataObjects, from PowerBuilder, that we will be migrating.</p>
+</li>
+<li><p><strong>Model Names:</strong> This is the list of matching Model Names our DataObjects will migrate to.</p>
+</li>
+<li><p><strong>Model Preview:</strong> This button is used per each DataObject/Model match. It will give us a preview window of the Exported Model.</p>
+</li>
+<li><p><strong>DataWindow Syntax:</strong> This button will show us a preview of the source code of our DataObject.</p>
+</li>
+<li><p><strong>Open DataObject:</strong> This button will open the DataObject in the DataWindow Designer from PowerBuilder.</p>
+</li>
+</ul>
+<h3 id="4-export-models">4. Export Models</h3>
+<p>Now, since we don't need to make any changes to our DataObjects, we can just click on &quot;<strong>Model Export</strong>&quot;. This will bring a popup window. This window will give us some more details before we finish the migration.</p>
+<p>Since everything is ready for our example, we can go ahead and click &quot;<strong>Export</strong>&quot;.</p>
+<p><img src="../Getting%20Started/assets/export-4825631.png" alt="Export"></p>
+<p><img src="../Getting%20Started/assets/exported.png" alt="Exported"></p>
+<p>As you can see, our DataObjects have been migrated! Now please take a note that the objects that end on &quot;<strong>.cs</strong>&quot; are C# objects while the ones that end on &quot;<strong>.srd</strong>&quot; are PowerBuilder's DataObjects. So this is how your C# DataStores are bound to your PowerBuilder DataObjects. That is, because the models depend on the DataObjects from PowerBuilder.</p>
+<p><img src="../Getting%20Started/assets/migration.png" alt="Migration"></p>
+<ol>
+<li>To be continued...</li>
+</ol>
+<h2 id="creating-the-interfaceservice"><strong>Creating the Interface/Service</strong></h2>
+<p>text text text</p>
+<h2 id="creating-the-controller"><strong>Creating the Controller</strong></h2>
+<p>text text text</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

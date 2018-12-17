@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FromTableAttribute Class </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="FromTableAttribute Class ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="fromtableattribute-class"><strong>FromTableAttribute Class</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>指定一个Model类映射到的数据库表。一个Model Class中允许指定多个FromTableAttribute实例。</p>
+<p>Specifies the database table that a model class is mapped to. Multiple FromTable attributes can be applied to one model class.</p>
+<p><strong>Namespace:</strong> Appeon.CoreService.Data</p>
+<p><strong>Assembly:</strong> Appeon.CoreService.Data.dll</p>
+<h3 id="inheritance-constructor"><strong>Inheritance Constructor</strong></h3>
+<p>System.ComponentModel.DataAnnotations.Schema.TableAttribute</p>
+<p><a href="../../../IFromTable/IFromTable.html">Appeon.CoreService.Data.IFromTable</a></p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
+   public class FromTableAttribute : TableAttribute, IFromTable
+</code></pre>
+<h3 id="constructors"><strong>Constructors</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/FromTableAttribute1.html">FromTableAttribute(string name)</a></td>
+<td>Initializes a new instance of the FromTableAttribute class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/FromTableAttribute2.html">FromTableAttribute(string alias, string name)</a></td>
+<td>Initializes a new instance of the FromTableAttribute class.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties"><strong>Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Alias.html">Alias</a></td>
+<td>string</td>
+<td>Gets the alias of the specified database table.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/AliasDefined.html">AliasDefined</a></td>
+<td>bool</td>
+<td>Gets whether the specified database table has an alias.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Id.html">Id</a></td>
+<td>int</td>
+<td>Gets the ID of the database table specified in the model class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/WhereRaw.html">WhereRaw</a></td>
+<td>string</td>
+<td>Gets or sets the raw Where clause for the specified database table.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>FromTableAttibute的作用相当于SQL SELECT语句中的FROM Clause中的数据库表,可以为一个Model类应用多个FromTable特性以便在一个Model中检索多张表的数据。</p>
+<p>The FromTable attribute is equivalent to the database table in the FROM Clause of the SQL SELECT statement. One or more FromTable attributes can be applied to one model class so as to retrieving from one or more database tables in one model.</p>
+<p>当没有TableAtrribute 并且一个或者多个FromTableAtrributes被用于一个Model Class时，第一个FromTableAttibute也指明了Model Class在执行SQL DML时使用的唯一的表。</p>
+<p>When no Table attribute is applied, and one or more FromTable attributes are being applied to a model class, the first FromTable attribute denotes the only one database table that the model class should use when executing the SQL DML.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>FromTable标注用来指定model与数据库关联的表
+构造函数: FromTable(name, Propreties: Schema, WhereRaw)。
+参数name是表示表名，Schema表示表的Schema，
+WhereRaw 表示生成 sql语句的where条件
+The following code example demonstrates how to use the constructor:
+FromTable (name, Propreties: Schema, WhereRaw).</p>
+<h5 id="model-personfromtable">Model: PersonFromTable</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Person table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Person&quot;, Schema = &quot;dbo&quot;, WhereRaw = &quot;PersonID &lt; 10&quot;)]    
+    public class PersonFromTable
+    {      
+        public Int32 PersonID { get; set; }
+
+        public String LastName { get; set; }
+
+        public String FirstName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using Appeon.Examples.Models.School;
+using System;
+
+namespace Appeon.Examples.ModelAttribute
+{
+    public class FromTableAttributeExample
+    {
+        private SchoolContext _context;
+
+        public FromTableAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;PersonFromTable&gt;(_context).QuerySql;
+            var names = _context.SqlExecutor.Select&lt;PersonFromTable&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [PersonID],
+            [LastName],
+            [FirstName],
+            [HireDate],
+            [EnrollmentDate],
+            [Discriminator]
+            FROM [dbo].[Person]
+            WHERE ([PersonID] &lt; 10)
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>FromTable标注用来指定model与数据库关联的表
+构造函数: FromTable(alias, name, Propreties: Schema, WhereRaw)。
+alias表示生成sql时表的别名，name表示指表名，Schema表示表的Schema，
+WhereRaw 表示生成 sql语句的where条件
+The following code example demonstrates how to use the constructor:
+FromTable (alias, name, Propreties: Schema, WhereRaw).</p>
+<h5 id="model-personfromtable2">Model: PersonFromTable2</h5>
+<pre><code class="lang-C#">using Appeon.CoreService.Data;
+using System;
+
+namespace Appeon.Examples.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Person table.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;p&quot;, &quot;Person&quot;, Schema = &quot;dbo&quot;, WhereRaw = &quot;PersonID &lt; 10&quot;)]
+    public class PersonFromTable2
+    {
+        public Int32 PersonID { get; set; }
+
+        [SqlColumn(tableAlias: &quot;p&quot;, column: &quot;LastName&quot;)]        
+        public String PersonLastName { get; set; }
+
+        public String FirstName { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        public DateTime? EnrollmentDate { get; set; }
+
+        public String Discriminator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Gets the SQL expression.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;PersonFromTable2&gt;(_context).QuerySql;
+            var names = _context.SqlExecutor.Select&lt;PersonFromTable2&gt;(sql);
+
+            Console.WriteLine(&quot;SQL expression:&quot;);
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:
+            
+            SQL expression:
+            SELECT
+             [PersonID],
+            [p].[LastName],
+            [FirstName],
+            [HireDate],
+            [EnrollmentDate],
+            [Discriminator]
+            FROM [dbo].[Person] AS [p]
+            WHERE ([PersonID] &lt; 10)
+            */
+        }
+</code></pre>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>
