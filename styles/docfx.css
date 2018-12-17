@@ -467,7 +467,8 @@ body .toc{
 }
 .expand-stub {
   position: absolute;
-  left: -10px;
+  top: 4px;
+  left: 3px;
 }
 .toc .nav > li > a.sidetoc-expand {
   position: absolute;
@@ -476,9 +477,14 @@ body .toc{
 }
 .toc .nav > li > a {
   color: #666666;
-  margin-left: 5px;
+  margin-left: 1.8rem;
+  margin-right: 1rem;
   display: block;
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 4px;
+  padding-bottom: 6px;
+  line-height: 1.3;
 }
 .toc .nav > li > a:hover,
 .toc .nav > li > a:focus {
@@ -502,12 +508,23 @@ body .toc{
 .toc .nav > li.in > .expand-stub::before,
 .toc .nav > li.in.active > .expand-stub::before,
 .toc .nav > li.filtered > .expand-stub::before {
-    content: "-";
+  content: "\e258";
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .toc .nav > li > .expand-stub::before,
 .toc .nav > li.active > .expand-stub::before {
-    content: "+";
+  content: "\e258";
+  font-size: 12px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform .2s ease-out;
+  transition: -webkit-transform .2s ease-out;
+  transition: transform .2s ease-out;
+  transition: transform .2s ease-out,-webkit-transform .2s ease-out;
 }
 
 .toc .nav > li.filtered > ul,
@@ -520,8 +537,7 @@ body .toc{
 }
 
 .toc ul{
-  font-size: 12px;
-  margin: 0 0 0 3px;
+  margin: 0 0 0 10px;
 }
 
 .toc .level1 > li {
@@ -533,7 +549,6 @@ body .toc{
 .toc .level2 {
   font-weight: normal;
   margin: 5px 0 0 15px;
-  font-size: 13px;
 }
 .toc-toggle {
   display: none;
