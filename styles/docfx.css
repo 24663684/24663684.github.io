@@ -604,16 +604,17 @@ body .toc{
   margin-bottom: 5px;
 }
 .article img {
-  
+  max-width: 100%;
 }
 .sideaffix {
-  margin-top: 50px;
   font-size: 12px;
   max-height: 100%;
   overflow: hidden;
   top: 100px;
   bottom: 10px;
-  position: fixed;
+  right: 10px;
+  width: 100%;
+  position: absolute;
 }
 .sideaffix.shiftup {
   bottom: 70px;
@@ -621,6 +622,9 @@ body .toc{
 .affix {
   position: relative;
   height: 100%;
+}
+.sideaffix #affix{
+  position: fixed;
 }
 .sideaffix > div.contribution {
   margin-bottom: 20px;
@@ -643,6 +647,7 @@ body .toc{
   font-size: 12px;
 }
 .affix > ul.level1 {
+  width: 100%;
   overflow: hidden;
   padding-bottom: 10px;
   height: calc(100% - 100px);
@@ -695,7 +700,6 @@ body .toc{
 .affix ul > li.active > a:before,
 .affix ul > li > a:hover:before {
   display: block;
-  white-space: nowrap;
 }
 .codewrapper {
   position: relative;

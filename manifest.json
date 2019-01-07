@@ -23,6 +23,2601 @@
         "InvalidFileLink"
       ],
       "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Event/OnInitialized.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Event/OnInitialized.html",
+          "hash": "piLtVx3X0T8FOOj3tTjpTQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Event/OnRetrieveEnd.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Event/OnRetrieveEnd.html",
+          "hash": "OcZYBruYMT5CMot64Upn0g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Event/OnRetrieveStart.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Event/OnRetrieveStart.html",
+          "hash": "jEeAPiX1ATomZFWeLaHXKQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Event/OnRowDeleted.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Event/OnRowDeleted.html",
+          "hash": "pB3DDOKSYte04rOqi2jcRw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Event/OnRowDeleting.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Event/OnRowDeleting.html",
+          "hash": "yJtmSJoYyh215uE8xqlmig=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Event/OnUpdateEnd.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Event/OnUpdateEnd.html",
+          "hash": "kG+bNqvWj39wbf6EwaX1Tw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Event/OnUpdateStart.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Event/OnUpdateStart.html",
+          "hash": "8MvPvTYRDcWQtuP9xPKUVQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/IDataStore.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/IDataStore.html",
+          "hash": "U7+H7FDA6ZtxiYT8MOXD9w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Add.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Add.html",
+          "hash": "V0+DcVdtLVXaKPkEfEZ68g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/AddRow1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/AddRow1.html",
+          "hash": "kl7+42BuEszWT3XQp+JVZg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/AddRow2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/AddRow2.html",
+          "hash": "x7Cjs5d0X7AZ5D5M8mGb1w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/AddRow3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/AddRow3.html",
+          "hash": "j48xrUooRrv3tao0t2WXCg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/AsEnumerable.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/AsEnumerable.html",
+          "hash": "FiQCFibLaBFzPLK34gpWoQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Avg1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Avg1.html",
+          "hash": "WH0e6D4NbsMCQGzXBCWhDA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Avg2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Avg2.html",
+          "hash": "WADxKkTAaRm9RA8RVVMViA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Contains.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Contains.html",
+          "hash": "R1lb/DYj6N0cI17LmbK6QA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/CopyTo.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/CopyTo.html",
+          "hash": "XP6xa1Rw/To3tKgPiVv7Cw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Count.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Count.html",
+          "hash": "Je9NKvmLHvPmKL6uZBpXGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/DeleteRow1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/DeleteRow1.html",
+          "hash": "aEvXN0bSya76NDKxoeCIzA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/DeleteRow2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/DeleteRow2.html",
+          "hash": "PGhleSCo+r3sc507WaQj+Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/DeleteRow3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/DeleteRow3.html",
+          "hash": "HieLfiWfEPkFfzTGY8RSFA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Dispose.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Dispose.html",
+          "hash": "kKd3z1KOOquwrIYpz7dpZw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Equals.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Equals.html",
+          "hash": "oPoft+Wvc/LdzbPYdQG5tQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Evaluate1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Evaluate1.html",
+          "hash": "a0D3puqGnVts47KtDNNS/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Evaluate2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Evaluate2.html",
+          "hash": "Ih6EpaoA1rTG4Ps5PwEVcg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Exists.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Exists.html",
+          "hash": "/tbjHF5OIu0f7lpWeQVd/A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson1.html",
+          "hash": "DHg49gezmYdsIK4S3MC3uw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson2.html",
+          "hash": "CoQvLCwENsp/GL8zZj6JJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson3.html",
+          "hash": "hUQL/ATTCHC/iDnsxtIWKQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson4.html",
+          "hash": "yHStmDyiXZi4iVkBEW1Sfg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson5.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson5.html",
+          "hash": "zVamg50YqqQETnfqHII5oQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson6.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson6.html",
+          "hash": "mzlIo6N4iDqQyxnSxcbcNg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson7.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson7.html",
+          "hash": "0zXFrObKzw10HH8o6wJMGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson8.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson8.html",
+          "hash": "qzr9lw//qz141APbJxzSRw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportJson9.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportJson9.html",
+          "hash": "qEU7fSenUfcf+lWJz8SvLQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson1.html",
+          "hash": "8KQr4iwO8N7nbQ8oiVu7Ag=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson2.html",
+          "hash": "Z2WhRlf1ppSgVYCJK9Dmsw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson3.html",
+          "hash": "Ut/W8YStdtlsDX1hvtl0GQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson4.html",
+          "hash": "n9U6aQSasYfWVM8BnGEpxA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson5.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson5.html",
+          "hash": "akakXRg0fW/ydHuD+JU70Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson6.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson6.html",
+          "hash": "y7kNymaZZVZQVq6+NuZk4Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson7.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson7.html",
+          "hash": "ZBoATk+JPdvJtoliNKv5rA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson8.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson8.html",
+          "hash": "C5KXHB3ymaZ3MistmdKhZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson9.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportPlainJson9.html",
+          "hash": "v28mJvT2Zb1wfY0Dz7rW2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportString1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportString1.html",
+          "hash": "fY6Zoxfz8D4LJC92389apA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportString2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportString2.html",
+          "hash": "dNU8minj8iu1YMCIPOi+SA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ExportString3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ExportString3.html",
+          "hash": "65eCZ6SgCwW4a8nJAniQ7A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Filter1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Filter1.html",
+          "hash": "dstx9DfEZ7JbYDguJzIwvw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Filter2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Filter2.html",
+          "hash": "zncm8uo56xVVqGudKQYfEA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FilterEx1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FilterEx1.html",
+          "hash": "fBy4wywQwr4P0gMX7EieGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FilterEx2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FilterEx2.html",
+          "hash": "/xwriIxjbkEJ8Suos6vX1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Find1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Find1.html",
+          "hash": "ALJN3vC7XgKSn91tMb1rgw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Find2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Find2.html",
+          "hash": "bHhRfnWKfTf027h3GN1gmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Find3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Find3.html",
+          "hash": "q30XRqXV2NXKMwOC4Ot6Ow=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Find4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Find4.html",
+          "hash": "+jw7xqVGpbcjvIU7oMmsqA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FindIndex1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FindIndex1.html",
+          "hash": "PaBZ9UsrBHiRn+jgiI+rZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FindIndex2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FindIndex2.html",
+          "hash": "egNoykUfcAayNx602lAaaA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FindIndex3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FindIndex3.html",
+          "hash": "bSs4SbVPT3kGLmh/muM1MQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FindIndex4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FindIndex4.html",
+          "hash": "eWddrAOt0CpnADfcS+MtaQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FirstOrDefault1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FirstOrDefault1.html",
+          "hash": "aI+ZFHF9hq+R/1oqfhFiUQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/FirstOrDefault2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/FirstOrDefault2.html",
+          "hash": "8b1G1qz6CvQVHoy8TYovQA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetChild.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetChild.html",
+          "hash": "IF3vh5HpxHF7R7VdZNDTag=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetEnumerator.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetEnumerator.html",
+          "hash": "Urf/vtOl0W8j/gzdk4DhDA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItem1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItem1.html",
+          "hash": "r7HbGyd/vvZCPvKYdSa2+g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItem2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItem2.html",
+          "hash": "qWwsBn1Mo7ouAa5fvGjF5g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItem3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItem3.html",
+          "hash": "813FmmcvmPR0vTCiYKtA2Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItem4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItem4.html",
+          "hash": "thYG/nxlYXxGJXemjyQBhg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemBoolean1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemBoolean1.html",
+          "hash": "odVzwRK8oT2fUSxrE4GGlQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemBoolean2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemBoolean2.html",
+          "hash": "MjDlCY3iRLMiKyjVh5emAQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemDate1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemDate1.html",
+          "hash": "yG4cHd2cgxNA4q7znmjhgw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemDate2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemDate2.html",
+          "hash": "fvQKz7lIVoKz3a+oT+AcYA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemDateTime1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemDateTime1.html",
+          "hash": "V4S07xX0xq7DfS4I9roPJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemDateTime2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemDateTime2.html",
+          "hash": "LAsOcIiuC4L1zD9tKkaatw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemDecimal1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemDecimal1.html",
+          "hash": "U4IWtSMzvLLPpnM7S4nPdg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemDecimal2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemDecimal2.html",
+          "hash": "HFGFTULTvoG0hMXhBEzOiA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemNumber1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemNumber1.html",
+          "hash": "cs6tYmD/QJK2Cah51kk2Yg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemNumber2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemNumber2.html",
+          "hash": "POlSATM7t58f6kbntP0WNA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemStatus1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemStatus1.html",
+          "hash": "PECE8IXdYuNULEadX9+jxA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemStatus2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemStatus2.html",
+          "hash": "ZEWGooJh8mXqTu3IzCqXLA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemStatus3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemStatus3.html",
+          "hash": "aqZCIYzrOuJiq95owO4gqQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemString1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemString1.html",
+          "hash": "nBBqXpLkHIlGaeZEN7KaqA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemString2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemString2.html",
+          "hash": "jo3j4LUp14ud+RQ9RzO71g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemTime1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemTime1.html",
+          "hash": "2iV+WZ8Kzl/JIIM7hnl6DA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetItemTime2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetItemTime2.html",
+          "hash": "PJaoNbyiFAAR2xKYD/bOhA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetModel.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetModel.html",
+          "hash": "FVINutzBrheUOmOeEMUqIA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetRowByRowId.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetRowByRowId.html",
+          "hash": "370vrE8MbO6xRmK9YfaLqw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetRowFromRowId.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetRowFromRowId.html",
+          "hash": "kMnzuWjgJimFqeW5/8ctMQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetRowIdFromRow.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetRowIdFromRow.html",
+          "hash": "gAXladIdjFgRJ+jxpuExjA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetRowStatus.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetRowStatus.html",
+          "hash": "LGXHjgeMgRkdc5/3S1cqyg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetSqlSelect.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetSqlSelect.html",
+          "hash": "/Eg+X03euaJtfZe4Nta/2Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetValues1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetValues1.html",
+          "hash": "uozmp+j0B7XgIOKWGWvVQQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GetValues2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GetValues2.html",
+          "hash": "s+TdMXG+BbVIMP3f5U99eQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GroupBy1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GroupBy1.html",
+          "hash": "YwXdR2pFMJ10xNJs6+FVmQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GroupBy2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GroupBy2.html",
+          "hash": "QD6rNq9p4EhOpSJF5mVDbA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GroupBy3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GroupBy3.html",
+          "hash": "KfzDZGXoe6jALoFrJyVUww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GroupBy4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GroupBy4.html",
+          "hash": "51T7h1RexyLswWIsMzJtAQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GroupBy5.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GroupBy5.html",
+          "hash": "2l65X9wFRKN75SebXONY9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GroupBy6.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GroupBy6.html",
+          "hash": "tl71d8A4pVb6CMeMpdfq7A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/GroupBy7.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/GroupBy7.html",
+          "hash": "d2HlM36Ul0EWpKZ3cBywXw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportEntry1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportEntry1.html",
+          "hash": "HIlbxajuVA5duuq95Y9iGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportEntry2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportEntry2.html",
+          "hash": "8ffmhX6KmZqvMhHvpKFIpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJson1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJson1.html",
+          "hash": "QHjv/iYSPaQdRRUj+0S2wg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJson2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJson2.html",
+          "hash": "DU54mOLKqHDP7b0SUEoMxg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJson3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJson3.html",
+          "hash": "WLQUa+7nQ2++M3xBeQur0Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJson4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJson4.html",
+          "hash": "INgbwTNkubZmN2BvOaxcVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJson5.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJson5.html",
+          "hash": "Da77yxlWNsnOO+hsL0uPzQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJson6.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJson6.html",
+          "hash": "C42rmmP+2B+J77BQfiktbg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJson7.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJson7.html",
+          "hash": "jZha/rvmu0ZvKPFA/pOOqQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey1.html",
+          "hash": "6J4j9lMWA9yM+7buSuQtmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey2.html",
+          "hash": "6bRumcv1OQo0qZLMvOFm/A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey3.html",
+          "hash": "5FI1/oXzG079IovEfsC8Ww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportJsonByKey4.html",
+          "hash": "9m+oRs6Ggj/6VOmHW0vowg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportString1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportString1.html",
+          "hash": "SRfQvsBhftb7xBllPeKhTw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportString2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportString2.html",
+          "hash": "2HC3pQDRaCIQ1ybROkB5Gw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportString3.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportString3.html",
+          "hash": "HmGGSJH55BXd96oNvim/aA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ImportString4.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ImportString4.html",
+          "hash": "hgTEoIX+KpFP+p+agruXdA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/IndexOf.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/IndexOf.html",
+          "hash": "K5v9ION4ZieBDIodAQ0slg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Initialized.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Initialized.html",
+          "hash": "vZFzyK8Rm4ftXpY4RZ1nZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Insert.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Insert.html",
+          "hash": "4IxSomft/kI4zRkyVa8SSQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/InsertRow1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/InsertRow1.html",
+          "hash": "augNkyL2XWOL4B06dbyBAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/InsertRow2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/InsertRow2.html",
+          "hash": "S3Ln2qUJgQOJweU92W+V1w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/LastOrDefault1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/LastOrDefault1.html",
+          "hash": "weYX8vLCXBaFlofygRrErQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/LastOrDefault2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/LastOrDefault2.html",
+          "hash": "boDQ8nr8kpH92fpiCDUtBw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Max1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Max1.html",
+          "hash": "NpWAjV0zOBSH7OHTeHd8BQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Max2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Max2.html",
+          "hash": "mTimTjQEN1BxOH3u0Hwu8w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Min1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Min1.html",
+          "hash": "6PGhHFMnRCYHvRzLWvErew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Min2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Min2.html",
+          "hash": "sOsIlE7JXv0HHpRZbMmnFw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/MoveNext.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/MoveNext.html",
+          "hash": "orCr5aetRd49iJndJ8tp4w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/OrderBy.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/OrderBy.html",
+          "hash": "BSrkqSgLDrbDbF5GryX+gg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/OrderByDescending.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/OrderByDescending.html",
+          "hash": "lthEoM+q1/Q+jdqfkTHdvQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Remove.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Remove.html",
+          "hash": "HpXSJ0oUozmfwCVqBKiOvA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RemoveAt.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RemoveAt.html",
+          "hash": "fD2kYqZfezOjVe1nQX4maA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ReselectRow.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ReselectRow.html",
+          "hash": "YNLM4d7NMpz/Ybnc9TJeMg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Reset.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Reset.html",
+          "hash": "1qlZZ4j/UpO7wTbg8xttvw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ResetUpdate.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ResetUpdate.html",
+          "hash": "9wDUAg1ojeTeac/1VxG5Pw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Retrieve.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Retrieve.html",
+          "hash": "iI0grzxhFOSpRGCNasyQLA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RetrieveEnd.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RetrieveEnd.html",
+          "hash": "y3FSfsqzF8J5n/1ctsKKGQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RetrieveStart.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RetrieveStart.html",
+          "hash": "DONdqmMgHtvRMlQ2SldvZg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RowDeleted.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RowDeleted.html",
+          "hash": "Iy3NDqlUgtHKD+s5O9dYMQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RowDeleting.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RowDeleting.html",
+          "hash": "Yh30XBTdOwn0R2nAq881Ng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RowsCopy.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RowsCopy.html",
+          "hash": "JV7jwaxClFs5B/2V+wk5Eg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RowsDiscard.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RowsDiscard.html",
+          "hash": "IGe70so+i5bdDWg95OyocA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/RowsMove.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/RowsMove.html",
+          "hash": "diuO2UVOocyGvZQ4+ad78A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetDataContext.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetDataContext.html",
+          "hash": "/QhvfyOr7vKAFO0T4ZutgQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetFilter.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetFilter.html",
+          "hash": "wrdVaqbx0CUuPsrjCkZ1Fw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetItem1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetItem1.html",
+          "hash": "+UR9NsiyyeN2zfI3IAOvHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetItem2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetItem2.html",
+          "hash": "a4syb4wxSimQZftXoBRsag=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetItemStatus1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetItemStatus1.html",
+          "hash": "wHX+s7vgfTXtpZji0Y7hBg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetItemStatus2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetItemStatus2.html",
+          "hash": "6pDxa4OaoQg5FmlDPSwNtg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetModel.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetModel.html",
+          "hash": "e3hEch+SrZ0Jv4Shm1WjwQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetSort.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetSort.html",
+          "hash": "KFJXDxL8UrK0yDBc1rFKSQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetSqlSelect.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetSqlSelect.html",
+          "hash": "92FDdZwDm6jr402hfTbm3g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetValidate1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetValidate1.html",
+          "hash": "2q/+fxTW6Unk3nqXenmS2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/SetValidate2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/SetValidate2.html",
+          "hash": "CUxicCEVWKju09Ekho0EOA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Sort.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Sort.html",
+          "hash": "Zd/aJXwDGGjt4gtzDNVq6A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Sum1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Sum1.html",
+          "hash": "P0IlzcEd0S7Op9ttWR7NHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Sum2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Sum2.html",
+          "hash": "NqvNtwKQf2b0Ouj+6i7Wvg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/ToString.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/ToString.html",
+          "hash": "RxEYdt46M1wNMU4yAQa9wA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Update.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Update.html",
+          "hash": "9zvohR7vzZjmK1IkVwyo4Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/UpdateEnd.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/UpdateEnd.html",
+          "hash": "bWhKWnVM9H7lkOrq7UdN5g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/UpdateStart.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/UpdateStart.html",
+          "hash": "cW5K1GNWuOOhmlPrj62xww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Validate1.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Validate1.html",
+          "hash": "i2Vx3MmsDLBAglGyykFAJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Method/Validate2.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Method/Validate2.html",
+          "hash": "uTjvkXawrcfppaPTr7/xlA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/Current.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/Current.html",
+          "hash": "WfkM+9IBDKuISQVScDSNiA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/DataObject.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/DataObject.html",
+          "hash": "9Ty4/LCxqTjvMU5/iwisaQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/DeletedCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/DeletedCount.html",
+          "hash": "GrqtUhjYu6wpMsCNa2ueJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/FilteredCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/FilteredCount.html",
+          "hash": "pJZLUYs7rSNbPNOGFJhasw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/Index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/Index.html",
+          "hash": "FNwkUlzgLVBxwwhJakoETQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/ModifiedCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/ModifiedCount.html",
+          "hash": "j1FT6gpfUL1J+Xf0Y8PIsg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/Object.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/Object.html",
+          "hash": "5c+mZHXThYxtfcMa9MqCKA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/RowCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/RowCount.html",
+          "hash": "apUrhS5DddAh9AjKxfNrtQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataStore/Property/TotalCount.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataStore/Property/TotalCount.html",
+          "hash": "1f9vOhi5Y03OaCg9T5ZBUA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/DataWebAPI.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/DataWebAPI.html",
+          "hash": "b5IaiQ/scCVzYuu1Wm+ZvA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
       "source_relative_path": "api/CoreService.Data/ModelAttribute/Class/Class.md",
       "output": {
         ".html": {
@@ -3488,6 +6083,21 @@
         "InvalidFileLink"
       ],
       "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/ModelStore/IModelStore.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/ModelStore/IModelStore.html",
+          "hash": "kEpumQUK9exeKBV/mwTMTw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
       "source_relative_path": "api/CoreService.Data/SqlBuilder/SqlJoinOnType/SqlJoinOnType.md",
       "output": {
         ".html": {
@@ -3508,6 +6118,21 @@
         ".html": {
           "relative_path": "api/CoreService.Data/SqlBuilder/SqlOperator/SqlOperator.html",
           "hash": "6ZAvZnrJJ0ALmNjMQyqFhA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/CoreService.Data/SqlExecutor/SqlExecutor.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/CoreService.Data/SqlExecutor/SqlExecutor.html",
+          "hash": "IUuFmAnx5t6dGhRbGvst+g=="
         }
       },
       "is_incremental": true,
@@ -4614,19 +7239,7 @@
       "output": {
         ".html": {
           "relative_path": "api/intro.html",
-          "hash": "ptSZ4RKePxPcLfI5+IVuug=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "api/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "6aoj7uS9JsHLE4zVUjzdeA=="
+          "hash": "1U7Y7SC5qsXb6rX55e0Nhw=="
         }
       },
       "is_incremental": false,
@@ -4637,11 +7250,11 @@
         "InvalidFileLink"
       ],
       "type": "Toc",
-      "source_relative_path": "api/toc.yml.backup/toc.yml",
+      "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.yml.backup/toc.html",
-          "hash": "Q2WuhhuB/r8955xIVn5g9A=="
+          "relative_path": "api/toc.html",
+          "hash": "5cSWQs9C7+bnRXPiN4BvBg=="
         }
       },
       "is_incremental": false,
@@ -4707,7 +7320,7 @@
           "hash": "TF7f35y96PMIiJiatRSPkw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -4962,7 +7575,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "haw/OXaYYlAHK10YR9yARA=="
+          "hash": "WLkXVtVOeeV0bKrJmuSZIw=="
         }
       },
       "is_incremental": true,
@@ -4974,7 +7587,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "i+M4BP1LFEjdGPq6SqKMnw=="
+          "hash": "BnLvcI8rH9xZKv4Pioa1/g=="
         }
       },
       "is_incremental": false,
@@ -4988,6 +7601,11 @@
         "incrementalPhase": "build"
       },
       "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -4995,11 +7613,6 @@
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
-          "incrementalPhase": "build"
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }
