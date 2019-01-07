@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore.GetRowStatus(int row, DwBuffer dwbuffer = DwBuffer.Primary) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore.GetRowStatus(int row, DwBuffer dwbuffer = DwBuffer.Primary) Method ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../index.html">
+        	<img id="logo" src="../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastoregetrowstatusint-row-dwbuffer-dwbuffer--dwbufferprimary-method"><strong>IDataStore.GetRowStatus(int row, DwBuffer dwbuffer = DwBuffer.Primary) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>获取行的修改状态。 修改状态确定Update方法将为该行生成的SQL语句的类型。</p>
+<p>Gets the modification status of a row. The modification status determines the type of SQL statement the Update method will generate for the row.</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public ModelState GetRowStatus(int row, DwBuffer dwbuffer = DwBuffer.Primary);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>row</code> System.Int32</p>
+<p>The zero-based row number to get row status.</p>
+<p><code>dwbuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
+<p>A value identifying the DataStore buffer containing the row for which you want to get status.</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../../CoreService.Data/ModelState/ModelState.html">Appeon.Data.ModelState</a></p>
+<p>A value of the <code>ModelState</code> enumerated datatype.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>Use <code>GetRowStatus</code> and <code>GetItemStatus</code> to understand what SQL statements will be generated for new and changed information when you update the database.</p>
+<p>For rows in the primary and filter buffers, Update generates an INSERT statement for rows with <code>ModelState.NewModified</code> status. It generates an UPDATE statement for rows with <code>ModelState.Modified</code> status and references the columns that have been affected.</p>
+<p>For rows in the delete buffer, Update does not generate a DELETE statement for rows whose status was <code>ModelState.New</code> or <code>ModelState.NewModified</code> before being moved to the delete buffer.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>GetRowStatus(int row, DwBuffer bufferType = DwBuffer.Primary)row, column都是从0开始bufferType为指定buffer,如果不指定，默认为Primary buffer</p>
+<p>The following code example demonstrates how to get the status of a row.</p>
+<pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataStoreExamples
+{
+    public class GetRowStatusExample
+    {
+        private SchoolContext _context;
+
+        public GetRowStatusExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+
+            // Instantiates datastore with datawindow: d_department
+            var datastore = new DataStore(&quot;d_department&quot;, _context);
+
+            datastore.Retrieve();
+
+            datastore.SetItem(0, &quot;name&quot;, &quot;Department Name&quot;);
+
+            Console.WriteLine(&quot;Row 0 Status: {0};\n&quot; +
+                              &quot;Row 1 Status: {1}&quot;,
+                          datastore.GetRowStatus(0, DwBuffer.Primary),
+                          datastore.GetRowStatus(1, DwBuffer.Primary));
+
+
+            /*This code produces the following output:
+             
+            Row 0 Status: Modified;
+            Row 1 Status: NotTracked
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>DataWindow File: <a href="../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

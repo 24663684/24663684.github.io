@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore.ReselectRow(int row) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore.ReselectRow(int row) Method ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../index.html">
+        	<img id="logo" src="../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastorereselectrowint-row-method"><strong>IDataStore.ReselectRow(int row) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>访问数据库以重新检索所有可以更新的列的值，并刷新DataStore中一行中的所有时间戳列。</p>
+<p>Accesses the database to retrieve values for all columns that can be updated and refreshes all timestamp columns in a row in the DataStore.</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public int ReselectRow(int row);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>row</code>	System.Int32</p>
+<p>A zero-based number identifying the row to reselect.</p>
+<p><strong>Returns</strong></p>
+<p>System.Int32</p>
+<p>Returns 1 if it succeeds and -1 if the row cannot be reselected (for example, the DataStore cannot be updated or the row was deleted by another user).</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p><code>ReselectRow</code> is supported for SQLSelect DataStore. Use <code>ReselectRow</code> to discard values the user changed and replace them with values from the database after an update fails (due to a concurrent access error, for example).</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>The following code example modifies the values for row 1 and then calls ReselectRow to retrieve the original values for row 1 from database again.</p>
+<pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataStoreExamples
+{
+    public class ReselectRowExample
+    {
+        private SchoolContext _context;
+
+        public ReselectRowExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Instantiates datastore with datawindow: d_department
+            var datastore = new DataStore(&quot;d_department&quot;, _context);
+
+            datastore.Retrieve();
+
+            Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
+                               datastore.GetItem&lt;int&gt;(0, &quot;departmentid&quot;),
+                               datastore.GetItem&lt;string&gt;(0, &quot;name&quot;));
+
+
+            // Modified the values for row 1
+            datastore.SetItem(0, &quot;departmentid&quot;, 10);
+            datastore.SetItem(0, &quot;name&quot;, &quot;Department Name&quot;);
+
+            Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
+                               datastore.GetItem&lt;int&gt;(0, &quot;departmentid&quot;),
+                               datastore.GetItem&lt;string&gt;(0, &quot;name&quot;));
+
+            // Calls ReselectRow to retrieve values for row 1 from database again
+            // It will send SQL commands to database
+            datastore.ReselectRow(0);
+
+            Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
+                               datastore.GetItem&lt;int&gt;(0, &quot;departmentid&quot;),
+                               datastore.GetItem&lt;string&gt;(0, &quot;name&quot;));
+
+            /*This code produces the following output:
+             
+            Department ID: 1; Department Name: Engineering
+            Department ID: 10; Department Name: Department Name
+            Department ID: 1; Department Name: Engineering
+            */
+
+            /* Internally generated T-SQL:
+            */
+}
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>DataWindow File: <a href="../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

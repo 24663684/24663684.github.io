@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore.DeleteRow(int row) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore.DeleteRow(int row) Method ">
+    <meta name="generator" content="docfx 2.40.2.0">
+    
+    <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../index.html">
+        	<img id="logo" src="../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastoredeleterowint-row-method"><strong>IDataStore.DeleteRow(int row) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>按一个指定的行的从零开始的索引从DataStore的主缓冲区中删除一行数据，被删除的数据会被移动到删除缓冲区中。</p>
+<p>Deletes the specified row (by the zero-based index number) from the primary buffer of the DataStore. The deleted row will be moved to the delete buffer of the DataStore.</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public bool DeleteRow(int row);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>row</code> System.Int32</p>
+<p>A zero-based index number of the row to delete from the primary buffer of the DataStore.</p>
+<p><strong>Returns</strong></p>
+<p>System.Boolean</p>
+<p>总是返回True, 除非抛出异常。</p>
+<p>Always returns true except for when exceptions are thrown.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>DeleteRow从DataStore的主缓冲区中删除该行。如果DataStore不可更新，则清除与该行关联的所有存储。如果DataStore是可更新的，则DeleteRow将行移动到DataStore的删除缓冲区; PowerBuilder使用删除缓冲区中的值来构建SQL DELETE语句。在应用程序调用Update Method之前，不会从数据库表中删除该行。在Update Method更新数据库并重置更新标志后，将清除与该行关联的存储。</p>
+<p>DeleteRow deletes a row from the DataStore primary buffer. If DataStore is not updatable, the storage related with the deleted row will be directly erased. If DataStore is updatable, DeleteRow moves the row to the delete buffer. DataStore uses the value in the delete buffer to create the SQL Delete statement. The row will not be deleted from the database table until Update method is called; and the storage related with the deleted row will not be erased until the database is updated with the changes made to the DataStore and the update flag is reset by the Update method.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>DeleteRow(int row)将datastore中某行移到删除缓冲区C#中起始行为0</p>
+<p>The following code example demonstrates how to use the DeleteRow(int row) method to move a row from the primary buffer to the delete buffer.</p>
+<pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataStoreExamples
+{
+    public class DeleteRowExample
+    {
+        private SchoolContext _context;
+
+        public DeleteRowExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            
+            // Instantiates datastore with datawindow: d_department
+            var datastore = new DataStore(&quot;d_department&quot;, _context);
+
+            datastore.Retrieve();
+
+            // This datastore has 4 records
+            Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;, datastore.RowCount);
+
+            // Deletes the first row
+            datastore.DeleteRow(0);
+
+            // This datastore has 3 records in the primary buffer
+            Console.WriteLine(&quot;Primary buffer Rowcount: {0}&quot;, 
+                datastore.RowCount);
+
+            // This datastore has 1 record in the delete buffer
+            Console.WriteLine(&quot;Delete buffer Rowcount: {0}&quot;, 
+                datastore.DeletedCount);
+
+            /*This code produces the following output:
+            
+            Retrieved Rowcount: 4
+            Primary buffer Rowcount: 3
+            Delete buffer Rowcount: 1
+            */
+
+        }
+    }
+}
+</code></pre>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>
