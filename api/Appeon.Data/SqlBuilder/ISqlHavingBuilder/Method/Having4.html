@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ISqlHavingBuilder.Having(string left, SqlBinaryOperator sqlOperator, string right) &#26041;&#27861; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ISqlHavingBuilder.Having(string left, SqlBinaryOperator sqlOperator, string right) &#26041;&#27861; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="isqlhavingbuilderhavingstring-left-sqlbinaryoperator-sqloperator-string-right-方法"><strong>ISqlHavingBuilder.Having(string left, SqlBinaryOperator sqlOperator, string right) 方法</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>创建HAVING子句, 向HAVING子句添加搜索条件，在运算符左侧和右侧指定SQL表达式。</p>
+<p>Creates the HAVING clause, and adds a search condition to the HAVING clause, specifies SQL expressions on the left and right of the operator.</p>
+<p><strong>命名空间：</strong> Appeon.Data</p>
+<p><strong>程序集：</strong> Appeon.Data.dll</p>
+<h3 id="语法"><strong>语法</strong></h3>
+<pre><code class="lang-c#">  ISqlHavingAndOr Having(string left, SqlBinaryOperator sqlOperator, string right);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>left</code>	System.String</p>
+<p>A SQL expression on the left of the operator.</p>
+<p><code>SqlBinaryOperator</code>	<a href="../../SqlBinaryOperator/SqlBinaryOperator.html">Appeon.Data.SqlBinaryOperator</a></p>
+<p>A enumeration value of <code>SqlBinaryOperator</code>, it's the operator to test the two expression on the left and right.</p>
+<p><code>right</code>	System.String</p>
+<p>A SQL expression on the right of the operator.</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../ISqlHavingAndOr/ISqlHavingAndOr.html">Appeon.Data.ISqlHavingAndOr</a></p>
+<p>Returns the <code>ISqlHavingAndOr</code> object which can be used to add more search conditions for current HAVING clause.</p>
+<h3 id="备注"><strong>备注</strong></h3>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>设置分组条件</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ISqlHavingBuilderExamples
+{
+    public class HavingExample
+    {
+        private readonly SchoolContext _context;
+
+        public HavingExample(SchoolContext dataContext)
+        {
+            // Set data context
+            _context = dataContext;
+        }
+
+        public void Example4()
+        {
+            var sqlQueryBuilder = new SqlQueryBuilder();
+
+            // 在StudentGrade表中根据StudentID和CourseID分组，获取每个分组的Grade总和，
+            // 分组条件为StudentID 等于一个输入参数
+            // 输入参数在执行sql时指定
+            sqlQueryBuilder
+                .Select(&quot;StudentID&quot;)
+                .Select(&quot;sum(Grade)&quot;)
+                .From(&quot;StudentGrade&quot;)
+                .GroupBy(&quot;StudentID, CourseID&quot;)
+                .Having(&quot;StudentID&quot;,
+                         SqlBinaryOperator.Equals,
+                         &quot;6&quot;);
+
+            // 将sqlQueryBuilder语法转换成context对应数据库的可执行语句
+            string sql = sqlQueryBuilder.ToSqlString(_context);
+
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:           
+              SELECT
+                [StudentID],
+                sum(Grade)
+              FROM [StudentGrade]
+              GROUP BY
+                [StudentID],
+                [CourseID]
+                HAVING ([StudentID] = 6)
+           */
+        }
+    }
+}
+</code></pre>
+<h3 id="版本信息"><strong>版本信息</strong></h3>
+<p>.Net Standard</p>
+<p>自2.x起可用</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

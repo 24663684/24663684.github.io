@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IModelMapper.SaveChanges() Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IModelMapper.SaveChanges() Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="imodelmappersavechanges-method"><strong>IModelMapper.SaveChanges() Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>Saves all of the data changes to the database by executing the database table operations tracked by the <code>IModelMapper</code> object, and calls the tracked <code>Action</code> delegates during operations.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public IDbResult SaveChanges();
+</code></pre>
+<p><strong>Returns</strong></p>
+<p><a href="../../../IDbResult/IDbResult.html">Appeon.Data.IDbResult</a></p>
+<p>Returns an <code>IDbResult</code> object whose property can be used to conveniently get the result of the executed database operation.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>When the database is updated successfully, ModelMapper is restored to the initial state which will not track the model etc.</p>
+<p>To continue using ModelMapper for other data operations, use <a href="TrackCreate1.html">IModelMapper.TrackCreate</a> method etc. to track the changes again.</p>
+<h4 id="database-transaction"><strong>Database Transaction</strong></h4>
+<p>This method will by default create a database transaction where all of the SQL DML will be executed.</p>
+<p>When any exceptions occur, the database transaction will be automatically rolled back.</p>
+<h4 id="validation"><strong>Validation</strong></h4>
+<p>Before updating the database, the system will validate the data in the model. If any error, exceptions will be thrown.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>The following code example demonstrates how to register two new students.</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using System;
+
+namespace Appeon.ApiDoc.IModelMapperExamples
+{
+    public class SaveChangesExample
+    {
+        private SchoolContext _context;
+
+        public SaveChangesExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var mapper = _context.ModelMapper;
+
+            // Tracks the two new students and saves changes to the database.
+            var personA = new Person()
+            {
+                LastName = &quot;Senior&quot;,
+                FirstName = &quot;Letitia&quot;,
+                EnrollmentDate = DateTime.Now,
+                Discriminator = &quot;Student&quot;
+            };
+
+            var personB = new Person()
+            {
+                LastName = &quot;Ward&quot;,
+                FirstName = &quot;Lilith&quot;,
+                EnrollmentDate = DateTime.Now,
+                Discriminator = &quot;Student&quot;
+            };
+
+            var dbResult = mapper.TrackCreate(personA)
+                                 .TrackCreate(personB)
+                                 .SaveChanges();
+
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                dbResult.InsertedCount);
+
+            /* The code produces the following output:
+            
+            2 records have been inserted into the database.
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

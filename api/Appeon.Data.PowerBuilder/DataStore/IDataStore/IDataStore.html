@@ -1,0 +1,1181 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore Interface </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore Interface ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../index.html">
+        	<img id="logo" src="../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastore-interface"><strong>IDataStore Interface</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+</div>
+<p>待定。</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<p>The <code>IDataStore</code> interface represents a C# DataStore object. C# DataStore is a .NET version of the native PowerBuilder DataStore.  It provides almost the same set of APIs as the native PowerBuilder DataStore, and allows you to use standard C# features such as LINQ, delegates and transactions.</p>
+<p>You can migrate existing PowerBuilder DataWindow/DataStore data objects to become C# DataStore, and take advantages of the simple and convenient PowerScript coding styles to implement data operations at the server side.</p>
+<p>C# DataStore can exchange data easily with different client types because it fully integrates with ASP.NET framework.  C# DataStore is a totally different solution from the legacy PB.NET DataStore: It is fully optimized for handling large-scale and high concurrency access requests, and can yield overall significantly better performance and scalability.</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public interface IDataStore : IDataStore&lt;object&gt;, IEnumerator&lt;object&gt;, IEnumerator, IDisposable, IEnumerable;
+</code></pre>
+<h3 id="events"><strong>Events</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnInitialized.html">OnInitialized</a></td>
+<td>Occurs when DataStore object is initialized. </td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRowDeleting.html">OnRowDeleting</a></td>
+<td>Occurs when the deletion of the DataStore row is about to begin.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRowDeleted.html">OnRowDeleted</a></td>
+<td>Occurs when the deletion of the DataStore row is completed.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRetrieveStart.html">OnRetrieveStart</a></td>
+<td>Occurs when the DataStore retrieval is about to begin.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRetrieveEnd.html">OnRetrieveEnd</a></td>
+<td>Occurs when DataStore retrieval is completed.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnUpdateStart.html">OnUpdateStart</a></td>
+<td>Occurs after the <code>Update</code> method is called and before changes in the DataStore are sent to the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnUpdateEnd.html">OnUpdateEnd</a></td>
+<td>Occurs when committing DataStore updates to the database is completed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties"><strong>Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Current.html">Current</a></td>
+<td>Object</td>
+<td>Gets the reference to the row at the current position of the enumerator.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Object.html">Object</a></td>
+<td>IDataObject</td>
+<td>Used to directly manipulating the object within a DataStore object from a script. These objects can be, for example, columns or text objects.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DeletedCount.html">DeletedCount</a></td>
+<td>int</td>
+<td>Gets the total number of rows that are marked for deletion in the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/FilteredCount.html">FilteredCount</a></td>
+<td>int</td>
+<td>Gets the number of rows that have been filtered by the current filter criteria.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Index.html">Index</a></td>
+<td>int</td>
+<td>Gets the index of the current row when traversing DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/ModifiedCount.html">ModifiedCount</a></td>
+<td>int</td>
+<td>Gets the number of rows that have been modified but not updated in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DataObject.html">DataObject</a></td>
+<td>string</td>
+<td>Specifies the name of the DataWindow object associated with the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/RowCount.html">RowCount</a></td>
+<td>int</td>
+<td>Gets the number of rows in the primary buffer of DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/TotalCount.html">TotalCount</a></td>
+<td>int</td>
+<td>Gets the total number of rows in all buffers of the DataStore.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods"><strong>Methods</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt="">       </td>
+<td><a href="Method/Add.html">Add(TModel item)</a></td>
+<td>void</td>
+<td>Appends a TModel instance as a row to the end of the primary buffer in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AddRow1.html">AddRow()</a></td>
+<td>int</td>
+<td>Appends a row to the end of the primary buffer in the DataStore and returns the zero-based index. If any columns have default values, the row is initialized with these values.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AddRow2.html">AddRow&lt;TModel&gt;(TModel model)</a></td>
+<td>int</td>
+<td>Appends a row to the end of the primary buffer in the DataStore and returns the zero-based index. TModel must match with the DataObject property of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AddRow3.html">AddRow&lt;TModel&gt;(IEnumerable&lt;TModel&gt; list)</a></td>
+<td>int</td>
+<td>Appends a collection of TModel type as row(s) to the end of the primary buffer in the DataStore and returns the zero-based index of the first row added. TModel must match with the DataObject property of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AsEnumerable.html">AsEnumerable&lt;TModel&gt;(DwBuffer dwBuffer = DwBuffer.Primary)</a></td>
+<td>IEnumerable&lt;TModel&gt;</td>
+<td>Converts the data in the specified buffer to an IEnumerable&lt;TModel&gt; object. Defaults to the primary buffer if dwBuffer is not specified.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Avg1.html">Avg&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector)</a></td>
+<td>decimal</td>
+<td>Computes the average of a sequence of System.Decimal values that are obtained by invoking a transform function on each row of the primary buffer in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Avg2.html">Avg&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector, Predicate&lt;TModel&gt; predicate)</a></td>
+<td>decimal</td>
+<td>Computes the average of a sequence of System.Decimal values that are obtained by invoking a transform function on each row of the primary buffer filtered base on a predicate in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Contains.html">Contains(TModel item)</a></td>
+<td>bool</td>
+<td>Determines whether a row exists in the primary buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/CopyTo.html">CopyTo(TModel[] array, int arrayIndex)</a></td>
+<td>void</td>
+<td>Copies all rows from the primary buffer of the DataStore to a compatible one-dimensional System.Array, starting at a particular System.Array index.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Count.html">Count&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>int</td>
+<td>Returns a number that represents how many rows in the primary buffer of DataStore satisfy a condition.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/DeleteRow1.html">DeleteRow(int row)</a></td>
+<td>bool</td>
+<td>Deletes the specified row by the zero-based index from the primary buffer of the DataStore. The deleted row will be moved to the delete buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/DeleteRow2.html">DeleteRow&lt;TModel&gt;(TModel model)</a></td>
+<td>bool</td>
+<td>Deletes the specified row according to the specified TModel from the primary buffer of the DataStore. The deleted row will be moved to the delete buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/DeleteRow3.html">DeleteRow&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>bool</td>
+<td>Deletes the row(s) based on a predicate from the primary buffer of the DataStore. The deleted row(s) will be moved to the delete buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Equals.html">Equals(Object obj)</a></td>
+<td>bool</td>
+<td>Determines whether the specified object is equal to the current object. Inherited from Object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Evaluate1.html">Evaluate&lt;TValue&gt;(string expression)</a></td>
+<td>TValue</td>
+<td>Calculates the result of the specified DataWindow expression using the data in the primary buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Evaluate2.html">Evaluate&lt;TValue&gt;(string expression, int row)</a></td>
+<td>TValue</td>
+<td>Calculates the specified DataWindow expression by the specified row (zero-based index) in the primary buffer of the DataStore, and returns the result value.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Exists.html">Exists&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>bool</td>
+<td>Determines whether there is a row in the primary buffer of the DataStore that meets the specified condition.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson1.html">ExportJson(MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports data from the DataStore primary buffer to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson2.html">ExportJson(bool changeOnly, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports all rows or only the changed rows from the DataStore to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson3.html">ExportJson(DwBuffer dwbuffer, bool changedOnly, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports all rows or only the changed rows from all or specified buffers to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson4.html">ExportJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports data from the specified buffer(s) and/or DataWindowChild to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson5.html">ExportJson(DwBuffer dwbuffer, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports data from the specified buffer to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson6.html">ExportJson(DwBuffer dwbuffer, int startRow, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the end) from the specified buffer to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson7.html">ExportJson(DwBuffer dwbuffer, int startRow, int endRow, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) from the specified buffer to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson8.html">ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the end) from the specified buffer to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson9.html">ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, short endColumn, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the ending position) from the specified buffer to a standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson1.html">ExportPlainJson()</a></td>
+<td>string</td>
+<td>Exports data from the DataStore primary buffer to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson2.html">ExportPlainJson(bool changeOnly)</a></td>
+<td>string</td>
+<td>Exports all rows or only the changed rows from the DataStore to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson3.html">ExportPlainJson(DwBuffer dwbuffer, bool changedOnly)</a></td>
+<td>string</td>
+<td>Exports all rows or only the changed rows from all or specified buffers to a simple-format or standard-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson4.html">ExportPlainJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata)</a></td>
+<td>string</td>
+<td>Exports data from the specified buffer(s) and/or DataWindowChild to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson5.html">ExportPlainJson(DwBuffer dwbuffer)</a></td>
+<td>string</td>
+<td>Exports data from the specified buffer to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson6.html">ExportPlainJson(DwBuffer dwbuffer, int startRow)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the end) from the specified buffer to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson7.html">ExportPlainJson(DwBuffer dwbuffer, int startRow, int endRow)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) from the specified buffer to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson8.html">ExportPlainJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the end) from the specified buffer to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson9.html">ExportPlainJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, short endColumn)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the ending position) from the specified buffer to a simple-format JSON string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString1.html">ExportString(bool colheading = true)</a></td>
+<td>string</td>
+<td>Exports all of the data rows from the primary buffer of the DataStore to a string. The column name is exported by default.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString2.html">ExportString(int startRow, int endRow, bool colheading = true)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) from the primary buffer of the DataStore to a string. The column name is exported by default.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString3.html">ExportString(int startRow, int endRow, short startColumn, short endColumn, bool colheading = true)</a></td>
+<td>string</td>
+<td>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the ending position) from the primary buffer of the DataStore to a string. The column name is exported by default.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Filter1.html">Filter(string format = null)</a></td>
+<td>void</td>
+<td>Filters rows by the current filter criteria. Rows that do not meet the filter criteria are moved to the filter buffer. The filter criteria can be re-set using the <code>format</code> parameter.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Filter2.html">Filter&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>bool</td>
+<td>Filters rows by the filter criteria specified by <code>Predicate&lt;TModel&gt;</code>. Rows that do not meet the filter criteria are moved to the filter buffer.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FilterEx1.html">FilterEx(Expression&lt;Predicate&lt;TModel&gt;&gt; expression)</a></td>
+<td>bool</td>
+<td>Filters rows by the filter criteria specified by <code>Expression&lt;Predicate&lt;TModel&gt;&gt;</code>. Rows that do not meet the filter criteria are moved to the filter buffer.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FilterEx2.html">FilterEx&lt;TModel&gt;(Expression&lt;Predicate&lt;TModel&gt;&gt; expression)</a></td>
+<td>void</td>
+<td>Generic method. Filters rows by the filter criteria specified by <code>Expression&lt;Predicate&lt;TModel&gt;&gt;</code>. Rows that do not meet the filter criteria are moved to the filter buffer.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Find1.html">Find&lt;TModel&gt;(string expression, int start = -1, int end = -1)</a></td>
+<td>&lt;TModel&gt;</td>
+<td>Generic method. Finds the next zero-based row in the specified buffer of the DataStore in which data meets the condition specified by the expression.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Find2.html">Find&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, int start = -1, int end = -1)</a></td>
+<td>&lt;TModel&gt;</td>
+<td>Generic method. Finds the next row in the DataStore in which data meets the criteria defined by Predicate.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Find3.html">Find&lt;TModel&gt;(string expression, DwBuffer dwBuffer = DwBuffer.Primary)</a></td>
+<td>&lt;TModel&gt;</td>
+<td>Generic method. Finds the next zero-based row in the specified buffer of the DataStore in which data meets the condition specified by the expression.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Find4.html">Find&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, dwBuffer = DwBuffer.Primary)</a></td>
+<td>&lt;TModel&gt;</td>
+<td>Generic method. Finds the next row in the DataStore in which data meets the criteria defined by Predicate.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FindIndex1.html">FindIndex(string expression, int start = -1, int end = -1)</a></td>
+<td>int</td>
+<td>Returns the zero-based index of the next row in the specified buffer of the DataStore in which data meets the condition specified by the expression.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FindIndex2.html">FindIndex&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, int start = -1, int end = -1)</a></td>
+<td>int</td>
+<td>Generic method. Returns the index of the next row in the DataStore in which data meets the criteria defined by Predicate.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FindIndex3.html">FindIndex(string expression, int start, int end, DwBuffer dwBuffer = DwBuffer.Primary)</a></td>
+<td>int</td>
+<td>Returns the zero-based index of the next row in the specified buffer of the DataStore in which data meets the condition specified by the expression.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FindIndex4.html">FindIndex&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, DwBuffer dwBuffer = DwBuffer.Primary)</a></td>
+<td>int</td>
+<td>Generic method. Returns the index of the next row in the DataStore in which data meets the criteria defined by Predicate.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FirstOrDefault1.html">FirstOrDefault&lt;TModel&gt;()</a></td>
+<td>TModel</td>
+<td>Generic method. Returns the first data row of the DataStore. If no data row is found, returns null.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FirstOrDefault2.html">FirstOrDefault&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>TModel</td>
+<td>Generic method. Returns the first data row of the DataStore that meets the criteria specified by  <code>Predicate&lt;TModel&gt;</code>. If no data row is found, returns null.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetChild.html">GetChild(string name)</a></td>
+<td>IDataStore</td>
+<td>Provides a reference to the child DataWindow, which you can use to manipulate that DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetEnumerator.html">GetEnumerator()</a></td>
+<td>IEnumerator</td>
+<td>Obtains the enumerator that can be used to iterate through the DataStore. Inherited from IEnumerator&lt;T&gt;.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItem1.html">GetItem&lt;TValue&gt;(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>TValue</td>
+<td>Generic method. Gets the data for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItem2.html">GetItem&lt;TValue&gt;(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>TValue</td>
+<td>Generic method. Gets the data for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItem3.html">GetItem(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>object</td>
+<td>Gets the data for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItem4.html">GetItem(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>object</td>
+<td>Gets the data for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemBoolean1.html">GetItemBoolean(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>bool?</td>
+<td>Gets data whose type is Boolean for the specified row and column (specified by column number) from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemBoolean2.html">GetItemBoolean(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>bool?</td>
+<td>Gets data whose type is Boolean for the specified row and column (specified by column name) from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemDate1.html">GetItemDate(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>DateTime?</td>
+<td>Gets data whose type is <code>DateTime</code> for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemDate2.html">GetItemDate(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>DateTime?</td>
+<td>Gets data whose type is <code>DateTime</code> for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemDateTime1.html">GetItemDateTime(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>DateTime?</td>
+<td>Gets data whose type is DateTime for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemDateTime2.html">GetItemDateTime(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>DateTime?</td>
+<td>Gets data whose type is DateTime for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemDecimal1.html">GetItemDecimal(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>decimal?</td>
+<td>Gets data whose type is Decimal for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemDecimal2.html">GetItemDecimal(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>decimal?</td>
+<td>Gets data whose type is Decimal for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemNumber1.html">GetItemNumber(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>double?</td>
+<td>Gets data whose type is Double for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemNumber2.html">GetItemNumber(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>double?</td>
+<td>Gets data whose type is Double for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemStatus1.html">GetItemStatus(int row, short column, DwBuffer dwbuffer = DwBuffer.Primary)</a></td>
+<td>PropertyState</td>
+<td>Reports the modification status of a column (specified by column number) within a row in the specified buffer.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemStatus2.html">GetItemStatus(int row, string column, DwBuffer dwbuffer = DwBuffer.Primary)</a></td>
+<td>PropertyState</td>
+<td>Gets the modification status of a column (specified by column name) within a row in the specified buffer.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemStatus3.html">GetItemStatus&lt;TModel&gt;(int row, Expression&lt;Func&lt;TModel, object&gt;&gt; selector, DwBuffer dwbuffer = DwBuffer.Primary)</a></td>
+<td>PropertyState</td>
+<td>Gets the modification status of a column (specified by an expression) within a row in the specified buffer.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemString1.html">GetItemString(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>string</td>
+<td>Gets data whose type is String for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemString2.html">GetItemString(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>string</td>
+<td>Gets data whose type is String for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemTime1.html">GetItemTime(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>TimeSpan?</td>
+<td>Gets data whose type is <code>TimeSpan</code> for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemTime2.html">GetItemTime(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false)</a></td>
+<td>TimeSpan?</td>
+<td>Gets data whose type is <code>TimeSpan</code> for the specified row and column from the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetModel.html">GetModel&lt;TModel&gt;(int row)</a></td>
+<td>TModel</td>
+<td>Obtains the data of the specified row.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetRowByRowId.html">GetRowByRowId&lt;TModel&gt;(int rowid)</a></td>
+<td>&lt;TModel&gt;</td>
+<td>Gets the TModel instance of a row according to the specified unique row identifier associated with that row.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetRowFromRowId.html">GetRowFromRowId(int rowid, DwBuffer dwBuffer = DwBuffer.Primary)</a></td>
+<td>int</td>
+<td>Gets the row number of a row in the DataStore from the unique row identifier associated with that row.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetRowIdFromRow.html">GetRowIdFromRow(int rownumber, DwBuffer dwBuffer = DwBuffer.Primary)</a></td>
+<td>int</td>
+<td>Gets the unique row identifier of a row in the DataStore from the row number associated with that row.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetRowStatus.html">GetRowStatus(int row, DwBuffer dwbuffer = DwBuffer.Primary)</a></td>
+<td>ModelState</td>
+<td>Gets the modification status of a row.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetSqlSelect.html">GetSqlSelect()</a></td>
+<td>string</td>
+<td>Gets the SQL SELECT statement associated with the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetValues1.html">GetValues(short column, DwBuffer bufferType = DwBuffer.Primary)</a></td>
+<td>IEnumerable&lt;object&gt;</td>
+<td>Obtains a collection of values of the specified column (by zero-based column number), from the specified buffer in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetValues2.html">GetValues(string column, DwBuffer bufferType = DwBuffer.Primary)</a></td>
+<td>IEnumerable&lt;object&gt;</td>
+<td>Obtains a collection of values of the specified column (by column name), from the specified buffer in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy1.html">GroupBy()</a></td>
+<td>IEnumerable&lt;IGrouping&lt;object, IGroupingGetter&gt;&gt;</td>
+<td>Groups all rows of the primary buffer by the current grouping criteria of DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy2.html">GroupBy&lt;TModel&gt;()</a></td>
+<td>IEnumerable&lt;IGrouping&lt;object, IGroupingGetter&lt;TModel&gt;&gt;&gt;</td>
+<td>Generic method. Groups all rows of the primary buffer by the current grouping criteria of DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy3.html">GroupBy(int level, string sortKey = null)</a></td>
+<td>IEnumerable&lt;IGrouping&lt;object, IModelGetter&gt;&gt;</td>
+<td>Groups rows of the primary buffer by the specified zero-based level of grouping criteria of DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy4.html">GroupBy&lt;TModel&gt;(int level, string sortKey = null)</a></td>
+<td>IEnumerable&lt;IGrouping&lt;object, TModel&gt;&gt;</td>
+<td>Generic method. Groups rows of the primary buffer by the specified zero-based level of grouping criteria of DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy5.html">GroupBy(string selectorKey, string sortKey = null)</a></td>
+<td>IEnumerable&lt;IGrouping&lt;object, IModelGetter&gt;&gt;</td>
+<td>Groups rows of the primary buffer by the custom grouping criteria.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy6.html">GroupBy&lt;TModel&gt;(string selectorKey, string sortKey = null)</a></td>
+<td>IEnumerable&lt;IGrouping&lt;object, TModel&gt;&gt;</td>
+<td>Generic method. Groups rows of the primary buffer by the custom grouping criteria.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy7.html">GroupBy&lt;TModel&gt;(Func&lt;TModel, object&gt; selectorKey)</a></td>
+<td>IEnumerable&lt;IGrouping&lt;object, TModel&gt;&gt;</td>
+<td>Generic method. Groups rows of the primary buffer by the custom grouping criteria defined by <code>Func&lt;TModel, object&gt;</code>.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportEntry1.html">ImportEntry(IModelEntry modelEntry)</a></td>
+<td>int</td>
+<td>Imports an <code>IModelEntry</code> object, which contains data and state, to the end of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportEntry2.html">ImportEntry(IEnumerable<imodelentry> modelEntries)</imodelentry></a></td>
+<td>int</td>
+<td>Imports a sequence of  <code>IModelEntry</code> objects, which contain data and state, to the end of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson1.html">ImportJson(string Json)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson2.html">ImportJson(string Json, DwBuffer dwbuffer)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson3.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore. You can specify the starting position in the JSON array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson4.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore. You can specify the starting and ending position in the JSON array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson5.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore. You can specify the starting and ending positions in the JSON array, and you can specify the number of the first key value in the JSON object to be imported.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson6.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn, int endColumn)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore. You can specify the starting and ending positions in the JSON array,  and you can specify the number of the first key value and the number of the last key value in the JSON object to be imported.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson7.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn, int endColumn, int dwStartColumn)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore. You can specify the starting and ending positions in the JSON array,  and specify the number of the first key value and the number of the last key value in the JSON object to be imported. You can also specify the number of the first column in the DataStore that should receive data.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey1.html">ImportJsonByKey(string Json)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the DataStore according to the key name of the JSON item.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey2.html">ImportJsonByKey(string Json, DwBuffer dwbuffer)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore according to the key name of the JSON item.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey3.html">ImportJsonByKey(string Json, DwBuffer dwbuffer, int startRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore according to the key name of the JSON item. You can specify the starting position in the JSON array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey4.html">mportJsonByKey(string Json, DwBuffer dwbuffer, int startRow, int endRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into the specified buffer of DataStore according to the key name of the JSON item. You can specify the starting and ending positions in the JSON array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString1.html">ImportString(string value)</a></td>
+<td>int</td>
+<td>Inserts the tab-separated data from a string into the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString2.html">ImportString(string value, int startRow, int endRow = -1)</a></td>
+<td>int</td>
+<td>Inserts the tab-separated data from a string into the DataStore. You can specify the starting and ending rows in the string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString3.html">ImportString(string value, int startRow, int endRow, short startColumn, short endColumn)</a></td>
+<td>int</td>
+<td>Inserts the tab-separated data from a string into the DataStore. You can specify the starting and ending rows in the string,  and specify the number of the first column and the number of the last column in the string to be imported.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString4.html">ImportString(string value, int startRow, int endRow, short startColumn, short endColumn, short dwStartColumn)</a></td>
+<td>int</td>
+<td>Inserts the tab-separated data from a string into the DataStore. You can specify the starting and ending rows in the string,  and specify the number of the first column and the number of the last column in the string to be imported. You can also specify the number of the first column in the DataStore that should receive data.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/IndexOf.html">IndexOf(TModel item)</a></td>
+<td>int</td>
+<td>Determines the index of a specific model instance in the primary buffer of DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Initialized.html">Initialized()</a></td>
+<td>void</td>
+<td>Executes this method when instantiating the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Insert.html">Insert(int index, TModel item)</a></td>
+<td>void</td>
+<td>Inserts data at the specified index in the primary buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InsertRow1.html">InsertRow(int row)</a></td>
+<td>int</td>
+<td>Inserts a row to the specified position in the DataStore. If any columns have default values, the row is initialized with these values.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InsertRow2.html">InsertRow&lt;TModel&gt;(int row, TModel model)</a></td>
+<td>int</td>
+<td>Inserts a TModel instance as a row to the specified position in the primary buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LastOrDefault1.html">LastOrDefault&lt;TModel&gt;()</a></td>
+<td>TModel</td>
+<td>Generic method. Returns the last data row of the DataStore. If no data row is found, returns null.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LastOrDefault2.html">LastOrDefault&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>TModel</td>
+<td>Generic method. Returns the last data row of the DataStore that meets the criteria specified by  <code>Predicate&lt;TModel&gt;</code>. If no data row is found, returns null.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Max1.html">Max&lt;TModel, TResult&gt;(Func&lt;TModel, TResult&gt; selector)</a></td>
+<td>TResult</td>
+<td>Invokes a transform function on each row of the primary buffer in the DataStore and returns the maximum result value.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Max2.html">Max&lt;Tmodel, TResult&gt;(Func&lt;Tmodel, TResult&gt; selector, Predicate&lt;Tmodel&gt; predicate)</a></td>
+<td>TResult</td>
+<td>Invokes a transform function on each row (that satisfies the condition specified by <code>Predicate&lt;TModel&gt;</code>) in the primary buffer of the DataStore and returns the maximum result value.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Min1.html">Min&lt;TModel, TResult&gt;(Func&lt;TModel, TResult&gt; selector)</a></td>
+<td>TResult</td>
+<td>Invokes a transform function on each row of the primary buffer in the DataStore and returns the minimum result value.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Min2.html">Min&lt;TModel, TResult&gt;(Func&lt;TModel, TResult&gt; selector, Predicate&lt;TModel&gt; predicate)</a></td>
+<td>TResult</td>
+<td>Invokes a transform function on each row (that satisfies the condition specified by <code>Predicate&lt;TModel&gt;</code>) in the primary buffer of the DataStore and returns the minimum result value.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/MoveNext.html">MoveNext()</a></td>
+<td>bool</td>
+<td>Advances the enumerator to the next row of the primary buffer in DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderBy.html">OrderBy&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</a></td>
+<td>IOrderable&lt;TModel&gt;</td>
+<td>Sorts the rows of the primary buffer in the DataStore in ascending order according to a key.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderByDescending.html">OrderByDescending&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</a></td>
+<td>IOrderable&lt;TModel&gt;</td>
+<td>Sorts the rows of the primary buffer in the DataStore in descending order according to a key.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Remove.html">Remove(TModel item)</a></td>
+<td>bool</td>
+<td>Removes the specified row from the primary buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RemoveAt.html">RemoveAt(int index)</a></td>
+<td>void</td>
+<td>Removes the row according to the specified index from the primary buffer of the DataStore. The index is the same as the zero-base row number.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ReselectRow.html">ReselectRow(int row)</a></td>
+<td>int</td>
+<td>Accesses the database to retrieve values for all columns that can be updated and refreshes all timestamp columns in a row in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Reset.html">Reset()</a></td>
+<td>void</td>
+<td>Clears all the data from the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ResetUpdate.html">ResetUpdate()</a></td>
+<td>bool</td>
+<td>Clears the update flags in the primary and filter buffers and empties the delete buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Retrieve.html">Retrieve(params object[] arguments)</a></td>
+<td>int</td>
+<td>Retrieves rows from the database. If arguments are included, the argument values are used for the retrieval arguments in the SQL SELECT statement for the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RetrieveEnd.html">RetrieveEnd(object sender, DwRetrieveEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called when the DataStore completes the data retrieval. It triggers the <code>OnRetrieveEnd</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RetrieveStart.html">RetrieveStart(object sender, DwRetrieveEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called before the DataStore starts the data retrieval. It triggers the <code>OnRetrieveStart</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowDeleted.html">RowDeleted(object sender, DwRowChangeEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called after a row in the DataStore has been deleted. It triggers the <code>OnRowDeleted</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowDeleting.html">RowDeleting(object sender, DwRowChangeEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called before a row in the DataStore is about to be deleted. It triggers the <code>OnRowDeleting</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowsCopy.html">RowsCopy(int startrow, int endrow, DwBuffer copybuffer, IDataStore targetdw, int beforerow, DwBuffer targetbuffer)</a></td>
+<td>bool</td>
+<td>Copies a range of rows from one DataStore to another, or from one buffer to another within a single DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowsDiscard.html">RowsDiscard(int startrow, int endrow, DwBuffer buffer)</a></td>
+<td>bool</td>
+<td>Discards a range of rows in the DataStore. Once a row has been discarded using <code>RowsDiscard</code>, you cannot restore the row unless you retrieve it again from the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowsMove.html">RowsMove(int startrow, int endrow, DwBuffer movebuffer, IDataStore targetdw, int beforerow, DwBuffer targetbuffer)</a></td>
+<td>bool</td>
+<td>Clears a range of rows from one DataStore and inserts them in another. Alternatively, <code>RowsMove</code> can move rows from one buffer to another within a single DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetDataContext.html">SetDataContext(DataContext context)</a></td>
+<td>bool</td>
+<td>Sets the data context.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetFilter.html">SetFilter(string format)</a></td>
+<td>bool</td>
+<td>Specifies the filter criteria for the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetItem1.html">SetItem(int row, short column, object value)</a></td>
+<td>bool</td>
+<td>Sets the value of a row and column (by column name) in the DataStore to the specified value.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetItem2.html">SetItem(int row, string column, object value)</a></td>
+<td>bool</td>
+<td>Sets the value of a row and column (by column number) in the DataStore to the specified value.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetItemStatus1.html">SetItemStatus(int row, short column, DwBuffer dwbuffer, PropertyState status)</a></td>
+<td>bool</td>
+<td>Sets the modification status in the column (by column number) for a row in the specified buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetItemStatus2.html">SetItemStatus(int row, string column, DwBuffer dwbuffer, PropertyState status)</a></td>
+<td>bool</td>
+<td>Sets the modification status in the column (by column name) for a row in the specified buffer in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetModel.html">SetModel&lt;TModel&gt;(int row, TModel model)</a></td>
+<td>void</td>
+<td>Sets the data for the specified row.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetSort.html">SetSort(string format)</a></td>
+<td>bool</td>
+<td>Specifies the sort criteria for the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetSqlSelect.html">SetSqlSelect(string statement, bool isValidation = true)</a></td>
+<td>bool</td>
+<td>Specifies the SQL SELECT statement for the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetValidate1.html">SetValidate(short column, string rule)</a></td>
+<td>bool</td>
+<td>Sets the validation rule for a column (specified by column number) in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetValidate2.html">SetValidate(string column, string rule)</a></td>
+<td>bool</td>
+<td>Sets the validation rule for a column (specified by column name) in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Sort.html">Sort(string format = null)</a></td>
+<td>bool</td>
+<td>Sorts the rows in the DataStore using the current sort criteria.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Sum1.html">Sum&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector)</a></td>
+<td>decimal</td>
+<td>Computes the sum of a sequence of <code>decimal</code> values that are obtained by invoking a transform function on each row of the primary buffer in DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Sum2.html">Sum&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector, Predicate&lt;TModel&gt; predicate)</a></td>
+<td>decimal</td>
+<td>Computes the sum of a sequence of System.Decimal values that are obtained by invoking a transform function on each row (filtered by a predicate) of the primary buffer in DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ToString.html">ToString()</a></td>
+<td>string</td>
+<td>Returns a string that represents the current object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Update.html">Update(bool resetflag = true)</a></td>
+<td>int</td>
+<td>Updates the database with the changes made in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/UpdateEnd.html">UpdateEnd(object sender, DwUpdateEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called after DataStore has finished updating the data. It triggers the <code>OnRetrieveEnd</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/UpdateStart.html">UpdateStart(object sender, DwUpdateEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called before the DataStore updates the data. It triggers the <code>OnRetrieveStart</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Validate1.html">Validate()</a></td>
+<td>bool</td>
+<td>Verifies the data using the data validation rules set in the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Validate2.html">Validate(out List&lt;ValidationResult&gt; ValidationResults)</a></td>
+<td>bool</td>
+<td>Verifies the data using the data validation rules set in the DataStore, and outputs the verification results.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>DataStore is used in almost exactly the same way as the PowerBuilder DataStore; and on top of that, DataStore also supports to use the advanced .NET development methods, such as LINQ set operations.  DataStore is very useful when you want to access the database and manipulate the data.</p>
+<p>You can use DataStore to do the following:<br>1. Access the data in the database.<br>2. Append, delete, modify or query the data and commit the change to the database conveniently.<br>3. Group or sort the data.<br>4. Manage the database transactions automatically or manually.<br>5. Check the data validity and integrity.<br>6. Track the data modification.<br>7. Used as the replacement for the migrated PowerBuilder DataStore.<br> <br>When DataStore is created, it must be associated with a DataWindow object.</p>
+<p>It uses the Retrieve method to obtain the data and place the data to the primary buffer. Parameters defined in the DataWindow can also be passed in to retrieve data.</p>
+<p>AddRow method can be used to append data to the DataStore.</p>
+<p>DeleteRow method can be used to remove data from the DataStore, however, data is not directly deleted from the DataStore, it is only moved to the delete buffer where you can still manipulate it later.</p>
+<p>SetSort method can be used to set the sorting criteria and Sort method to sort the data according to the predefined criteria.</p>
+<p>SetFilter method can be used to filter the data, and the data will be moved to the filter buffer.</p>
+<p>Update method can be used to finally commit the change to the database.<br></p>
+<p>DataStore also provides many events that will occur on data change; these events include OnRowDeleting, OnRowDeleted, OnRetrieveStart, OnRetrieveEnd, OnUpdateStart, and OnUpdateEnd.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ISqlExecutor &#25509;&#21475; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ISqlExecutor &#25509;&#21475; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../index.html">
+        	<img id="logo" src="../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="isqlexecutor-接口"><strong>ISqlExecutor 接口</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+</div>
+The `ISqlExecutor` interface represents a `SqlExecutor` object. SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供了更多常用数据库操作方法和参数兼容性，支持直接执行动态SQL语句、SQLBuilder对象、Model自动化查询等功能特性。
+<p>The <code>ISqlExecutor</code> interface represents a <code>SqlExecutor</code> object. SQLExecutor is a set of database manipulation interfaces that have encapsulated the core components of ADO.NET. It is a C# replacement for PowerBuilder's embedded SQL feature. Using SQLExecutor you can
+directly run dynamic SQL statements, perform SQLBuilder object functions, and do model queries.<br>
+SQLExecutor supports raw SQL as well as automatic SQL generation, supports lazy loading of data to prevent unnecessary performance bottlenecks, and can bind result-sets to POCO or dynamic models.</p>
+<p><strong>命名空间：</strong> Appeon.Data</p>
+<p><strong>程序集：</strong> Appeon.Data.dll</p>
+<h3 id="语法"><strong>语法</strong></h3>
+<pre><code class="lang-c#">  public interface ISqlExecutor;
+</code></pre>
+<h3 id="属性"><strong>属性</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DataContext.html">DataContext</a></td>
+<td>DataContext</td>
+<td>获取数据上下文。Gets the <code>DataContext</code> object.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法"><strong>方法</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Execute.html">Execute(string sqlText, params object[] parameters)</a></td>
+<td>int</td>
+<td>执行插入，更新，删除的Sql语句。Executes the SQL Statements like update, insert, delete etc.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExecuteProcedure.html">ExecuteProcedure(string sqlText, params object[] parameters)</a></td>
+<td>int</td>
+<td>执行存储过程。Executes a stored procedure.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Scalar1.html">Scalar&lt;TValue&gt;(string sqlText, params object[] parameters)</a></td>
+<td>TValue</td>
+<td>得到结果的第一行第一列数据。Executes the SQL Select statement and returns the first column of the first row in the result returned by the query.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Scalar2.html">Scalar&lt;TValue&gt;(ISqlQueryBuilder sqlQueryBuilder, params object[] parameters)</a></td>
+<td>TValue</td>
+<td>得到结果的第一行第一列数据。Executes the SQL Select statement and returns the first column of the first row in the result returned by the query.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Select1.html">Select&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td>IList&lt;TModel&gt;</td>
+<td>查询数据并返回IList&lt;TModel&gt;。Executes the SQL Select statement and returns an <code>IList&lt;TModel&gt;</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Select2.html">Select&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td>IList&lt;TModel&gt;</td>
+<td>查询数据并返回IList&lt;TModel&gt;。Executes the SQL Select statement and returns an <code>IList&lt;TModel&gt;</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectLazy1.html">SelectLazy&lt;TModel&gt;(params object[] parameters)</a></td>
+<td>IEnumerable&lt;TModel&gt;</td>
+<td>推迟数据查询并返回IEnumerable&lt;TModel&gt;。Executes the SQL Select statement and returns an <code>IEnumerable &lt;TModel&gt;</code> object that can be used to load the result set lazily.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectLazy2.html">SelectLazy&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td>IEnumerable&lt;TModel&gt;</td>
+<td>推迟数据查询并返回IEnumerable&lt;TModel&gt;。Executes the query lazily and returns an <code>IEnumerable &lt;TModel&gt;</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectOne2.html">SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td>TModel</td>
+<td>查询一条数据并返回TModel。Executes the SQL Select statement and returns a <code>TModel</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectOne3.html">SelectOne&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td>TModel</td>
+<td>查询一条数据并返回TModel。Executes the SQL Select statement and returns a <code>TModel</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectProcedure.html">SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td>IList&lt;TModel&gt;</td>
+<td>从存储过程中查询数据并IList&lt;TModel&gt;。Executes a SQL stored procedure and returns an <code>IList&lt;TModel&gt;</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectProcedureToStore.html">SelectProcedureToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td><a href="../../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
+<td>从存储过程中查询数据并返回IModelStore&lt;TModel&gt;。Executes a SQL stored procedure and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectToStore1.html">SelectToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td><a href="../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
+<td>查询数据并返回IModelStore&lt;TModel&gt;。Executes the SQL Select statement and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectToStore2.html">SelectToStore&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td><a href="../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
+<td>查询数据并返回IModelStore&lt;TModel&gt;。Executes the SQL Select statement and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="备注"><strong>备注</strong></h3>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>待定。</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DataStore.ImportJsonByKey(string json, DwBuffer dwuffer, int startRow) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DataStore.ImportJsonByKey(string json, DwBuffer dwuffer, int startRow) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="datastoreimportjsonbykeystring-json-dwbuffer-dwuffer-int-startrow-method"><strong>DataStore.ImportJsonByKey(string json, DwBuffer dwuffer, int startRow) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>根据Json密钥名称将数据从指定缓冲区的Json字符串插入DataStore中指定的起始行。</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public int ImportJsonByKey(string json, DwBuffer dwbuffer, int startRow);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>json</code>	System.String</p>
+<p>待定。</p>
+<p><code>dwbuffer</code>	<a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
+<p>待定。</p>
+<p><code>startRow</code>	System.Int32</p>
+<p>待定。</p>
+<p><strong>Returns</strong></p>
+<p>System.Int32</p>
+<p>待定。</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>字符串和数字之间没有强制转换。例如，JSON字符串中的数字123将不会导入到char（10）类型的DataStore列中。对于这种情况，数据类型不匹配警告将记录在错误参数中。从JSON字符串导入DataStore时，布尔值（true或false）将转换为0或1;但是，从DataStore导出到JSON字符串时，0或1不会转换为布尔值（true或false）。如果JSON中的字符串长度大于DataStore中的字符串长度，则在导入DataStore时将截断该字符串。例如，当DataStore列“name”的数据类型为char（4）时，JSON字符串[{“name”：“TestForTrancate”}]将作为“Test”导入。当数值从JSON字符串导入到数字数据类型的DataStore列（具有不确定的精度）时，该值将具有不确定的小数，例如，从JSON字符串导入到DataStore后，6.78变为6.78000020980835。</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

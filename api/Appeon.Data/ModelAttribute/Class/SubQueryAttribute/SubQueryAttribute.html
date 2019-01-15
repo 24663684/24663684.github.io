@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SubQueryAttribute Class </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SubQueryAttribute Class ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="subqueryattribute-class"><strong>SubQueryAttribute Class</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>Defines a subquery in the model class.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="inheritance-constructor"><strong>Inheritance Constructor</strong></h3>
+<p>System.Attribute</p>
+<p><a href="../../ISubQuery/ISubQuery.html">Appeon.Data.ISubQuery</a></p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
+   public class SubQueryAttribute : Attribute, ISubQuery
+</code></pre>
+<h3 id="constructors"><strong>Constructors</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SubQueryAttribute1.html">SubQueryAttribute(string name, string rawSql)</a></td>
+<td>Initializes a new instance of the <code>SubQueryAttribute</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SubQueryAttribute2.html">SubQueryAttribute(string name, Type modelType)</a></td>
+<td>Initializes a new instance of the <code>SubQueryAttribute</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SubQueryAttribute3.html">SubQueryAttribute(string name, Type modelType, string selectName)</a></td>
+<td>Initializes a new instance of the <code>SubQueryAttribute</code> class.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties"><strong>Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/IsRawSql.html">IsRawSql</a></td>
+<td>bool</td>
+<td>Gets whether a raw SQL has been specified for the subquery.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/ModelType.html">ModelType</a></td>
+<td>Type</td>
+<td>Gets the type of the model that is specified for the subquery.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Name.html">Name</a></td>
+<td>string</td>
+<td>Gets the name of the subquery.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/RawSql.html">RawSql</a></td>
+<td>string</td>
+<td>Gets the raw SQL that is specified for the subquery.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/SelectName.html">SelectName</a></td>
+<td>string</td>
+<td>Gets the Select Name (<code>SqlSelectAttribute.SelectName</code>) that is predefined in the model type.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The subquery can be referenced by its name in the SQL expression parameter for the other attributes in the model class. The format to make reference: <code>$SubQuery(Name)</code>.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>The following code example demonstrates how to use constructor: SubQuery (name, rawSql) to apply the SubQuery attribute to the DepartmentSubQuery class. It defines a SubQuery named &quot;departmentIds&quot; by a string of raw SQL, and references it in the constructor of the SqlWhere attribute.</p>
+<h5 id="model-departmentsubquery">Model: DepartmentSubQuery</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.ApiDoc.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [SubQuery(&quot;departmentIds&quot;, rawSql: @&quot;select DepartmentID from Course&quot;)]
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlWhere(&quot;DepartmentID in $SubQuery(departmentIds)&quot;)]
+    public class DepartmentSubQuery
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.ApiDoc.Models.School;
+using System;
+
+namespace Appeon.ApiDoc.SubQueryAttributeExamples
+{
+    public class SubQueryAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SubQueryAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Gets the SQL statement. 
+            string sql = ModelSqlBuilder.GetBuilder&lt;DepartmentSubQuery&gt;(_context).QuerySql;
+
+            Console.WriteLine(&quot;SQL statement:&quot;);
+            Console.WriteLine(sql);
+
+            // Executes the SQL statement.
+            var departments = _context.SqlExecutor.Select&lt;DepartmentSubQuery&gt;(sql);
+
+            /* This code example produces the following output:
+            
+            SQL statement:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([DepartmentID] IN (SELECT
+             [DepartmentID]
+            FROM [Course]))
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>The following code example demonstrates how to use constructor: SubQuery (name, modelType) to apply the SubQuery attribute to the DepartmentSubQuery2 class. It defines a SubQuery named &quot;departmentIds&quot; by another model class, and references it in the constructor of the SqlWhere attribute.</p>
+<h5 id="model-departmentsubquery2">Model: DepartmentSubQuery2</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.ApiDoc.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [SubQuery(&quot;departmentIds&quot;, typeof(CourseSubQuery2))]
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlWhere(&quot;DepartmentID in $SubQuery(departmentIds)&quot;)]
+    public class DepartmentSubQuery2
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="model-coursesubquery2">Model: CourseSubQuery2</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Appeon.ApiDoc.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Course table. 
+    /// &lt;/summary&gt;
+    [Table(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    public class CourseSubQuery2
+    {
+        public Int32 DepartmentID { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Gets the SQL statement. 
+            string sql = ModelSqlBuilder.GetBuilder&lt;DepartmentSubQuery2&gt;(_context).QuerySql;
+
+            Console.WriteLine(&quot;SQL statement:&quot;);
+            Console.WriteLine(sql);
+
+            // Executes the SQL statement.
+            var departments = _context.SqlExecutor.Select&lt;DepartmentSubQuery2&gt;(sql);
+
+            /* This code example produces the following output:
+            
+            SQL statement:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([DepartmentID] IN (SELECT
+             [DepartmentID]
+            FROM [dbo].[Course]))
+            */
+        }
+</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>The following code example demonstrates how to use constructor: SubQuery (name, modelType, selectName) to apply the SubQuery attribute to the DepartmentSubQuery3 class. It defines a subquery named &quot;departmentIds&quot; by another model class and specifies the select list by the selectName parameter, then references the subquery in the constructor of the SqlWhere attribute.</p>
+<h5 id="model-departmentsubquery3">Model: DepartmentSubQuery3</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Appeon.ApiDoc.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// &lt;/summary&gt;
+    [SubQuery(&quot;departmentIds&quot;, typeof(CourseSubquery3), &quot;DepartmentIDs&quot;)]
+    [FromTable(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [SqlWhere(&quot;DepartmentID in $SubQuery(departmentIds)&quot;)]
+    public class DepartmentSubQuery3
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example3">Example Method: Example3</h5>
+<pre><code class="lang-C#">        public void Example3()
+        {
+            // Gets the SQL statement. 
+            string sql = ModelSqlBuilder.GetBuilder&lt;DepartmentSubQuery3&gt;(_context).QuerySql;
+
+            Console.WriteLine(&quot;SQL statement:&quot;);
+            Console.WriteLine(sql);
+
+            // Executes the SQL statement.
+            var departments = _context.SqlExecutor.Select&lt;DepartmentSubQuery3&gt;(sql);
+
+            /* This code example produces the following output:
+            
+            SQL statement:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([DepartmentID] IN (SELECT
+             [DepartmentID]
+            FROM [dbo].[Course]))
+            */
+        }
+</code></pre>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

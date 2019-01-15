@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JoinTableAttribute Class </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="JoinTableAttribute Class ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="jointableattribute-class"><strong>JoinTableAttribute Class</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>Sets the joined table to be used in a model class. Multiple <code>JoinTable</code> attributes can be applied to one model class.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="inherited-constructor"><strong>Inherited Constructor</strong></h3>
+<p>System.ComponentModel.DataAnnotations.Schema.TableAttribute</p>
+<p><a href="../../../IJoinTable/IJoinTable.html">Appeon.Data.IJoinTable</a></p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
+   public class JoinTableAttribute : TableAttribute, IJoinTable
+</code></pre>
+<h3 id="constructors"><strong>Constructors</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/JoinTableAttribute1.html">JoinTableAttribute(string name)</a></td>
+<td>Initializes a new instance of the <code>JoinTableAttribute</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/JoinTableAttribute2.html">JoinTableAttribute(string alias, string name)</a></td>
+<td>Initializes a new instance of the <code>JoinTableAttribute</code> class.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties"><strong>Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Alias.html">Alias</a></td>
+<td>string</td>
+<td>Gets the alias of the joined table.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/AliasDefined.html">AliasDefined</a></td>
+<td>bool</td>
+<td>Gets whether the joined table has an alias or not.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/JoinType.html">JoinType</a></td>
+<td><a href="../../../SqlJoinType/SqlJoinType.html">SqlJoinType</a></td>
+<td>Gets or sets the type of join operation to be used in the FROM clause.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Propety/Name.html">Name</a></td>
+<td>String</td>
+<td>Gets the name of the table to join.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Schema.html">Schema</a></td>
+<td>String</td>
+<td>Gets or sets the schema of the table to join.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/OnRaw.html">OnRaw</a></td>
+<td>string</td>
+<td>Gets or sets the raw SQL condition from which the join is based.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The <code>JoinTable</code> attribute is equivalent to applying the join type (INNER JOIN, FULL OUTER JOIN, LEFT OUTER JOIN, RIGHT OUTER JOIN etc.) of the SQL Select statement to the model so as to define the joining relationship between tables.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>The following code example demonstrates how to use the constructor: JoinTable (name, Propreties: Schema, JoinType, OnRaw) to apply the JoinTable attribute to CourseJoinTable class. It uses LEFT JOIN to join Course table with StudentGrade table, and specifies the raw SQL search condition &quot;Course.CourseID = StudentGrade.CourseID&quot; on which the join is based.</p>
+<h5 id="model-coursejointable">Model: CourseJoinTable</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Course and dbo.StudentGrade tables.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [JoinTable(&quot;StudentGrade&quot;, Schema = &quot;dbo&quot;, JoinType =SqlJoinType.Left,
+        OnRaw = &quot;Course.CourseID = StudentGrade.CourseID&quot;)]
+    public class CourseJoinTable
+    {
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        [SqlColumn(&quot;StudentGrade&quot;, column: &quot;Grade&quot;)]
+        public Decimal? Grade { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example1">Example Method: Example1</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.ApiDoc.Models.School;
+using System;
+
+namespace Appeon.ApiDoc.JoinTableAttributeExamples
+{
+    public class JoinTableAttributeExample
+    {
+        private SchoolContext _context;
+
+        public JoinTableAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Gets the SQL statement.
+            string sql = ModelSqlBuilder.
+                GetBuilder&lt;CourseJoinTable&gt;(_context).QuerySql;
+
+            Console.WriteLine(&quot;SQL statement:&quot;);
+            Console.WriteLine(sql);
+
+            // Executes the SQL by a SqlExecutor object. 
+            var resultSet = _context.SqlExecutor.Select&lt;CourseJoinTable&gt;(sql);
+
+            /* This code example produces the following output:
+            
+            SQL statement:
+            SELECT
+             [dbo].[Course].[CourseID],
+            [dbo].[Course].[Title],
+            [StudentGrade].[Grade]
+            FROM [dbo].[Course]
+            LEFT JOIN [dbo].[StudentGrade]
+            ON [Course].[CourseID] = [StudentGrade].[CourseID]
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>The following code example demonstrates how to use the constructor: JoinTable (alias, name, Propreties: Schema, JoinType, OnRaw) to apply the JoinTable attribute to CourseJoinTable2 class. It specifies an alias for the StudentGrade table.</p>
+<h5 id="model-coursejointable2">Model: CourseJoinTable2</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Course and dbo.StudentGrade tables.
+    /// &lt;/summary&gt;
+    [FromTable(&quot;Course&quot;, Schema = &quot;dbo&quot;)]
+    [JoinTable(&quot;s&quot;, &quot;StudentGrade&quot;, Schema = &quot;dbo&quot;, JoinType = SqlJoinType.Left,
+        OnRaw = &quot;Course.CourseID = s.CourseID&quot;)]
+    public class CourseJoinTable2
+    {
+        public Int32 CourseID { get; set; }
+
+        public String Title { get; set; }
+
+        [SqlColumn(&quot;s&quot;, column: &quot;Grade&quot;)]
+        public Decimal? Grade { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method-example2">Example Method: Example2</h5>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Gets the SQL statement.
+            string sql = ModelSqlBuilder.GetBuilder&lt;CourseJoinTable2&gt;(_context).QuerySql;
+
+            Console.WriteLine(&quot;SQL statement:&quot;);
+            Console.WriteLine(sql);
+
+            // Executes the SQL by a SqlExecutor object. 
+            var resultSet = _context.SqlExecutor.Select&lt;CourseJoinTable2&gt;(sql);
+
+            /* This code example produces the following output:
+            
+            SQL statement:
+            SELECT
+             [dbo].[Course].[CourseID],
+            [dbo].[Course].[Title],
+            [s].[Grade]
+            FROM [dbo].[Course]
+            LEFT JOIN [dbo].[StudentGrade] AS [s]
+            ON [Course].[CourseID] = [s].[CourseID]
+            */
+        }
+</code></pre>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

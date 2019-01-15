@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IModelStore&lt;TModel&gt;.FindAll(Predicate&lt;TModel&gt; match); Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IModelStore&lt;TModel&gt;.FindAll(Predicate&lt;TModel&gt; match); Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="imodelstoretmodelfindallpredicatetmodel-match-method"><strong>IModelStore&lt;TModel&gt;.FindAll(Predicate&lt;TModel&gt; match); Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>查找ModelStore中符合指定谓词的条件的所有model objects, 返回一个由这些找到的model objects创建的新的ModelStore。</p>
+<p>Finds the all model objects in the ModelStore which matches the conditions defined by the specified predicate and returns a new ModelStore created by the model objects found.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public IModelStore&lt;TModel&gt; FindAll(Predicate&lt;TModel&gt; match);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>match</code>	System.Predicate&lt;TModel&gt;</p>
+<p>A <code>Predicate&lt;TModel&gt;</code> object which specifies the conditions.</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../IModelStore/IModelStore.html">Appeon.Data.IModelStore&lt;TModel&gt;</a></p>
+<p>If the current ModelStore is being tracked, returns a new ModelStore created by the clones of the model objects found;</p>
+<p>Otherwise, returns a new ModelStore created by the model objects found directly.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>按指定条件，查找Model中满足条件的记录。</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.ApiDoc.Models.School;
+using System;
+
+namespace Appeon.ApiDoc.IModelStoreExamples
+{
+    public class FindAllExample
+    {
+        private readonly SchoolContext _context;
+
+        public FindAllExample(SchoolContext dataContext)
+        {
+            // Set data context
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+
+            //检索出Department中的数据
+            dept.Retrieve(_context);
+
+            //在Model中查找全部DepartmentID = 10的记录
+            var findResult = dept.FindAll(m =&gt; m.DepartmentID == 10);
+
+            //如未查找到符合的记录，则findResult.Count = 0
+            Console.WriteLine(&quot;Find Count = {0}&quot;, findResult.Count);
+
+            /* This code example produces the following output:
+            
+            Find Count = 1
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.Net Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

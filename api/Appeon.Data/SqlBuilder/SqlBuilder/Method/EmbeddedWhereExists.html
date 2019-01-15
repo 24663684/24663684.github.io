@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SqlBuilder.EmbeddedWhereExists(ISqlBuilder sqlBuilder) &#26041;&#27861; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SqlBuilder.EmbeddedWhereExists(ISqlBuilder sqlBuilder) &#26041;&#27861; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="sqlbuilderembeddedwhereexistsisqlbuilder-sqlbuilder-方法"><strong>SqlBuilder.EmbeddedWhereExists(ISqlBuilder sqlBuilder) 方法</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>创建一个<code>ISqlWhereCondition</code>对象, 表示在构造WHERE子句时可以使用的(括在括号中的)搜索条件，使用EXISTS带一个子查询的来测试子查询返回的行是否存在。</p>
+<p>Creates an <code>ISqlWhereCondition</code> object which represents a search condition (enclosed in parentheses) can be used when building the WHERE clause, uses EXISTS with a subquery to test for the existence of rows returned by the subquery.</p>
+<p><strong>命名空间：</strong> Appeon.Data</p>
+<p><strong>程序集：</strong> Appeon.Data.dll</p>
+<h3 id="语法"><strong>语法</strong></h3>
+<pre><code class="lang-c#"> public static ISqlWhereCondition EmbeddedWhereExists(ISqlBuilder sqlBuilder);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>sqlBuilder</code> <a href="../../ISqlBuilder/ISqlBuilder.html">Appeon.Data.ISqlBuilder</a></p>
+<p>A <code>ISqlBuilder</code> object which represents a SQL subquery on the right of the EXISTS operator..</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../ISqlWhereCondition/ISqlWhereCondition.html">Appeon.Data.ISqlWhereCondition</a></p>
+<p>Returns the <code>ISqlWhereCondition</code> object which can be used to add more search conditions for the WHERE clause.</p>
+<h3 id="备注"><strong>备注</strong></h3>
+<p>The new created search condition is enclosed in parentheses. If uses the returned <code>ISqlWhereCondition</code> object to add another search condition, both of these search conditions will be enclosed in the same pair of parentheses.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>判断当前表中数据是否存在子查询返回的数据中，并将查询结果返回Model中</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.SqlBuilderExamples
+{
+    public class EmbeddedWhereExistsExample
+    {
+        private SchoolContext _context;
+
+        public EmbeddedWhereExistsExample(SchoolContext dataContext)
+        {
+            // Set Data Context
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var sqlquerybuilder = new SqlQueryBuilder();
+
+            // 定义子查询
+            var subsqlbuilder = new SqlQueryBuilder();
+            subsqlbuilder.Select(&quot;1&quot;)
+                .From(&quot;Department&quot;)
+                .Where(&quot;departmentid&quot;, &quot;c.departmentid&quot;);
+
+            // 定义EmbeddedWhereExists查询
+            var where = SqlBuilder.EmbeddedWhereExists(subsqlbuilder);
+
+            // 创建sql语法, 并转换成context对应数据库的可执行语句
+            var query = sqlquerybuilder
+                .Select(&quot;*&quot;)
+                .From(&quot;Course&quot;, &quot;c&quot;)
+                .Where(where);
+
+            // 转换成context对应数据库的可执行语句
+            string sql = query.ToSqlString(_context);
+
+            Console.WriteLine(sql);
+            
+            /*This code example produces the following output:   
+             
+            SELECT
+            *
+            FROM [Course] AS [c]
+            WHERE ( EXISTS (SELECT
+            1
+            FROM [Department]
+            WHERE ([departmentid] = [c].[departmentid])))
+            */
+        }
+    }
+}
+</code></pre>
+<h3 id="版本信息"><strong>版本信息</strong></h3>
+<p>.Net Standard</p>
+<p>自2.x起可用</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

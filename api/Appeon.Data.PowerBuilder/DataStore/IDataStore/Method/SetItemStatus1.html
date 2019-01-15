@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore.SetItemStatus(int row ,short column, DwBuffer dwbuffer, PropertyState status) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore.SetItemStatus(int row ,short column, DwBuffer dwbuffer, PropertyState status) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastoresetitemstatusint-row-short-column-dwbuffer-dwbuffer-propertystate-status-method"><strong>IDataStore.SetItemStatus(int row ,short column, DwBuffer dwbuffer, PropertyState status) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>Sets the modification status in the column (by the column number) for a row in the specified buffer of the DataStore. The column modification status along with row modification status determines the type of SQL statement the Update method will generate for the row.</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public bool SetItemStatus(int row, short column, DwBuffer dwbuffer, PropertyState status);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>row</code>	 System.Int32</p>
+<p>The zero-based number of the row in which you want to set the status.</p>
+<p><code>column</code>	System.Int16</p>
+<p>The zero-based number of the column in which you want to set the status.</p>
+<p><code>dwbuffer</code>	 <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
+<p>A value identifying the DataStore buffer that contains the row.</p>
+<p><code>status</code>	 <a href="../../../CoreService.Data/PropertyState/PropertyState.html">Appeon.Data.PropertyState</a></p>
+<p>A value of the <code>PropertyState</code> enumerated datatype specifying the new status.</p>
+<p><strong>Returns</strong></p>
+<p>System.Boolean</p>
+<p>Returns <code>true</code> if it succeeds.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p><strong>When data is retrieved</strong></p>
+<p>When data is retrieved into a DataStore, all columns initially have a status of <code>PropertyState.NotModified</code>. After data has changed in a column in a particular row, such as through the <code>SetItem</code> method, the status for that changes to <code>PropertyState.Modified</code>. Once the status for any column in a retrieved row changes to <code>PropertyState.Modified</code>, the row status also changes to <code>ModelState.Modified</code>.</p>
+<p><strong>When rows are inserted</strong></p>
+<p>When a row is inserted into a DataStore, it initially has a row status of <code>ModelState.New</code>, and all columns in that row initially have a status of <code>PropertyState.NotModified</code>. After data has changed in a column in the row, such as through the <code>SetItem</code> method, the column status changes to <code>PropertyState.Modified</code>. Once the status for any column in the inserted row changes to <code>PropertyState.Modified</code>, the row status changes to <code>ModelState.NewModified</code>.</p>
+<p>When a DataStore column has a default value, the column status does not change to <code>PropertyState.Modified</code> until the user makes at least one actual change to a column in that row.</p>
+<p><strong>When Update is called</strong></p>
+<p>A row's status flag determines what SQL command the <code>Update</code> method uses to update the database. INSERT or UPDATE is called, depending upon the following row statuses:</p>
+<table>
+<thead>
+<tr>
+<th>Row status</th>
+<th>SQL statement generated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ModelState.NewModified</code></td>
+<td>INSERT</td>
+</tr>
+<tr>
+<td><code>ModelState.Modified</code></td>
+<td>UPDATE</td>
+</tr>
+</tbody>
+</table>
+<p>A column is included in an UPDATE statement only if the following two conditions are met:</p>
+<ul>
+<li><p>The column is on the updatable column list maintained by the DataStore object.</p>
+</li>
+<li><p>The column has a status of <code>PropertyState.Modified</code>.</p>
+<p>The DataStore includes all columns in INSERT statements it generates.</p>
+</li>
+</ul>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>The following code example uses SetItem to modify the status for column 2 in row 1.</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataStoreExamples
+{
+    public class SetItemStatusExample
+    {
+        private SchoolContext _context;
+
+        public SetItemStatusExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Instantiates datastore with datawindow: d_department
+            var datastore = new DataStore(&quot;d_department&quot;, _context);
+
+            // Retrieves rows from the database for datastore
+            datastore.Retrieve();
+
+            Console.WriteLine(&quot;After Retrieve, Rowcount: {0}&quot;, 
+                              datastore.RowCount);
+
+            // Sets the value for column 2 in row 1 to &quot;Chinese&quot;
+            datastore.SetItem(0, 1, &quot;Chinese&quot;, DwBuffer.Primary);
+
+            Console.WriteLine(&quot;Gets the original status of name: {0}&quot;, 
+                               datastore.GetItemStatus(0, 1, DwBuffer.Primary));
+
+            Console.WriteLine(&quot;Before SetItemStatus, Modifiedcount: {0}&quot;, 
+                               datastore.ModifiedCount);
+
+            // Sets the status for column 2 in row 1 to NotModified
+            datastore.SetItemStatus(0, 1, DwBuffer.Primary, 
+                                    PropertyState.NotModified);
+
+            Console.WriteLine(&quot;Gets the modified status of name: {0}&quot;, 
+                               datastore.GetItemStatus(0, 1, DwBuffer.Primary));
+
+            Console.WriteLine(&quot;After SetItemStatus, Modifiedcount: {0}&quot;,
+                               datastore.ModifiedCount);
+
+            /*This code produces the following output:
+            
+            After Retrieve, Rowcount: 4
+            Gets the original status of name: Modified
+            Before SetItemStatus, Modifiedcount: 1
+            Gets the modified status of name: NotModified
+            After SetItemStatus, Modifiedcount: 0
+            */
+        }
+    }
+}
+</code></pre>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

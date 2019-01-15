@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SqlParameterAttribute Class </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SqlParameterAttribute Class ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="sqlparameterattribute-class"><strong>SqlParameterAttribute Class</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>Defines a parameter with name and type in the model class.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="inheritance-constructor"><strong>Inheritance Constructor</strong></h3>
+<p>System.Attribute</p>
+<p><a href="../../../ISqlParameter/ISqlParameter.html">Appeon.Data.ISqlParameter</a></p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
+   public class SqlParameterAttribute : Attribute, ISqlParameter
+</code></pre>
+<h3 id="constructors"><strong>Constructors</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SqlParameterAttribute.html">SqlParameterAttribute(string name, Type dataType)</a></td>
+<td>Initializes a new instance of the <code>SqlParameterAttribute</code> class.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties"><strong>Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DataType.html">DataType</a></td>
+<td>Type</td>
+<td>Gets the data type of the parameter.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Direction.html">Direction</a></td>
+<td>System.Data.ParameterDirection</td>
+<td>Gets the direction type of the parameter.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Name.html">Name</a></td>
+<td>string</td>
+<td>Gets the name of the parameter.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The parameter can be referenced by its name in the SQL expression parameter for the other attributes in the model class. The format to make reference: <code>@paramName</code>.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>The following code example demonstrates how to use the SqlParameter attribute. It applies the SqlParameter attribute named &quot;nameArgument&quot; to the DepartmentByName class. Then you can use &quot;@nameArgument&quot; in any raw SQL expression parameter for the other attributes applied to the DepartmentByName class.</p>
+<h5 id="model-departmentbyname">Model: DepartmentByName</h5>
+<pre><code class="lang-C#">using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Appeon.Data;
+
+namespace Appeon.ApiDoc.Models.School
+{
+    /// &lt;summary&gt;
+    /// This model class maps to the dbo.Department table.
+    /// It uses the primary key to generate the Where clause for the Update operation.
+    /// The SqlParameter attribute defines an argument: nameArgument.
+    /// The SqlWhere attribute adds a Where clause using the titleArgument argument.
+    /// 
+    /// DepartmentID is the primary key.
+    /// &lt;/summary&gt;
+    [SqlParameter(&quot;nameArgument&quot;, typeof(string))]
+    [Table(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
+    [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
+    [SqlWhere(&quot;Name = :nameArgument&quot;)]
+    public class DepartmentByName
+    {
+        [Key]
+        public Int32 DepartmentID { get; set; }
+
+        public String Name { get; set; }
+
+        public Decimal Budget { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public Int32? Administrator { get; set; }
+
+    }
+}
+</code></pre>
+<h5 id="example-method">Example Method:</h5>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.ApiDoc.Models.School;
+using System;
+
+namespace Appeon.ApiDoc.SqlParameterAttributeExamples
+{
+    public class SqlParameterAttributeExample
+    {
+        private SchoolContext _context;
+
+        public SqlParameterAttributeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            // Gets the SQL statement.
+            string sql =ModelSqlBuilder.GetBuilder&lt;DepartmentByName&gt;(_context).QuerySql;
+
+            Console.WriteLine(&quot;SQL statement:&quot;);
+            Console.WriteLine(sql);
+
+            // Executes the SQL statement to query the English department.
+            var department = _context.SqlExecutor.Select&lt;DepartmentByName&gt;(sql, &quot;English&quot;);
+
+            /* This code example produces the following output:
+            
+            SQL statement:
+            SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator]
+            FROM [dbo].[Department]
+            WHERE ([Name] = @nameArgument)
+            */
+
+            /* Internally generated T-SQL:
+            
+            exec sp_executesql N'SELECT
+             [DepartmentID],
+            [Name],
+            [Budget],
+            [StartDate],
+            [Administrator] 
+            FROM [dbo].[Department] 
+            WHERE ([Name] = @nameArgument)',N'@nameArgument nvarchar(4000)',@nameArgument=N'English'
+            */
+        }
+    }
+}
+</code></pre>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

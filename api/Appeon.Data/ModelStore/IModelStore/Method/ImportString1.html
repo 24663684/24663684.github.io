@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IModelStore&lt;TModel&gt;.ImportString(string value) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IModelStore&lt;TModel&gt;.ImportString(string value) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="imodelstoretmodelimportstringstring-value-method"><strong>IModelStore&lt;TModel&gt;.ImportString(string value) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>将来自一个字符串中按tab分割的数据插入ModelStore。</p>
+<p>Inserts the tab-separated data from a string into the DataStore.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public int ImportString(string value);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>value</code>	System.String</p>
+<p>A string from which you want to copy the data. The string should contain tab-separated columns.</p>
+<p><strong>Returns</strong></p>
+<p>System.Int32</p>
+<p>Returns the number of model objects that were imported if it succeeds.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The string must be formatted in tab-separated. Each line must end with a carriage return and a newline character (<sub>r</sub>n). If the string has four tab-separated columns, one line might look like for a tab-separated string:</p>
+<pre><code>col1_data\t col2_data\t col3_data\t col4_data\r\n
+</code></pre>
+<p>The string should consist of rows of data. If the data includes column headings or row labels, set the <code>startRow</code> and  <code>startColumn</code> arguments to skip them. The datatype and order of the properties of the model object in ModelStore must match with the columns of data in the string.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>The following code example demonstrates how to import the department records from a string to ModelStore.</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.IModelStoreExamples
+{
+    public class ImportStringExample
+    {
+        private SchoolContext _context;
+
+        public ImportStringExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+
+            // Creates ModelStore
+            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+
+            string importString = GetImportString1();
+
+            // Imports the string to ModelStore
+            department.ImportString(importString);
+
+            Console.WriteLine(&quot;Rowcount: {0}&quot;, department.Count);
+
+            for (int row = 0, rowcount = department.Count; row &lt; rowcount; row++)
+            {
+                Console.WriteLine(&quot;DepartmentID: {0}; Name: {1}; Budget: {2}&quot;,
+                                  department.GetValue&lt;int&gt;(row, &quot;DepartmentID&quot;),
+                                  department.GetValue&lt;string&gt;(row, &quot;Name&quot;),
+                                  department.GetValue&lt;decimal&gt;(row, &quot;Budget&quot;));
+            }
+
+            /* This code produces the following output:
+
+            DepartmentID: 1; Name: Engineering; Budget: 350000.0000
+            DepartmentID: 2; Name: English; Budget: 120000.0000
+            DepartmentID: 4; Name: Economics; Budget: 200000.0000
+           */
+        }
+
+        // Creates the string to be imported for Example1
+        private string GetImportString1()
+        {
+            // The string to be imported
+            return &quot;1\tEngineering\t350000.0000\t9/1/2007 12:00:00 AM\t2\r\n&quot; +
+                   &quot;2\tEnglish\t120000.0000\t9/1/2007 12:00:00 AM\t6\r\n&quot; +
+                   &quot;4\tEconomics\t200000.0000\t9/1/2007 12:00:00 AM\t4&quot;;
+
+            /*This code produces the following output:
+             
+            &quot;Departmentid&quot;  &quot;Name&quot;  &quot;Budget&quot;        &quot;Startdate&quot;     &quot;Administrator&quot;
+            1       &quot;Engineering&quot;   350000.0000     9 / 1 / 2007 12:00:00 AM    2
+            2       &quot;English&quot;       120000.0000     9 / 1 / 2007 12:00:00 AM    6
+            4       &quot;Economics&quot;     200000.0000     9 / 1 / 2007 12:00:00 AM    4
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

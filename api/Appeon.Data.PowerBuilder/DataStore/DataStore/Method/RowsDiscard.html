@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DataStore.RowsDiscard(int startrow, int endrow, DwBuffer buffer) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DataStore.RowsDiscard(int startrow, int endrow, DwBuffer buffer) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="datastorerowsdiscardint-startrow-int-endrow-dwbuffer-buffer-method"><strong>DataStore.RowsDiscard(int startrow, int endrow, DwBuffer buffer) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>丢弃一系列行。除非从数据库中检索，否则无法还原行。</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public bool RowsDiscard(int startrow, int endrow, DwBuffer buffer);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>startrow</code>	System.Int32</p>
+<p>待定。</p>
+<p><code>endrow</code>	System.Int32</p>
+<p>待定。</p>
+<p><code>buffer</code>	 <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
+<p>待定。</p>
+<p><strong>Returns</strong></p>
+<p>System.Boolean</p>
+<p>待定。</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>当您的应用程序完成DataStore中的某些行并且您不希望更新影响数据库中的行时，请使用RowsDiscard。例如，您可以丢弃删除缓冲区中的行，这可以防止在调用Update时删除行。 使用“重置”清除DataStore控件中的所有行。 仅当更改当前行的行号时，RowsDiscard Method才会触发RowFocusChanging和RowFocusChanged Event。当前行只是一个数字，表示哪一行是当前行。如果当前行的编号保持不变，则行内容的更改不会触发Event。 假设您有一个包含两行的DataStore。如果当前行是第1行而RowsDiscard丢弃第1行，则第2行成为当前行，但其行号也从2更改为1.由于当前行号仍为第1行，因此不会触发Event。如果当前行是第2行，RowsDiscard丢弃第1行，因为当前行号已从第2行更改为第1行，因此会触发Event。</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>
