@@ -8,7 +8,7 @@
     <title>Controller: ModelEmbeddedAttributeExampleController.cs </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Controller: ModelEmbeddedAttributeExampleController.cs ">
-    <meta name="generator" content="docfx 2.40.2.0">
+    <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
     <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="controller-modelembeddedattributeexamplecontrollercs">Controller: ModelEmbeddedAttributeExampleController.cs</h2>
 
-<pre><code class="lang-C#">using Appeon.CoreService.Data;
-using Appeon.Examples.Models.School;
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.ApiDoc.Models.School;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-namespace Appeon.Examples.Controllers.Attribute
+namespace Appeon.ApiDoc.Attribute
 {
     [Route(&quot;examples/IDetailTrack/TrackDetail/[action]&quot;)]
     public class ModelEmbeddedAttributeExampleController : Controller
@@ -98,7 +98,7 @@ namespace Appeon.Examples.Controllers.Attribute
                                 .FirstOrDefault();
 
             // Saves data.
-            var example = new ModelAttribute.ModelEmbeddedAttributeExample(_dataContext);
+            var example = new ModelAttributeExamples.ModelEmbeddedAttributeExample(_dataContext);
             example.Example(course, onlineCourses);
 
             return &quot;SUCCESS&quot;;

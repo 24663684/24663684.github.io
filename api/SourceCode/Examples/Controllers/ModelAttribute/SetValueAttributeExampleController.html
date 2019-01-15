@@ -8,7 +8,7 @@
     <title>Controller: SetValueAttributeExampleController.cs </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Controller: SetValueAttributeExampleController.cs ">
-    <meta name="generator" content="docfx 2.40.2.0">
+    <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
     <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="controller-setvalueattributeexamplecontrollercs">Controller: SetValueAttributeExampleController.cs</h2>
 
-<pre><code class="lang-C#">using Appeon.CoreService.Data;
-using Appeon.Examples.Models.School;
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.ApiDoc.Models.School;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-namespace Appeon.Examples.Controllers.Attribute
+namespace Appeon.ApiDoc.Attribute
 {
     [Route(&quot;examples/IDetailTrack/TrackDetail/[action]&quot;)]
     public class SetValueAttributeExampleController : Controller
@@ -100,7 +100,7 @@ namespace Appeon.Examples.Controllers.Attribute
                                 .FirstOrDefault();
 
             // Saves data.
-            var example = new ModelAttribute.SetValueAttributeExample(_dataContext);
+            var example = new ModelAttributeExamples.SetValueAttributeExample(_dataContext);
             example.Example1(course, onlineCourses);
 
             return &quot;SUCCESS&quot;;
@@ -121,7 +121,7 @@ namespace Appeon.Examples.Controllers.Attribute
                                 .FirstOrDefault();
 
             //对数据进行保存
-            var example = new ModelAttribute.SetValueAttributeExample(_dataContext);
+            var example = new ModelAttributeExamples.SetValueAttributeExample(_dataContext);
             example.Example2(course, onlineCourses);
 
             return &quot;SUCCESS&quot;;
@@ -142,7 +142,7 @@ namespace Appeon.Examples.Controllers.Attribute
                                 .FirstOrDefault();
 
             //对数据进行保存
-            var example = new ModelAttribute.SetValueAttributeExample(_dataContext);
+            var example = new ModelAttributeExamples.SetValueAttributeExample(_dataContext);
             example.Example3(course, onlineCourses);
 
             return &quot;SUCCESS&quot;;

@@ -8,7 +8,7 @@
     <title>Model Class: StudentGradeSqlHaving.cs </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Model Class: StudentGradeSqlHaving.cs ">
-    <meta name="generator" content="docfx 2.40.2.0">
+    <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../../images/logo-appeon.png ">
     <link rel="stylesheet" href="../../../../../../styles/docfx.vendor.css">
@@ -68,11 +68,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="model-class-studentgradesqlhavingcs">Model Class: StudentGradeSqlHaving.cs</h2>
 
-<pre><code class="lang-C#">using Appeon.CoreService.Data;
+<pre><code class="lang-C#">using Appeon.Data;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Appeon.Examples.Models.School
+namespace Appeon.ApiDoc.Models.School
 {
     /// &lt;summary&gt;
     /// This model class maps to the dbo.StudentGrade table.
@@ -81,7 +81,7 @@ namespace Appeon.Examples.Models.School
     [SqlGroupBy(&quot;StudentID&quot;)]
     [SqlHaving(&quot;Sum(Grade) is not null&quot;)]
     [SqlAndHaving(&quot;Sum(Grade) &lt; 5&quot;)]
-    [SqlAndHaving(&quot;Sum(Grade)&quot;, &quot;2&quot;, Operator = SqlOperator.GreaterThan)]
+    [SqlAndHaving(&quot;Sum(Grade)&quot;, &quot;2&quot;, Operator = SqlBinaryOperator.GreaterThan)]
 
     public class StudentGradeSqlHaving
     {

@@ -8,7 +8,7 @@
     <title>Controller: TrackExampleController.cs </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Controller: TrackExampleController.cs ">
-    <meta name="generator" content="docfx 2.40.2.0">
+    <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
     <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
@@ -69,11 +69,11 @@
 <h2 id="controller-trackexamplecontrollercs">Controller: TrackExampleController.cs</h2>
 
 <pre><code class="lang-C#">using Microsoft.AspNetCore.Mvc;
-using Appeon.Examples.Models.School;
-using Appeon.CoreService.Data;
+using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
 using System.Linq;
 
-namespace Appeon.Examples.Controllers.IModelMapper
+namespace Appeon.ApiDoc.IModelMapperExamples.Controllers
 {
     // [JSON: Jsons\IModelMapper\TrackExample2.json]
     // [JSON: Jsons\IModelMapper\TrackExample3.json]
@@ -94,7 +94,7 @@ namespace Appeon.Examples.Controllers.IModelMapper
             var newStudent =
                 dataUnpacker.GetModelEntries&lt;Person&gt;(&quot;student&quot;).FirstOrDefault();
 
-            var example = new Examples.IModelMapper.TrackExample(_dataContext);
+            var example = new TrackExample(_dataContext);
 
             example.Example2(newStudent);
 
@@ -112,7 +112,7 @@ namespace Appeon.Examples.Controllers.IModelMapper
                 dataUnpacker.GetModelEntries&lt;StudentGrade&gt;(&quot;studentgrade&quot;)
                             .FirstOrDefault();
 
-            var example = new Examples.IModelMapper.TrackExample(_dataContext);
+            var example = new TrackExample(_dataContext);
 
             example.Example3(newStudent, newStudentGrade);
 

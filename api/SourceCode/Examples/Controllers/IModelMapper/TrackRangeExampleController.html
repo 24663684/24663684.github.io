@@ -8,7 +8,7 @@
     <title>Controller: TrackRangeExampleController.cs </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Controller: TrackRangeExampleController.cs ">
-    <meta name="generator" content="docfx 2.40.2.0">
+    <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
     <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
@@ -68,11 +68,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="controller-trackrangeexamplecontrollercs">Controller: TrackRangeExampleController.cs</h2>
 
-<pre><code class="lang-C#">using Appeon.CoreService.Data;
-using Appeon.Examples.Models.School;
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.ApiDoc.Models.School;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Appeon.Examples.Controllers.IModelMapper
+namespace Appeon.ApiDoc.IModelMapperExamples
 {
     // [JSON: Jsons\IModelMapper\TrackRangeExample.json]
     [Route(&quot;examples/IModelMapper/TrackRange/[action]&quot;)]
@@ -91,7 +91,7 @@ namespace Appeon.Examples.Controllers.IModelMapper
             // Uses IDataUnpack to receive JSON data from the PB client app.
             var newStudents = dataUnpacker.GetModelEntries&lt;Person&gt;(&quot;students&quot;);
 
-            var example = new Examples.IModelMapper.TrackRangeExample(_dataContext);
+            var example = new TrackRangeExample(_dataContext);
 
             example.Example(newStudents);
 
