@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetitembooleanint-row-short-column-dwbuffer-buffertype--dwbufferprimary-bool-isoriginalvalue--false-method"><strong>IDataStore.GetItemBoolean(int row, short column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Gets data whose type is Boolean for the specified row and column (specified by column number) from the specified buffer of the DataStore. You can obtain the data that was originally retrieved and stored in the database from the original buffer, as well as the current value in the primary, delete, or filter buffers.</p>
+<p>Gets data whose type is <code>Boolean</code> for the specified row and column (specified by column number) from the specified buffer of the DataStore. You can obtain the data that was originally retrieved and stored in the database, as well as the current value in the primary, delete, or filter buffers.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -85,17 +85,16 @@
 <p><code>column</code> System.Int16</p>
 <p>The zero-based column number to get data.</p>
 <p><code>bufferType</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>The specified buffer of the DataStore.</p>
-<p>The default is <code>DwBuffer.Primary</code>.</p>
+<p>The specified buffer of the DataStore. The default is <code>DwBuffer.Primary</code>.</p>
 <p><code>isOriginalValue</code> System.Boolean</p>
 <p>Whether to obtain the data that was originally retrieved.</p>
-<p>True: obtain the data that was originally retrieved;
-False: (Default) obtain the current data.</p>
+<p>True: to obtain the data that was originally retrieved;
+False (default): to obtain the current data.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean?</p>
 <p>Returns the <code>bool?</code> value in the specified row and column.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the GetItemBoolean method to get the boolean-type value in the specified row and column.</p>
+<p>The following code example demonstrates how to use the <code>GetItemBoolean</code> method to get the <code>Boolean</code> type value in the specified row and column.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -113,26 +112,26 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            // Instantiates datastore with datawindow: d_coursedescription
+            // Instantiates a DataStore object with datawindow: d_coursedescription.
             var datastore = new DataStore(&quot;d_coursedescription&quot;, _context);
 
             datastore.Retrieve();
 
             datastore.SetItem(0, &quot;valid&quot;, true);
 
-            // Gets the original value in row 1 and in column 2 and 5 of DataStore
-            // Column 5 is boolean type
-            Console.WriteLine(&quot;Original value: Description: {0}; &quot; +
-                              &quot;Valid: {1}&quot;,
-                          datastore.GetItem&lt;string&gt;(0, 1),
-                          datastore.GetItemBoolean(0, 4, DwBuffer.Primary, true));
+            // Gets the original value in row 1 and in column 2 and 5 of DataStore.
+            // Column 5 (Column name is 'Valid') is bool? type.
+            Console.WriteLine(
+                &quot;Original value: Description: {0}; Valid: {1}&quot;,
+                datastore.GetItem&lt;string&gt;(0, 1),
+                datastore.GetItemBoolean(0, 4, DwBuffer.Primary, true));
 
             // Gets the modified value in row 1 and in column 2 and 5 of DataStore
             // Column 5 is boolean type
-            Console.WriteLine(&quot;Modified value: Description: {0}; &quot; +
-                              &quot;Valid: {1}&quot;,
-                          datastore.GetItem&lt;string&gt;(0, 1),
-                          datastore.GetItemBoolean(0, 4, DwBuffer.Primary, false));
+            Console.WriteLine(
+                &quot;Modified value: Description: {0}; Valid: {1}&quot;,
+                datastore.GetItem&lt;string&gt;(0, 1),
+                datastore.GetItemBoolean(0, 4, DwBuffer.Primary, false));
 
             /*This code produces the following output:
              

@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreimportjsonstring-json-dwbuffer-dwbuffer-int-startrow-method"><strong>IDataStore.ImportJson(string json, DwBuffer dwbuffer, int startRow) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Inserts data from a JSON string into the specified buffer of DataStore. You can specify the starting position in the JSON array. Data before the starting position will not be imported into the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -82,19 +82,19 @@
 <p><strong>Parameters</strong></p>
 <p><code>json</code>	System.String</p>
 <p>A string specifying the JSON data.</p>
-<p>The JSON string must comply with the <a href="Glossary/json_format.html">simple or standard format</a>.</p>
-<p><code>dwbuffer</code>	<a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
+<p>The JSON string must comply with the <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> or <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>.</p>
+<p><code>dwbuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
 <p>The specified buffer of the DataStore.</p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataStore buffer into which you want to import the data.</p>
-<p>For simple JSON: Imports the JSON data to the specified buffer.</p>
-<p>For standard (DataWindow) JSON: Imports data from the specified buffer from the JSON string to the corresponding buffer.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the <code>DataWindow buffer</code> into which you want to import the data.</p>
+<p>For <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a>: Imports the JSON data to the specified buffer.</p>
+<p>For <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>: Imports data from the specified buffer from the JSON string to the corresponding buffer.</p>
 <p><code>startRow</code>	System.Int32</p>
 <p>The zero-based number of the first row in the JSON array that you want to import. If it is negative, 0 is used.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of rows that were imported if it succeeds.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to import the department data from the starting row in a JSON string to the specified DataStore buffer.The lower bound of startRow is 0 indicating the first row (1 the second row, n the n+1 row).</p>
+<p>The following code example demonstrates how to import the department data from the starting row in a JSON string to the specified buffer.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 using System.IO;
@@ -113,7 +113,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example3()
         {
-
             // Instantiates the datastore with datawindow: d_department
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
@@ -130,7 +129,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
             datastore.Reset();
 
-            // Imports data from row 2 of the JSON string to the DataStore primary buffer
+            // Imports data from row 2 of the JSON string to the primary buffer.
 
             datastore.ImportJson(json, DwBuffer.Primary, 1);
 

@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoresetmodeltmodelint-row-tmodel-model-method"><strong>IDataStore.SetModel&lt;TModel&gt;(int row, TModel model) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Sets the data of a TModel object to the specified row of the DataStore.</p>
+<p>Sets the data of a <code>TModel</code> object to the specified row of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,14 +81,14 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>row</code>	 System.Int32</p>
 <p>The zero-based number of the row where data will be set. This row must exist.</p>
 <p><code>model</code>	TModel</p>
 <p>The <code>TModel</code> instance which will be set to the specified row in the primary buffer of DataStore.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the SetModel method to add a new data record in the DataStore.</p>
+<p>The following code example demonstrates how to use the <code>SetModel</code> method to add a new data record in the DataStore.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -106,42 +106,42 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
-            // Retrieves rows from the database for datastore
+            // Retrieves rows from the database for datastore.
             datastore.Retrieve();
-   
-            Console.WriteLine(&quot;After Retrieve, Rowcount: {0}&quot;, 
-                              datastore.RowCount);
 
-            // Creates a department record
+            Console.WriteLine(&quot;After Retrieve, Rowcount: {0}&quot;,
+                datastore.RowCount);
+
+            // Creates a D_Department object.
             var department = new D_Department();
             department.Departmentid = 10;
-            department.Name = &quot;Chinese&quot;;
+            department.Name = &quot;New Department&quot;;
             department.Budget = 280000;
             department.Startdate = DateTime.Now;
             department.Administrator = 2;
 
-            // Adds a row to the end of datastore
+            // Adds an empty row to the end of datastore
             int row = datastore.AddRow();
 
-            // Populates the new row with the department record
-            datastore.SetModel&lt;D_Department&gt;(row, department);
+            // Populates the new row with the D_Department object.
+            datastore.SetModel(row, department);
 
-            Console.WriteLine(&quot;Gets the value of the name column in the new row: {0}&quot;,
-                             datastore.GetItemString(row, &quot;name&quot;));
+            Console.WriteLine(&quot;The value of the name column in the new row: {0}&quot;,
+                datastore.GetItemString(row, &quot;name&quot;));
 
             // Commits changes to database
             datastore.Update();
 
             Console.WriteLine(&quot;After AddRow, Rowcount: {0}&quot;,
-                             datastore.RowCount);
+                datastore.RowCount);
 
             /*This code produces the following output:
             
             After Retrieve, Rowcount: 4
-            Gets the value of the name column in the new row: Chinese
+            The value of the name column in the new row: New Department
             After AddRow, Rowcount: 5         
             */
 

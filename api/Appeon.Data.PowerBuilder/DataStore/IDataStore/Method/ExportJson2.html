@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportjsonbool-changeonly-mappingmethod-mappingmethod-method"><strong>IDataStore.ExportJson(bool changeOnly, MappingMethod mappingMethod) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Exports all rows or only the changed rows from DataStore to a standard-format JSON string.</p>
+<p>Exports all rows or only the changed rows from DataStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,22 +82,15 @@
 <p><strong>Parameters</strong></p>
 <p><code>changeOnly</code> System.Boolean</p>
 <p>A <code>boolean</code> specifying the changing flag.</p>
-<p>True: to export the changed rows only (and all rows of the Delete buffer).</p>
+<p>True: to export the changed rows only (and all rows in the delete buffer).</p>
 <p>False (default): to export all rows.</p>
-<p><code>mappingMethod</code> <a href="../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
+<p><code>mappingMethod</code> <a href="../../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
 <p>A value of the <code>MappingMethod</code> enumerated datatype specifying the method for mapping columns.</p>
-<ul>
-<li>MappingMethod.JsonIndex -- Use the index of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 0.</li>
-<li>MappingMethod.MetaIndex -- Use the index of meta-columns to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 1.</li>
-<li>MappingMethod.JsonKey -- Use the key of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 2.</li>
-</ul>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the standard-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the department records to JSON strings using different changeOnly arguments.When changeOnly is true, exports the modified data from primary/filter/delete buffers to a JSON string; when changeOnly is false, exports all data from primary/filter/delete buffers to a JSON string.</p>
+<p>The following code example demonstrates how to export the department records to JSON strings using different <code>changeOnly</code> arguments. When <code>changeOnly</code> is <code>true</code>, exports the modified data from primary/filter/delete buffers to a JSON string; when <code>changeOnly</code> is <code>false</code>, exports all data from primary/filter/delete buffers to a JSON string.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.Data.PowerBuilder;
 using System;
@@ -126,7 +119,8 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             datastore.SetFilter(&quot;departmentid &lt; 5&quot;);
             datastore.Filter();
 
-            // When changeOnly is true, exports the modified data from primary/filter/delete buffers
+            // When changeOnly is true, exports the modified data from 
+            // primary/filter/delete buffers
             string json1 = datastore.ExportJson(true, MappingMethod.JsonIndex);
 
             Console.WriteLine(&quot;datastore.ExportJson(true, &quot; +
@@ -138,7 +132,8 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             ExportJson2_1.json  
             */
 
-            // When changeOnly is false, exports all data from primary/filter/delete buffers
+            // When changeOnly is false, exports all data from 
+            // primary/filter/delete buffers
             string json2 = datastore.ExportJson(false, MappingMethod.JsonIndex);
 
             Console.WriteLine(&quot;datastore.ExportJson(false, &quot; +

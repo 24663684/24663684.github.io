@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoretotalcount-property"><strong>IDataStore.TotalCount Property</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the total number of rows in all buffers of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -83,7 +83,7 @@
 <p>System.Int32</p>
 <p>The total number of rows in all buffers of the DataStore.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the DataStore TotalCount property to get the total number of the rows in all buffers of the DataStore after filtering data by criteria (Budget &gt;= 200000) and deleting data from the DataStore.</p>
+<p>The following code example demonstrates how to use the <code>TotalCount</code> property to get the total number of the rows in all buffers of the DataStore after filtering data by criteria (Budget &gt;= 200000) and deleting data from the DataStore.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -103,33 +103,33 @@ namespace Appeon.ApiDoc.IDataStoreExamples
         {
             // Instantiates datastore with datawindow: d_department
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
-            Console.WriteLine(&quot;Retrieved Totalcount: {0}&quot;, 
-                               datastore.TotalCount);
+            Console.WriteLine(&quot;Retrieved Totalcount: {0}&quot;,
+                datastore.TotalCount);
 
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;,
-                               datastore.RowCount);
+                datastore.RowCount);
 
-            // Filters data that do not meet criteria Budget &gt;= 200000
+            // Filters data that do not meet criteria 'Budget &gt;= 200000'
             datastore.SetFilter(&quot;Budget &gt;= 200000&quot;);
             datastore.Filter();
 
-            Console.WriteLine(&quot;After filtered, Totalcount: {0}&quot;, 
-                               datastore.TotalCount);
+            Console.WriteLine(&quot;After filtered, Totalcount: {0}&quot;,
+                datastore.TotalCount);
 
             Console.WriteLine(&quot;After filtered, Rowcount: {0}&quot;,
-                               datastore.RowCount);
+                datastore.RowCount);
 
             // Deletes the first row in the DataStore
             datastore.DeleteRow(0);
 
             Console.WriteLine(&quot;After deleted, Totalcount: {0}&quot;,
-                               datastore.TotalCount);
+                datastore.TotalCount);
 
             Console.WriteLine(&quot;After deleted, Rowcount: {0}&quot;,
-                               datastore.RowCount);
+                datastore.RowCount);
 
             /*This code produces the following output:
             
@@ -140,7 +140,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             After deleted, Totalcount: 4
             After deleted, Rowcount: 2
             */
-
         }
     }
 }

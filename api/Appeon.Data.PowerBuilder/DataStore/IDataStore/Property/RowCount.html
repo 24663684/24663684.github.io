@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorerowcount-property"><strong>IDataStore.RowCount Property</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the number of rows in the primary buffer of DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -83,7 +83,7 @@
 <p>System.Int32</p>
 <p>The number of rows in the primary buffer of DataStore.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>It gets the number of currently available rows, which is the total number of rows retrieved minus any deleted or filtered rows and plus any inserted rows. The deleted and filtered rows are stored in the DataStore delete and filter buffers.</p>
+<p>It gets the number of the currently available rows, which is the total number of rows retrieved minus any deleted or filtered rows and plus any inserted rows. The deleted and filtered rows are stored in the delete and filter buffers.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example gets the total number of the rows in the DataStore first after retrieved and then after filtered.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -105,16 +105,16 @@ namespace Appeon.ApiDoc.IDataStoreExamples
         {
             // Instantiates datastore with datawindow: d_department
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
             // Gets the total number of records
             int rowcnt = datastore.RowCount;
 
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;,
-                               rowcnt);
+                rowcnt);
 
-            // Filters data that do not meet criteria Budget &gt; 200000
+            // Filters data that do not meet criteria 'Budget &gt; 200000'
             datastore.SetFilter(&quot;Budget &gt; 200000&quot;);
             datastore.Filter();
 
@@ -122,14 +122,13 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             int rowcntnew = datastore.RowCount;
 
             Console.WriteLine(&quot;After filtered, Primary Buffer Rowcount: {0}&quot;,
-                               rowcntnew);
+                rowcntnew);
 
             /*This code produces the following output:
             
             Retrieved Rowcount: 4
             After filtered, Primary Buffer Rowcount: 2
             */
-
         }
     }
 }

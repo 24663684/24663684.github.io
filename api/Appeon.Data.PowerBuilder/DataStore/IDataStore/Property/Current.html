@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorecurrent-property"><strong>IDataStore.Current Property</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the currently referenced row in the enumerator.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -85,7 +85,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>This method can be used together with <code>DataStore.MoveNext</code> to get all of the data rows by traversing DataStore.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the DataStore Current property to show the value of the Name column of the specified row.</p>
+<p>The following code example demonstrates how to use the <code>Current</code> property to show the value of the Name column of the specified row.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -115,18 +115,17 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             datastore.MoveNext();
 
             // Gets the current row of the DataStore
-            var values = (D_Department)datastore.Current;
+            var currenRow = (D_Department)datastore.Current;
 
             // Shows the Name value of the current row in DataStore
             Console.WriteLine(&quot;The Name value of the current row: {0}&quot;,
-                               values.Name);
+                               currenRow.Name);
 
             /*This code produces the following output:
             
             Retrieved Rowcount: 4
             The Name value of the current row: Engineering    
             */
-
         }
     }
 }

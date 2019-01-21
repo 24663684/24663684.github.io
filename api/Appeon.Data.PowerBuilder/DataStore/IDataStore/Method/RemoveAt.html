@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreremoveatint-index-method"><strong>IDataStore.RemoveAt(int index) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Removes the row according to the specified index from the primary buffer of the DataStore. The index is the same as the zero-base row number.</p>
+<p>Removes the row according to the specified index from the primary buffer of the DataStore. The index is the same as the zero-based row number.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,6 +82,8 @@
 <p><strong>Parameters</strong></p>
 <p><code>index</code>	System.Int32</p>
 <p>The zero-based index of the row to remove.</p>
+<p><strong>Remarks</strong></p>
+<p>The <code>RemoveAt</code> method will call the <code>OnRowDeleting</code> method before removing the row, and then call the <code>OnRowDeleted</code> method after removing the row.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to remove the DataStore record according to the specified index number.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -101,7 +103,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -123,7 +125,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/D_Department.html">D_Department</a> <br>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

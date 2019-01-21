@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreindex-property"><strong>IDataStore.Index Property</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the index of the current row when traversing DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -85,7 +85,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>This method can be used together with <code>DataStore.MoveNext</code> to get all of the data rows by traversing DataStore.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the DataStore Index property to get the index number of the first row.</p>
+<p>The following code example demonstrates how to use the <code>Index</code> property to get the index number of the first row.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -103,18 +103,18 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates datastore with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;,
-                               datastore.RowCount);
+                datastore.RowCount);
 
-            // Selects the first row
+            // Selects the first row.
             datastore.MoveNext();
-            
-            // Gets the index number of the first row
+
+            // Gets the index number of the first row.
             int index = datastore.Index;
 
             Console.WriteLine(&quot;The index of the current row is: {0}&quot;, index);
@@ -124,7 +124,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Retrieved Rowcount: 4
             The index of the current row is: 0   
             */
-
         }
     }
 }

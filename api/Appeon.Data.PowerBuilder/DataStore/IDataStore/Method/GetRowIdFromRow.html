@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetrowidfromrowint-rownumber-dwbuffer-dwbuffer--dwbufferprimary-method"><strong>IDataStore.GetRowIdFromRow(int rownumber, DwBuffer dwBuffer = DwBuffer.Primary) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the unique row identifier of a row in the DataStore from the row number associated with that row.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -83,13 +83,12 @@
 <p><code>rownumber</code> System.Int32</p>
 <p>The zero-based row number from the specified buffer.</p>
 <p><code>dwBuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>The specified buffer of the DataStore.</p>
-<p>The default is <code>DwBuffer.Primary</code>.</p>
+<p>The specified buffer of the DataStore. The default is <code>DwBuffer.Primary</code>.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the row identifier in buffer. Returns -1 if the row identifier is not in the current buffer.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>The row identifier value is not the same as the row number value used in many DataStore function calls and should not be used for the row number value. Instead you should first convert the unique row identifier into a row number by calling <code>GetRowFromRowId</code>.</p>
+<p>The row identifier value is not the same as the row number value used in many DataStore method calls and should not be used for the row number value. Instead you should first convert the unique row identifier into a row number by calling the <code>GetRowFromRowId</code> method.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to get the unique row identifier according to the row number.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -109,8 +108,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -118,23 +116,23 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             datastore.SetSort(&quot;departmentid desc&quot;);
             datastore.Sort();
 
-            var department = datastore.GetRowByRowId&lt;D_Department&gt;(0);
+            var department = datastore.GetModelByRowId&lt;D_Department&gt;(0);
 
-            Console.WriteLine(&quot;Rowid=0, Department ID: {0}; &quot; +
-                              &quot;Department Name: {1}&quot;,
-                          department.Departmentid,
-                          department.Name);
+            Console.WriteLine(
+                &quot;Rowid=0, Department ID: {0}; Department Name: {1}&quot;,
+                department.Departmentid,
+                department.Name);
 
             int rowid = datastore.GetRowIdFromRow(0, DwBuffer.Primary);
 
             Console.WriteLine(&quot;When Row=0, Rowid={0}&quot;, rowid);
 
-            department = datastore.GetRowByRowId&lt;D_Department&gt;(rowid);
+            department = datastore.GetModelByRowId&lt;D_Department&gt;(rowid);
 
-            Console.WriteLine(&quot;Row=0, Department ID: {0}; &quot; +
-                              &quot;Department Name: {1}&quot;,
-                          department.Departmentid,
-                          department.Name);
+            Console.WriteLine(
+                &quot;Row=0, Department ID: {0}; Department Name: {1}&quot;,
+                department.Departmentid,
+                department.Name);
 
             /*This code produces the following output:
              

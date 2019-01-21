@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetitemnumberint-row-string-column-dwbuffer-buffertype--dwbufferprimary-bool-isoriginalvalue--false-method"><strong>IDataStore.GetItemNumber(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Gets data whose type is Double for the specified row and column from the specified buffer of the DataStore. You can obtain the data that was originally retrieved and stored in the database from the original buffer, as well as the current value in the primary, delete, or filter buffers.</p>
+<p>Gets data whose type is <code>Double</code> for the specified row and column from the specified buffer of the DataStore. You can obtain the data that was originally retrieved and stored in the database, as well as the current value in the primary, delete, or filter buffers.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -89,16 +89,15 @@
 <p>The specified buffer of the DataStore.</p>
 <p><code>isOriginalValue</code> System.Boolean</p>
 <p>Whether to obtain the data that was originally retrieved.</p>
-<p>True: obtain the data that was originally retrieved;
-False: obtain the current data.</p>
-<p>The default is <code>false</code>.</p>
+<p>True: to obtain the data that was originally retrieved;
+False (default): to obtain the current data.</p>
 <p><strong>Returns</strong></p>
 <p>System.Double?</p>
 <p>Returns the numeric value (<code>decimal</code>, <code>double</code>, <code>short</code>, <code>int</code> or <code>float</code>) in the specified row and column.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>Use <code>GetItemNumber</code> when you want to get information from the DataStore buffer. To access a row in the original buffer, specify the buffer that the row currently occupies (primary, delete, or filter) and the number of the row in that buffer. When you specify <code>true</code> for <code>isOriginalValue</code> , the method gets the original data for that row from the original buffer.</p>
+<p>Use <code>GetItemNumber</code> when you want to get information from the <code>DataWindow buffer</code>. To access a row in the original buffer, specify the buffer that the row currently occupies (primary, delete, or filter) and the number of the row in that buffer. When you specify <code>true</code> for <code>isOriginalValue</code>, the method gets the original data for that row.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the GetItemNumber method to get the integer-type value in the specified row and column.</p>
+<p>The following code example demonstrates how to use the <code>GetItemNumber</code> method to get the integer-type value in the specified row and column.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -116,27 +115,28 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example2()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
             datastore.SetItem(0, &quot;departmentid&quot;, 100);
 
-            // Gets the original value in row 1 and in the departmentid column and name column of DataStore
-            // The departmentid column is int type
-            Console.WriteLine(&quot;Original value: Department ID: {0}; &quot; +
-                              &quot;Department Name: {1}&quot;,
-                          datastore.GetItemNumber(0, &quot;departmentid&quot;, DwBuffer.Primary, true),
-                          datastore.GetItem(0, &quot;name&quot;));
+            // Gets the original value in row 1 and in the departmentid column and 
+            // name column of DataStore.
+            // The departmentid column is int type.
+            Console.WriteLine(
+                &quot;Original value: Department ID: {0}; Department Name: {1}&quot;,
+                datastore.GetItemNumber(0, &quot;departmentid&quot;, DwBuffer.Primary, true),
+                datastore.GetItem(0, &quot;name&quot;));
 
-            // Gets the modified value in row 1 and in the departmentid column and name column of DataStore
-            // The departmentid column is int type
-            Console.WriteLine(&quot;Modified value: Department ID: {0}; &quot; +
-                              &quot;Department Name: {1}&quot;,
-                           datastore.GetItemNumber(0, &quot;departmentid&quot;, DwBuffer.Primary, false),
-                           datastore.GetItem(0, &quot;name&quot;));
+            // Gets the modified value in row 1 and in the departmentid column and 
+            // name column of DataStore.
+            // The departmentid column is int type.
+            Console.WriteLine(
+                &quot;Modified value: Department ID: {0}; Department Name: {1}&quot;,
+                datastore.GetItemNumber(0, &quot;departmentid&quot;, DwBuffer.Primary, false),
+                datastore.GetItem(0, &quot;name&quot;));
 
             /*This code produces the following output:
              

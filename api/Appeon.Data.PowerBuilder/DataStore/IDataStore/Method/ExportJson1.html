@@ -68,33 +68,31 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportjsonmappingmethod-mappingmethod-method"><strong>IDataStore.ExportJson(MappingMethod mappingMethod) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Exports data from the DataStore primary buffer to a standard-format JSON string.</p>
+<p>Exports data from the DataStore primary buffer to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public string ExportJson(MappingMethod mappingMethod);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>mappingMethod</code> <a href="../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
+<p><code>mappingMethod</code> <a href="../../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
 <p>A value of the <code>MappingMethod</code> enumerated datatype specifying the method for mapping columns.</p>
 <ul>
-<li><p>MappingMethod.JsonIndex -- Use the index of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 0.</p>
+<li><p><code>MappingMethod.JsonIndex</code> -- Use the index of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 0.</p>
 </li>
-<li><p>MappingMethod.MetaIndex -- Use the index of meta-columns to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 1.</p>
+<li><p><code>MappingMethod.MetaIndex</code> -- Use the index of meta-columns to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 1.</p>
 </li>
-<li><p>MappingMethod.JsonKey -- Use the key of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 2.</p>
+<li><p><code>MappingMethod.JsonKey</code> -- Use the key of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 2.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the standard-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to export the department records to a JSON string using different mapping methods.</p>
 <pre><code class="lang-C#">using Appeon.Data;
@@ -115,7 +113,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             // Generates data in primary/delete/filter buffers for this example
@@ -136,9 +134,9 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             ExportJson1_JsonIndex.json
             */
 
-            // Exports data from primary buffer to JSON string
-            // mapped by the JSON key
-            // mapping-method value in JSON is 2
+            // Exports data from primary buffer to JSON string 
+            // mapped by the JSON key 
+            // mapping-method value in JSON is 2 
             string json2 = datastore.ExportJson(MappingMethod.JsonKey);
 
             Console.WriteLine(json2);
@@ -148,9 +146,9 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             ExportJson1_JsonKey.json
             */
 
-            // Exports data from primary buffer to JSON string
-            // mapped by the meta index
-            // mapping-method value in JSON is 1
+            // Exports data from primary buffer to JSON string 
+            // mapped by the meta index 
+            // mapping-method value in JSON is 1 
             string json3 = datastore.ExportJson(MappingMethod.MetaIndex);
 
             Console.WriteLine(json3);

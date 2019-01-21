@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregroupby-method"><strong>IDataStore.GroupBy() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Groups all rows of the primary buffer by the current grouping criteria of DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -83,7 +83,7 @@
 <p>System.Collections.Generic.IEnumerable&lt;IGrouping&lt;System.Object,  <a href="../../IGroupingGetter1/IGroupingGetter.html">Appeon.Data.PowerBuilder.IGroupingGetter</a>&gt;&gt;</p>
 <p>Returns an <code>IEnumerable&lt;IGrouping&lt;Object,IGroupingGetter&gt;&gt;</code> object which can be used to read data in groups.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The d_department_course DataStore contains two levels of groups: the primary group is grouped by course_departmentid; the nested group is grouped by course_courseid.The following code example demonstrates how to get the primary group and return the data of this group.</p>
+<p>The 'd_department_course' contains two levels of groups: the primary group is grouped by course_departmentid; the nested group is grouped by course_courseid. The following code example demonstrates how to get the primary group and return the data of this group.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 using System.Linq;
@@ -102,7 +102,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            // Instantiates datastore with datawindow: d_department_course
+            // Instantiates a DataStore object with datawindow: d_department_course.
             var datastore = new DataStore(&quot;d_department_course&quot;, _context);
 
             datastore.Retrieve();
@@ -110,9 +110,8 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             // The primary group is by course_departmentid which has only 4 values.
             var departmentGroup = datastore.GroupBy();
 
-            Console.WriteLine(&quot;Department Group Count: {0}&quot;, 
+            Console.WriteLine(&quot;Department Group Count: {0}&quot;,
                               departmentGroup.Count());
-
 
             /*This code produces the following output:
              

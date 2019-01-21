@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreimportentryienumerableimodelentry-modelentries-method"><strong>IDataStore.ImportEntry(IEnumerable&lt;IModelEntry&gt; modelEntries) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Imports a sequence of <code>IModelEntry</code> objects, which contain data and state, to the end of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
@@ -80,12 +80,13 @@
 <pre><code class="lang-c#">  public int ImportEntry(IEnumerable&lt;IModelEntry&gt; modelEntries);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>modelEntries</code>	System.Collections.Generic.IEnumerable&lt;<a href="../../IModelEntry/IModelEntry.html">Appeon.Data.IModelEntry</a>&gt;</p>
+<p><code>modelEntries</code>	System.Collections.Generic.IEnumerable&lt;<a href="../../../Appeon.Data/IModelEntry/IModelEntry.html">Appeon.Data.IModelEntry</a>&gt;</p>
 <p>A sequence of <code>IModelEntry</code> objects which contain data and state.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
+<p>Returns the number of the <code>IModelEntry</code> objects that were imported if it succeeds.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following example demonstrates how to add multiple rows of data via ModelEntry to the DataStore.</p>
+<p>The following example demonstrates how to add multiple rows of data via a sequence of ModelEntry objects to the DataStore.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using Appeon.Data.PowerBuilder;
@@ -106,14 +107,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example2(IEnumerable&lt;IModelEntry&lt;Person&gt;&gt; persondatas)
         {
-            // Creates DataStore and imports multiple records
-            // Saves the changes
+            // Creates DataStore and imports multiple records.
             var person = new DataStore(&quot;d_person&quot;, _context);
 
             person.ImportEntry(persondatas);
-            // Shows the saving result
-            Console.WriteLine(&quot;Rowcount: {0}&quot;,
-                              person.RowCount);
+
+            Console.WriteLine(&quot;Rowcount: {0}&quot;, person.RowCount);
 
             /* The code example produces the following output:
             

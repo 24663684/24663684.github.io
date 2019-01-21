@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreupdatebool-resetflag--true-method"><strong>IDataStore.Update(bool resetflag = true) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Updates the database with the changes made in the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,26 +81,25 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>resetflag</code>	System.Boolean</p>
-<p>A <code>bool</code> value specifying whether DataStore should automatically reset the update flags:</p>
-<p>True -- (Default) Resets the flags.</p>
+<p>A <code>Boolean</code> value specifying whether DataStore should automatically reset the update flags:</p>
+<p>True (default) -- To reset the flags.</p>
 <p>False -- Not to reset the flags.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of the rows affected if it succeeds, and -1 if canceled.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>You must use the <code>constructor</code> method or <code>SetDataContext</code> method to specify the database connection before the <code>Update</code> method is executed.</p>
+<p>You must use the constructor of DataStore or <code>SetDataContext</code> method to specify the database connection before the <code>Update</code> method is executed.</p>
 <p>By default, <code>Update</code> resets the update flags after successfully completing the update. However, you can prevent the flags from being reset until after you perform other validations and commit the changes. When you are satisfied with the update, call <code>ResetUpdate</code> to clear the flags so that items are no longer marked as modified.</p>
-<p>If you call <code>Update</code> with the <code>resetflag</code> argument set to false and do not call <code>ResetUpdate</code>, the DataStore will attempt to issue the same SQL statements again the next time you call <code>Update</code>.</p>
+<p>If you call the <code>Update</code> method with the <code>resetflag</code> argument set to false and do not call <code>ResetUpdate</code>, the DataStore will attempt to issue the same SQL statements again the next time you call <code>Update</code>.</p>
 <p><strong>Test success/failure code</strong></p>
-<p>It is good practice to test the success/failure code after calling <code>Update</code>. You can also verify the number of rows inserted, updated, and deleted by a DataStore update by examining the values of the arguments of the <code>OnUpdateEnd</code> event.</p>
+<p>It is good practice to test the success/failure code after calling the <code>Update</code> method. You can also verify the number of rows inserted, updated, and deleted by a DataStore update by examining the values of the arguments of the <code>UpdateEnd</code> event.</p>
 <p><strong>Updating several tables in one DataStore</strong></p>
-<p>If you want to update several tables in one DataStore, you can use <code>Modify</code> to change the Update property of columns in each table. To preserve the status flags of the rows and columns, set the <code>resetflag</code> argument to <code>false</code>. Because the updates all occur in the same DataStore, you cannot allow the flags to be cleared until all the tables have used them. When all the updates are successfully completed and committed, you can call <code>ResetUpdate</code> to clear the changed flags in the DataStore.</p>
+<p>If you want to update several tables in one DataStore, you can use the <code>Modify</code> to change the <code>Update</code> property of columns in each table. To preserve the status flags of the rows and columns, set the <code>resetflag</code> argument to <code>false</code>. Because the updates all occur in the same DataStore, you cannot allow the flags to be cleared until all the tables have used them. When all the updates are successfully completed and committed, you can call <code>ResetUpdate</code> to clear the changed flags in the DataStore.</p>
 <p><strong>Updating multiple DataStores</strong></p>
-<p>If you are updating multiple DataStores as part of one transaction, set the <code>resetflag</code> argument to false. This will prevent the DataStore from &quot;forgetting&quot; which rows to update in case one of the updates fails. You can roll back, try to correct the situation, and update again. Once all of the DataStores have been updated successfully, use <code>DataContext.Commit</code> method to finalize the transaction and use <code>ResetUpdate</code> to reset the DataStore's status flags.</p>
+<p>If you are updating multiple DataStores as part of one transaction, set the <code>resetflag</code> argument to <code>false</code>. This will prevent the DataStore from &quot;forgetting&quot; which rows to update in case one of the updates fails. You can roll back, try to correct the situation, and update again. Once all of the DataStores have been updated successfully, use the <code>DataContext.Commit</code> method to finalize the transaction and use <code>ResetUpdate</code> to reset the DataStore's status flags.</p>
 <p><strong>Events</strong></p>
-<p>Update can trigger <code>OnUpdateStart</code> and <code>OnUpdateEnd</code> events.</p>
+<p><code>Update</code> can trigger <code>UpdateStart</code> and <code>UpdateEnd</code> events.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示通过update方法, 在datastore中增加一行数据到末尾,然后更新到数据库。</p>
 <p>The following code example adds a data record to the end of the DataStore and then updates the change to the database.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
@@ -119,34 +118,34 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
-            Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;, datastore.Retrieve());
+            Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;,
+                datastore.Retrieve());
 
-            // Modifies the value for the budget column in row 1
+            // Modifies the value for the budget column in row 1.
             datastore.SetItem(0, &quot;budget&quot;, 220000.00m);
 
-            // Adds a row to the end of DataStore
+            // Adds a row to the end of DataStore.
             int row = datastore.AddRow();
-            datastore.SetItem(row, &quot;Departmentid&quot;, 10, DwBuffer.Primary);
-            datastore.SetItem(row, &quot;Name&quot;, &quot;Chinese&quot;, DwBuffer.Primary);
-            datastore.SetItem(row, &quot;Budget&quot;, 10000m, DwBuffer.Primary);
-            datastore.SetItem(row, &quot;Startdate&quot;, DateTime.Now, DwBuffer.Primary);
-            datastore.SetItem(row, &quot;Administrator&quot;, 2, DwBuffer.Primary);
+            datastore.SetItem(row, &quot;Departmentid&quot;, 10);
+            datastore.SetItem(row, &quot;Name&quot;, &quot;New Department&quot;);
+            datastore.SetItem(row, &quot;Budget&quot;, 10000m);
+            datastore.SetItem(row, &quot;Startdate&quot;, DateTime.Now);
+            datastore.SetItem(row, &quot;Administrator&quot;, 2);
 
-            // Calls Update to commit changes to database
+            // Calls Update to commit changes to database.
             datastore.Update();
 
-            Console.WriteLine(&quot;After Add, Update and Retrieve, Rowcount: {0}&quot;, 
-                               datastore.Retrieve());
+            Console.WriteLine(&quot;After Add, Update and Retrieve, Rowcount: {0}&quot;,
+                datastore.Retrieve());
 
             /*This code produces the following output:
             
             Retrieved Rowcount: 4
             After Add, Update and Retrieve, Rowcount: 5           
             */
-
         }
     }
 }

@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreequalsobject-obj-method"><strong>IDataStore.Equals(Object obj) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Determines whether the specified object is equal to the current object. Inherited from Object.</p>
+<p>Determines whether the specified object is equal to the current object. Inherited from <code>Object</code>.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,9 +84,9 @@
 <p>The object to compare with the current object.</p>
 <p><strong>Returns</strong></p>
 <p>System.bool</p>
-<p>Returns true if the specified object is equal to the current object; otherwise, false.</p>
+<p>Returns <code>true</code> if the specified object is equal to the current object; otherwise, <code>false</code>.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>The Equals method compares the reference address between the current DataStore and the specified object. If DataStores have the same data values but different reference address, this method returns false.</p>
+<p>The <code>Equals</code> method compares the reference address between the current DataStore and the specified object. If DataStores have the same data values but different reference address, this method returns <code>false</code>.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to use the Equals method.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -106,23 +106,22 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates the first DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-
-            // Instantiates datastore2 with datawindow: d_department
+            // Instantiates the second DataStore object with datawindow: d_department
             var datastore2 = new DataStore(&quot;d_department&quot;, _context);
 
             datastore2.Retrieve();
 
-            // datastore and datastore2 have the same data, but different reference address, so returns false
+            // datastore and datastore2 have the same data, but different reference 
+            // address, so returns false.
             Console.WriteLine(&quot;Equals: {0}&quot;, datastore.Equals(datastore2));
 
-            // datastore and datastore3 have the same reference address, so returns true
+            // datastore and datastore3 have the same reference address, so returns 
+            // true.
             var datastore3 = datastore;
 
             Console.WriteLine(&quot;Equals: {0}&quot;, datastore.Equals(datastore3));
@@ -132,7 +131,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Equals: False
             Equals: True      
             */
-
         }
     }
 }

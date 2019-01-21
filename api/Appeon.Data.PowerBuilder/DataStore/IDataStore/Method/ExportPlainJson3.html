@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportplainjsondwbuffer-dwbuffer-bool-changedonly-method"><strong>IDataStore.ExportPlainJson(DwBuffer dwbuffer, bool changedOnly) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Exports all rows or only the changed rows from all or specified buffers to a simple-format or standard-format JSON string.</p>
+<p>Exports all rows or only the changed rows from all or specified buffers to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,19 +81,17 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>dwbuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataStore buffer from which you want to export the data. For a list of valid values, see <a href="XREF_13170_DWBuffer.html">DWBuffer</a>. If not specified, all of the DataStore buffers will be exported, however, the data for DataWindowChild will not be exported (even if <code>changedonly</code> is
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the <code>DataWindow buffer</code> from which you want to export the data. For a list of valid values, see <a href="XREF_13170_DWBuffer.html">DWBuffer</a>. If not specified, all of the <code>DataWindow buffers</code> will be exported, however, the data for <code>DataWindowChild</code> will not be exported (even if <code>changedonly</code> is
 <code>false</code>).</p>
 <p><code>changeOnly</code> System.Boolean</p>
-<p>A boolean specifying the changing flag.</p>
+<p>A <code>Boolean</code> specifying the changing flag.</p>
 <p>True -- to export the changed rows only (and all rows of the delete buffer).</p>
-<p>False -- (Default) to export all rows.</p>
+<p>False (default) --  to export all rows.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the simple-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the changed department records from the primary buffer to JSON strings using the changeOnly argument.When changeOnly is true, exports the modified data from the primary buffer to a JSON string; when changeOnly is false, exports all data from the primary buffer to a JSON string;</p>
+<p>The following code example demonstrates how to export the changed department records from the primary buffer to JSON strings using the <code>changeOnly</code> argument. When <code>changeOnly</code> is <code>true</code>, exports the modified data from the primary buffer to a JSON string; when <code>changeOnly</code> is <code>false</code>, exports all data from the primary buffer to a JSON string.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -111,7 +109,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example3()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             // Generates data in the primary/delete/filter buffers for this example.
@@ -123,7 +121,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
             // Exports the modified data from the primary buffer
             string json1 = datastore.ExportPlainJson(DwBuffer.Primary, true);
-
 
             Console.WriteLine(&quot;datastore.ExportPlainJson(DwBuffer.Primary,true):&quot;);
             Console.WriteLine(json1);

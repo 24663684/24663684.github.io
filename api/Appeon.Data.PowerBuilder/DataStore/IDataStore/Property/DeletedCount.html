@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoredeletedcount-property"><strong>IDataStore.DeletedCount Property</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the total number of rows that are marked for deletion in the database.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -82,7 +82,7 @@
 <p>System.Int32</p>
 <p>The total number of rows that are marked for deletion in the database.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example deletes the data in the DataStore and then uses the DataStore DeletedCount property to get the total number of the deleted rows.</p>
+<p>The following code example deletes the data in the DataStore and then uses the DataStore <code>DeletedCount</code> property to get the total number of the deleted rows.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -100,7 +100,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates datastore with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
             
             datastore.Retrieve();
@@ -108,22 +108,21 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;,
                                datastore.RowCount);
 
-            // Deletes the first row in datastore
+            // Deletes the first row in datastore.
             datastore.DeleteRow(0);
 
-            Console.WriteLine(&quot;After data is deleted, Deletedcount: {0}&quot;,
+            Console.WriteLine(&quot;After deleted, Deletedcount: {0}&quot;,
                                datastore.DeletedCount);
 
-            Console.WriteLine(&quot;After data is deleted, Rowcount: {0}&quot;,
+            Console.WriteLine(&quot;After deleted, Rowcount: {0}&quot;,
                                datastore.RowCount);
 
             /*This code produces the following output:
             
             Retrieved Rowcount: 4
-            After data is deleted, Deletedcount: 1
-            After data is deleted, Rowcount: 3
+            After deleted, Deletedcount: 1
+            After deleted, Rowcount: 3
             */
-
         }
     }
 }

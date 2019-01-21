@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregroupbytmodelint-level-string-sortkey--null-method"><strong>IDataStore.GroupBy&lt;TModel&gt;(int level, string sortKey = null) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Generic method. Groups rows of the primary buffer by the level of grouping criteria of DataStore. The sort criteria can be specified.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,18 +81,19 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>level</code>	System.Int32</p>
-<p>The zero-based level of grouping criteria of DataStore.</p>
+<p>The level of grouping criteria of DataStore.</p>
+<p>It is the number of a group defined in the <code>DataWindow object</code> which starts from 1.</p>
 <p><code>sortkey</code> System.String</p>
 <p>A string whose value is the valid sort criteria for the DataStore. The expression includes column names or numbers. A column number must be preceded by a pound sign (#).</p>
-<p>Default is null which indicates it will use the current sort criteria in DataStore.</p>
+<p>Default is <code>null</code> which indicates it will use the current sort criteria in DataStore.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IEnumerable&lt;IGrouping&lt;System.Object, TModel&gt;&gt;</p>
 <p>Returns an <code>IEnumerable&lt;IGrouping&lt;Object,IGroupingGetter&lt;TModel&gt;&gt;&gt;</code> object which can be used to read data in groups.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The d_department_course DataStore contains two levels of groups: the primary group is grouped by course_departmentid; the nested group is grouped by course_courseid.The following code example demonstrates how to get the primary and the nested groups and return the TModel data of these groups.</p>
+<p>The d_department_course DataStore contains two levels of groups: the primary group is grouped by course_departmentid; the nested group is grouped by course_courseid. The following code example demonstrates how to get the primary and the nested groups and return the TModel data of these groups.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 using System.Linq;
@@ -111,26 +112,28 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example4()
         {
-            // Instantiates datastore with datawindow: d_department_course
+            // Instantiates a DataStore object with datawindow: d_department_course.
             var datastore = new DataStore(&quot;d_department_course&quot;, _context);
 
             datastore.Retrieve();
 
-            // The primary group is by course_departmentid which has only 4 D_Department_Course TModels.
-            var departmentGroup = datastore.GroupBy&lt;D_Department_Course&gt;(0);
+            // The primary group is by course_departmentid which has only 4 values.
+            var departmentGroup = datastore.GroupBy&lt;D_Department_Course&gt;(1);
 
-            Console.WriteLine(&quot;Department Group Count: {0}&quot;, 
-                              departmentGroup.Count());
+            Console.WriteLine(&quot;Department Group Count: {0}&quot;,
+                departmentGroup.Count());
 
-            // The nested group is by course_courseid which has only 9 D_Department_Course TModels.
-            var courseGroup = datastore.GroupBy&lt;D_Department_Course&gt;(1);
-            Console.WriteLine(&quot;Course Group Count: {0}&quot;, courseGroup.Count());
+            // The nested group is by course_courseid which has only 9 values.
+            var courseGroup = datastore.GroupBy&lt;D_Department_Course&gt;(2);
 
-            // Changes sort to sort by course_title; then get the primary group again
-            departmentGroup = datastore.GroupBy&lt;D_Department_Course&gt;(0, &quot;course_title&quot;);
+            Console.WriteLine(&quot;Course Group Count: {0}&quot;,
+                courseGroup.Count());
+
+            // Changes sort to sort by course_title; then get the primary group again.
+            departmentGroup = datastore.GroupBy&lt;D_Department_Course&gt;(1, &quot;course_title&quot;);
 
             Console.WriteLine(&quot;SortBy course_title, Department Group Count: {0}&quot;,
-                                departmentGroup.Count());
+                departmentGroup.Count());
 
             /*This code produces the following output:
              

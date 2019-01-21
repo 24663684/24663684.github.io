@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreimportjsonbykeystring-json-dwbuffer-dwbuffer-int-startrow-int-endrow-method"><strong>IDataStore.ImportJsonByKey(string json, DwBuffer dwbuffer, int startRow, int endRow) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Inserts data from a JSON string into the specified buffer of DataStore according to the key name of the JSON item. You can specify the starting and ending positions in the JSON array.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -82,12 +82,12 @@
 <p><strong>Parameters</strong></p>
 <p><code>json</code>	System.String</p>
 <p>A string specifying the JSON data.</p>
-<p>The JSON string must comply with the <a href="Glossary/json_format.html">simple or standard format</a>.</p>
+<p>The JSON string must comply with the <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> or <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>.</p>
 <p><code>dwbuffer</code>	<a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
 <p>The specified buffer of the DataStore.</p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataStore buffer into which you want to import the data.</p>
-<p>For simple JSON: Imports the JSON data to the specified buffer.</p>
-<p>For standard (DataWindow) JSON: Imports data from the specified buffer from the JSON string to the corresponding buffer.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the <code>DataWindow buffer</code> into which you want to import the data.</p>
+<p>For <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a>: Imports the JSON data to the specified buffer.</p>
+<p>For <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>: Imports data from the specified buffer from the JSON string to the corresponding buffer.</p>
 <p><code>startRow</code>	System.Int32</p>
 <p>The zero-based number of the first row in the JSON array that you want to import. If it is negative, 0 is used.</p>
 <p><code>endRow</code>	System.Int32</p>
@@ -116,7 +116,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example4()
         {
-
             // Instantiates the datastore with datawindow: d_department2
             var datastore = new DataStore(&quot;d_department2&quot;, _context);
 
@@ -125,10 +124,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                                 @&quot;Jsons\IDatastore\ImporttJson8.json&quot;);
             string json = File.ReadAllText(path);
 
-            // Imports data from JSON to the DataStore primary buffer
-            // Imports data from row 1 through the end
-            // departmentid column exists in ImportJson8.json, but not in DataStore d_department2
-            // But ImportJsonByKey imports data by the column name, so departmentid will be ignored
+            // Imports data from JSON to the DataStore primary buffer, from row 1 
+            // through the end.
+            // The departmentid column exists in ImportJson8.json, but not in 
+            // DataStore d_department2.
+            // But ImportJsonByKey imports data by the column name, so departmentid 
+            // will be ignored.
             datastore.ImportJsonByKey(json, DwBuffer.Primary, 0, 3);
 
             Console.WriteLine(&quot;Rowcount: {0}&quot;, datastore.RowCount);
@@ -141,11 +142,14 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             }
             datastore.Reset();
 
-            // Imports data from row 2 and 3
-            // departmentid column exists in ImportJson8.json, but not in DataStore d_department2
-            // But ImportJsonByKey imports data by the column name, so departmentid will be ignored
+            // Imports data from row 2 and 3.
+            // The departmentid column exists in ImportJson8.json, but not in DataStore 
+            // d_department2.
+            // But ImportJsonByKey imports data by the column name, so departmentid 
+            // will be ignored.
             datastore.ImportJsonByKey(json, DwBuffer.Primary, 1, 2);
 
+            Console.WriteLine();
             Console.WriteLine(&quot;Rowcount: {0}&quot;, datastore.RowCount);
 
             for (int row = 0, rowcount = datastore.RowCount; row &lt; rowcount; row++)
@@ -162,6 +166,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Name: English; Budget: 120000
             Name: Economics; Budget: 200000
             Name: Mathematics; Budget: 250000
+
             Rowcount: 2
             Name: English; Budget: 120000
             Name: Economics; Budget: 200000

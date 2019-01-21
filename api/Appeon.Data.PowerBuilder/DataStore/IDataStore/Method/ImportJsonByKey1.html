@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreimportjsonbykeystring-json-method"><strong>IDataStore.ImportJsonByKey(string json) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Inserts data from a JSON string into the DataStore according to the key name of the JSON item.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -82,9 +82,9 @@
 <p><strong>Parameters</strong></p>
 <p><code>json</code>	System.String</p>
 <p>A string specifying the JSON data.</p>
-<p>The JSON string must comply with the <a href="Glossary/json_format.html">simple or standard format</a>.</p>
-<p>For simple JSON: Imports the JSON data to the specified buffer.</p>
-<p>For standard (DataWindow) JSON: Imports data from the specified buffer from the JSON string to the corresponding buffer.</p>
+<p>The JSON string must comply with the <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> or <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>.</p>
+<p>For <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a>: Imports the JSON data to the specified buffer.</p>
+<p>For <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>: Imports data from the specified buffer from the JSON string to the corresponding buffer.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of rows that were imported if it succeeds.</p>
@@ -108,7 +108,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             // Gets the JSON file

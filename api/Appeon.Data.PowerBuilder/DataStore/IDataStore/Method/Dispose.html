@@ -68,21 +68,19 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoredispose-method"><strong>IDataStore.Dispose() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Performs application-defined tasks associated with freeing, releasing or resetting the unmanaged resource. Inherited from IDisposable.</p>
+<p>Performs application-defined tasks associated with freeing, releasing, or resetting the unmanaged resource. Inherited from <code>IDisposable</code>.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public void Dispose();
 </code></pre>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>Scripts which need to be executed during the initialization of DataStore can be written in this event.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the Dispose method to release memory.</p>
+<p>The following code example demonstrates how to use the <code>Dispose</code> method to release memory.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -100,14 +98,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // This datastore has four records
+            // This datastore has four records.
             int count = datastore.RowCount;
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;, count);
 
@@ -122,14 +118,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                 Console.WriteLine(&quot;Exception: {0}&quot;, ex.Message);
             }
 
-
             /*This code produces the following output:
             
             Retrieved Rowcount: 4
             The datastore is invalid.
             Exception: Object reference not set to an instance of an object.
             */
-
         }
     }
 }

@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorereselectrowint-row-method"><strong>IDataStore.ReselectRow(int row) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Accesses the database to retrieve values for all columns that can be updated and refreshes all timestamp columns in a row in the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -86,9 +86,9 @@
 <p>System.Int32</p>
 <p>Returns 1 if it succeeds and -1 if the row cannot be reselected (for example, the DataStore cannot be updated or the row was deleted by another user).</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p><code>ReselectRow</code> is supported for SQLSelect DataStore. Use <code>ReselectRow</code> to discard values the user changed and replace them with values from the database after an update fails (due to a concurrent access error, for example).</p>
+<p><code>ReselectRow</code> is supported for SQL Select DataStore. Use <code>ReselectRow</code> to discard values the user has changed and replace them with values from the database after an update fails (due to a concurrent access error, for example).</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example modifies the values for row 1 and then calls ReselectRow to retrieve the original values for row 1 from database again.</p>
+<p>The following code example modifies the values for row 1 and then calls the <code>ReselectRow</code> method to retrieve the original values for row 1 from database again.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -106,7 +106,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -115,8 +115,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                                datastore.GetItem&lt;int&gt;(0, &quot;departmentid&quot;),
                                datastore.GetItem&lt;string&gt;(0, &quot;name&quot;));
 
-
-            // Modified the values for row 1
+            // Modified the values for row 1.
             datastore.SetItem(0, &quot;departmentid&quot;, 10);
             datastore.SetItem(0, &quot;name&quot;, &quot;Department Name&quot;);
 
@@ -124,8 +123,8 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                                datastore.GetItem&lt;int&gt;(0, &quot;departmentid&quot;),
                                datastore.GetItem&lt;string&gt;(0, &quot;name&quot;));
 
-            // Calls ReselectRow to retrieve values for row 1 from database again
-            // It will send SQL commands to database
+            // Calls ReselectRow to retrieve values for row 1 from database again.
+            // It will send SQL commands to database.
             datastore.ReselectRow(0);
 
             Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
@@ -138,13 +137,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Department ID: 10; Department Name: Department Name
             Department ID: 1; Department Name: Engineering
             */
-
-            /* Internally generated T-SQL:
-            */
-}
+        }
     }
 }
 </code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/D_Department.html">D_Department</a> <br>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

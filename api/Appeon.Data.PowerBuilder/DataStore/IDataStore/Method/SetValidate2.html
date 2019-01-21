@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoresetvalidatestring-column-string-rule-method"><strong>IDataStore.SetValidate(string column, string rule) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Sets the validation rule for a column (specified by the column name) in the DataStore. This validation rule will be checked when calling the <code>Update</code> or <code>Validate</code> method.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -106,19 +106,21 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example2()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
-            // Retrieves rows from the database for datastore
+            // Retrieves rows from the database for datastore.
             datastore.Retrieve();
 
-            // Sets the validation rule for the budget column: value must be larger than 0
+            // Sets the validation rule for the budget column: value must be larger 
+            // than 0.
             datastore.SetValidate(&quot;budget&quot;, &quot;budget &gt; 0&quot;);
 
-            // Sets the vaue for budget in row 1 to -350000
+            // Sets the vaue for budget in row 1 to -350000.
             datastore.SetItem(0, &quot;budget&quot;, -350000m);
 
-            // If data passes validation, commit data to database, otherwise, error occurs.
+            // If data passes validation, commit data to database, 
+            // otherwise, error occurs.
             if (datastore.Validate())
             {
                 datastore.Update();
@@ -127,7 +129,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             {
                 Console.WriteLine(&quot;Invalid data! Please check!&quot;);
             }
-            
+
             /*This code produces the following output:
             
             Invalid data! Please check!

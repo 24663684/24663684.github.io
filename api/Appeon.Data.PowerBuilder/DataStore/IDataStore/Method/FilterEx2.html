@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorefilterextmodelexpressionpredicatetmodel-expression-method"><strong>IDataStore.FilterEx&lt;TModel&gt;(Expression&lt;Predicate&lt;TModel&gt;&gt; expression) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Generic method. Filters rows by the filter criteria specified by <code>Expression&lt;Predicate&lt;TModel&gt;&gt;</code>. Rows that do not meet the filter criteria are moved to the filter buffer.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,13 +81,13 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>expression</code> System.Linq.Expressions.Expression&lt;System.Predicate&lt;TModel&gt;&gt;</p>
-<p>An <code>Expression&lt;Predicate&lt;TModel&gt;&gt;</code> which specifies the filter criteria.</p>
+<p>An <code>Expression&lt;Predicate&lt;TModel&gt;&gt;</code>  object which specifies the filter criteria.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>Returns true if it succeeds.</p>
+<p>Returns <code>true</code> if it succeeds.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to filter the department records whose department ID is less than 3.</p>
 <pre><code class="lang-C#">using Appeon.Commons;
@@ -110,12 +110,13 @@ namespace Appeon.ApiDoc.IDataStoreExamples
         public void Example2()
         {
 
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // There are 2 records in the Department table whose departmentid &lt; 3
+            // There are 2 records in the Department table whose departmentid is 
+            // less than 3.
             datastore.FilterEx&lt;D_Department&gt;(d =&gt; d.Departmentid &lt; 3);
 
             Console.WriteLine(&quot;datastore.RowCount:&quot;);

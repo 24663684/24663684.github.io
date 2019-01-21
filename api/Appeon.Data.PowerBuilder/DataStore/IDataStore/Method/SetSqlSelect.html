@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoresetsqlselectstring-statement-bool-isvalidation--true-method"><strong>IDataStore.SetSqlSelect(string statement, bool isValidation = true) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Specifies the SQL SELECT statement for the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>statement</code>	System.String</p>
-<p>A string whose value is the SELECT statement for the DataStore object. The statement must structurally match the current SELECT statement (that is, it must return the same number of columns, the columns must be the same datatype, and the columns must be in the same order).</p>
+<p>A string whose value is the SELECT statement for the <code>DataWindow object</code>. The statement must structurally match the current SELECT statement (that is, it must return the same number of columns, the columns must be the same datatype, and the columns must be in the same order).</p>
 <p><code>isValidation</code>	System.Boolean</p>
 <p>Whether to validate the <code>statement</code> immediately.</p>
 <p>If <code>true</code>, it validates the <code>statement</code> immediately.</p>
@@ -91,17 +91,17 @@
 <p>System.Boolean</p>
 <p>Returns whether the <code>statement</code> is valid. If <code>isValidation</code> is <code>false</code>, it always returns <code>false</code>.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>Use <code>SetSQLSelect</code> to dynamically change the SQL SELECT statement for a DataStore object in a script.</p>
-<p>If the DataStore object is updatable, it validates the SELECT statement against the database and DataStore object column specifications when you call the <code>SetSQLSelect</code> method. Each column in the SQL SELECT statement must match the column type in the DataStore object.</p>
-<p>You must use the <a href="">Constructor</a> or <code>SetDataContext</code> method to set the <code>DataContext</code> object before the <code>SetSQLSelect</code> method is executed.</p>
-<p>If the new SELECT statement has a different table name in the FROM clause and the DataStore object is updatable, then it must change the update information for the DataStore object. It assumes the key columns are in the same positions as in the original definition. The following conditions would make the DataStore object not updatable:</p>
+<p>Use <code>SetSQLSelect</code> to dynamically change the SQL SELECT statement for a <code>DataWindow object</code> in a script.</p>
+<p>If the <code>DataWindow object</code> is updatable, it validates the SELECT statement against the database and <code>DataWindow object</code> column specifications when you call the <code>SetSQLSelect</code> method. Each column in the SQL SELECT statement must match the column type in the <code>DataWindow object</code>.</p>
+<p>You must use the constructor of DataStore or the <code>SetDataContext</code> method to set the <code>DataContext</code> object before the <code>SetSQLSelect</code> method is executed.</p>
+<p>If the new SELECT statement has a different table name in the FROM clause and the <code>DataWindow object</code> is updatable, then it must change the update information for the <code>DataWindow object</code>. It assumes the key columns are in the same positions as in the original definition. The following conditions would make the <code>DataWindow object</code> not updatable:</p>
 <ul>
 <li>There is more than one table in the FROM clause</li>
-<li>A DataStore object update column is a computed column in the SELECT statement</li>
+<li>A <code>DataWindow object</code> update column is a computed column in the SELECT statement</li>
 </ul>
-<p>If changing the SELECT statement makes the DataStore object not updatable, the DataStore cannot execute an Update method call for the DataStore object in the future.</p>
+<p>If changing the SELECT statement makes the <code>DataStore object</code> not updatable, the DataStore cannot execute an <code>Update</code> method call for the <code>DataWindow object</code> in the future.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example calls SetSqlSelect to modify the SQL Select statement by adding a criteria (budget&gt;=200000) to it.</p>
+<p>The following code example calls the <code>SetSqlSelect</code> method to modify the SQL Select statement by adding a criteria (budget&gt;=200000) to it.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -119,32 +119,32 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
-            Console.WriteLine(&quot;Before Update SQLSelect, Rowcount: {0}&quot;, 
-                               datastore.RowCount);
+            Console.WriteLine(&quot;Before Update SQLSelect, Rowcount: {0}&quot;,
+                datastore.RowCount);
 
-            // Gets the sqlselect statement
+            // Gets the SQL SELECT statement.
             string sqlSelect = datastore.GetSqlSelect();
 
-            // Calls SetSqlSelect to add a criteria (budget&gt;=200000) to the sqlselect statement
+            // Calls SetSqlSelect to add a criteria (budget&gt;=200000) to the 
+            // SQL SELECT statement.
             datastore.SetSqlSelect(sqlSelect + &quot; where budget &gt;= 200000&quot;);
 
             // Retrieve data again
             datastore.Retrieve();
 
-            Console.WriteLine(&quot;After Update SQLSelect, Rowcount: {0}&quot;, 
-                               datastore.RowCount);
+            Console.WriteLine(&quot;After Update SQLSelect, Rowcount: {0}&quot;,
+                datastore.RowCount);
 
             /*This code produces the following output:
             
             Before Update SQLSelect, Rowcount: 4
             After Update SQLSelect, Rowcount: 3
             */
-
         }
     }
 }

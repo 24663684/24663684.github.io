@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorerowscopyint-startrow-int-endrow-dwbuffer-copybuffer-idatastore-targetdw-int-beforerow-dwbuffer-targetbuffer-method"><strong>IDataStore.RowsCopy(int startrow, int endrow, DwBuffer copybuffer, IDataStore targetdw, int beforerow, DwBuffer targetbuffer) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Copies a range of rows from one DataStore to another, or from one buffer to another within a single DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -85,23 +85,23 @@
 <p><code>endrow</code>	System.Int32</p>
 <p>The zero-based number of the last row you want to copy.</p>
 <p><code>copybuffer</code>	 <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataStore buffer from which you want to copy rows.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the <code>DataWindow buffer</code> from which you want to copy rows.</p>
 <p><code>targetdw</code>	 <a href="../../IDataStore/IDataStore.html">Appeon.Data.PowerBuilder.IDataStore</a></p>
 <p>A reference to the DataStore to which you want to copy the rows. <code>targetDw</code> can be the current DataStore or another DataStore.</p>
 <p><code>beforerow</code>	System.Int32</p>
 <p>The zero-based number of the row before which you want to insert the copied rows. To insert after the last row, use any value that is greater than the number of existing rows.</p>
 <p><code>targetbuffer</code>	 <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the target DataStore buffer into which you want to copy rows.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the target <code>DataWindow buffer</code> into which you want to copy rows.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>Returns true if it succeeds, and false if any row number is not correct.</p>
+<p>Returns <code>true</code> if it succeeds, and <code>false</code> if any row number is not correct.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>When you use the <code>RowsCopy</code> method, the status of the rows that are copied to the primary buffer is <code>ModelState.NewModified</code>. If you issue an update request, DataStore sends SQL INSERT statements to the DBMS for the new rows.</p>
-<p>When you use <code>RowsCopy</code>, data is not automatically retrieved for drop-down DataWindows in the target DataStore, as it is when you call <code>InsertRow</code>. You must explicitly call <code>Retrieve</code> for child DataWindows in the target.</p>
-<p>When you use <code>RowsCopy</code> or <code>RowsMove</code> to populate another DataStore,  the copied data is not automatically processed by filters or sort criteria in effect on the target DataStore. You might be required to call the <code>Filter</code>, or <code>Sort</code> methods to properly process the data.</p>
+<p>When you use the <code>RowsCopy</code> method, data is not automatically retrieved for drop-down DataWindows in the target DataStore, as it is when you call <code>InsertRow</code>. You must explicitly call <code>Retrieve</code> for <code>DataWindowChilds</code> in the target.</p>
+<p>When you use the <code>RowsCopy</code>  method or the <code>RowsMove</code> method to populate another DataStore, the copied data is not automatically processed by filters or sort criteria in effect on the target DataStore. You might be required to call the <code>Filter</code> methods, or <code>Sort</code> methods to properly process the data.</p>
 <p>Uses for <code>RowsCopy</code> is: Making copies of one or more rows so that the users can create new rows based on the existing data.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the RowsCopy method to copy rows from one DataStore to another.</p>
+<p>The following code example demonstrates how to use the <code>RowsCopy</code> method to copy rows from one DataStore to another.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -119,26 +119,26 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastorefm with datawindow: d_department
-            var datastorefm = new DataStore(&quot;d_department&quot;, _context);
+            // Instantiates a DataStore object with datawindow: d_department.
+            var dsFrom = new DataStore(&quot;d_department&quot;, _context);
 
-            // Instantiates datastoreto with datawindow: d_department
-            var datastoreto = new DataStore(&quot;d_department&quot;, _context);
+            // Instantiates another DataStore object with datawindow: d_department.
+            var dsTo = new DataStore(&quot;d_department&quot;, _context);
 
-            datastorefm.Retrieve();
+            dsFrom.Retrieve();
 
-            datastoreto.Retrieve();
+            dsTo.Retrieve();
 
-            Console.WriteLine(&quot;Before RowsCopy, Rowcount: {0}&quot;, 
-                               datastoreto.RowCount);
+            Console.WriteLine(&quot;Before RowsCopy, Rowcount: {0}&quot;,
+                dsTo.RowCount);
 
             // Calls RowsCopy to copy all rows from datastorefm to 
             // the beginning of the primary buffer of datastoreto;
-            datastorefm.RowsCopy(0, datastorefm.RowCount, DwBuffer.Primary, 
-                                 datastoreto, 0, DwBuffer.Primary);
+            dsFrom.RowsCopy(0, dsFrom.RowCount, DwBuffer.Primary,
+                            dsTo, 0, DwBuffer.Primary);
 
-            Console.WriteLine(&quot;After RowsCopy, Rowcount: {0}&quot;, 
-                               datastoreto.RowCount);
+            Console.WriteLine(&quot;After RowsCopy, Rowcount: {0}&quot;,
+                dsTo.RowCount);
 
             /*This code produces the following output:
             

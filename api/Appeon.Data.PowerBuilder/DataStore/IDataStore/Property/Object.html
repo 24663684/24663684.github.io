@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreobject-property"><strong>IDataStore.Object Property</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Used to directly manipulating the object within a DataWindow object from a script. These objects can be, for example, columns or text objects.</p>
+<p>Used to directly manipulating the objects within a <code>DataWindow object</code> from scripts. These objects can be, for example, columns or text objects.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,9 +81,9 @@
 </code></pre>
 <p><strong>Property Value</strong></p>
 <p><a href="../../IDataObject/IDataObject.html">Appeon.Data.PowerBuilder.IDataObject</a></p>
-<p>An <code>IDataObject</code> object used to directly manipulating the object within a DataWindow object from a script.</p>
+<p>An <code>IDataObject</code> object used to directly manipulating the object within a <code>DataWindow object</code> from scripts.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the DataStore Object property.</p>
+<p>The following code example demonstrates how to use the <code>Object</code> property.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -104,15 +104,15 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             // Instantiates datastore with datawindow: d_department
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
-            // Gets the Visible property of the name column
+            // Gets the Visible property of the name column.
             Console.WriteLine(&quot;The Visible property of the name column: {0}&quot;,
                                datastore.Object.Columns[&quot;name&quot;].Visible);
 
-            // Gets the Name property of the first column label
+            // Gets the Name property of the first column label.
             Console.WriteLine(&quot;The Name property of the first column label: {0}&quot;
                                ,datastore.Object.Texts[0].Name.ToString());
 
-            // Gets the height of the detail band
+            // Gets the height of the detail band.
             Console.WriteLine(&quot;The height of the detail band: {0}&quot;, 
                               datastore.Object.Bands[1].Height.ToString());
             
@@ -122,7 +122,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             The Name property of the first column label: departmentid_t
             The height of the detail band: 88
             */
-
         }
     }
 }

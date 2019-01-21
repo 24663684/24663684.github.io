@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreavgtmodelfunctmodel-decimal-selector-method"><strong>IDataStore.Avg&lt;TModel&gt;(Func&lt;TModel, decimal&gt; selector) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Computes the average of a sequence of decimal values. These values are obtained by invoking a transform function on each row in the primary buffer of the DataStore.</p>
+<p>Computes the average of a sequence of <code>decimal</code> values. These values are obtained by invoking a transform function on each row in the primary buffer of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>selector</code> System.Func&lt;TModel, decimal&gt;</p>
 <p>A transform function to apply to each row.</p>
@@ -89,8 +89,7 @@
 <p>System.Decimal</p>
 <p>The average of the sequence of values.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>Avg<tmodel>(Func&lt;TModel, decimal&gt; selector)<p>
-<p>The following code example demonstrates how to use the Avg<tmodel>(Func&lt;TModel, decimal&gt; selector) method.<p>
+<p>The following code example demonstrates how to use the <code>Avg&lt;TModel&gt;(Func&lt;TModel, decimal&gt;)</code> method to compute the average budget of all departments.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -108,9 +107,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -119,9 +116,11 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             // Values of Budget are:
             // 350000.00, 120000.00, 200000.00, 250000.00
             // so avg(Budget) is 230000.00
-            decimal avg = datastore.Avg&lt;D_Department&gt;(a =&gt; a.Budget);
+            decimal avg = datastore.Avg&lt;D_Department&gt;(o =&gt; o.Budget);
 
-            Console.WriteLine(&quot;The average budget of all records Avg(Budget) is: {0}&quot;, avg);            
+            Console.WriteLine(
+                &quot;The average budget of all records Avg(Budget) is: {0}&quot;,
+                avg);
 
             /*This code produces the following output:
             
@@ -137,7 +136,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>
-</tmodel></tmodel></article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

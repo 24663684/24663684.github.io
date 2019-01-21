@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorefindtmodelpredicatetmodel-predicate-int-start-int-end-dwbuffer-dwbuffer--dwbufferprimary-method"><strong>IDataStore.Find&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, int start, int end, DwBuffer dwBuffer = DwBuffer.Primary) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
 </div>
 <p>Generic method. Finds the next row in the DataStore in which data meets the criteria defined by <code>Predicate</code>. If both <code>start</code> and <code>end</code> parameters are set to -1, it indicates the search starts from the beginning to the end. The primary buffer is specified by default.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with to the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with to the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>predicate</code> System.Predicate&lt;TModel&gt;</p>
 <p>A <code>Predicate&lt;TModel&gt;</code> that you want to use as the search criteria.</p>
@@ -96,11 +96,11 @@
 <p>The buffer in which to find row.</p>
 <p>It is specified to the primary buffer by default.</p>
 <p><strong>Returns</strong></p>
-<p>System.TModel</p>
-<p>Returns the <code>TModel</code> instance which contains the data for the row found.</p>
-<p>It returns null if no row is found.</p>
+<p>TModel</p>
+<p>Returns the <code>TModel</code> object which contains the data for the row found.</p>
+<p>It returns <code>null</code> if no row is found.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find the department record by a Predicate<tmodel> object and using the start and end parameters.<p>
+<p>The following code example demonstrates how to find the department record by a <code>Predicate&lt;TModel&gt;</code> object and using the <code>start</code> and <code>end</code> parameters.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -118,24 +118,27 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example2()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // The first record in the Department table is found: departmentid=1, name=Engineering
+            // The first record in the Department table is found: 
+            // departmentid =1, name=Engineering
             var department = datastore.Find&lt;D_Department&gt;(&quot;departmentid &lt; 3&quot;);
 
             Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
-                               department.Departmentid, department.Name);
+                               department.Departmentid,
+                               department.Name);
 
-            // The second record in the Department table is found: departmentid=2, name=English
-            // 1 indicates to find from row 2, -1 indicates to find through the end
+            // The second record in the Department table is found: 
+            // departmentid =2, name=English
+            // 1 indicates to find from row 2, -1 indicates to find through the end.
             department = datastore.Find&lt;D_Department&gt;(d =&gt; d.Departmentid &lt; 3, 1, -1);
 
             Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
-                               department.Departmentid, department.Name);
+                               department.Departmentid,
+                               department.Name);
 
 
             /*This code produces the following output:
@@ -153,7 +156,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>
-</tmodel></article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

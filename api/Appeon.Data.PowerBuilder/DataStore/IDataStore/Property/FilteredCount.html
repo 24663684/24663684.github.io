@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorefilteredcount-property"><strong>IDataStore.FilteredCount Property</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the number of rows that have been filtered by the current filter criteria.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -82,9 +82,9 @@
 <p>System.Int32</p>
 <p>The number of rows that have been filtered by the current filter criteria.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>A DataStore object can have filter criteria as part of its definition. After the DataStore retrieves data, the filter is applied and rows that do not meet the filter criteria are moved to the filter buffer. You can change the filter criteria by calling the <code>SetFilter</code> method, and you can apply the new criteria with the <code>Filter</code> method.</p>
+<p>A <code>DataWindow object</code> can have filter criteria as part of its definition. After the DataStore retrieves data, the filter is applied and rows that do not meet the filter criteria are moved to the filter buffer. You can change the filter criteria by calling the <code>SetFilter</code> method, and you can apply the new criteria with the <code>Filter</code> method.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example filters the data by criteria (Budget is larger than 200000) and then uses the DataStore FilteredCount property to get the number of the filtered rows.</p>
+<p>The following code example filters the data by criteria (Budget is larger than 200000) and then uses the DataStore <code>FilteredCount</code> property to get the number of the filtered rows.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -102,35 +102,35 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates datastore with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
             
             datastore.Retrieve();
 
-            Console.WriteLine(&quot;Before data is filtered, Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;Before filtered, Rowcount: {0}&quot;, 
                                datastore.RowCount);
 
-            // Defines the filter criteria
+            // Defines the filter criteria.
             datastore.SetFilter(&quot;Budget &gt; 200000&quot;);
-            // Filters data that do not meet criteria
+
+            // Filters data that do not meet criteria.
             datastore.Filter();
 
-            Console.WriteLine(&quot;After data is filtered, Primary Buffer Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;After filtered, Primary Buffer Rowcount: {0}&quot;, 
                                datastore.RowCount);
 
-            // Gets the number of filtered rows
+            // Gets the number of filtered rows.
             int filtercnt = datastore.FilteredCount;
 
-            Console.WriteLine(&quot;After data is filtered, Filter Buffer Filteredcount: {0}&quot;,
+            Console.WriteLine(&quot;After filtered, Filter Buffer Filteredcount: {0}&quot;,
                                filtercnt);
 
             /*This code produces the following output:
             
-            Before data is filtered, Rowcount: 4
-            After data is filtered, Primary Buffer Rowcount: 2     
-            After data is filtered, Filter Buffer Filteredcount: 2
+            Before filtered, Rowcount: 4
+            After filtered, Primary Buffer Rowcount: 2     
+            After filtered, Filter Buffer Filteredcount: 2
             */
-
         }
     }
 }

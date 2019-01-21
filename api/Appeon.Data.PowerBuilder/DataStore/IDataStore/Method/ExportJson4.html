@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportjsonbool-primarydata-bool-filterdata-bool-deletedata-bool-dwcdata-mappingmethod-mappingmethod-method"><strong>IDataStore.ExportJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata, MappingMethod mappingMethod) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Exports data from the specified buffer(s) and/or DataWindowChild to a standard-format JSON string.</p>
+<p>Exports data from the specified buffer(s) and/or <code>DataWindowChild</code> to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -94,9 +94,9 @@
 <p>False: not to export.</p>
 <p><code>dwcdata</code> System.Boolean</p>
 <p>A<code>boolean</code> specifying whether to export the <code>DataWindowChild</code> data.</p>
-<p>True: to export. If it is to export the <code>DataWindowChild</code> data, data from all buffers will be exported to a simple-format JSON, regardless of the value of the other arguments.</p>
+<p>True: to export. If it is to export the <code>DataWindowChild</code> data, data from all buffers will be exported to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a>, regardless of the value of the other arguments.</p>
 <p>False: not to export.</p>
-<p><code>mappingMethod</code> <a href="../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
+<p><code>mappingMethod</code> <a href="../../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
 <p>A value of the <code>MappingMethod</code> enumerated datatype specifying the method for mapping columns.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
@@ -104,7 +104,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the standard-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the course records (including DataWindowChild) to JSON strings.When primaryData is true, exports data from the primary buffer to the JSON string; when filterData is true, exports data from the filter buffer to the JSON string;when deleteData is true, exports data from the delete buffer to the JSON string; when dwcdata is true, exports data from the DataWindowChild to the JSON string.The &quot;d_course&quot; DataStore has a departmentid column which embeds a child DataWindow &quot;dddw_deparment&quot;.</p>
+<p>The following code example demonstrates how to export the course records (including <code>DataWindowChild</code>) to JSON strings. When <code>primaryData</code> is <code>true</code>, exports data from the primary buffer to the JSON string; when <code>filterData</code> is <code>true</code>, exports data from the filter buffer to the JSON string; when <code>deleteData</code> is <code>true</code>, exports data from the delete buffer to the JSON string; when <code>dwcdata</code> is true, exports data from the <code>DataWindowChild</code> to the JSON string. The &quot;d_course&quot; <code>DataWindow object</code> has a departmentid column which embeds a child DataWindow &quot;dddw_deparment&quot;.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.Data.PowerBuilder;
 using System;
@@ -123,7 +123,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example4()
         {
-
             // Instantiates the datastore with datawindow: d_course
             var datastore = new DataStore(&quot;d_course&quot;, _context);
 

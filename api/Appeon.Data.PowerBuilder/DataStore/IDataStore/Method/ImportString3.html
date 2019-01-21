@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreimportstringstring-value-int-startrow-int-endrow-short-startcolumn-short-endcolumn-method"><strong>IDataStore.ImportString(string value, int startRow, int endRow, short startColumn, short endColumn) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Inserts the tab-separated data from a string into the DataStore. You can specify the starting and ending rows and columns in the string to be imported.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -85,11 +85,11 @@
 <p><code>startrow</code>	System.Int32</p>
 <p>The zero-based number of the first row in the string that you want to import. If it is negative, 0 is used.</p>
 <p><code>endRow</code>	System.Int32</p>
-<p>The zero-based number of the last row in the string that you want to import. If it is negative, imports the rest of the rows.</p>
+<p>The zero-based number of the last row in the string that you want to import. If it is negative, the rest of the rows will be imported.</p>
 <p><code>startColumn</code>	System.Short</p>
 <p>The zero-based number of the first column in the string that you want to import. If it is negative, 0 is used.</p>
 <p><code>endColumn</code>	System.Short</p>
-<p>The zero-based number of the last column in the string that you want to copy. If it is negative, imports the rest of the columns.</p>
+<p>The zero-based number of the last column in the string that you want to copy. If it is negative, the rest of the columns will be imported.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of rows that were imported if it succeeds.</p>
@@ -97,9 +97,9 @@
 <p>The string must be formatted in tab-separated. Each line must end with a carriage return and a newline character (<sub>r</sub>n). If the string has four tab-separated columns, one line might look like for a tab-separated string:</p>
 <pre><code>col1_data\t col2_data\t col3_data\t col4_data\r\n
 </code></pre>
-<p>The string should consist of rows of data. If the data includes column headings or row labels, set the <code>startRow</code> and <code>startColumn</code> arguments to skip them. The datatypes and order of the DataStore columns must match with the columns of data in the string.</p>
+<p>The string should consist of rows of data. If the data includes column headings or row labels, set the <code>startRow</code> and <code>startColumn</code> arguments to skip them. The datatype and order of the DataStore columns must match with the columns of data in the string.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to import the department records from a string to a DataStore using the startRow, endRow, startColumn and endColumn parameters.</p>
+<p>The following code example demonstrates how to import the department records from a string to a DataStore using the <code>startRow</code>, <code>endRow</code>, <code>startColumn</code> and <code>endColumn</code> parameters.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -120,7 +120,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             // Instantiates the datastore with datawindow: d_department2
             var datastore = new DataStore(&quot;d_department2&quot;, _context);
 
-
             string importString = GetImportString3();
 
             // Imports data in rows 1 and 2 of the string to the datastore
@@ -136,6 +135,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                                   datastore.GetItem&lt;string&gt;(row, &quot;name&quot;),
                                   datastore.GetItem&lt;decimal&gt;(row, &quot;budget&quot;));
             }
+
             /*This code produces the following output:
 
             Rowcount: 2

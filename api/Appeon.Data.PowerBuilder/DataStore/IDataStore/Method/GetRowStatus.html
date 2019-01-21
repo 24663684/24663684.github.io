@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetrowstatusint-row-dwbuffer-dwbuffer--dwbufferprimary-method"><strong>IDataStore.GetRowStatus(int row, DwBuffer dwbuffer = DwBuffer.Primary) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Gets the modification status of a row. The modification status determines the type of SQL statement the Update method will generate for the row.</p>
+<p>Gets the modification status of a row. The modification status determines the type of SQL statement the <code>Update</code> method will generate for the row.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -83,14 +83,14 @@
 <p><code>row</code> System.Int32</p>
 <p>The zero-based row number to get row status.</p>
 <p><code>dwbuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value identifying the DataStore buffer containing the row for which you want to get status.</p>
+<p>A value identifying the <code>DataWindow buffer</code> containing the row for which you want to get status.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../../CoreService.Data/ModelState/ModelState.html">Appeon.Data.ModelState</a></p>
 <p>A value of the <code>ModelState</code> enumerated datatype.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>Use <code>GetRowStatus</code> and <code>GetItemStatus</code> to understand what SQL statements will be generated for new and changed information when you update the database.</p>
-<p>For rows in the primary and filter buffers, Update generates an INSERT statement for rows with <code>ModelState.NewModified</code> status. It generates an UPDATE statement for rows with <code>ModelState.Modified</code> status and references the columns that have been affected.</p>
-<p>For rows in the delete buffer, Update does not generate a DELETE statement for rows whose status was <code>ModelState.New</code> or <code>ModelState.NewModified</code> before being moved to the delete buffer.</p>
+<p>Use the <code>GetRowStatus</code> method and the <code>GetItemStatus</code> method to understand what SQL statements will be generated for the new and changed information when you update the database.</p>
+<p>For rows in the primary and filter buffers, <code>Update</code> generates an INSERT statement for rows with <code>ModelState.NewModified</code> status; and generates an UPDATE statement for rows with <code>ModelState.Modified</code> status and references the columns that have been affected.</p>
+<p>For rows in the delete buffer, <code>Update</code> does not generate a DELETE statement for rows whose status was <code>ModelState.New</code> or <code>ModelState.NewModified</code> before being moved to the delete buffer.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to get the status of a row.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -111,18 +111,18 @@ namespace Appeon.ApiDoc.IDataStoreExamples
         public void Example()
         {
 
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
             datastore.SetItem(0, &quot;name&quot;, &quot;Department Name&quot;);
 
-            Console.WriteLine(&quot;Row 0 Status: {0};\n&quot; +
-                              &quot;Row 1 Status: {1}&quot;,
-                          datastore.GetRowStatus(0, DwBuffer.Primary),
-                          datastore.GetRowStatus(1, DwBuffer.Primary));
-
+            Console.WriteLine(
+                &quot;Row 0 Status: {0};\n&quot; +
+                &quot;Row 1 Status: {1}&quot;,
+                datastore.GetRowStatus(0, DwBuffer.Primary),
+                datastore.GetRowStatus(1, DwBuffer.Primary));
 
             /*This code produces the following output:
              
@@ -134,7 +134,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/D_Department.html">D_Department</a> <br>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

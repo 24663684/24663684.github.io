@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexiststmodelpredicatetmodel-predicate-method"><strong>IDataStore.Exists&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Determines whether there is a row in the primary buffer of the DataStore that meets the specified condition.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,15 +81,15 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>predicate</code> System.Predicate&lt;TModel&gt;</p>
-<p>The Predicate&lt;TModel&gt; that defines the condition.</p>
+<p>The <code>Predicate&lt;TModel&gt;</code> that defines the condition.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>True if there is a row in the primary buffer that meets the specified condition, otherwise, false.</p>
+<p>Returns <code>true</code> if there is a row in the primary buffer that meets the specified condition, otherwise, <code>false</code>.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the Exists method to determine whether there are recrods in the DataStore that meet the criteria.</p>
+<p>The following code example demonstrates how to use the <code>Exists</code> method to determine whether there are records in the DataStore that meet the criteria.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -107,27 +107,26 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // No record in datastore whose Name=&quot;test&quot;
-            bool exists = datastore.Exists&lt;D_Department&gt;(a =&gt; a.Name == &quot;test&quot;);
-            Console.WriteLine(&quot;The Department contains a record &quot; +
-                &quot;whose name is test? {0}&quot;, exists);
+            // No record in datastore (Name=&quot;Department New&quot;)
+            bool exists = datastore.Exists&lt;D_Department&gt;(
+                a =&gt; a.Name == &quot;Department New&quot;);
+
+            Console.WriteLine(&quot;Department New: {0}&quot;, exists);
 
             // There is a record in datastore whose Name=&quot;Engineering&quot;
             exists = datastore.Exists&lt;D_Department&gt;(a =&gt; a.Name == &quot;Engineering&quot;);
-            Console.WriteLine(&quot;The Department contains a record &quot; +
-                &quot;whose name is Engineering? {0}&quot;, exists);
+            Console.WriteLine(&quot;Engineering: {0}&quot;, exists);
 
             /*This code produces the following output:
             
-            The Department contains a record whose name is test? False
-            The Department contains a record whose name is Engineering? True    
+            Department New: False
+            Engineering: True    
             */
-
         }
     }
 }

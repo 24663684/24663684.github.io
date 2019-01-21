@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportplainjsonbool-primarydata-bool-filterdata-bool-deletedata-bool-dwcdata-method"><strong>IDataStore.ExportPlainJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Exports data from the specified buffer(s) and/or DataWindowChild to a simple-format JSON string.</p>
+<p>Exports data from the specified buffer(s) and/or <code>DataWindowChild</code> to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -99,10 +99,8 @@
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the simple-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the course records (including DataWindowChild) to JSON strings.The &quot;d_course&quot; DataStore has a departmentid column which embeds a child DataWindow &quot;dddw_deparment&quot;.When primaryData is true, exports data from the primary buffer to the JSON string; when filterData is true, exports data from the filter buffer to the JSON string;when deleteData is true, exports data from the delete buffer to the JSON string; when dwcdata is true, exports data from the DataWindowChild to the JSON string.</p>
+<p>The following code example demonstrates how to export the course records (including <code>DataWindowChild</code>) to JSON strings. The &quot;d_course&quot; DataStore has a departmentid column which embeds a child DataWindow &quot;dddw_deparment&quot;. When <code>primaryData</code> is <code>true</code>, exports data from the primary buffer to the JSON string; when <code>filterData</code> is <code>true</code>, exports data from the filter buffer to the JSON string; when <code>deleteData</code> is <code>true</code>, exports data from the delete buffer to the JSON string; when <code>dwcdata</code> is <code>true</code>, exports data from the <code>DataWindowChild</code> to the JSON string.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -120,7 +118,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example4()
         {
-            // Instantiate the datastore with datawindow: d_course
+            // Instantiates the datastore with datawindow: d_course
             var datastore = new DataStore(&quot;d_course&quot;, _context);
 
             // Generates data in the primary/delete/filter buffers for this example.

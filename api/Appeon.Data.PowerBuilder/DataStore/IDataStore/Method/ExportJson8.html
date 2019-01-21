@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportjsondwbuffer-dwbuffer-int-startrow-int-endrow-short-startcolumn-mappingmethod-mappingmethod-method"><strong>IDataStore.ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the end) from the specified buffer to a standard-format JSON string.</p>
+<p>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the end) from the specified buffer to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>dwbuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataWindow buffer from which you want to export the data.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the <code>DataWindow buffer</code> from which you want to export the data.</p>
 <p><code>startRow</code> System.Int32</p>
 <p>The zero-based index number of the first row in the buffer that you want to export.</p>
 <p><code>endRow</code> System.Int32</p>
@@ -90,15 +90,13 @@
 <p><code>startColumn</code> System.Int16</p>
 <p>The zero-based index number of the first column in the buffer that you want to export.</p>
 <p>If it is negative, 0 is used.</p>
-<p><code>mappingMethod</code> <a href="../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
+<p><code>mappingMethod</code> <a href="../../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
 <p>A value of the <code>MappingMethod</code> enumerated datatype specifying the method for mapping columns.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the standard-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the department records in the specified rows and columns of the primary buffer to a JSON string using the startRow,endRow and startColumn parameters.</p>
+<p>The following code example demonstrates how to export the department records in the specified rows and columns of the primary buffer to a JSON string using the <code>startRow</code>,<code>endRow</code> and <code>startColumn</code> parameters.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.Data.PowerBuilder;
 using System;
@@ -117,13 +115,14 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example8()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
             // Exports records in rows 1 through 11 and in columns 2 through the end of the primary buffer
-            string json = datastore.ExportJson(DwBuffer.Primary, 0, 10, 1, MappingMethod.JsonIndex);
+            string json = datastore.ExportJson(
+                DwBuffer.Primary, 0, 10, 1, MappingMethod.JsonIndex);
 
             Console.WriteLine(json);
 

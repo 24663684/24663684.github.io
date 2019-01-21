@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoresortstring-format--null-method"><strong>IDataStore.Sort(string format = null) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Sorts the rows in the DataStore using the current sort criteria. You can use the <code>format</code> parameter to specify a different sort criteria.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,13 +81,13 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>format</code>	System.String</p>
-<p>A string whose value is the sort criteria for the DataStore object. The expression includes column names or zero-based numbers. A column number must be preceded by a pound sign (#).</p>
+<p>A string whose value is the sort criteria for the <code>DataWindow object</code>. The expression includes column names or zero-based numbers. A column number must be preceded by a pound sign (#).</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
 <p>Returns <code>true</code> if it succeeds.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p><code>Sort</code> uses the current sort criteria for the DataStore. If you do not call <code>SetSort</code> or use the <code>format</code> parameter to set the sort criteria before you call <code>Sort</code>, <code>Sort</code> uses the sort criteria specified in the DataStore object definition.</p>
-<p>When the <code>Retrieve</code> method retrieves data for the DataStore, it applies the sort criteria that were defined for the DataStore object, if any. You need to call <code>Sort</code> only after you change the sort criteria with <code>SetSort</code> or if the data has changed because of processing.</p>
+<p>The <code>Sort</code> method uses the current sort criteria for the <code>DataWindow object</code>. If you do not call <code>SetSort</code> or use the <code>format</code> parameter to set the sort criteria before you call <code>Sort</code>, <code>Sort</code> uses the sort criteria specified in the <code>DataWindow object</code> definition.</p>
+<p>When the <code>Retrieve</code> method retrieves data for the DataStore, it applies the sort criteria that were defined for the <code>DataWindow object</code>, if any. You need to call <code>Sort</code> only after you change the sort criteria with <code>SetSort</code> or if the data has changed because of processing.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example sorts data records by budget in descending order.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -107,35 +107,15 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
             string OutPutValue;
             OutPutValue = &quot;&quot;;
 
             // Gets values for the budget column in DataStore
-            for (int i = 0; i &lt; datastore.RowCount; i++) 
-            {
-                OutPutValue += datastore.GetItemNumber(i, &quot;Budget&quot;).ToString();
-                if (i &lt; datastore.RowCount - 1)
-                {
-                    OutPutValue += &quot;, &quot;;
-                }       
-            }
-
-            Console.WriteLine(&quot;Before SetSort, Budget Value List: {0}&quot;, 
-                               OutPutValue);
-
-            // Calls SetSort to sort data by budget in descending order
-            // Calls Sort to apply the sort
-            datastore.SetSort(&quot;Budget D&quot;);
-            datastore.Sort();
-
-            OutPutValue = &quot;&quot;;
-
-            // Gets values for the budget column in DataStore after sort
             for (int i = 0; i &lt; datastore.RowCount; i++)
             {
                 OutPutValue += datastore.GetItemNumber(i, &quot;Budget&quot;).ToString();
@@ -145,15 +125,34 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                 }
             }
 
-            Console.WriteLine(&quot;After SetSort, Budget Value List: {0}&quot;, 
-                               OutPutValue);
+            Console.WriteLine(&quot;Before SetSort, Budget Value List: {0}&quot;,
+                OutPutValue);
+
+            // Calls SetSort to sort data by budget in descending order.
+            // Calls Sort to apply the sort.
+            datastore.SetSort(&quot;Budget D&quot;);
+            datastore.Sort();
+
+            OutPutValue = &quot;&quot;;
+
+            // Gets values for the budget column in DataStore after sort.
+            for (int i = 0; i &lt; datastore.RowCount; i++)
+            {
+                OutPutValue += datastore.GetItemNumber(i, &quot;Budget&quot;).ToString();
+                if (i &lt; datastore.RowCount - 1)
+                {
+                    OutPutValue += &quot;, &quot;;
+                }
+            }
+
+            Console.WriteLine(&quot;After SetSort, Budget Value List: {0}&quot;,
+                OutPutValue);
 
             /*This code produces the following output:
             
             Before SetSort, Budget Value List: 350000, 120000, 200000, 250000
             After SetSort, Budget Value List: 350000, 250000, 200000, 120000   
             */
-
         }
     }
 }

@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorecontainstmodel-item-method"><strong>IDataStore.Contains(TModel item) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Determines whether a data row exists in the primary buffer of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -80,15 +80,16 @@
 <pre><code class="lang-c#">  public bool Contains(TModel item);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>item</code> System.TModel</p>
-<p>A TModel object which represents a row of data.</p>
+<p><code>item</code> TModel</p>
+<p>A <code>TModel</code> object which represents a row of data.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>True if the data row is found in the primary buffer of the DataStore; otherwise, false.</p>
+<p>Returns <code>true</code> if the data row is found in the primary buffer of the DataStore; otherwise, <code>false</code>.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>This method compares the reference address, not the data values. It returns true when the reference address of the TModel object is the same that of a DataStore row (even if the data values are different). See examples for elaboration.</p>
+<p>A model object which represents a data row is a reference type. The <code>Contains</code> method tests for reference equality (Reference equality means that the object variables that are compared refer to the same object).</p>
+<p>It returns <code>true</code> once the <code>item</code> argument and the data row in the primary buffer refer to the same model object. See examples for elaboration.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the Contains method.</p>
+<p>The following code example demonstrates how to use the <code>Contains</code> method.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -106,14 +107,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // Creates a department TModel object and populates it with data
+            // Creates a D_Department object and populates it with data
             var department = new D_Department();
             department.Departmentid = 10;
             department.Name = &quot;department name&quot;;
@@ -122,31 +121,30 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             department.Administrator = 2;
 
             // Contains method returns false
-            Console.WriteLine(&quot;DataStore contains item? {0}&quot;,
+            Console.WriteLine(&quot;DataStore contains item: {0}&quot;,
                 datastore.Contains(department));
 
             // Appends the department data to datastore
             datastore.Add(department);
 
             // Contains method returns true
-            Console.WriteLine(&quot;DataStore contains item? {0}&quot;,
+            Console.WriteLine(&quot;DataStore contains item: {0}&quot;,
                 datastore.Contains(department));
 
             // Changes a data value
             department.Administrator = 3;
 
             // Contains method still returns true 
-            // because it compares the reference address, not values
-            Console.WriteLine(&quot;Datastore contains item? {0}&quot;,
+            // because it compares the reference address, not values.
+            Console.WriteLine(&quot;Datastore contains item {0}&quot;,
                 datastore.Contains(department));
 
             /*This code produces the following output:
             
-            DataStore contains item? False
-            DataStore contains item? True
-            DataStore contains item? True     
+            DataStore contains item: False
+            DataStore contains item: True
+            DataStore contains item: True     
             */
-
         }
     }
 }

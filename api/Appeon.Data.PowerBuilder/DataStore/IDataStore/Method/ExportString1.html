@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportstringbool-colheading--true-method"><strong>IDataStore.ExportString(bool colheading = true) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Exports all of the data rows from the primary buffer of the DataStore to a string. The column name is exported by default.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>colheading</code> System.Boolean</p>
-<p>True: (Default) The column name is exported.</p>
+<p>True (default): The column name is exported.</p>
 <p>False: The column name is not exported.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
@@ -89,7 +89,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>Values are separated by tabs. A newline character (&quot;\r\n&quot; for non-Unix platforms and &quot;\n&quot; for Unix platforms) is placed at the end of each line.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the ExportString method to export the department records (with or without column heading) from the DataStore primary buffer to a string.</p>
+<p>The following code example demonstrates how to use the <code>ExportString</code> method to export the department records (with or without column heading) from the primary buffer to a string.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -107,7 +107,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             // Generates data in the primary/delete/filter buffers for this example.

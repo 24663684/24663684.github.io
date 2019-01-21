@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreexportplainjsondwbuffer-dwbuffer-int-startrow-int-endrow-method"><strong>IDataStore.ExportPlainJson(DwBuffer dwbuffer, int startRow, int endRow) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Exports the rows (from the specified starting position to the ending position) from the specified buffer to a simple-format JSON string.</p>
+<p>Exports the rows (from the specified starting position to the ending position) from the specified buffer to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>dwbuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataStore buffer from which you want to export the data.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the <code>DataWindow buffer</code> from which you want to export the data.</p>
 <p><code>startRow</code> System.Int32</p>
 <p>The zero-based index number of the first row in the buffer that you want to export.</p>
 <p><code>endRow</code> System.Int32</p>
@@ -90,8 +90,6 @@
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the simple-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to export the department records in rows 1 and 2 in the primary buffer to a JSON string.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -111,7 +109,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example7()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();

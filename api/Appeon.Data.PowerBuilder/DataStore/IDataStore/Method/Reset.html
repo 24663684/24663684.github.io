@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorereset-method"><strong>IDataStore.Reset() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Clears all the data from the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -80,7 +80,7 @@
 <pre><code class="lang-c#">  public void Reset();
 </code></pre>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p><code>Reset</code> is not the same as deleting rows from the DataStore. <code>Reset</code> affects the application only, not the database. If you delete rows and then call the <code>Update</code> method, the rows are deleted from the database table associated with that DataStore. If you call <code>Reset</code> and then call <code>Update</code>, no changes are made to the database table.</p>
+<p>The <code>Reset</code> method is not the same as deleting rows from the DataStore. <code>Reset</code> affects the application only, not the database. If you delete rows and then call the <code>Update</code> method, the rows are deleted from the database table associated with that DataStore. If you call the <code>Reset</code> method and then call the <code>Update</code> method, no changes are made to the database table.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to clear the data records from DataStore.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -100,7 +100,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -117,7 +117,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Before Reset, Rowcount: 4
             After Reset, Rowcount: 0           
             */
-
         }
     }
 }

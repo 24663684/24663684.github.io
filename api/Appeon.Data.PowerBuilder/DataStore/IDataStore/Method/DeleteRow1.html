@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoredeleterowint-row-method"><strong>IDataStore.DeleteRow(int row) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Deletes the specified row (by the zero-based index number) from the primary buffer of the DataStore. The deleted row will be moved to the delete buffer of the DataStore.</p>
+<p>Deletes the specified row (by the index number) from the primary buffer of the DataStore. The deleted row will be moved to the delete buffer of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,11 +84,11 @@
 <p>A zero-based index number of the row to delete from the primary buffer of the DataStore.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>Always returns true except for when exceptions are thrown.</p>
+<p>Always returns <code>true</code> except for when exceptions are thrown.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>DeleteRow deletes a row from the DataStore primary buffer. If DataStore is not updatable, the storage related with the deleted row will be directly erased. If DataStore is updatable, DeleteRow moves the row to the delete buffer. DataStore uses the value in the delete buffer to create the SQL Delete statement. The row will not be deleted from the database table until Update method is called; and the storage related with the deleted row will not be erased until the database is updated with the changes made to the DataStore and the update flag is reset by the Update method.</p>
+<p>The <code>DeleteRow</code> method deletes a row from the DataStore primary buffer. If DataStore is not updatable, the storage related with the deleted row will be directly erased. If DataStore is updatable, <code>DeleteRow</code> moves the row to the delete buffer. DataStore uses the value in the delete buffer to create the SQL DELETE statement. The row will not be deleted from the database table until <code>Update</code> method is called; and the storage related with the deleted row will not be erased until the database is updated with the changes made to the DataStore and the update flag is reset by the <code>Update</code> method.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the DeleteRow(int row) method to move a row from the primary buffer to the delete buffer.</p>
+<p>The following code example demonstrates how to use the <code>DeleteRow(int)</code> method to move a row from the primary buffer to the delete buffer.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -106,8 +106,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -115,14 +114,14 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             // This datastore has 4 records
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;, datastore.RowCount);
 
-            // Deletes the first row
+            // Deletes the first row.
             datastore.DeleteRow(0);
 
-            // This datastore has 3 records in the primary buffer
+            // This datastore has 3 records in the primary buffer.
             Console.WriteLine(&quot;Primary buffer Rowcount: {0}&quot;, 
                 datastore.RowCount);
 
-            // This datastore has 1 record in the delete buffer
+            // This datastore has 1 record in the delete buffer.
             Console.WriteLine(&quot;Delete buffer Rowcount: {0}&quot;, 
                 datastore.DeletedCount);
 

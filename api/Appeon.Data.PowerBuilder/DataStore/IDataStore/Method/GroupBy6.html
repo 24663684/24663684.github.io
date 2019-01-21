@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregroupbytmodelstring-selectorkey-string-sortkey--null-method"><strong>IDataStore.GroupBy&lt;TModel&gt;(string selectorKey, string sortKey = null) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Generic method. Groups rows of the primary buffer by the custom grouping criteria. The sort criteria can be specified.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,13 +81,13 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>selectorkey</code>	System.String</p>
 <p>A comma-separated list of the columns or expressions that control the grouping of the data.</p>
 <p><code>sortkey</code>	System.String</p>
 <p>A string whose value is the valid sort criteria for the DataStore. The expression includes column names or numbers. A column number must be preceded by a pound sign (#).</p>
-<p>Default is null which indicates it will use the current sort criteria in DataStore.</p>
+<p>Default is <code>null</code> which indicates it will use the current sort criteria in DataStore.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IEnumerable&lt;IGrouping&lt;System.Object,  TModel&gt;&gt;</p>
 <p>Returns an <code>IEnumerable&lt;IGrouping&lt;Object,TModel&gt;&gt;</code> object which can be used to read data in groups.</p>
@@ -111,18 +111,18 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example6()
         {
-            // Instantiates datastore with datawindow: d_department_course
+            // Instantiates a DataStore object with datawindow: d_department_course.
             var datastore = new DataStore(&quot;d_department_course&quot;, _context);
 
             datastore.Retrieve();
 
-            // Sets the group by column and the sort by column
-            var studentidGroup = datastore.
-                GroupBy&lt;D_Department_Course&gt;(&quot;studentgrade_studentid&quot;,
-                                            &quot;studentgrade_studentid&quot;);
+            // Sets the group by column and the sort by column.
+            var studentidGroup = datastore.GroupBy&lt;D_Department_Course&gt;(
+                &quot;studentgrade_studentid&quot;,
+                &quot;studentgrade_studentid&quot;);
 
-            Console.WriteLine(&quot;Studentid Group Count: {0}&quot;, 
-                              studentidGroup.Count());
+            Console.WriteLine(&quot;Studentid Group Count: {0}&quot;,
+                studentidGroup.Count());
 
             /*This code produces the following output:
              

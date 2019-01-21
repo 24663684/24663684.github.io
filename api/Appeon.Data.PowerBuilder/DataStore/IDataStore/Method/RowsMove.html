@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorerowsmoveint-startrow-int-endrow-dwbuffer-movebuffer-idatastore-targetdw-int-beforerow-dwbuffer-targetbuffer-method"><strong>IDataStore.RowsMove(int startrow, int endrow, DwBuffer movebuffer, IDataStore targetdw, int beforerow, DwBuffer targetbuffer) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Clears a range of rows from one DataStore and inserts them in another. Alternatively, <code>RowsMove</code> can move rows from one buffer to another within a single DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -85,9 +85,9 @@
 <p><code>endrow</code>	System.Int32</p>
 <p>The zero-based number of the last row you want to move.</p>
 <p><code>movebuffer</code>	 <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataStore buffer from which you want to move the rows.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the <code>DataWindow buffer</code> from which you want to move the rows.</p>
 <p><code>targetdw</code>	 <a href="../../IDataStore/IDataStore.html">Appeon.Data.PowerBuilder.IDataStore</a></p>
-<p>The name of the DataStore to which you want to move the rows. <code>targetdw</code> can be the current DataStore or a different DataStore, but it cannot be a child DataWindow.</p>
+<p>The name of the DataStore to which you want to move the rows. <code>targetdw</code> can be the current DataStore or a different DataStore, but it cannot be a <code>DataWindowChild</code>.</p>
 <p><code>beforerow</code>	System.Int32</p>
 <p>The zero-based number of the row before which you want to insert the moved rows. To insert after the last row, use -1 or use any value that is greater than the number of existing rows.</p>
 <p><code>targetbuffer</code>	 <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
@@ -96,17 +96,17 @@
 <p>System.Boolean</p>
 <p>Returns <code>true</code> if it succeeds, and <code>false</code> if <code>startrow</code>, <code>endrow</code> or <code>beforerow</code> is not correct.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>When you use <code>RowsMove</code>, the rows have the status <code>ModelState.NewModified</code> in the target DataStore.</p>
+<p>When you use the <code>RowsMove</code> method, the rows have the status <code>ModelState.NewModified</code> in the target DataStore.</p>
 <p>If you move rows between buffers in a single DataStore, DataStore retains knowledge of where the rows came from, and changes their status accordingly. For example, if you move unmodified rows from the primary buffer to the delete buffer, they are marked for deletion. If you move the rows back to the primary buffer, their status returns to <code>ModelState.NotModified</code>. Note, however, that if you move rows from one DataStore to another and back again, the row status is <code>ModelState.NewModified</code> because they came from a different DataStore.</p>
-<p>When you use <code>RowsMove</code>, data is not automatically retrieved for drop-down DataWindows in the target DataStore, as it is when you call <code>InsertRow</code>. You must explicitly call <code>Retrieve</code> for child DataWindows in the target.</p>
-<p>When you use <code>RowsCopy</code> or <code>RowsMove</code> to populate another DataStore, the copied data is not automatically processed by filters or sort criteria in effect on the target DataStore. You might be required to call the <code>Filter</code>, or <code>Sort</code> methods to properly process the data.</p>
+<p>When you use the <code>RowsMove</code> method, data is not automatically retrieved for drop-down DataWindows in the target DataStore, as it is when you call the <code>InsertRow</code> method. You must explicitly call the <code>Retrieve</code> method for <code>DataWindowChilds</code> in the target.</p>
+<p>When you use the <code>RowsCopy</code> method or the <code>RowsMove</code> method to populate another DataStore, the copied data is not automatically processed by filters or sort criteria in effect on the target DataStore. You might be required to call the <code>Filter</code> methods, or <code>Sort</code> methods to properly process the data.</p>
 <p>Uses for <code>RowsMove</code> include:</p>
 <ul>
 <li>Moving several rows from the primary buffer to the delete buffer, instead of deleting one at a time</li>
 <li>Moving rows from the delete buffer to the primary buffer, to implement an Undo capability in your application</li>
 </ul>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example deletes the first row and then calls RowsMove to restore the deleted row from the delete buffer.</p>
+<p>The following code example deletes the first row and then calls the <code>RowsMove</code> method to restore the deleted row from the delete buffer.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -124,20 +124,20 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
-            // This datastore has 4 records
+            // This datastore has 4 records.
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;, datastore.RowCount);
 
             // Deletes the record in the first row.
             datastore.DeleteRow(0);
-            
+
             Console.WriteLine(&quot;After DeleteRow, Primary buffer Rowcount: {0}&quot;,
                                datastore.RowCount);
-            
+
             Console.WriteLine(&quot;After DeleteRow, Delete buffer Rowcount: {0}&quot;,
                                datastore.DeletedCount);
 

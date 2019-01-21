@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreevaluatetvaluestring-expression-method"><strong>IDataStore.Evaluate&lt;TValue&gt;(string expression) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Calculates the result of the specified DataWindow expression using the data in the primary buffer of the DataStore.</p>
+<p>Calculates the result of the specified <code>DataWindow expression</code> using the data in the primary buffer of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,13 +84,12 @@
 <p>The type of the result value.</p>
 <p><strong>Parameters</strong></p>
 <p><code>expression</code> System.String</p>
-<p>A DataWindow expression to evaluate.</p>
+<p>A <code>DataWindow expression</code> to evaluate.</p>
 <p><strong>Returns</strong></p>
 <p>TValue</p>
 <p>The result value.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>Evaluate<tvalue>(string expression)<p>
-<p>The following code example demonstrates how to use the Evaluate<tvalue>(string expression) method.<p>
+<p>The following code example demonstrates how to use the <code>Evaluate&lt;TValue&gt;(String)</code> method.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -108,7 +107,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            // Instantiates datastore with dataobject: d_department
+            // Instantiates a DataStore object with dataobject: d_department
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -126,7 +125,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             
             Sum(budget for all): 920000.0000       
             */
-
         }
     }
 }
@@ -134,7 +132,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>
-</tvalue></tvalue></article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreorderbytmodelfunctmodel-object-keyselector-method"><strong>IDataStore.OrderBy&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Sorts the rows of the primary buffer in the DataStore by a key in the ascending order.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>keySelector</code>	System.Func&lt;TModel, System.Object&gt;</p>
 <p>A function to extract the key from a row.</p>
@@ -89,7 +89,7 @@
 <p><a href="../../../CoreService.Data/IOrderable/IOrderable.html">Appeon.Data.IOrderable&lt;TModel&gt;</a></p>
 <p>Returns an <code>IOrderable&lt;TModel&gt;</code> object which provides methods to add other sorting conditions or execute <code>sort</code>.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>OrderBy<tmodel>(Func&lt;TModel, object&gt; keySelector)The following code example sorts the DataStore records by budget in the ascending order.<p>
+<p>The following code example sorts the DataStore records by budget in the ascending order.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -107,7 +107,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -116,23 +116,25 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
             for (int row = 0, rowcount = datastore.RowCount; row &lt; rowcount; row++)
             {
-                Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}; Budget: {2}&quot;,
-                               datastore.GetItem&lt;int&gt;(row, 0),
-                               datastore.GetItem&lt;string&gt;(row, 1),
-                               datastore.GetItem&lt;decimal&gt;(row, 2));
+                Console.WriteLine(
+                    &quot;Department ID: {0}; Department Name: {1}; Budget: {2}&quot;,
+                    datastore.GetItem&lt;int&gt;(row, 0),
+                    datastore.GetItem&lt;string&gt;(row, 1),
+                    datastore.GetItem&lt;decimal&gt;(row, 2));
             }
-           
-            // Sorts records by budget in ascending roder
+
+            // Sorts records by budget in ascending roder.
             datastore.OrderBy&lt;D_Department&gt;(d =&gt; d.Budget).Sort();
 
             Console.WriteLine(&quot;After OrderBy&quot;);
 
             for (int row = 0, rowcount = datastore.RowCount; row &lt; rowcount; row++)
             {
-                Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}; Budget: {2}&quot;,
-                               datastore.GetItem&lt;int&gt;(row, 0),
-                               datastore.GetItem&lt;string&gt;(row, 1),
-                               datastore.GetItem&lt;decimal&gt;(row, 2));
+                Console.WriteLine(
+                    &quot;Department ID: {0}; Department Name: {1}; Budget: {2}&quot;,
+                    datastore.GetItem&lt;int&gt;(row, 0),
+                    datastore.GetItem&lt;string&gt;(row, 1),
+                    datastore.GetItem&lt;decimal&gt;(row, 2));
             }
 
             /*This code produces the following output:
@@ -152,10 +154,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
     }
 }
 </code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/D_Department.html">D_Department</a> <br>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>
-</tmodel></article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

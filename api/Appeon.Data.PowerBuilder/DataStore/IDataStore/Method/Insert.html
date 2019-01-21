@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreinsertint-index-tmodel-item-method"><strong>IDataStore.Insert(int index, TModel item) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Inserts a TModel object as a data row at the specified index in the primary buffer of the DataStore. This index is the same as the zero-based row number in the primary buffer.</p>
+<p>Inserts a <code>TModel</code> object as a data row at the position (specified by index) in the primary buffer of the DataStore. The index is the same as the zero-based row number in the primary buffer.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -83,8 +83,7 @@
 <p><code>index</code>	System.Int32</p>
 <p>The zero-based index position for the insertion.</p>
 <p><code>item</code>	TModel</p>
-<p>The TModel instance to be inserted to the primary buffer. The type of the model must match with the current <code>DataObject</code>.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The <code>TModel</code> object to be inserted to the primary buffer. The type of the model must match with the current <code>DataObject</code>.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to insert a data record before the position specified by index.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -104,8 +103,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -115,7 +113,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                 new D_Department()
                 {
                     Departmentid = 10,
-                    Name = &quot;Department Name&quot;,
+                    Name = &quot;New Department&quot;,
                     Budget = 100m
                 };
 
@@ -137,7 +135,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
             Before Insert, Rowcount: 4
             After Insert, Rowcount: 5
-            DepartmentID: 10; Name: Department Name; Budget: 100
+            DepartmentID: 10; Name: New Department; Budget: 100
             DepartmentID: 1; Name: Engineering; Budget: 350000.0000
             DepartmentID: 2; Name: English; Budget: 120000.0000
             DepartmentID: 4; Name: Economics; Budget: 200000.0000

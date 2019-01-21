@@ -71,12 +71,11 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
 </div>
-<p>待定。</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
-<p>The <code>IDataStore</code> interface represents a C# DataStore object. C# DataStore is a .NET version of the native PowerBuilder DataStore.  It provides almost the same set of APIs as the native PowerBuilder DataStore, and allows you to use standard C# features such as LINQ, delegates and transactions.</p>
+<p>The <code>IDataStore</code> interface represents a C# DataStore object. C# DataStore is a .NET version of the native PowerBuilder DataStore. It provides almost the same set of APIs as the native PowerBuilder DataStore, and allows you to use standard C# features such as LINQ, delegates and transactions.</p>
 <p>You can migrate existing PowerBuilder DataWindow/DataStore data objects to become C# DataStore, and take advantages of the simple and convenient PowerScript coding styles to implement data operations at the server side.</p>
 <p>C# DataStore can exchange data easily with different client types because it fully integrates with ASP.NET framework.  C# DataStore is a totally different solution from the legacy PB.NET DataStore: It is fully optimized for handling large-scale and high concurrency access requests, and can yield overall significantly better performance and scalability.</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -94,38 +93,38 @@
 <tbody>
 <tr>
 <td><img src="../../../../images/event.jpeg" alt=""></td>
-<td><a href="Event/OnInitialized.html">OnInitialized</a></td>
+<td><a href="Event/Initialized.html">Initialized</a></td>
 <td>Occurs when DataStore object is initialized. </td>
 </tr>
 <tr>
 <td><img src="../../../../images/event.jpeg" alt=""></td>
-<td><a href="Event/OnRowDeleting.html">OnRowDeleting</a></td>
-<td>Occurs when the deletion of the DataStore row is about to begin.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/event.jpeg" alt=""></td>
-<td><a href="Event/OnRowDeleted.html">OnRowDeleted</a></td>
-<td>Occurs when the deletion of the DataStore row is completed.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/event.jpeg" alt=""></td>
-<td><a href="Event/OnRetrieveStart.html">OnRetrieveStart</a></td>
-<td>Occurs when the DataStore retrieval is about to begin.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/event.jpeg" alt=""></td>
-<td><a href="Event/OnRetrieveEnd.html">OnRetrieveEnd</a></td>
+<td><a href="Event/RetrieveEnd.html">RetrieveEnd</a></td>
 <td>Occurs when DataStore retrieval is completed.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/event.jpeg" alt=""></td>
-<td><a href="Event/OnUpdateStart.html">OnUpdateStart</a></td>
-<td>Occurs after the <code>Update</code> method is called and before changes in the DataStore are sent to the database.</td>
+<td><a href="Event/RetrieveStart.html">RetrieveStart</a></td>
+<td>Occurs when the DataStore retrieval is about to begin.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/event.jpeg" alt=""></td>
-<td><a href="Event/OnUpdateEnd.html">OnUpdateEnd</a></td>
+<td><a href="Event/RowDeleted.html">RowDeleted</a></td>
+<td>Occurs when the deletion of the DataStore row is completed.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/RowDeleting.html">RowDeleting</a></td>
+<td>Occurs when the deletion of the DataStore row is about to begin.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/UpdateEnd.html">UpdateEnd</a></td>
 <td>Occurs when committing DataStore updates to the database is completed.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/UpdateStart.html">UpdateStart</a></td>
+<td>Occurs after the <code>Update</code> method is called and before changes in the DataStore are sent to the database.</td>
 </tr>
 </tbody>
 </table>
@@ -148,9 +147,9 @@
 </tr>
 <tr>
 <td><img src="../../../../images/property.jpeg" alt=""></td>
-<td><a href="Property/Object.html">Object</a></td>
-<td>IDataObject</td>
-<td>Used to directly manipulating the object within a DataStore object from a script. These objects can be, for example, columns or text objects.</td>
+<td><a href="Property/DataObject.html">DataObject</a></td>
+<td>string</td>
+<td>Specifies the name of the DataWindow object associated with the DataStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/property.jpeg" alt=""></td>
@@ -178,9 +177,9 @@
 </tr>
 <tr>
 <td><img src="../../../../images/property.jpeg" alt=""></td>
-<td><a href="Property/DataObject.html">DataObject</a></td>
-<td>string</td>
-<td>Specifies the name of the DataWindow object associated with the DataStore.</td>
+<td><a href="Property/Object.html">Object</a></td>
+<td>IDataObject</td>
+<td>Used to directly manipulating the object within a DataStore object from a script. These objects can be, for example, columns or text objects.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/property.jpeg" alt=""></td>
@@ -284,6 +283,12 @@
 <td><a href="Method/DeleteRow3.html">DeleteRow&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
 <td>bool</td>
 <td>Deletes the row(s) based on a predicate from the primary buffer of the DataStore. The deleted row(s) will be moved to the delete buffer of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Dispose.html">Dispose&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>bool</td>
+<td>Performs application-defined tasks associated with freeing, releasing, or resetting the unmanaged resource.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
@@ -665,7 +670,7 @@
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/GetRowByRowId.html">GetRowByRowId&lt;TModel&gt;(int rowid)</a></td>
+<td><a href="Method/GetModelByRowId.html">GetModelByRowId&lt;TModel&gt;(int rowid)</a></td>
 <td>&lt;TModel&gt;</td>
 <td>Gets the TModel instance of a row according to the specified unique row identifier associated with that row.</td>
 </tr>
@@ -857,12 +862,6 @@
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Initialized.html">Initialized()</a></td>
-<td>void</td>
-<td>Executes this method when instantiating the DataStore.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Insert.html">Insert(int index, TModel item)</a></td>
 <td>void</td>
 <td>Inserts data at the specified index in the primary buffer of the DataStore.</td>
@@ -923,6 +922,48 @@
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnInitialized.html">OnInitialized()</a></td>
+<td>void</td>
+<td>Executes this method when instantiating the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnRetrieveEnd.html">OnRetrieveEnd(object sender, DwRetrieveEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called when the DataStore completes the data retrieval. It triggers the <code>RetrieveEnd</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnRetrieveStart.html">OnRetrieveStart(object sender, DwRetrieveEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called before the DataStore starts the data retrieval. It triggers the <code>RetrieveStart</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnRowDeleted.html">OnRowDeleted(object sender, DwRowChangeEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called after a row in the DataStore has been deleted. It triggers the <code>RowDeleted</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnRowDeleting.html">OnRowDeleting(object sender, DwRowChangeEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called before a row in the DataStore is about to be deleted. It triggers the <code>RowDeleting</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnUpdateEnd.html">OnUpdateEnd(object sender, DwUpdateEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called after DataStore has finished updating the data. It triggers the <code>UpdateEnd</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnUpdateStart.html">OnUpdateStart(object sender, DwUpdateEventArgs e)</a></td>
+<td>void</td>
+<td>This method is called before the DataStore updates the data. It triggers the <code>UpdateStart</code> event by default, and it can be overridden in a child class of the DataStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/OrderBy.html">OrderBy&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</a></td>
 <td>IOrderable&lt;TModel&gt;</td>
 <td>Sorts the rows of the primary buffer in the DataStore in ascending order according to a key.</td>
@@ -968,30 +1009,6 @@
 <td><a href="Method/Retrieve.html">Retrieve(params object[] arguments)</a></td>
 <td>int</td>
 <td>Retrieves rows from the database. If arguments are included, the argument values are used for the retrieval arguments in the SQL SELECT statement for the DataStore.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/RetrieveEnd.html">RetrieveEnd(object sender, DwRetrieveEventArgs e)</a></td>
-<td>void</td>
-<td>This method is called when the DataStore completes the data retrieval. It triggers the <code>OnRetrieveEnd</code> event by default, and it can be overridden in a child class of the DataStore.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/RetrieveStart.html">RetrieveStart(object sender, DwRetrieveEventArgs e)</a></td>
-<td>void</td>
-<td>This method is called before the DataStore starts the data retrieval. It triggers the <code>OnRetrieveStart</code> event by default, and it can be overridden in a child class of the DataStore.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/RowDeleted.html">RowDeleted(object sender, DwRowChangeEventArgs e)</a></td>
-<td>void</td>
-<td>This method is called after a row in the DataStore has been deleted. It triggers the <code>OnRowDeleted</code> event by default, and it can be overridden in a child class of the DataStore.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/RowDeleting.html">RowDeleting(object sender, DwRowChangeEventArgs e)</a></td>
-<td>void</td>
-<td>This method is called before a row in the DataStore is about to be deleted. It triggers the <code>OnRowDeleting</code> event by default, and it can be overridden in a child class of the DataStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
@@ -1109,18 +1126,6 @@
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/UpdateEnd.html">UpdateEnd(object sender, DwUpdateEventArgs e)</a></td>
-<td>void</td>
-<td>This method is called after DataStore has finished updating the data. It triggers the <code>OnRetrieveEnd</code> event by default, and it can be overridden in a child class of the DataStore.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/UpdateStart.html">UpdateStart(object sender, DwUpdateEventArgs e)</a></td>
-<td>void</td>
-<td>This method is called before the DataStore updates the data. It triggers the <code>OnRetrieveStart</code> event by default, and it can be overridden in a child class of the DataStore.</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Validate1.html">Validate()</a></td>
 <td>bool</td>
 <td>Verifies the data using the data validation rules set in the DataStore.</td>
@@ -1136,13 +1141,13 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>DataStore is used in almost exactly the same way as the PowerBuilder DataStore; and on top of that, DataStore also supports to use the advanced .NET development methods, such as LINQ set operations.  DataStore is very useful when you want to access the database and manipulate the data.</p>
 <p>You can use DataStore to do the following:<br>1. Access the data in the database.<br>2. Append, delete, modify or query the data and commit the change to the database conveniently.<br>3. Group or sort the data.<br>4. Manage the database transactions automatically or manually.<br>5. Check the data validity and integrity.<br>6. Track the data modification.<br>7. Used as the replacement for the migrated PowerBuilder DataStore.<br> <br>When DataStore is created, it must be associated with a DataWindow object.</p>
-<p>It uses the Retrieve method to obtain the data and place the data to the primary buffer. Parameters defined in the DataWindow can also be passed in to retrieve data.</p>
-<p>AddRow method can be used to append data to the DataStore.</p>
-<p>DeleteRow method can be used to remove data from the DataStore, however, data is not directly deleted from the DataStore, it is only moved to the delete buffer where you can still manipulate it later.</p>
-<p>SetSort method can be used to set the sorting criteria and Sort method to sort the data according to the predefined criteria.</p>
-<p>SetFilter method can be used to filter the data, and the data will be moved to the filter buffer.</p>
-<p>Update method can be used to finally commit the change to the database.<br></p>
-<p>DataStore also provides many events that will occur on data change; these events include OnRowDeleting, OnRowDeleted, OnRetrieveStart, OnRetrieveEnd, OnUpdateStart, and OnUpdateEnd.</p>
+<p>It uses the <code>Retrieve</code> method to obtain the data and place the data to the primary buffer. Parameters defined in the DataStore can also be passed in to retrieve data.</p>
+<p><a href="Method/AddRow.html">AddRow</a> method can be used to append data to the DataStore.</p>
+<p><a href="Method/DeleteRow.html">DeleteRow</a> method can be used to remove data from the DataStore, however, data is not directly deleted from the DataStore, it is only moved to the delete buffer where you can still manipulate it later.</p>
+<p><a href="Method/SetSort.html">SetSort</a> method can be used to set the sorting criteria and <code>Sort</code> method to sort the data according to the predefined criteria.</p>
+<p><a href="Method/SetFilter.html">SetFilter</a> method can be used to filter the data, and the data will be moved to the filter buffer.</p>
+<p><a href="Method/Update.html">Update</a> method can be used to finally commit the change to the database.<br></p>
+<p>DataStore also provides many events that will occur on data change; these events include <a href="Event/RowDeleting.html">RowDeleting</a>, <a href="Event/RowDeleted.html">RowDeleted</a>, <a href="Event/RetrieveStart.html">RetrieveStart</a>, <a href="Event/RetrieveEnd.html">RetrieveEnd</a>, <a href="Event/UpdateStart.html">UpdateStart</a>, and <a href="Event/UpdateEnd.html">UpdateEnd</a>.</p>
 </article>
           </div>
           

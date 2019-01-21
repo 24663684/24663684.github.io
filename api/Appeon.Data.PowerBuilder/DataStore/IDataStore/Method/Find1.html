@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorefindtmodelstring-expression-int-start-int-end-dwbuffer-dwbuffer--dwbufferprimary"><strong>IDataStore.Find&lt;TModel&gt;(string expression, int start, int end, DwBuffer dwBuffer = DwBuffer.Primary);</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Generic method. Finds the next row in the specified buffer of the DataStore in which data meets the condition specified by the expression. If both <code>start</code> and <code>end</code> parameters are set to -1, it indicates the search starts from the beginning to the end. The primary buffer is specified by default.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,10 +81,10 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>expression</code> System.String</p>
-<p>A string whose value is a <code>boolean</code> expression that you want to use as the search criteria. The expression includes column names.</p>
+<p>A string whose value is a <code>Boolean</code> expression that you want to use as the search criteria. The expression includes column names.</p>
 <p><code>start</code> System.Int32</p>
 <p>The zero-based index number of the row from which the search starts.</p>
 <p>If <code>start</code> is larger than <code>end</code>, it will do a backward search instead of forward search.</p>
@@ -93,14 +93,14 @@
 <p>The zero-based index number of the row to which the search ends.</p>
 <p>If it is negative, it searches to the end.</p>
 <p><code>dwBuffer</code> Appeon.Data.PowerBuilder.DwBuffer</p>
-<p>The buffer in which to find row.</p>
+<p>(Optional) The buffer in which to find row.</p>
 <p>It is specified to the primary buffer by default.</p>
 <p><strong>Returns</strong></p>
-<p>System.TModel</p>
-<p>Returns the <code>TModel</code> instance which contains the data for the row found.</p>
-<p>It returns null if no row is found.</p>
+<p>TModel</p>
+<p>Returns the <code>TModel</code> object which contains the data for the row found.</p>
+<p>It returns <code>null</code> if no row is found.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find the department record by a string expression and using the start and end parameters.</p>
+<p>The following code example demonstrates how to find the department record by a string expression and using the <code>start</code> and <code>end</code> parameters.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -119,32 +119,32 @@ namespace Appeon.ApiDoc.IDataStoreExamples
         public void Example1()
         {
 
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // The first record in the Department table is found: departmentid=1, name=Engineering
+            // The first record in the Department table is found: 
+            // departmentid =1, name=Engineering
             var department = datastore.Find&lt;D_Department&gt;(&quot;departmentid &lt; 3&quot;);
 
             Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
                                department.Departmentid, department.Name);
 
-            // The second record in the Department table is found: departmentid=2, name=English
+            // The second record in the Department table is found: 
+            // departmentid =2, name=English
             // 1 indicates to find from row 2, -1 indicates to find through the end
-            department = datastore.Find&lt;D_Department&gt;(&quot;departmentid &lt; 3&quot;, 
+            department = datastore.Find&lt;D_Department&gt;(&quot;departmentid &lt; 3&quot;,
                                                        1, -1, DwBuffer.Primary);
 
             Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
                                department.Departmentid, department.Name);
-
 
             /*This code produces the following output:
              
             Department ID: 1; Department Name: Engineering
             Department ID: 2; Department Name: English
             */
-
         }
     }
 }

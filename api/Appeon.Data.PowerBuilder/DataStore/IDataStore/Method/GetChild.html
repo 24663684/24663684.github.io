@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetchildstring-name-method"><strong>IDataStore.GetChild(string name) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Provides a reference to the child DataWindow, which you can use to manipulate that DataStore.</p>
+<p>Provides a reference to the <code>DataWindowChild</code>, which you can use to manipulate that DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,15 +81,15 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>name</code> System.String</p>
-<p>A string which is the name of the column containing the child DataWindow.</p>
+<p>A string which is the name of the column containing the <code>DataWindowChild</code>.</p>
 <p><strong>Returns</strong></p>
 <p><a href="">Appeon.Data.PowerBuilder.IDataStore</a></p>
-<p>The reference to the child DataWindow.</p>
+<p>The reference to the <code>DataWindowChild</code>.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>A child DataWindow is a DropDownDataWindow in a DataStore object.</p>
-<p>Use <code>GetChild</code> when you need to explicitly retrieve data for a child DataWindow. It automatically retrieves data for the child when retrieving the main DataStore, you need to explicitly retrieve data when there are retrieval arguments or when conditions change and you want to retrieve new rows.</p>
+<p>A <code>DataWindowChild</code> object is a DropDownDataWindow within a <code>DataWindow object</code>.</p>
+<p>Use the <code>GetChild</code> method when you need to explicitly retrieve data for a <code>DataWindowChild</code> object. It automatically retrieves data for the child when retrieving the main DataStore, you need to explicitly retrieve data when there are retrieval arguments or when conditions change and you want to retrieve new rows.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the child DataWindow in the specified column.</p>
+<p>The following code example demonstrates how to get the <code>DataWindowChild</code> in the specified column.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -107,27 +107,27 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-            // Instantiates datastore with datawindow: d_course
+            // Instantiates a DataStore object with datawindow: d_course.
             var datastore = new DataStore(&quot;d_course&quot;, _context);
 
             datastore.Retrieve();
 
-            // d_course departmentid column contains dddw_deparment child datawindow
+            // The departmentid column has a DropDownDataWindow: dddw_deparment.
             var department = datastore.GetChild(&quot;departmentid&quot;);
 
-            Console.WriteLine(&quot;Child DataWindow rowcount: {0}&quot;,
-                                department.RowCount);
-            Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
-                               department.GetItem&lt;int&gt;(1, &quot;departmentid&quot;),
-                               department.GetItem&lt;string&gt;(1, &quot;name&quot;));
+            Console.WriteLine(&quot;DataWindowChild rowcount: {0}&quot;,
+                department.RowCount);
+
+            Console.WriteLine(
+                &quot;Department ID: {0}; Department Name: {1}&quot;,
+                department.GetItem&lt;int&gt;(1, &quot;departmentid&quot;),
+                department.GetItem&lt;string&gt;(1, &quot;name&quot;));
 
             /*This code produces the following output:
              
-            Child DataWindow rowcount: 4
+            DataWindowChild rowcount: 4
             Department ID: 2; Department Name: English
             */
-
         }
     }
 }

@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreasenumerabletmodeldwbuffer-dwbuffer--dwbufferprimary-method"><strong>IDataStore.AsEnumerable&lt;TModel&gt;(DwBuffer dwBuffer = DwBuffer.Primary) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Converts the data in the specified buffer to an IEnumerable&lt;TModel&gt; object. Defaults to the primary buffer if dwBuffer is not specified.</p>
+<p>Converts the data in the specified buffer to an <code>IEnumerable&lt;TModel&gt;</code> object. Defaults to the primary buffer if <code>dwBuffer</code> is not specified.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,16 +81,15 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>dwBuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>需要将数据转换为IEnumerable&lt;TModel&gt;对象的缓冲区。默认DwBuffer.Primary。</p>
-<p>The data buffer from which data will be converted to the IEnumerable&lt;TModel&gt; object. The default value is DwBuffer.Primary.</p>
+<p>The data buffer from which data will be converted to the <code>IEnumerable&lt;TModel&gt;</code> object. The default value is <code>DwBuffer.Primary</code>.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IEnumerable&lt;TModel&gt;</p>
-<p>An IEnumerable&lt;TModel&gt; object. The generic parameter TModel must match with the DataObject property of the DataStore.</p>
+<p>An <code>IEnumerable&amp;#60;TModel&gt;</code> object. The generic parameter <code>TModel</code> must match with the <code>DataObject</code> property of the DataStore.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the AsEnumerable method to convert the data to IEnumerable.</p>
+<p>The following code example demonstrates how to use the <code>AsEnumerable</code> method to convert the data to an <code>IEnumerable&lt;TModel&gt;</code> object.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 using System.Linq;
@@ -109,23 +108,25 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
-            Console.WriteLine(&quot;DataStore Primary Rowcount: {0}&quot;, datastore.RowCount);
+            Console.WriteLine(&quot;DataStore Primary Rowcount: {0}&quot;,
+                datastore.RowCount);
 
-            // Converts data in the primary buffer to IEnumerable.
+            // Converts data in the primary buffer.
             var departmentList = datastore.
                 AsEnumerable&lt;D_Department&gt;(DwBuffer.Primary);
 
-            Console.WriteLine(&quot;Converted Primary Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;Converted Primary Rowcount: {0}&quot;,
                 departmentList.Count());
 
-            // Converts data in the delete buffer to IEnumerable.
+            // Converts data in the delete buffer.
             datastore.DeleteRow(0);
 
-            Console.WriteLine(&quot;DataStore Delete Rowcount: {0}&quot;, datastore.DeletedCount);
+            Console.WriteLine(&quot;DataStore Delete Rowcount: {0}&quot;,
+                datastore.DeletedCount);
 
             departmentList = datastore.
                 AsEnumerable&lt;D_Department&gt;(DwBuffer.Delete);
@@ -133,11 +134,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Console.WriteLine(&quot;Converted Delete Rowcount: {0}&quot;,
                 departmentList.Count());
 
-            // Converts data in the filter buffer to IEnumerable.
+            // Converts data in the filter buffer.
             datastore.SetFilter(&quot;departmentid &lt; 2&quot;);
             datastore.Filter();
 
-            Console.WriteLine(&quot;DataStore Filter Rowcount: {0}&quot;, datastore.FilteredCount);
+            Console.WriteLine(&quot;DataStore Filter Rowcount: {0}&quot;,
+                datastore.FilteredCount);
 
             departmentList = datastore.
                 AsEnumerable&lt;D_Department&gt;(DwBuffer.Filter);
@@ -154,7 +156,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             DataStore Filter Rowcount: 3
             Converted Filter Rowcount: 3
             */
-
         }
     }
 }

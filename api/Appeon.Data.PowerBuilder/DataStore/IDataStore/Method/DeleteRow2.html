@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoredeleterowtmodeltmodel-model-method"><strong>IDataStore.DeleteRow&lt;TModel&gt;(TModel model) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Deletes the specified row (by the model object) from the primary buffer of the DataStore. The deleted row will be moved to the delete buffer of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,17 +81,17 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
-<p><code>model</code> System.TModel</p>
-<p>A TModel object that represents the row of data to delete from the DataStore.</p>
+<p><code>model</code> TModel</p>
+<p>A <code>TModel</code> object that represents the row of data to delete from the DataStore.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>Returns true if successfully deleting the row(s); returns false if no row in the primary buffer is found matching with the model argument.</p>
+<p>Returns <code>true</code> if successfully deleting the row(s); returns <code>false</code> if no row in the primary buffer is found matching with the <code>model</code> argument.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>DeleteRow deletes a row from the DataStore primary buffer. If DataStore is not updatable, the storage related with the deleted row will be directly erased. If DataStore is updatable, DeleteRow moves the row to the delete buffer. DataStore uses the value in the delete buffer to create the SQL Delete statement. The row will not be deleted from the database table until Update method is called; and the storage related with the deleted row will not be erased until the database is updated with the changes made to the DataStore and the update flag is reset by the Update method.</p>
+<p>The <code>DeleteRow</code> method deletes a row from the DataStore primary buffer. If DataStore is not updatable, the storage related with the deleted row will be directly erased. If DataStore is updatable, <code>DeleteRow</code> moves the row to the delete buffer. DataStore uses the value in the delete buffer to create the SQL DELETE statement. The row will not be deleted from the database table until <code>Update</code> method is called; and the storage related with the deleted row will not be erased until the database is updated with the changes made to the DataStore and the update flag is reset by the <code>Update</code> method.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the DeleteRow<tmodel>(TModel model) method to move a model from the primary buffer to the delete buffer.<p>
+<p>The following code example demonstrates how to use the <code>DeleteRow&lt;TModel&gt;(TModel)</code> method to move a model from the primary buffer to the delete buffer.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -109,8 +109,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example2()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -119,12 +118,11 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Console.WriteLine(&quot;Retrieved Rowcount: {0}&quot;, 
                 datastore.RowCount);
 
-            // Creates the department TModel object
-            // and sets it to the first record
+            // Gets the model object of the first row.
             var department = datastore[0];
 
-            // Deletes the department object which 
-            // represents the first record of datastore
+            // Deletes the model object which 
+            // represents the first row of datastore
             datastore.DeleteRow(department);
 
             // This datastore has 3 records in the primary buffer
@@ -141,7 +139,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             Primary buffer Rowcount: 3
             Delete buffer Rowcount: 1    
             */
-
         }
     }
 }
@@ -149,7 +146,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>
-</tmodel></article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

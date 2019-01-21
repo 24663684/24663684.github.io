@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetsqlselect-method"><strong>IDataStore.GetSqlSelect() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Gets the SQL SELECT statement for the current DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -103,8 +103,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -112,7 +111,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             string sql = datastore.GetSqlSelect();
 
             Console.WriteLine(&quot;SqlSelect:\n{0}&quot;, sql);
-
 
             /*This code produces the following output:
              
@@ -130,7 +128,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/D_Department.html">D_Department</a> <br>DataWindow File: <a href="../../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_department_srd.html">d_department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

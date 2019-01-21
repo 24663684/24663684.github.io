@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreresetupdate-method"><strong>IDataStore.ResetUpdate() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Clears the update flags in the primary and filter buffers and empties the delete buffer of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,9 +81,9 @@
 </code></pre>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>Returns true if it succeeds.</p>
+<p>Returns <code>true</code> if it succeeds.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>When a row is changed, inserted, or deleted, its update flag is set, making it marked for update. By default the <code>Update</code> method turns these flags off. If you want to coordinate updates of more than one DataStore, however,  you can prevent Update from clearing the flags. Then, after you verify that all the updates succeeded, you can call <code>ResetUpdate</code> for each DataStore to clear the flags.</p>
+<p>When a row is changed, inserted, or deleted, its update flag is set, making it marked for update. By default the <code>Update</code> method turns these flags off. If you want to coordinate updates of more than one DataStores, however, you can prevent <code>Update</code> from clearing the flags. Then, after you verify that all the updates succeeded, you can call <code>ResetUpdate</code> for each DataStore to clear the flags.</p>
 <p>You can find out which rows are marked for update with the <code>GetIRowStatus</code> method. If a row is in the delete buffer or if it is in the primary or filter buffer and has <code>ModelState.NewModified</code> or <code>ModelState.Modified</code> status, its update flag is set. After update flags are cleared, all rows have the status  <code>ModelState.NotModified</code> or <code>ModelState.New</code> and the delete buffer is empty.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to reset the update flags of DataStore.</p>
@@ -104,22 +104,22 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // Changes the name value for the first record to &quot;test&quot;
-            datastore.SetItem(0, &quot;name&quot;, &quot;test&quot;);
+            // Changes the name value for the first record to &quot;New Department&quot;
+            datastore.SetItem(0, &quot;name&quot;, &quot;New Department&quot;);
 
-            Console.WriteLine(&quot;Before ResetUpdate, Modifiedcount: {0}&quot;, 
-                               datastore.ModifiedCount);
+            Console.WriteLine(&quot;Before ResetUpdate, Modifiedcount: {0}&quot;,
+                datastore.ModifiedCount);
 
             // Calls resetupdate to clear the update flags of datastore
             datastore.ResetUpdate();
 
-            Console.WriteLine(&quot;After ResetUpdate, Modifiedcount: {0}&quot;, 
-                               datastore.ModifiedCount);
+            Console.WriteLine(&quot;After ResetUpdate, Modifiedcount: {0}&quot;,
+                datastore.ModifiedCount);
 
             /*This code produces the following output:
             

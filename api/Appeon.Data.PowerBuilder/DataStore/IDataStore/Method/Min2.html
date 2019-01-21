@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoremintmodel-tresultfunctmodel-tresult-selector-predicatetmodel-predicate-method"><strong>IDataStore.Min&lt;TModel, TResult&gt;(Func&lt;TModel, TResult&gt; selector, Predicate&lt;TModel&gt; predicate) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Invokes a transform function on each row (that satisfies the condition specified by <code>Predicate&lt;TModel&gt;</code>) in the primary buffer of the DataStore and returns the minimum result value.</p>
+<p>Invokes a transform function on each row (that satisfies the condition specified by a <code>Predicate&lt;TModel&gt;</code> object) in the primary buffer of the DataStore and returns the minimum result value.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,7 +81,7 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><code>TResult</code></p>
 <p>The type of the value returned by selector.</p>
 <p><strong>Parameters</strong></p>
@@ -93,7 +93,7 @@
 <p>TResult</p>
 <p>The maximum value.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the minimum value for budget from the Department table which meets the criteria Departmentid &gt; 3.</p>
+<p>The following code example demonstrates how to get the minimum value for budget from the Department table which meets the criteria Departmentid is larger than 3.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -111,15 +111,15 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example2()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // Get the minimum value for budget where departmentid &gt; 3
+            // Gets the minimum value for budget where departmentid &gt; 3
             // The smallest budget that meets the criteria is 200000.00
-            decimal MinBudget = datastore.Min&lt;D_Department, decimal&gt;
-                (d =&gt; d.Budget, d =&gt; d.Departmentid &gt; 3);
+            decimal MinBudget = datastore.Min&lt;D_Department, decimal&gt;(
+                d =&gt; d.Budget, d =&gt; d.Departmentid &gt; 3);
 
             Console.WriteLine(&quot;Min Budget: {0}&quot;,
                                MinBudget);

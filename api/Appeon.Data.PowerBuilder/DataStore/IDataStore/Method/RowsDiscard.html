@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorerowsdiscardint-startrow-int-endrow-dwbuffer-buffer-method"><strong>IDataStore.RowsDiscard(int startrow, int endrow, DwBuffer buffer) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Discards a range of rows in the DataStore. Once a row has been discarded using <code>RowsDiscard</code>, you cannot restore the row unless you retrieve it again from the database.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -85,15 +85,15 @@
 <p><code>endrow</code>	System.Int32</p>
 <p>The zero-based number of the last row you want to discard.</p>
 <p><code>buffer</code>	 <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
-<p>A value of the <code>DwBuffer</code> enumerated datatype specifying the DataStore buffer containing the rows to be discarded.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype specifying the <code>DataWindow buffer</code> containing the rows to be discarded.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
 <p>Returns <code>true</code> if it succeeds, and <code>false</code> if either <code>startrow</code> or <code>endrow</code> is not correct.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>Use <code>RowsDiscard</code> when your application is finished with some of the rows in a DataStore and you do not want an update to affect the rows in the database. For example, you can discard rows in the delete buffer, which prevents the rows from being deleted when you call <code>Update</code>.</p>
-<p>Use <code>Reset</code> to clear all the rows from a DataStore.</p>
+<p>Use the <code>RowsDiscard</code> method when your application is finished with some of the rows in a DataStore and you do not want an update to affect the rows in the database. For example, you can discard rows in the delete buffer, which prevents the rows from being deleted when you call the <code>Update</code> method.</p>
+<p>Use the <code>Reset</code> method to clear all the rows from a DataStore.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the RowsDiscard method to delete multiple rows and keep only one row.</p>
+<p>The following code example demonstrates how to use the <code>RowsDiscard</code> method to delete multiple rows and keep only one row.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -111,16 +111,16 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
-            Console.WriteLine(&quot;Before RowsDiscard, Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;Before RowsDiscard, Rowcount: {0}&quot;,
                                datastore.RowCount);
 
             // Calls RowsDiscard to discard a range of rows in datastore, the
-            // discarded rows cannot be restored unless retrieved again from database
+            // discarded rows cannot be restored unless retrieved again from database.
             datastore.RowsDiscard(0, datastore.RowCount - 2, DwBuffer.Primary);
 
             Console.WriteLine(&quot;After RowsDiscard, PrimaryBuffer Rowcount: {0} &quot;,

@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorefirstordefaulttmodel-method"><strong>IDataStore.FirstOrDefault&lt;TModel&gt;() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Generic method. Returns the first data row of the DataStore. If no data row is found, returns null.</p>
+<p>Generic method. Returns the first data row of the DataStore. If no data row is found, returns <code>null</code>.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,13 +81,13 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Returns</strong></p>
-<p>System.TModel</p>
-<p>Returns the <code>TModel</code> instance which contains the data for the first row.</p>
-<p>Returns null if no row is found.</p>
+<p>TModel</p>
+<p>Returns the <code>TModel</code> object which contains the data for the first row.</p>
+<p>Returns <code>null</code> if no row is found.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the FirstOrDefault method to get the first record in DataStore.</p>
+<p>The following code example demonstrates how to use the <code>FirstOrDefault</code> method to get the first record in DataStore.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -105,8 +105,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
@@ -116,7 +115,8 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             var department = datastore.FirstOrDefault&lt;D_Department&gt;();
 
             Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
-                               department.Departmentid, department.Name);
+                               department.Departmentid,
+                               department.Name);
 
             /*This code produces the following output:
              

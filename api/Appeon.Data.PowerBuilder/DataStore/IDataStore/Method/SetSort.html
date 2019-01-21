@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoresetsortstring-format-method"><strong>IDataStore.SetSort(string format) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Specifies the sort criteria for the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,12 +81,12 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>format</code>	System.String</p>
-<p>A string whose value is the sort criteria for the DataStore object. The expression includes column names or zero-based numbers. A column number must be preceded by a pound sign (#).</p>
+<p>A string whose value is the sort criteria for the <code>DataWindow object</code>. The expression includes column names or zero-based numbers. A column number must be preceded by a pound sign (#).</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
 <p>Returns <code>true</code> if it succeeds.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>A DataStore object can have sort criteria specified as part of its definition. <code>SetSort</code> overrides the definition, providing the new sort criteria for the DataStore. However, it does not actually sort the rows. Call  the <code>Sort</code> method to perform the actual sorting.</p>
+<p>A <code>DataWindow object</code> can have sort criteria specified as part of its definition. The <code>SetSort</code> method overrides the definition, providing the new sort criteria for the <code>DataWindow object</code>. However, it does not actually sort the rows. Call the <code>Sort</code> method to perform the actual sorting.</p>
 <p>The sort criteria for a column have one of the forms shown in the following table, depending on whether you specify the column by name or number.</p>
 <table>
 <thead>
@@ -153,26 +153,26 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
             string OutPutValue;
             OutPutValue = &quot;&quot;;
 
-            // Gets values for the budget column in DataStore
-            for (int i = 0; i &lt; datastore.RowCount; i++) 
+            // Gets values for the budget column in DataStore.
+            for (int i = 0; i &lt; datastore.RowCount; i++)
             {
                 OutPutValue += datastore.GetItemNumber(i, &quot;Budget&quot;).ToString();
                 if (i &lt; datastore.RowCount - 1)
                 {
                     OutPutValue += &quot;, &quot;;
-                }       
+                }
             }
 
-            Console.WriteLine(&quot;Before SetSort, Budget Value List: {0}&quot;, 
-                               OutPutValue);
+            Console.WriteLine(&quot;Before SetSort, Budget Value List: {0}&quot;,
+                OutPutValue);
 
             // Calls SetSort to sort data by budget in descending order
             // Calls Sort to apply the sort
@@ -191,8 +191,8 @@ namespace Appeon.ApiDoc.IDataStoreExamples
                 }
             }
 
-            Console.WriteLine(&quot;After SetSort, Budget Value List: {0}&quot;, 
-                               OutPutValue);
+            Console.WriteLine(&quot;After SetSort, Budget Value List: {0}&quot;,
+                OutPutValue);
 
             /*This code produces the following output:
             

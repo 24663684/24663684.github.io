@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoresetfilterstring-format-method"><strong>IDataStore.SetFilter(string format) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Specifies the filter criteria for the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -81,14 +81,14 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>format</code>	System.String</p>
-<p>A string whose value is a <code>bool</code> expression that you want to use as the filter criteria. The expression includes column names or numbers. A column number must be preceded by a pound sign (#).</p>
+<p>A string whose value is a <code>Boolean</code> expression that you want to use as the filter criteria. The expression includes column names or numbers. A column number must be preceded by a pound sign (#).</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
 <p>Returns <code>true</code> if it succeeds and <code>false</code> if the <code>format</code> is not correct.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>A DataStore object can have filter criteria specified as part of its definition. After data is retrieved, rows that do not meet the criteria are immediately transferred from the primary buffer to the filter buffer.</p>
-<p>The <code>SetFilter</code> method replaces the existing filter criteria -- if any are defined for the DataStore object -- with a new set of criteria. Call the <code>Filter</code> method to apply the filter criteria and transfer rows that do not meet the filter criteria to the filter buffer.</p>
-<p>The filter expression consists of columns, relational operators, and values against which column values are compared. Boolean expressions can be connected with logical operators AND and OR. You can also use NOT, the negation operator. Use parentheses to control the order of evaluation.</p>
+<p>A <code>DataWindow object</code> can have filter criteria specified as part of its definition. After data is retrieved, rows that do not meet the criteria are immediately transferred from the primary buffer to the filter buffer.</p>
+<p>The <code>SetFilter</code> method replaces the existing filter criteria -- if any are defined for the <code>DataWindow object</code> -- with a new set of criteria. Call the <code>Filter</code> method to apply the filter criteria and transfer rows that do not meet the filter criteria to the filter buffer.</p>
+<p>The filter expression consists of columns, relational operators, and values against which column values are compared. Boolean expressions can be connected with logical operators <code>AND</code> and <code>OR</code>. You can also use <code>NOT</code>, the negation operator. Use parentheses to control the order of evaluation.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example defines the filter expression that only records whose budget is equivalent to or larger than 200000 are displayed.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -108,20 +108,20 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-            
+
             datastore.Retrieve();
 
-            Console.WriteLine(&quot;Before Filter, Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;Before Filter, Rowcount: {0}&quot;,
                                datastore.RowCount);
 
-            // Calls SetFilter to define a filter: Budget &gt;= 200000
+            // Calls SetFilter to define a filter: Budget &gt;= 200000.
             // Calls Filter to apply the filter.
             datastore.SetFilter(&quot;Budget &gt;= 200000&quot;);
             datastore.Filter();
 
-            Console.WriteLine(&quot;After Filter, Primary Buffer Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;After Filter, Primary Buffer Rowcount: {0}&quot;,
                                datastore.RowCount);
 
             Console.WriteLine(&quot;After Filter, Filter Buffer Rowcount: {0}&quot;,
@@ -133,7 +133,6 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             After Filter, Primary Buffer Rowcount: 3     
             After Filter, Filter Buffer Rowcount: 1
             */
-
         }
     }
 }

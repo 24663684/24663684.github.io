@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreaddrow-method"><strong>IDataStore.AddRow() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
 </div>
 <p>Appends an empty row to the end of the primary buffer in the DataStore and returns the index number. If any columns have default values, the row is initialized with these values.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -83,9 +83,9 @@
 <p>System.Int32</p>
 <p>Returns the zero-based index number of the row that was added.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>A newly inserted row (with a status flag of <code>New!</code>) is not included in the modified count until that row is populated with data (its status flag becomes <code>NewModified!</code>).</p>
+<p>A newly inserted row (with a status flag of <code>ModelState.New</code>) is not included in the modified count until that row is populated with data (its status flag becomes <code>NewModified!</code>).</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the AddRow method to add an empty row to the DataStore and then use SetItem to enter the data for the row.</p>
+<p>The following code example demonstrates how to use the <code>AddRow</code> method to add an empty row to the DataStore and then use SetItem to enter the data for the row.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 using System.Collections.Generic;
@@ -104,14 +104,13 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-            // Instantiates datastore with dataobject: d_department
+            // Instantiates a DataStore object with dataobject: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             Console.WriteLine(&quot;Before AddRow, Rowcount: {0}&quot;, datastore.Retrieve());
 
-            // AddRow returns a value that is the number of the last row plus 1.
-            // Lower bound of C# array is 0, but that of PB array is 1, so the
-            // number of current row returned from C# is 1 less than that from PB.
+            // AddRow method returns the zero-based index number of the row that 
+            // was added.
             int currentRow = datastore.AddRow();
 
             Console.WriteLine(&quot;AddRow return value: {0}&quot;, currentRow);
@@ -122,10 +121,10 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             datastore.SetItem(currentRow, &quot;Startdate&quot;, DateTime.Now);
             datastore.SetItem(currentRow, &quot;Administrator&quot;, 2);
 
-            // Commits changes to database
+            // Commits data changes to database.
             datastore.Update();
 
-            Console.WriteLine(&quot;After Update and Retrieve, Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;After Update and Retrieve, Rowcount: {0}&quot;,
                 datastore.Retrieve());
 
             /*This code produces the following output:

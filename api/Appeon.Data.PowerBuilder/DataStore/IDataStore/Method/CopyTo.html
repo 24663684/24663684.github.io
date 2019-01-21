@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorecopytotmodel-array-int-arrayindex-method"><strong>IDataStore.CopyTo(TModel[] array, int arrayIndex) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Copies all rows from the primary buffer of the DataStore to a compatible one-dimensional array, starting at the specified array index.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -80,13 +80,12 @@
 <pre><code class="lang-c#">  public void CopyTo(TModel[] array, int arrayIndex);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>array</code> System.TModel</p>
-<p>The one-dimensional array which is the destination for the rows copied from the primary buffer of the DataStore. The array must have zero-based indexing.</p>
+<p><code>array</code> TModel</p>
+<p>The one-dimensional array which is the destination for the rows copied from the primary buffer of the DataStore.</p>
 <p><code>arrayIndex</code> System.Int32</p>
 <p>The zero-based index in array at which copying begins.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>CopyTo(TModel[] array, int arrayIndex);</p>
-<p>The following code example demonstrates how to use the CopyTo method.</p>
+<p>The following code example demonstrates how to use the <code>CopyTo</code> method.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -104,9 +103,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             // This datastore has 4 records
@@ -114,19 +111,20 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
             D_Department[] departments = new D_Department[5];
 
-            // Creates the department TModel object
-            // Populates it with data
+            // Creates a D_Department object and populates it with data.
             var department = new D_Department();
             department.Departmentid = 20;
-            department.Name = &quot;department name&quot;;
+            department.Name = &quot;New Department&quot;;
             department.Budget = 20;
             department.Startdate = DateTime.Now;
             department.Administrator = 2;
 
-            // Sets the first record of departments with department TModel object
+            // Sets the first element of the departments array.
             departments[0] = department;
 
-            // Copies 4 records to departments
+            // Copies 4 records to the departments array. 
+            // It starts at the index 1 of the array, so the first element (index = 0) 
+            // in the departments array will not be affected.
             datastore.CopyTo(departments, 1);
            
             foreach( var d in departments)
@@ -136,13 +134,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
             /*This code produces the following output:
             
-            Department Name: department name
+            Department Name: New Department
             Department Name: Engineering
             Department Name: English
             Department Name: Economics
             Department Name: Mathematics    
             */
-
         }
     }
 }

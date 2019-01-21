@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastorefindtmodelpredicatetmodel-predicate-dwbuffer-dwbuffer--dwbufferprimary-method"><strong>IDataStore.Find&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate, DwBuffer dwBuffer = DwBuffer.Primary) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Generic method. Finds the next row in the DataStore in which data meets the criteria defined by <code>Predicate</code>. The primary buffer is specified by default.</p>
+<p>Generic method. Finds the next row in the DataStore in which data meets the criteria defined by a <code>Predicate&lt;TModel&gt;</code> object. The primary buffer is specified by default.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,19 +81,19 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>predicate</code> System.Predicate&lt;TModel&gt;</p>
-<p>A <code>Predicate&lt;TModel&gt;</code> that you want to use as the search criteria.</p>
+<p>A <code>Predicate&lt;TModel&gt;</code> object that you want to use as the search criteria.</p>
 <p><code>dwBuffer</code> Appeon.Data.PowerBuilder.DwBuffer</p>
 <p>The buffer in which to find row.</p>
 <p>It is specified to the primary buffer by default.</p>
 <p><strong>Returns</strong></p>
-<p>System.TModel</p>
-<p>Return the <code>TModel</code> instance which contains the data for the row found.</p>
-<p>It returns null if no row is found.</p>
+<p>TModel</p>
+<p>Return the <code>TModel</code> object which contains the data for the row found.</p>
+<p>It returns <code>null</code> if no row is found.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find the department record by a Predicate<tmodel> object.<p>
+<p>The following code example demonstrates how to find the department record by a <code>Predicate&lt;TModel&gt;</code> object.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -111,17 +111,18 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example4()
         {
-
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             datastore.Retrieve();
 
-            // The first record in the Department table is found: departmentid=1, name=Engineering
+            // The first record in the Department table is found: 
+            // departmentid =1, name=Engineering
             var department = datastore.Find&lt;D_Department&gt;(d =&gt; d.Departmentid &lt; 3);
 
             Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
-                               department.Departmentid, department.Name);
+                               department.Departmentid,
+                               department.Name);
 
 
             /*This code produces the following output:
@@ -138,7 +139,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>
-</tmodel></article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

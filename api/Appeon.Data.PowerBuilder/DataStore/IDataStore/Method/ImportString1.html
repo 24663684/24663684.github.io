@@ -68,10 +68,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreimportstringstring-value-method"><strong>IDataStore.ImportString(string value) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Inserts the tab-separated data from a string into the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
@@ -89,7 +89,7 @@
 <p>The string must be formatted in tab-separated. Each line must end with a carriage return and a newline character (<sub>r</sub>n). If the string has four tab-separated columns, one line might look like for a tab-separated string:</p>
 <pre><code>col1_data\t col2_data\t col3_data\t col4_data\r\n
 </code></pre>
-<p>The string should consist of rows of data. If the data includes column headings or row labels, set the <code>startRow</code> and <code>startColumn</code> arguments to skip them. The datatypes and order of the DataStore columns must match with the columns of data in the string.</p>
+<p>The string should consist of rows of data. If the data includes column headings or row labels, set the <code>startRow</code> and <code>startColumn</code> arguments to skip them. The datatype and order of the DataStore columns must match with the columns of data in the string.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>The following code example demonstrates how to import the department records from a string to a DataStore.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
@@ -109,14 +109,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example1()
         {
-
-            // Instantiates the datastore with datawindow: d_department
+            // Instantiates the datastore with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
-
 
             string importString = GetImportString1();
 
-            // Imports the string to datastore
+            // Imports the string to datastore.
             datastore.ImportString(importString);
 
             Console.WriteLine(&quot;Rowcount: {0}&quot;, datastore.RowCount);

@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoreaddrowtmodelienumabletmodel-list-method"><strong>IDataStore.AddRow&lt;TModel&gt;(IEnumable&lt;TModel&gt; list) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Generic method. Appends a collection of TModel instances as row(s) to the end of the primary buffer in the DataStore and returns the zero-based index of the first row added. TModel must match with the DataObject property of the DataStore.</p>
+<p>Generic method. Appends a sequence of <code>TModel</code> objects as row(s) to the end of the primary buffer in the DataStore and returns the index of the first row added. <code>TModel</code> must match with the <code>DataObject</code> property of the DataStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -81,18 +81,17 @@
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p><code>TModel</code></p>
-<p>The type of a model class that matches with the current <code>DataObject</code>.</p>
+<p>The type of a <code>model</code> class that matches with the current <code>DataObject</code>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>list</code> System.Collections.Generic.IEnumerable&lt;TModel&gt;</p>
-<p>一个与当前DataStore中的DataObject属性匹配的TModel实例的集合。</p>
-<p>A collection of TModel instances which match with the DataObject property of the DataStore.</p>
+<p>A sequence of <code>TModel</code> objects which match with the <code>DataObject</code> property of the DataStore.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the zero-based index number of the first row added.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>The status flag for a newly added row is <code>ModelState.NewModified</code>, and the row is included in the modified count.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the AddRow method to add multiple rows of data to the DataStore.</p>
+<p>The following code example demonstrates how to use the <code>AddRow</code> method to add multiple rows of data to the DataStore.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 using System.Collections.Generic;
@@ -111,12 +110,12 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example3()
         {
-            // Instantiates datastore with dataobject: d_department
+            // Instantiates a DataStore object with dataobject: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             Console.WriteLine(&quot;Before AddRow, Rowcount: {0}&quot;, datastore.Retrieve());
 
-            // Creates a list of department TModel objects
+            // Creates a list of D_Department objects.
             var departmentList = new List&lt;D_Department&gt;();
 
             var department = new D_Department();
@@ -137,18 +136,16 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
             departmentList.Add(department2);
 
-            // Adds the model list to datastore
-            // AddRow returns a value that is the number of the last row plus 1.
-            // Lower bound of C# array is 0, but that of PB array is 1, so the
-            // number of current row returned from C# is 1 less than that from PB.
-            int currentRow = datastore.AddRow&lt; D_Department&gt;(departmentList);
+            // Adds the model list to datastore.
+            // AddRow returns the zero-based index number of the first row added.
+            int currentRow = datastore.AddRow&lt;D_Department&gt;(departmentList);
 
             Console.WriteLine(&quot;Addrow return value: {0}&quot;, currentRow);
 
-            // Commits changes to database
+            // Commits changes to database.
             datastore.Update();
 
-            Console.WriteLine(&quot;After Update and Retrieve, Rowcount: {0}&quot;, 
+            Console.WriteLine(&quot;After Update and Retrieve, Rowcount: {0}&quot;,
                 datastore.Retrieve());
 
             /*This code produces the following output:

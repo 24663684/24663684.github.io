@@ -68,12 +68,12 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetitemtimeint-row-string-column-dwbuffer-buffertype--dwbufferprimary-bool-isoriginalvalue--false-method"><strong>IDataStore.GetItemTime(int row, string column, DwBuffer bufferType = DwBuffer.Primary, bool isOriginalValue = false) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Gets data whose type is <code>TimeSpan</code> for the specified row and column from the specified buffer of the DataStore. You can obtain the data that was originally retrieved and stored in the database from the original buffer, as well as the current value in the primary, delete, or filter buffers.</p>
+<p>Gets data whose type is <code>TimeSpan</code> for the specified row and column from the specified buffer of the DataStore. You can obtain the data that was originally retrieved and stored in the database, as well as the current value in the primary, delete, or filter buffers.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -90,15 +90,14 @@
 <p><code>isOriginalValue</code> System.Boolean</p>
 <p>Whether to obtain the data that was originally retrieved.</p>
 <p>True: obtain the data that was originally retrieved;
-False: obtain the current data.</p>
-<p>The default is <code>false</code>.</p>
+False (default): obtain the current data.</p>
 <p><strong>Returns</strong></p>
 <p>System.TimeSpan?</p>
 <p>Returns the <code>TimeSpan?</code> value in the specified row and column.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>Use <code>GetItemTime</code> to get information from the DataStore buffer. When you specify <code>true</code> for <code>isOriginalValue</code>, the method gets the original data for that row from the original buffer.</p>
+<p>Use <code>GetItemTime</code> to get information from the <code>DataWindow buffer</code>. When you specify <code>true</code> for <code>isOriginalValue</code>, the method gets the original data for that row.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the GetItemTime method to get the time-type value in the specified row and column.</p>
+<p>The following code example demonstrates how to use the <code>GetItemTime</code> method to get the time-type value in the specified row and column.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -116,29 +115,30 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example2()
         {
-
-            // Instantiates datastore with datawindow: d_coursedescription
+            // Instantiates a DataStore object with datawindow: d_coursedescription.
             var datastore = new DataStore(&quot;d_coursedescription&quot;, _context);
 
             datastore.Retrieve();
 
             datastore.SetItem(0, &quot;inputtime&quot;, TimeSpan.Parse(&quot;12:12:12&quot;));
 
-            // Gets the original value in row 1 and in the description column and inputtime column of DataStore
-            // The inputtime column is time type
-            Console.WriteLine(&quot;Original value: Description: {0};\n&quot; +
-                              &quot;inputtime: {1}&quot;,
-                          datastore.GetItem&lt;string&gt;(0, &quot;description&quot;),
-                          datastore.GetItemTime(0, &quot;inputtime&quot;,
-                                                DwBuffer.Primary, true));
+            // Gets the original value in row 1 and in the description column and 
+            // inputtime column of DataStore.
+            // The inputtime column is time type.
+            Console.WriteLine(
+                &quot;Original value: Description: {0};\n&quot; +
+                &quot;inputtime: {1}&quot;,
+                datastore.GetItem&lt;string&gt;(0, &quot;description&quot;),
+                datastore.GetItemTime(0, &quot;inputtime&quot;, DwBuffer.Primary, true));
 
-            // Gets the modified value in row 1 and in the description column and inputtime column of DataStore
-            // The inputtime column is time type
-            Console.WriteLine(&quot;Modified value: Description: {0};\n&quot; +
-                              &quot;inputtime: {1}&quot;,
-                          datastore.GetItem&lt;string&gt;(0, &quot;description&quot;),
-                          datastore.GetItemTime(0, &quot;inputtime&quot;,
-                                                DwBuffer.Primary, false));
+            // Gets the modified value in row 1 and in the description column and 
+            // inputtime column of DataStore.
+            // The inputtime column is time type.
+            Console.WriteLine(
+                &quot;Modified value: Description: {0};\n&quot; +
+                &quot;inputtime: {1}&quot;,
+                datastore.GetItem&lt;string&gt;(0, &quot;description&quot;),
+                datastore.GetItemTime(0, &quot;inputtime&quot;, DwBuffer.Primary, false));
 
             /*This code produces the following output:
              

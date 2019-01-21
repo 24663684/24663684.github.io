@@ -68,12 +68,13 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="idatastoregetenumerator-method"><strong>IDataStore.GetEnumerator() Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Obtains the enumerator that can be used to iterate through the DataStore. Inherited from IEnumerator&lt;T&gt;.</p>
+<p>Obtains the enumerator that can be used to iterate through the DataStore.</p>
+<p>Inherited from <code>IEnumerator&lt;T&gt;</code>.</p>
 <p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
 <p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -83,7 +84,7 @@
 <p>System.Collections.IEnumerator</p>
 <p>Returns an <code>IEnumerator</code> object that can be used to iterate through the DataStore.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the GetEnumerator() method toobtain the enumerator that can be used to iterate through the DataStore.</p>
+<p>The following code example demonstrates how to use the <code>GetEnumerator</code> method to obtain the enumerator that can be used to iterate through the DataStore.</p>
 <pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
 using System;
 
@@ -101,7 +102,7 @@ namespace Appeon.ApiDoc.IDataStoreExamples
 
         public void Example()
         {
-            // Instantiates datastore with datawindow: d_department
+            // Instantiates a DataStore object with datawindow: d_department.
             var datastore = new DataStore(&quot;d_department&quot;, _context);
 
             D_Department department;
@@ -114,9 +115,10 @@ namespace Appeon.ApiDoc.IDataStoreExamples
             {
                 department = (D_Department)departments.Current;
 
-                Console.WriteLine(&quot;Department ID: {0}; Department Name: {1}&quot;,
-                               department.Departmentid,
-                               department.Name);
+                Console.WriteLine(
+                    &quot;Department ID: {0}; Department Name: {1}&quot;,
+                    department.Departmentid,
+                    department.Name);
             }
 
             /*This code produces the following output:
