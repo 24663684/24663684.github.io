@@ -469,6 +469,10 @@ body .toc{
   position: absolute;
   top: 4px;
   left: 3px;
+  z-index: 1;
+}
+.expand-stub.current {
+  color: #fff;
 }
 .toc .nav > li > a.sidetoc-expand {
   position: absolute;
@@ -477,11 +481,11 @@ body .toc{
 }
 .toc .nav > li > a {
   color: #666666;
-  margin-left: 1.8rem;
-  margin-right: 1rem;
+  margin-left: 0;
+  margin-right: 0;
   display: block;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 1.8rem;
+  padding-right: 1rem;
   padding-top: 4px;
   padding-bottom: 6px;
   line-height: 1.3;
@@ -492,12 +496,19 @@ body .toc{
   background: none;
   text-decoration: inherit;
 }
+.toc .nav > li > a[href]:hover{
+  text-decoration: underline;
+}
 .toc .nav > li.active > a {
   color: #337ab7;
 }
 .toc .nav > li.active > a:hover,
 .toc .nav > li.active > a:focus {
   color: #23527c;
+}
+.toc .nav > li.active > a.current{
+  color: #fff;
+  background: #337ab7;
 }
 
 .toc .nav > li> .expand-stub {

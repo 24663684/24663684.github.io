@@ -412,12 +412,27 @@ $(function () {
 
       // Scroll to active item
       var top = 0;
+      var activeLi = $('#toc a.active').parents('li');
+      var int = setInterval(function(){
+        if($('#toc a.active').outerHeight() != 0){
+          activeLi.each(function (i, e) {
+            if(!$(e).children('a').hasClass('current')){
+              top += $(e).children('a').outerHeight();
+            }
+            $(e).prevAll().each(function (i, e){
+              top += $(e).outerHeight();
+            });
+          });
+          $('.sidetoc').scrollTop(top - 20);
+          clearInterval(int);
+        }
+      },10);
       $('#toc a.active').parents('li').each(function (i, e) {
         $(e).addClass(active).addClass(expanded);
         $(e).children('a').addClass(active);
-        top += $(e).position().top;
+        //top += $(e).position().top;
       })
-      $('.sidetoc').scrollTop(top - 50);
+      //$('.sidetoc').scrollTop(top - 50);
 
       if ($('footer').is(':visible')) {
         $('.sidetoc').addClass('shiftup');
@@ -504,7 +519,8 @@ $(function () {
           }
 
           if (util.getAbsolutePath(e.href) === currentHref) {
-            $(e).addClass(active);
+            $(e).addClass(active).addClass('current');
+            $(e).siblings('.expand-stub').addClass('current');
           }
 
           $(e).breakWord();
