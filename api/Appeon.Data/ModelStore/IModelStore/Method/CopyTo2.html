@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从目标数组的指定索引处开始, 把ModelStore的model objects复制到一维数组。</p>
-<p>Copies the model objects of ModelStore to the specified position of the array.</p>
+<p>Copies all of the model objects of ModelStore to the specified position of the array.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,12 +81,11 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>array</code>	TModel[]</p>
-<p>The one-dimensional System.Array to which the model objects of ModelStore will be copied.</p>
+<p>The one-dimensional <code>System.Array</code> to which the model objects of ModelStore will be copied.</p>
 <p><code>arrayIndex</code> System.Int32</p>
-<p>The zero-based index of the array to which copying begins.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The zero-based index in the array at which storing begins.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>从目标数组的指定索引处开始, 将ModelStore中的数据copy到数组中。</p>
+<p>The following code example demonstrates how to use the <code>CopyTo(TModel[], Int32)</code> method to copy all of the model objects of ModelStore to the specified position of the array.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -106,34 +104,34 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            // 创建ModelStore对象，并检索数据
-            IModelStore&lt;Course&gt; currentCourse = new ModelStore&lt;Course&gt;();
+            // Creates a ModelStore.
+            var currentCourse = new ModelStore&lt;Course&gt;();
             currentCourse.Retrieve(_context);
 
-            // 创建一个Course数组
-            Course[] courses = new Course[20];
+            // Creates an array.
+            Course[] courses = new Course[15];
 
-            // 指定从数组的index = 2开始，将ModelStore中的数据拷贝到该数组中
+            // Copies the model objects to the array, to the position starting at index 2.
             currentCourse.CopyTo(courses, 2);
 
-            // 循环输出数组中的数据
-            foreach (Course m in courses)
+            // Displays the titles.
+            foreach (var course in courses)
             {
-                if (m == null)
+                if (course == null)
                 {
                     Console.WriteLine(&quot;null&quot;);
                 }
                 else
                 {
-                    Console.WriteLine(m.Title);
+                    Console.WriteLine(course.Title);
                 }
-                
             }
 
             /*This code produces the following output:
              
             null
             null
+            Calculus
             Chemistry
             Physics
             Composition
@@ -146,14 +144,7 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             null
             null
             null
-            null
-            null
-            null
-            null
-            null
-            null
             */
-
         }
     }
 }

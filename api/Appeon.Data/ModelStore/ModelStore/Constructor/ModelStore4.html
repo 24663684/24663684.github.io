@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>使用一个<code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code>对象初始化一个<code>ModelMapper&lt;TModel&gt;</code>类的新实例。 可指定数据变化追踪策略，默认不追踪数据变化。</p>
-<p>Initializes a new instance of the ModelStore class by a <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code> object. You can specify the Change Tracking Strategy and data changes are not tracked by default..</p>
+<p>Initializes a new instance of the <code>ModelStore</code> class by an <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code> object. You can specify the change tracking strategy. Data changes are not tracked by default.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -87,6 +87,47 @@
 <p>(Optional) A value of the <a href="../../ChangeTrackingStrategy/ChangeTrackingStrategy.html">ChangeTrackingStrategy</a> enumerated datatype. The default is <code>ChangeTrackingStrategy.NotTrack</code>.</p>
 <h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>实例化一个ModelStore对象, 并指定跟踪策略实例化对象时，为对象传入Model数据The following code example initializes a ModelStore object, specifies the tracking strategy, and inserts the model entry to ModelStore.</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.ApiDoc.ModelStoreExamples
+{
+    public class ModelStoreExample
+    {
+        private SchoolContext _context;
+
+        public ModelStoreExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example4(IEnumerable&lt;IModelEntry&lt;Person&gt;&gt; newStudents)
+        {           
+
+            // Initializes a ModelStore object
+            // Specifies the tracking strategy to PropertyState
+            // Inserts data to ModelStore
+            IModelStore&lt;Person&gt; model = new ModelStore&lt;Person&gt;(newStudents,
+                                ChangeTrackingStrategy.PropertyState);
+
+            // Shows how many rows in ModelStore
+            Console.WriteLine(&quot;Item Count = {0}.&quot;,
+                model.Count);
+
+            /*This code produces the following output:
+
+            Item Count = 2.
+           */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br>Controller Class: <a href="../../../../SourceCode/Examples/Controllers/ModelStore/ModelStoreExampleController.html">ModelStoreExampleController</a> <br></p>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

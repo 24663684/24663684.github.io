@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>根据键以指定的顺序对ModelStore的model objects进行排序。 默认顺序为升序。</p>
 <p>Sorts the model objects in ModelStore according to a key. The default order is ascending.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -84,14 +83,12 @@
 <p>TKey
 The type of the key returned by <code>keySelector</code>.</p>
 <p><strong>Parameters</strong></p>
-<p><code>keySelector</code>	System.Func&lt;TModel, TKey&gt;</p>
+<p><code>keySelector</code> System.Func&lt;TModel, TKey&gt;</p>
 <p>A function to extract a key from a model object.</p>
 <p><code>descending</code>	System.Boolean</p>
 <p>True (default): to sort in ascending order.</p>
 <p>False: to sort in descending order.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>对ModelStore中记录按指定条件进行排序</p>
 <p>The following code example demonstrates how to sort the ModelStore records in ascending order by DepartmentID.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
@@ -111,57 +108,55 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the value for Department ID before sort
-            Console.WriteLine(&quot;Before Order: &quot;);
-            foreach (var m in courses)
+            // Shows the value for Department ID before sort.
+            Console.WriteLine(&quot;Before Sort: &quot;);
+            foreach (var course in courses)
             {
-                Console.WriteLine(&quot;Department ID = {0}&quot;, m.DepartmentID);
+                Console.WriteLine(&quot;Department ID: {0}&quot;, course.DepartmentID);
             }
 
             // Sorts data in ascending order by DepartmentID
             courses.Sort(m =&gt; m.DepartmentID);
 
-            // Shows the value for Department ID after sort
-            Console.WriteLine(&quot;After Order: &quot;);
+            // Shows the value for Department ID after sort.
+            Console.WriteLine();
+            Console.WriteLine(&quot;After Sort: &quot;);
             foreach (var m in courses)
             {
-                Console.WriteLine(&quot;Department ID = {0}&quot;, m.DepartmentID);
+                Console.WriteLine(&quot;Department ID: {0}&quot;, m.DepartmentID);
             }
 
             /* This code example produces the following output:
-             
-            Before Order:
-            Department ID = 7
-            Department ID = 1
-            Department ID = 1
-            Department ID = 2
-            Department ID = 2
-            Department ID = 2
-            Department ID = 7
-            Department ID = 4
-            Department ID = 4
-            Department ID = 4
-            Department ID = 7
+            
+            Before Sort:
+            Department ID: 7
+            Department ID: 1
+            Department ID: 1
+            Department ID: 2
+            Department ID: 2
+            Department ID: 2
+            Department ID: 7
+            Department ID: 4
+            Department ID: 4
+            Department ID: 4
 
-            After Order:
-            Department ID = 1
-            Department ID = 1
-            Department ID = 2
-            Department ID = 2
-            Department ID = 2
-            Department ID = 4
-            Department ID = 4
-            Department ID = 4
-            Department ID = 7
-            Department ID = 7
-            Department ID = 7
-             */
-
+            After Sort:
+            Department ID: 1
+            Department ID: 1
+            Department ID: 2
+            Department ID: 2
+            Department ID: 2
+            Department ID: 4
+            Department ID: 4
+            Department ID: 4
+            Department ID: 7
+            Department ID: 7
+            */
         }
     }
 }

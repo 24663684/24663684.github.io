@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>找到并移除ModelStore中由零基础索引start和count指定的model objects。</p>
-<p>Removes a number of model objects starting from the specified position in ModelStore.</p>
+<p>Removes a subset of model objects from the specified position in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,14 +81,13 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>index</code>	System.Int32</p>
-<p>The zero-based index from which to start.</p>
+<p>The zero-based index at which the range starts.</p>
 <p><code>count</code>	System.Int32</p>
 <p>A number specifying how many model objects (starting from the <code>index</code> parameter) to remove.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the removed model objects will have the <code>ModelState.Deleted</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>Remove ModelStore中从指定行开始的多条记录</p>
-<p>The following code example demonstrates how to remove multiple records starting from the specified position.</p>
+<p>The following code example demonstrates how to remove multiple model objects from the specified position.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,24 +106,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the number of records in ModelStore before removed
-            Console.WriteLine(&quot;Before Remove Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects in ModelStore before removed
+            Console.WriteLine(&quot;Before Remove Count: {0}&quot;, courses.Count);
 
-            // Removes two records starting from row 2
+            // Removes two model objects starting from row 2
             courses.RemoveRange(1, 2);
 
-            // Shows the number of records in ModelStore after removed
-            Console.WriteLine(&quot;After Remove Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects in ModelStore after removed
+            Console.WriteLine(&quot;After Remove Count: {0}&quot;, courses.Count);
 
             /* This code example produces the following output:
             
-             Before Remove Count = 12
-             After Remove Count = 10
+             Before Remove Count: 12
+             After Remove Count: 10
             */
         }
     }

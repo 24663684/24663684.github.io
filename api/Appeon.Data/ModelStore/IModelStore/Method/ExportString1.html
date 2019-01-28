@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将ModelStore 中的所有model objects的数据导出为字符串数据，默认导出TModel的属性名称。</p>
-<p>Exports data of all model objects in ModelStore to a string. The property name of TModel is exported by default.</p>
+<p>Exports data from all model objects of ModelStore to a string. The property names of <code>TModel</code> are exported by default.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,16 +81,15 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>colheading</code> System.Boolean</p>
-<p>True (default): to export the property name of TModel.</p>
-<p>False: not to export the property name of TModel.</p>
+<p>True (default): to export the property names of <code>TModel</code>.</p>
+<p>False: not to export the property names of <code>TModel</code>.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the string if it succeeds.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>Values are separated by tabs. A newline character (&quot;\r\n&quot; for non-Unix platforms and &quot;\n&quot; for Unix platforms) is placed at the end of each line.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates export department records to strings with column heading or not.参数colheading表示是否导出column header, 如果省略，为默认值为True</p>
-<p>The following code example demonstrates how to use the ExportString method to export the department records (with or without property names) from ModelStore to a string.</p>
+<p>The following code example demonstrates how to use the <code>ExportString(Boolean)</code> method to export the department records (with and without property names) from ModelStore to a string.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using Appeon.Data.PowerBuilder;
@@ -111,23 +109,22 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1()
         {
-            // Creates ModelStore
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            // Creates ModelStore abd retrieves data.
+            var department = new ModelStore&lt;Department&gt;();
 
-            // Generates data for this example
             department.Retrieve(_context);
 
-            // ModelStore.ExportString() equals to ModelStore.ExportString(true)
-            // true indicates exporting the property name
-            string text = department.ExportString();
+            // ModelStore.ExportString() equals to ModelStore.ExportString(true).
+            // true indicates exporting the property name.
+            string str = department.ExportString();
 
             Console.WriteLine(&quot;ModelStore.ExportString():&quot;);
-            Console.WriteLine(text);
+            Console.WriteLine(str);
 
-            text = department.ExportString(false);
+            str = department.ExportString(false);
 
             Console.WriteLine(&quot;ModelStore.ExportString(false):&quot;);
-            Console.WriteLine(text);
+            Console.WriteLine(str);
 
             /* This code produces the following output:
              

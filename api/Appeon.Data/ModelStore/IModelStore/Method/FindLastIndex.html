@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>搜索与指定谓词定义的条件匹配的model object，并返回ModelStore中最后一个匹配项的从零开始的索引。</p>
-<p>Searches for the model object that meets the condition defined by the predicate, and returns the index of the last occurrence in ModelStore.</p>
+<p>Searches for the model object that meets the condition defined by the predicate, and returns the index of the last occurrence.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,7 +87,7 @@
 <p>The zero-based index of the last occurrence of the model object if found; otherwise, –1.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find the last department record that meets the specified criteria and return its index number.按指定条件，查找ModelStore中满足条件的记录的行号。</p>
+<p>The following code example demonstrates how to find the model object that meets the specified criteria and return the index number of the last model object found.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,21 +106,22 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var dept = new ModelStore&lt;Department&gt;();
 
-            // Retrieves data from Department and sorts data
+            // Retrieves data from Department and sorts data.
             dept.Retrieve(_context);
             dept.Sort(m =&gt; m.DepartmentID);
 
-            // Searches for records whose DepartmentID = 2 and returns the last record found
+            // Searches for models whose DepartmentID is 2 and returns the last 
+            // model object found.
             int index = dept.FindLastIndex(m =&gt; m.DepartmentID == 2);
 
-            // Returns -1 if no record found
-            Console.WriteLine(&quot;Find Last Index = {0}&quot;, index);
+            // Returns -1 if no model object found.
+            Console.WriteLine(&quot;Find Last Index: {0}&quot;, index);
 
             /* This code example produces the following output:
             
-            Find Last Index = 1
+            Find Last Index: 1
             */
         }
     }

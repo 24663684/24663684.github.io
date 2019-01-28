@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>确定ModelStore中的每个model object是否与指定谓词定义的条件匹配。</p>
 <p>Determines whether every model object in ModelStore matches the conditions defined by the specified predicate.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -87,9 +86,8 @@
 <p>System.Boolean</p>
 <p>Returns <code>ture</code> if every model object in ModelStore matches the conditions defined by the specified predicate; otherwise, <code>false</code>.</p>
 <p>If ModelStore has no model object, the return value is <code>true</code>.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to check if every record in ModelStore meets the specified condition.判断ModelStore中记录是否都满足设置的表达式</p>
+<p>The following code example demonstrates how to use the <code>TrueForAll</code> method to check if every model object in ModelStore meets the specified condition.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,14 +106,25 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses =
+            var courses =
                 new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            bool result = courses.TrueForAll(m =&gt; m.DepartmentID &lt; 10);           
-            
+            bool result = courses.TrueForAll(m =&gt; m.DepartmentID &lt; 10);
+            Console.WriteLine(&quot;True for all (DepartmentID &lt; 10): {0}&quot;,
+                result);
+
+            result = courses.TrueForAll(m =&gt; m.DepartmentID &gt; 100);
+            Console.WriteLine(&quot;True for all (DepartmentID &gt; 100): {0}&quot;,
+                result);
+
+            /* This code example produces the following output:
+
+            True for all (DepartmentID &lt; 10): True
+            True for all (DepartmentID &gt; 100): False
+            */
         }
     }
 }

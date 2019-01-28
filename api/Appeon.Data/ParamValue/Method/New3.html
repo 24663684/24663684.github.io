@@ -91,6 +91,71 @@
 <p>Returns the new created <code>ParamValue</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>创建一个ParamValue对象，并为其指定name及Direction, 并指定数据类型以这种方式创建时，建议Direction=output</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Data;
+
+namespace Appeon.ApiDoc.ParamValueExamples
+{
+    public class NewExample
+    {
+        private readonly SchoolContext _context;
+
+        public NewExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example3()
+        {
+            // 创建存放string类型数据的ParamValue对象
+            // 并指定其为output参数
+            var outParam = ParamValue.New&lt;string&gt;(&quot;data1&quot;,
+                ParameterDirection.Output);
+
+            // 创建一个input类型的ParamValue对象
+            var inParam = ParamValue.New&lt;int&gt;(&quot;id&quot;, 1,
+                ParameterDirection.Input);
+
+            // 输出outParam的name，value及Direction信息
+            Console.WriteLine(&quot;ParamValue.Name = {0}&quot;, outParam.Name);
+            Console.WriteLine(&quot;ParamValue.Value = {0}&quot;, outParam.Value);
+            Console.WriteLine(&quot;ParamValue.DataType = {0}&quot;, outParam.DataType);
+            Console.WriteLine(&quot;ParamValue.Direction = {0}&quot;, outParam.Direction);
+
+            // 指定要执行的procedure
+            string procedure = &quot;select_course&quot;;
+
+            /*
+                         
+             select_course sql statements:
+             update Course set Title = 'English' where CourseID = @id;
+             select output = 'success';
+             */
+
+            // 使用创建的ParamValue对象，执行procedure
+            var row = _context.SqlExecutor.ExecuteProcedure(procedure,
+                inParam, outParam);
+
+            // 再次输出outParam的value信息
+            Console.WriteLine();
+            Console.WriteLine(&quot;ParamValue.Value = {0}&quot;, outParam.Value);
+
+            /*This code produces the following output:
+            
+            ParamValue.Name = data1
+            ParamValue.Value =
+            ParamValue.DataType = System.String
+            ParamValue.Direction = Output
+
+            ParamValue.Value = success
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.Net Standard</p>
 <p>2.x</p>

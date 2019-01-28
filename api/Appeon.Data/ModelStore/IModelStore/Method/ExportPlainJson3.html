@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将model objects（从指定的起始位置到结尾）从ModelStore导出为简单格式的JSON字符串。</p>
-<p>Exports the model objects (from the specified starting position to the end) in ModelStore to a simple-format JSON string.</p>
+<p>Exports the model objects (from the specified position to the end) in ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -86,10 +85,8 @@
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the simple-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the department records in rows 2 through the end.</p>
+<p>The following code example demonstrates how to use the <code>ExportPlainJson(Int32)</code> method to export the department records from index 1 through the end to a JSON string.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -108,11 +105,11 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example3()
         {
-            // Creates ModelStore and retrieves data 
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            // Creates ModelStore and retrieves data. 
+            var department = new ModelStore&lt;Department&gt;();
             department.Retrieve(_context);
 
-            // Exports records starting from rows 2 through the end 
+            // Exports model objects starting at index 1 through the end.
             string json = department.ExportPlainJson(1);
 
             Console.WriteLine(json);
@@ -126,7 +123,7 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br>JSON File: <a href="../../../../SourceCode/Examples/Jsons/IModelStore/ExportPlainJson3.html">ExportPlainJson3</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

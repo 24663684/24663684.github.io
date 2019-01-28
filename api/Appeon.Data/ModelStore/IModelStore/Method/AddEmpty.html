@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将空model item添加到ModelStore的末尾。</p>
-<p>Appends an empty model object as a row to the end of ModelStore.</p>
+<p>Appends an empty model object to the end of ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -86,9 +85,10 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the newly added model object will have the <code>ModelState.New</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to add an empty row to the end of ModelStore.增加空行.</p>
+<p>The following code example demonstrates how to add an empty model object to the end of ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
+using System;
 
 namespace Appeon.ApiDoc.IModelStoreExamples
 {
@@ -104,9 +104,17 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
-            Department emptyRow = dept.AddEmpty();
+            var depts = new ModelStore&lt;Department&gt;();
 
+            // Adds an empty model object to the end of ModelStore.
+            var empty = depts.AddEmpty();
+
+            Console.WriteLine(&quot;Count: {0}&quot;, depts.Count);
+
+            /* This code produces the following output:
+
+            Count = 1
+            */
         }
     }
 }

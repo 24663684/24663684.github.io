@@ -73,7 +73,8 @@
 <a href="javascript:void(0)">0.5.0-alpha</a>
 <a href="javascript:void(0)">0.5.1-alpha(current)</a>
 </div>
-<p>SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供了更多常用数据库操作方法和参数兼容性，支持直接执行动态SQL语句、SQLBuilder对象、Model自动化查询等功能特性。</p>
+SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供了更多常用数据库操作方法和参数兼容性，支持直接执行动态SQL语句、SQLBuilder对象、Model自动化查询等功能特性。
+<p>SQLExecutor is a set of database manipulation interfaces that have encapsulated the core components of ADO.NET. It is a C# replacement for PowerBuilder's embedded SQL feature. Using SQLExecutor you can directly run dynamic SQL statements, perform SQLBuilder object functions, and do model queries.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -92,18 +93,18 @@
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="">SqlExecutor(DataContext context)</a></td>
-<td>使用数据上下文初始化一个SqlExecutor类的新实例。</td>
+<td>Initializes a new instance of the <a href="../SqlExecutor.html">SqlExecutor</a> class.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="属性"><strong>属性</strong></h3>
+<h3 id="property">Property</h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>名称</th>
-<th>返回类型</th>
-<th>描述</th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -111,170 +112,110 @@
 <td><img src="../../../../images/property.jpeg" alt=""></td>
 <td><a href="Property/DataContext.html">DataContext</a></td>
 <td>DataContext</td>
-<td>获取数据上下文。</td>
+<td>Gets the <code>DataContext</code> object.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="方法"><strong>方法</strong></h3>
+<h3 id="method"><strong>Method</strong></h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>名称</th>
-<th>返回类型</th>
-<th>描述</th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="../../../../images/method.jpeg" alt="">       </td>
-<td><a href="Method/BuildQuery.html">BuildQuery&lt;TModel&gt;(string selectName = null)</a></td>
-<td>string</td>
-<td>根据Model生成Sql语句。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Equals.html">Equals(Object obj)</a></td>
-<td>bool</td>
-<td>确定指定的对象是否和当前对象相等。(继承自Object)</td>
-</tr>
-<tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Execute.html">Execute(string sqlText, params object[] parameters)</a></td>
 <td>int</td>
-<td>执行插入，更新，删除的Sql语句。</td>
+<td>Executes the SQL statements like UPDATE, INSERT, DELETE etc.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExecuteProcedure.html">ExecuteProcedure(string sqlText, params object[] parameters)</a></td>
 <td>int</td>
-<td>执行存储过程。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/GetHashCode.html">GetHashCode()</a></td>
-<td>int</td>
-<td>获取对象的哈希值。(继承自Object。)</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/GetQueryBuilder.html">GetQueryBuilder&lt;TModel&gt;(string selectName = null)</a></td>
-<td>ISqlQueryBuilder</td>
-<td>获取根据TModel生成的SqlQueryBuilder。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/GetType.html">GetType()</a></td>
-<td>type</td>
-<td>获取当前实例的类型。(继承自Object。)</td>
+<td>Executes a stored procedure.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Scalar1.html">Scalar&lt;TValue&gt;(string sqlText, params object[] parameters)</a></td>
 <td>TValue</td>
-<td>得到结果的第一行第一列数据。</td>
+<td>Executes the SQL SELECT statement and returns the first column of the first row in the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Scalar2.html">Scalar&lt;TValue&gt;(ISqlQueryBuilder sqlQueryBuilder, params object[] parameters)</a></td>
 <td>TValue</td>
-<td>得到结果的第一行第一列数据。</td>
+<td>Executes the SQL SELECT statement and returns the first column of the first row in the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Select1.html">Select&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td>查询数据并返回IList&lt;TModel&gt;。</td>
+<td>Executes the SQL SELECT statement and returns an <code>IList&lt;TModel&gt;</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Select2.html">Select&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td>查询数据并返回IList&lt;TModel&gt;。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Select3.html">Select&lt;TModel&gt;(params object[] parameters);</a></td>
-<td>IList&lt;TModel&gt;</td>
-<td>查询数据并返回IList&lt;TModel&gt;。</td>
+<td>Executes the SQL SELECT statement and returns an <code>IList&lt;TModel&gt;</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectLazy1.html">SelectLazy&lt;TModel&gt;(params object[] parameters)</a></td>
 <td>IEnumerable&lt;TModel&gt;</td>
-<td>推迟数据查询并返回IEnumerable&lt;TModel&gt;。</td>
+<td>Executes the SQL SELECT statement and returns an <code>IEnumerable &lt;TModel&gt;</code> object that can be used to load the result set lazily.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectLazy2.html">SelectLazy&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
 <td>IEnumerable&lt;TModel&gt;</td>
-<td>推迟数据查询并返回IEnumerable&lt;TModel&gt;。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectLazy3.html">SelectLazy&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
-<td>IEnumerable&lt;TModel&gt;</td>
-<td>推迟数据查询并返回IEnumerable&lt;TModel&gt;。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectOne1.html">SelectOne&lt;TModel&gt;(params object[] parameters)</a></td>
-<td>TModel</td>
-<td>查询一条数据并返回TModel。</td>
+<td>Executes the SQL SELECT statement and returns an <code>IEnumerable &lt;TModel&gt;</code> object that can be used to load the result set lazily.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectOne2.html">SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td>TModel</td>
-<td>查询一条数据并返回TModel。</td>
+<td>Executes the SQL SELECT statement and returns a <code>TModel</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectOne3.html">SelectOne&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
 <td>TModel</td>
-<td>查询一条数据并返回TModel。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectOneByKey.html">SelectOneByKey&lt;TModel&gt;(params object[] parameters)</a></td>
-<td>TModel</td>
-<td>使用主键参数查询一条数据并返回TModel。</td>
+<td>Executes the SQL SELECT statement and returns a <code>TModel</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectProcedure.html">SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td>从存储过程中查询数据并IList&lt;TModel&gt;。</td>
+<td>Executes a SQL stored procedure and returns an <code>IList&lt;TModel&gt;</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectProcedureToStore.html">SelectProcedureToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
-<td>IModelStore&lt;TModel&gt;</td>
-<td>从存储过程中查询数据并返回IModelStore&lt;TModel&gt;。</td>
+<td><a href="../../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
+<td>Executes a SQL stored procedure and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectToStore1.html">SelectToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
-<td>IModelStore&lt;TModel&gt;</td>
-<td>查询数据并返回IModelStore&lt;TModel&gt;。</td>
+<td><a href="../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
+<td>Executes the SQL SELECT statement and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SelectToStore2.html">SelectToStore&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
-<td>IModelStore&lt;TModel&gt;</td>
-<td>查询数据并返回IModelStore&lt;TModel&gt;。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectToStore3.html">SelectToStore&lt;TModel&gt;(params object[] parameters)</a></td>
-<td>IModelStore&lt;TModel&gt;</td>
-<td>查询数据并返回IModelStore&lt;TModel&gt;。</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/ToString.html">ToString()</a></td>
-<td>string</td>
-<td>返回当前对象类型的完全限定名。(继承自Object。)</td>
+<td><a href="../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
+<td>Executes the SQL SELECT statement and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
 </tr>
 </tbody>
 </table>
@@ -287,7 +228,7 @@
 </thead>
 <tbody>
 <tr>
-<td>SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供了更多常用数据库操作方法和参数兼容性<br>1 支持直接执行动态SQL语句和存储过程。<br>2 结合SqlBuilder对象的使用可以更灵活简单的操作数据库。<br>3 Model自动化查询等功能特性。<br></td>
+<td>SQLExecutor is a set of database manipulation interfaces that have encapsulated the core components of ADO.NET. Using SQLExecutor you can directly run dynamic SQL statements, perform SQLBuilder object functions, and do model queries. <br>1. supports raw SQL as well as automatic SQL generation.<br>2. supports lazy loading of data to prevent unnecessary performance bottlenecks.<br>3. can bind result-sets to POCO or dynamic models.<br></td>
 </tr>
 </tbody>
 </table>

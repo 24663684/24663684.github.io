@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>查找并移除ModelStore中符合指定谓词的条件的所有model objects, 返回从ModelStore中删除的model object的数量。</p>
-<p>Finds and removes all model objects in ModelStore which meet the conditions defined by the predicate, and returns the number of model objects removed from ModelStore.</p>
+<p>Finds and removes all model objects in ModelStore which meet the condition defined by the predicate.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -89,8 +88,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the removed model objects will have the <code>ModelState.Deleted</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>Remove ModelStore中满足指定条件的所有记录</p>
-<p>The following code example demonstrates how to remove all records whose Department ID is 1.</p>
+<p>The following code example demonstrates how to remove all model objects whose Department ID is 1.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -109,24 +107,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the number of records in ModelStore before removed
-            Console.WriteLine(&quot;Before Remove Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects in ModelStore before removed.
+            Console.WriteLine(&quot;Before Remove Count: {0}&quot;, courses.Count);
 
-            // Removes the record whose DepartmentID == 1
+            // Removes the model object whose DepartmentID == 1
             courses.RemoveAll(m =&gt; m.DepartmentID == 1);
 
-            // Shows the number of records in ModelStore after removed
-            Console.WriteLine(&quot;After Remove Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects in ModelStore after removed.
+            Console.WriteLine(&quot;After Remove Count: {0}&quot;, courses.Count);
 
             /* This code example produces the following output:
             
-             Before Remove Count = 12
-             After Remove Count = 11
+            Before Remove Count: 12
+            After Remove Count: 11
             */
         }
     }

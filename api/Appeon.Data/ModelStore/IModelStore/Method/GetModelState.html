@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取ModelStore中指定基于零的索引处model object的当前的追踪到的状态。</p>
 <p>Gets the current tracked state of the model object at the specified position in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -85,9 +84,8 @@
 <p><strong>Returns</strong></p>
 <p><a href="../../ModelState/ModelState.html">Appeon.Data.ModelState</a></p>
 <p>Returns a value of the <code>ModelState</code> enumerated datatype.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the tracked state of the specified model object in ModelStore.获取ModelStore中指定行的数据的修改状态。</p>
+<p>The following code example demonstrates how to get the tracked state of the specified model object in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -106,24 +104,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            // Specifies the ModelStore TrackingStrategy, in order to call GetForUpdate
-            IModelStore&lt;Department&gt; dept = 
+            // Sets the racking strategy to PropertyState. 
+            var depts =
                 new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data from Department.
+            depts.Retrieve(_context);
 
-            // Modifies the value of &quot;Name&quot; column in row 1
-            dept.SetValue(0, &quot;Name&quot;, &quot;test&quot;);
+            // Modifies the value of Name property of the model object at index 0.
+            depts.SetValue(0, &quot;Name&quot;, &quot;New Department&quot;);
 
-            // Gets the tracked state of row 1
-            var state = dept.GetModelState(0);
+            // Gets the tracked state of the row at index 0.
+            var state = depts.GetModelState(0);
 
-            Console.WriteLine(&quot;Item Status = {0}&quot;, state.ToString());
+            Console.WriteLine(&quot;Model State: {0}&quot;, state);
 
             /* This code example produces the following output:
             
-             Item Status = Modified
+            Model State: Modified
             */
         }
     }

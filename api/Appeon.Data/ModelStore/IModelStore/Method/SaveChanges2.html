@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>当ModelStore正在被追踪时，将根据要跟踪的model object的状态以及每个model object中的属性的状态把数据更新到指定的数据库。同时可以指定在执行Update操作时的SQL产生策略。</p>
-<p>Updates the data to the database, based on the state of the model objects being tracked and the state of the properties in each model object. At the same time, you can specify the SQL generation strategy when performing the Update operation.</p>
+<p>Updates the data to the database, based on the state of the model objects being tracked and the state of the properties in each model object. At the same time, you can specify the SQL generation strategy when performing the update operation.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,18 +83,17 @@
 <p><code>context</code>	<a href="../../DataContext/DataContext.html">Appeon.Data.DataContext</a></p>
 <p>A <code>DataContext</code> object which contains the database connection information.</p>
 <p><code>updateSqlStrategy</code>	<a href="../../UpdateSqlStrategy/UpdateSqlStrategy.html">Appeon.Data.UpdateSqlStrategy</a></p>
-<p>The SQL strategy when performing the Update operation. Use <code>UpdateSqlStrategy.Update</code> to generate a SQL Update statement or use <code>UpdateSqlStrategy.DeleteThenInsert</code> to generate a Delete statement and an Insert statement.</p>
+<p>The SQL strategy when performing the update operation. Use <code>UpdateSqlStrategy.Update</code> to generate a SQL UPDATE statement or use <code>UpdateSqlStrategy.DeleteThenInsert</code> to generate a DELETE statement and an INSERT statement.</p>
 <p>If this parameter is not used, it uses <code>UpdateSqlStrategy.Update</code> internally.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>Do not use the <code>SaveChanges</code> method, when ModelStore is not being tracked.</p>
 <p><strong>How to process the tracked info for each model object</strong></p>
 <p>ModelStore does nothing for the model object whose state is  <code>ModelState.New</code> or <code>ModelState.NotModified</code>.</p>
-<p>When the state of the model object is <code>ModelState.NewModified</code>, the SQL Insert statement is generated according to the definition in TModel. When the state of the model object is <code>ModelState.Deleted</code>, the SQL Delete statement is generated according to the definition in TModel. When the state of the model object is <code>ModelState.Modified</code>, the SQL Update statement will be generated according to the definition in TModel (or SQL Delete and SQL Insert if the <code>updateSqlStrategy</code> argument is specified to <code>UpdateSqlStrategy.DeleteThenInsert</code>).</p>
+<p>When the state of the model object is <code>ModelState.NewModified</code>, the SQL INSERT statement is generated according to the definition in <code>TModel</code>. When the state of the model object is <code>ModelState.Deleted</code>, the SQL DELETE statement is generated according to the definition in <code>TModel</code>. When the state of the model object is <code>ModelState.Modified</code>, the SQL UPDATE statement will be generated according to the definition in <code>TModel</code> (or SQL DELETE and SQL INSERT if the <code>updateSqlStrategy</code> argument is specified to <code>UpdateSqlStrategy.DeleteThenInsert</code>).</p>
 <p><strong>Database Transaction</strong></p>
-<p>If you have not used the <code>context</code>  argument (a <code>DataContext</code> object) to start the transaction using <code>DataContext.BeginTransaction</code>, the <code>SaveChanges</code> method will automatically start a transaction internally. If the database is updated successfully, the database transaction will be committed, otherwise the database transaction will be rolled back.</p>
+<p>If you have not used the <code>context</code>  argument (a <code>DataContext</code> object) to start the transaction using the <code>DataContext.BeginTransaction</code> method, the <code>SaveChanges</code> method will automatically start a transaction internally. If the database is updated successfully, the database transaction will be committed, otherwise the database transaction will be rolled back.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>保存ModelStore数据, 并指定ModelStore更新方式</p>
-<p>The following code example demonstrates how to save a newly inserted record to the database according to the specified update strategy.</p>
+<p>The following code example demonstrates how to use the <code>SaveChanges(DataContext, UpdateSqlStrategy)</code> method to specify the SQL generation strategy when performing the update operation.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -114,40 +112,59 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            IModelStore&lt;Course&gt; courses =
+            var courses =
                 new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Create a Course record
-            Course course = new Course()
-            {
-                CourseID = 2,
-                Title = &quot;test2&quot;,
-                Credits = 1,
-                DepartmentID = 1
-            };
+            // Modifies the title.
+            courses.SetValue(0, &quot;Title&quot;, &quot;New Titile 1&quot;);
 
-            // Inserts the record to row 2
-            courses.Insert(1, course);
-
-            // Saves data
+            // It uses the UpdateSqlStrategy.Update strategy to generate SQL 
+            // UPDATE statement for the update operation by default. 
+            // You can omit UpdateSqlStrategy.Update. 
             var dbResult = courses.SaveChanges(_context, UpdateSqlStrategy.Update);
 
-            Console.WriteLine(&quot;{0} records have been updated into the database.&quot;,
-                              dbResult.AffectedCount);
+            Console.WriteLine(&quot;{0} record has been modified.&quot;,
+                  dbResult.ModifiedCount);
+
+            var onlineCourses =
+               new ModelStore&lt;OnlineCourse&gt;(ChangeTrackingStrategy.PropertyState);
+
+            onlineCourses.Retrieve(_context);
+
+            // Modifies the URL at index 0.
+            onlineCourses.SetValue(0, &quot;URL&quot;, &quot;http://NewURL&quot;);
+
+            // It uses the UpdateSqlStrategy.DeleteThenInsert strategy to  
+            // generate a SQL DELETE statement and a SQL INSERT statement for 
+            // the update operation.
+            dbResult = onlineCourses.SaveChanges(_context,
+                UpdateSqlStrategy.DeleteThenInsert);
+
+            Console.WriteLine();
+            Console.WriteLine(&quot;{0} record has been deleted.&quot;,
+                dbResult.DeletedCount);
+            Console.WriteLine(&quot;{0} record has been inserted.&quot;,
+                dbResult.InsertedCount);
+            Console.WriteLine(&quot;{0} record has been modified.&quot;,
+                  dbResult.ModifiedCount);
 
             /* This code example produces the following output:
             
-            1 records have been updated into the database.
+            1 record has been modified.
+
+            1 record has been deleted.
+            1 record has been inserted.
+            0 record has been modified.
             */
         }
     }
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
+<p>Model Classes: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <a href="../../../../SourceCode/Examples/Models/School/OnlineCourse.html">OnlineCourse</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

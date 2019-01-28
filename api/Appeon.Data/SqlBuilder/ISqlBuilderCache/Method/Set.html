@@ -73,7 +73,8 @@
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>dai ding</p>
+<p>将<code>ISqlBuilder</code>对象缓存到<code>ISqlBuilderCache</code>对象中，并指定<code>ISqlBuilder</code>对象的缓存名称。 您还可以指定<code>ISqlBuilder</code>对象再从缓存中获取时是否为只读，默认为只读。</p>
+<p>Caches an <code>ISqlBuilder</code> object into the <code>ISqlBuilderCache</code> object and specifies a cache name for the  <code>ISqlBuilder</code> object. You can also specify whether the <code>ISqlBuilder</code>  object is read-only when getting from the cache, the default is read-only.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -81,12 +82,62 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>sqlBuilderName</code> System.String</p>
+<p>The name specified for the <code>ISqlBuilder</code> cached.</p>
 <p><code>sqlBuilder</code> <a href="../ISqlBuilder/ISqlBuilder.html">Appeon.Data.ISqlBuilder</a></p>
+<p>The <code>ISqlBuilder</code> object to be cached into the <code>ISqlBuilderCache</code> object.</p>
+<p><code>readOnly</code> System.Boolean</p>
+<p>Specify whether the <code>ISqlBuilder</code>  object is read-only when getting from the cache.</p>
+<p>True, you can only use the <a href="Get.html">Get</a> method to get a <a href="../../ISqlReadOnlyBuilder/ISqlReadOnlyBuilder.html">ISqlReadOnlyBuilder</a> object from cache.</p>
+<p>False, you can use the <a href="Get.html">Get</a> method to get a <a href="../../ISqlReadOnlyBuilder/ISqlReadOnlyBuilder.html">ISqlReadOnlyBuilder</a> object from cache or use the <a href="GetModifiable.html">GetModifiable</a> method to get a <code>TSqlBuilder</code> object.</p>
+<p>Default is <code>true</code>.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>将ISqlBuilder对象缓存到ISqlBuilderCache中，并为其指定缓存名称</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ISqlBuilderCacheExamples
+{
+    public class SetExample
+    {
+        private readonly SchoolContext _context;
+
+        public SetExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            // 创建一个SqlQueryBuilder对象
+            var build = SqlBuilderFactory.Create&lt;ISqlQueryBuilder&gt;(&quot;original sql&quot;);
+            build.Select(&quot;select Title from Course wherer CourseID = 1050&quot;);
+
+            // 通过SqlBuilderFactory.Cache，生成一个SqlBuilderCache对象
+            var cache = SqlBuilderFactory.Cache;
+
+            // 将SqlQueryBuilder注入SqlBuilderCache对象中
+            cache.Set(&quot;querySql&quot;, build, true);
+
+            // 从缓存中获取名为querySql的ISqlReadOnlyBuilder对象
+            var get = cache.Get(&quot;querySql&quot;);
+
+            Console.WriteLine(&quot;SqlBuild Name = {0}&quot;, get.Name);
+
+            /*This code produces the following output:
+            
+            SqlBuild Name = original sql
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>
+<h3 id="see-also"><strong>See Also</strong></h3>
+<p><a href="Get.html">Get(String)</a></p>
+<p><a href="GetModifiable.html">GetModifiable&lt;TSqlBuilder&gt;(String)</a></p>
 </article>
           </div>
           

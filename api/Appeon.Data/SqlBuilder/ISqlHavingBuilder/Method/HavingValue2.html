@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>创建HAVING子句,向HAVING子句添加搜索条件，在运算符左侧指定SQL表达式, 在运算符右侧指定具体的值。</p>
-<p>Creates the HAVING clause, and adds a search condition to the HAVING clause, specifies the SQL expression on the left the operator, and a specific value on the right of the operator.</p>
+<p>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies the SQL expression on the left the operator and a specific value on the right of the operator.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -82,15 +82,14 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>left</code> System.String</p>
-<p>A expression on the left of the operator.</p>
+<p>An expression on the left of the operator.</p>
 <p><code>SqlBinaryOperator</code> <a href="../../SqlBinaryOperator/SqlBinaryOperator.html">Appeon.Data.SqlBinaryOperator</a></p>
-<p>A enumeration value of <code>SqlBinaryOperator</code>, it's the operator to test the  expression on the left and the value on the right.</p>
+<p>An enumeration value of <code>SqlBinaryOperator</code> which is the operator to test the expression on the left and the value on the right.</p>
 <p><code>value</code> System.Object</p>
 <p>The specific value on the right of the operator.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../ISqlHavingAndOr/ISqlHavingAndOr.html">Appeon.Data.ISqlHavingAndOr</a></p>
-<p>Returns the <code>ISqlHavingAndOr</code> object which can be used to add more search conditions for current HAVING clause.</p>
-<h3 id="备注"><strong>备注</strong></h3>
+<p>Returns the <code>ISqlHavingAndOr</code> object which can be used to add more search conditions to the current HAVING clause.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>增加分组条件</p>
 <pre><code class="lang-C#">using Appeon.Data;

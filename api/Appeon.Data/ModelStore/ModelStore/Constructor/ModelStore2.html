@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>初始化一个<code>ModelMapper&lt;TModel&gt;</code>类的新实例。 可指定数据变化追踪策略，默认不追踪数据变化。</p>
-<p>Initializes a new instance of the ModelStore class. You can specify the Change Tracking Strategy and data changes are not tracked by default..</p>
+<p>Initializes a new instance of the <code>ModelStore</code> class. You can specify the change tracking strategy. Data changes are not tracked by default.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -85,6 +85,45 @@
 <p>(Optional) A value of the <a href="../../ChangeTrackingStrategy/ChangeTrackingStrategy.html">ChangeTrackingStrategy</a> enumerated datatype. The default is <code>ChangeTrackingStrategy.NotTrack</code>.</p>
 <h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>实例化一个ModelStore对象, 并指定跟踪策略The following code example initializes a ModelStore object and specifies the tracking strategy.</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.ApiDoc.ModelStoreExamples
+{
+    public class ModelStoreExample
+    {
+        private SchoolContext _context;
+
+        public ModelStoreExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example2()
+        {
+            // Initializes a ModelStore object
+            // Specifies the tracking strategy to PropertyState
+            IModelStore&lt;Course&gt; model = 
+                new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
+
+            // Shows the tracking strategy
+            Console.WriteLine(&quot;Tracking Strategy = {0}.&quot;,
+                model.ChangeTrackingStrategy);
+
+            /*This code produces the following output:
+
+            Tracking Strategy = PropertyState.
+           */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

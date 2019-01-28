@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>向ModelStore的末尾导入一个含有数据和状态的<code>IModelEntry</code> object.</p>
 <p>Imports an <code>IModelEntry</code> object, which contains data and state, to the end of ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -86,9 +85,8 @@
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns 1 if succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to import a ModelEntry record to the end of ModelStore.向ModelStore中导入一条ModelEntry数据</p>
+<p>The following code example demonstrates how to import an <code>IModelEntry</code> object to the end of ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -108,14 +106,13 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1(IModelEntry&lt;Person&gt; persondata)
         {
-            // Creates ModelStore and imports a record
-            // Saves the changes
-            IModelStore&lt;Person&gt; person = new ModelStore&lt;Person&gt;();
+            // Creates ModelStore. 
+            var persons = new ModelStore&lt;Person&gt;();
 
-            person.ImportEntry(persondata);
-            // Shows the saving result
-            Console.WriteLine(&quot;Rowcount: {0}&quot;,
-                              person.Count);
+            // Imports an `IModelEntry` object.
+            persons.ImportEntry(persondata);
+
+            Console.WriteLine(&quot;Rowcount: {0}&quot;, persons.Count);
 
             /* The code example produces the following output:
             

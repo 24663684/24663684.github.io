@@ -73,9 +73,9 @@
 <a href="javascript:void(0)">0.5.0-alpha</a>
 <a href="javascript:void(0)">0.5.1-alpha(current)</a>
 </div>
-<p>待定。</p>
-<p><strong>命名空间：</strong> Appeon.Data</p>
+**命名空间：** Appeon.Data
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
+<p>Represents a connection to a database.</p>
 <h3 id="语法"><strong>语法</strong></h3>
 <pre><code class="lang-c#">   public interface IAdoDbConnection : IAdoDbTransactionManager, IDisposable;
 </code></pre>
@@ -155,7 +155,99 @@
 </tbody>
 </table>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>待定。</p>
+<p>IAdoDbConnection中的方法和属性使用</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.SqlServer;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Data.Common;
+using System.IO;
+
+namespace Appeon.ApiDoc.IAdoDbConnectionExamples
+{
+    public class IAdoDbConnectionExample
+    {
+        // 声明一个IConfiguration对象，用来获取配置文件信息
+        public IConfiguration Configuration { get; }
+
+        // 声明一个IAdoDbConnection对象
+        public IAdoDbConnection dbconn;
+
+        // 将IAdoDbConnection对象实例化
+        public IAdoDbConnectionExample()
+        {
+            // 获取appsettings.json文件路径
+            string path = Path.Combine(Directory.GetCurrentDirectory(),
+                &quot;appsettings.json&quot;);
+
+            // 创建一个ConfigurationBuilder对象，并注入json文件
+            var build = new ConfigurationBuilder();
+            build.AddJsonFile(path);
+
+            // Build IConfiguration对象
+            Configuration = build.Build();
+
+            // 使用IConfiguration对象获取school节点配置信息
+            string schoolconnect = Configuration.GetConnectionString(&quot;school&quot;);
+
+            // 根据指定配置信息连接数据库
+            dbconn = new SqlServerAdoDbConnection(schoolconnect);
+        }
+
+        public void Example()
+        {
+            // 打开数据库链接
+            dbconn.Open();
+
+            // 获取ConnectionId并输出
+            var id = dbconn.ConnectionId;
+            Console.WriteLine(&quot;ConnectionId = {0}&quot;, id);
+
+            // 获取ConnectionString并输出
+            string connString = dbconn.ConnectionString;
+            Console.WriteLine(&quot;ConnectionString = {0}&quot;, connString);
+
+            // 开始数据库事务
+            dbconn.BeginTransaction();
+
+            // 获取当前事务信息并输出
+            var transe = dbconn.CurrentTransaction;
+            Console.WriteLine(&quot;CurrentTransaction = {0}&quot;, transe.TransactionId);
+
+            // 释放当前AdoDbConnection资源，关闭数据库链接
+            dbconn.Dispose();
+            dbconn.Close();
+
+            // 以下代码演示使用当前AdoDbConnection对象的DbConnection属性创建一个DbCommand对象，并执行数据库查询
+            dbconn.Open();
+            var command = dbconn.DbConnection.CreateCommand();
+            command.CommandText = &quot;Select Name From Department &quot; +
+                &quot;Where DepartmentID = 1&quot;;
+
+            // 开始数据库事务
+            command.Transaction = dbconn.DbConnection.BeginTransaction();
+
+            // 执行查询
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+               
+            }
+            // 释放资源，关闭数据库链接
+            dbconn.Dispose();
+            dbconn.Close();
+
+            /*This code produces the following output:
+             
+            ConnectionId = f7b4bbd4-af87-41a6-9fcb-5c57b73a67fc
+            ConnectionString = Data Source=172.16.3.122;Initial Catalog=School;Integrated Security=False;User ID=dba;Password=sql;Pooling=True;Min Pool Size=0;Max Pool Size=100;ApplicationIntent=ReadWrite
+            CurrentTransaction = 031655e8-b94a-4558-bfac-96c7519f54c7
+             */
+        }
+    }
+}
+</code></pre>
 </article>
           </div>
           

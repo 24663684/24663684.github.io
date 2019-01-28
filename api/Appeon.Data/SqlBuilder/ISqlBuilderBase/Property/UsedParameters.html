@@ -114,7 +114,7 @@ namespace Appeon.ApiDoc.ISqlBuilderBaseExamples
                             .Where(&quot;DepartmentId&quot;, &quot;@deptID&quot;);
 
             // Uses validate or ToSqlString method to generate the used parameters internally.
-            sqlQueryBuilder.Validation(_context);
+            sqlQueryBuilder.Validate(_context);
 
             // Gets the first parameter.
             var parameter = sqlQueryBuilder.UsedParameters.FirstOrDefault();

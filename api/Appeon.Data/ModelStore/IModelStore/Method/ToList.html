@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从ModelStore中获取model objects的一个<code>IList&lt;TModel&gt;</code>对象。</p>
-<p>Creates a <code>IList&lt;TModel&gt;</code> object with the model objects from ModelStore.</p>
+<p>Creates an <code>IList&lt;TModel&gt;</code> object with the model objects from ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -83,14 +82,13 @@
 <p><strong>Parameters</strong></p>
 <p><code>enforceCopy</code>	System.Boolean</p>
 <p>True: the returned  <code>IList&lt;TModel&gt;</code> object contains the copies of the model objects.</p>
-<p>False (false): the returned  <code>IList&lt;TModel&gt;</code> object contains the model objects directly.</p>
+<p>False (default): the returned  <code>IList&lt;TModel&gt;</code> object contains the model objects directly.</p>
 <p>This parameter only works when ModelStore is not being tracked.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IList&lt;TModel&gt;</p>
-<p>If ModelStore is being tracked or <code>enforceCopy</code> is true, returns the copies of the model objects; otherwise, returns the model objects directly.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>Returns an <code>IList&lt;TModel&gt;</code> object which contains the model objects.</p>
+<p>If ModelStore is being tracked or <code>enforceCopy</code> is <code>true</code>, returns the copies of the model objects; otherwise, returns the model objects directly.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>将ModelStore中记录放到list中</p>
 <p>The following code example demonstrates how to create a list using the records from ModeStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
@@ -110,20 +108,21 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Copies the ModelStore records to a list
-            var listitem = courses.ToList();
-            
-            // Shows the number of records in the list
-            Console.WriteLine(&quot;List Count = {0}&quot;, listitem.Count);
+            // Creates an `IList&lt;TModel&gt;` object with the model objects from 
+            // ModelStore.
+            var courseList = courses.ToList();
+
+            // Shows the number of elements in the list.
+            Console.WriteLine(&quot;List Count: {0}&quot;, courseList.Count);
 
             /* This code example produces the following output:
             
-            List Count = 11
+            List Count: 10
             */
         }
     }

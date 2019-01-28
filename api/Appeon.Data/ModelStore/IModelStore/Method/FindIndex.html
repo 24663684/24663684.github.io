@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>搜索与指定谓词定义的条件匹配的model object，并返回ModelStore中第一个匹配项的从零开始的索引。</p>
-<p>Searches for the model object that meets the condition defined by the predicate, and returns the index of the first occurrence in ModelStore.</p>
+<p>Searches for the model object that meets the condition defined by the predicate, and returns the index of the first occurrence.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,7 +87,7 @@
 <p>The zero-based index of the first occurrence of the model object if found; otherwise, –1.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find the first department record that meets the specified criteria and return its index number.按指定条件，查找ModelStore中满足条件的记录的index。</p>
+<p>The following code example demonstrates how to find the model object that meets the specified criteria and return the index number of the first model object found.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -113,15 +112,16 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             dept.Retrieve(_context);
             dept.Sort(m =&gt; m.DepartmentID);
 
-            // Searches for records whose DepartmentID = 1 and returns the index of the first record found
+            // Searches for the model object whose DepartmentID is 1 and returns the 
+            // index of the first model object found.
             int index = dept.FindIndex(m =&gt; m.DepartmentID == 1);
 
-            // Returns -1 if no record found
-            Console.WriteLine(&quot;Find item index = {0}&quot;, index);
+            // Returns -1 if no model object found
+            Console.WriteLine(&quot;Find index: {0}&quot;, index);
 
             /* This code example produces the following output:
             
-            Find item index = 0
+            Find index = 0
             */
         }
     }

@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从ModelStore中删除所有model objects。</p>
 <p>Removes all model objects from ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -81,8 +80,10 @@
 <pre><code class="lang-c#">  public void Clear();
 </code></pre>
 <h3 id="remarks"><strong>Remarks</strong></h3>
+<p>If ModelStore is being tracked, the model objects which have the <code>ModelState.New state</code> or the <code>ModelState.NewModified</code> state will be removed directly; the model objects which have the  <code>ModelState.Deleted</code> state will not be affected; the model objects which have the <code>ModelState.Modified</code> state or the <code>ModelState.NotModified</code> state will be changed to the <code>ModelState.Deleted</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to 清空ModelStore中的数据。</p>
+<h4 id="example-1">Example 1</h4>
+<p>The following code example demonstrates how to remove all model objects from a ModelStore which is not being tracked.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -99,37 +100,67 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             _context = dataContext;
         }
 
-        public void Example()
+        public void Example1()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            IModelStore&lt;Department&gt; depts = new ModelStore&lt;Department&gt;();
 
             // Retrieves data from Department
-            dept.Retrieve(_context);
+            depts.Retrieve(_context);
 
-            // 输出执行clear前的记录数
-            Console.WriteLine(&quot;Before Clear: &quot;);
-            Console.WriteLine(&quot;Item Count = {0}&quot;, dept.Count);
+            Console.WriteLine(&quot;Count (Before Clear): {0}&quot;,
+                depts.Count);
 
-            //Clear ModelStore中的数据
-            dept.Clear();
+            //Clears ModelStore.
+            depts.Clear();
 
-            // 输出执行clear后的记录数
-            Console.WriteLine(&quot;After Clear: &quot;);
-            Console.WriteLine(&quot;Item Count = {0}&quot;, dept.Count);
+            Console.WriteLine(&quot;Count (After Clear): {0}&quot;,
+                depts.Count);
 
             /*This code produces the following output:
             
-            Before Clear:
-            Item Count = 4
-
-            After Clear:
-            Item Count = 0
+            Count (Before Clear): 4
+            Count (After Clear): 0
             */
         }
     }
 }
 </code></pre>
-<h4 id="example-refer-to">Example Refer To</h4>
+<h4 id="example-2">Example 2</h4>
+<p>The following code example demonstrates how to remove all model objects from a ModelStore which is being tracked.</p>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Creates a ModelStore and specifies the PropertyState track strategy.
+            IModelStore&lt;Department&gt; depts =
+                new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
+
+            // Retrieves data from Department
+            depts.Retrieve(_context);
+
+            Console.WriteLine(&quot;Count (Before Clear): {0}&quot;,
+                depts.Count);
+
+            //Clears ModelStore.
+            depts.Clear();
+
+            Console.WriteLine(&quot;Count (After Clear): {0}&quot;,
+                depts.Count);
+
+            // If ModelStore is being tracked, the model objects which have the 
+            // ModelState.NotModified state will be changed to the ModelState.Deleted 
+            // state.
+            int deletedCount = depts.TrackedCount(StateTrackable.Deleted);
+            Console.WriteLine(&quot;Deleted Count: {0}&quot;,
+                deletedCount);
+
+            /*This code produces the following output:
+            
+            Count (Before Clear): 4
+            Count (After Clear): 0
+            Deleted Count: 4
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
 <p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>

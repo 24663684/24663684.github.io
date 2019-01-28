@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>查找ModelStore中符合指定谓词的条件的所有model objects, 返回一个由这些找到的model objects创建的新的ModelStore。</p>
-<p>Finds all model objects in ModelStore which meet the conditions defined by the predicate and returns the model objects found in a new ModelStore.</p>
+<p>Searches for the model object which meets the condition defined by the predicate and returns a new ModelStore which contains all of the model objects found.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,7 +87,7 @@
 <p>If the current ModelStore is being tracked, returns the copies of the model objects; otherwise, returns the model objects directly.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find all of the department records that meet the specified criteria.按指定条件，查找ModelStore中满足条件的记录。</p>
+<p>The following code example demonstrates how to find the model object that meets the specified criteria and return all of the model objects found.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,20 +106,19 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
             // Retrieves data from Department
-            dept.Retrieve(_context);
+            depts.Retrieve(_context);
 
-            // Finds all records whose DepartmentID = 1
-            var findResult = dept.FindAll(m =&gt; m.DepartmentID == 1);
+            // Finds all model objects whose DepartmentID is 1.
+            var findResult = depts.FindAll(m =&gt; m.DepartmentID == 1);
 
-            // If no record found, findResult.Count = 0
-            Console.WriteLine(&quot;Find Count = {0}&quot;, findResult.Count);
+            Console.WriteLine(&quot;Find Count: {0}&quot;, findResult.Count);
 
             /* This code example produces the following output:
             
-            Find Count = 1
+            Find Count: 1
             */
         }
     }

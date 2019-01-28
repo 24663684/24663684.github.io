@@ -71,26 +71,23 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>只要指定的条件为true，就从ModelStore获取model objects，直到一个模型对象不匹配指定的条件。</p>
-<p>Takes model objects from ModelStore as long as the specified condition is true until a model object does not meet the specified condition.</p>
+<p>Takes the model objects from ModelStore which meet the specified condition until a model object does not meet the specified condition; and returns a new ModelStore created by these model objects.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public IModelStore&lt;TModel&gt; TakeWhile(Func&lt;TModel, bool&gt; predicate);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>predicate</code>	System.Func&lt;TModel,System.Boolean&gt;</p>
+<p><code>predicate</code> System.Func&lt;TModel,System.Boolean&gt;</p>
 <p>A function to test each model object for a condition.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../IModelStore/IModelStore.html">Appeon.Data.IModelStore&lt;TModle&gt;</a></p>
-<p>A ModelStore that contains model objects before the one at which the test no longer passes.</p>
+<p>Returns a new ModelStore created by the model objects.</p>
 <p>If ModelStore is being tracked, returns the copies of the model objects; otherwise, returns the model objects directly.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>获取ModelStore中指定条件的记录</p>
-<p>The following code example demonstrates how to take the record from ModelStore according to the specified condition.</p>
+<p>The following code example demonstrates how to use the <code>TakeWhile</code> method.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -109,20 +106,22 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Gets the record whose DepartmentID ==7
-            var takeitem = courses.TakeWhile(m =&gt; m.DepartmentID == 7);
+            // Takes model objects from ModelStore as long as &quot;DepartmentID != 2&quot; 
+            // is true until a model object does not meet this condition. 
+            // Returns a new ModelStore created by these model objects.
+            var takeMs = courses.TakeWhile(m =&gt; m.DepartmentID != 2);
 
             // Shows the number of records that are taken
-            Console.WriteLine(&quot;Take Count = {0}&quot;, takeitem.Count);
+            Console.WriteLine(&quot;Take Count: {0}&quot;, takeMs.Count);
 
             /* This code example produces the following output:
             
-            Take Count = 1
+            Take Count: 3
             */
         }
     }

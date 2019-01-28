@@ -68,28 +68,30 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="imodelstoretmodel-interface"><strong>IModelStore&lt;TModel&gt; Interface</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
 </div>
-<p>The <code>IModelStore&lt;TModel&gt;</code> interface represents a <code>ModelStore&lt;TModel&gt;</code> object. ModelStore是一个基于.NET Standard开发的数据操作组件，基于Model元数据（Model Attribute）构建数据存储结构和数据操作行为，并且提供了DynamicModel支持，可以使用SQL Executor执行SQL查询获取对应的ModelStore对象，提供数据状态跟踪、遍历、统计等功能，与DataStore相比提供了更轻量化的数据操作特性。</p>
-<p><strong>命名空间：</strong> Appeon.Data</p>
+<p>The <code>IModelStore&lt;TModel&gt;</code> interface represents a <code>ModelStore&lt;TModel&gt;</code> object.  The C# ModelStore is a data manipulation component that can be used in place of the C# DataStore.  It constructs data storage structures and defines data operations using Model Attributes. And it can be created and maintained using any C# IDE or even a simple text editor.</p>
+<p>Just like the C# DataStore, you can create ModelStore objects without writing any SQL code. ModelStore objects are created through annotations by simply specifying the attributes of its model.  The necessary SQL statements appropriate for the target database will be automatically generated and validated by the C# framework.</p>
+<p>The C# ModelStore provides most but not alsl the capabilities of the C# DataStore.  For example, you can then use ModelStore objects for common data operations such as data caching, filtering, sorting, status tracking, data traversing, and statistical analysis.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#"> public interface IModelStore&lt;TModel&gt; : IList&lt;TModel&gt;, ICollection&lt;TModel&gt;, IEnumerable&lt;TModel&gt;, IEnumerable, IEnumerator&lt;TModel&gt;, IEnumerator, IDisposable, IDataImportAndExport;
 </code></pre>
 <p><strong>Type Parameters</strong>
 TModel</p>
-<p>Implements IList<tmodel>, ICollection<tmodel>, IEnumerable<tmodel>, IEnumerable, IEnumerator<tmodel>, IEnumerator, IDisposable,<a href="../IDataImportAndExport/IDataImportAndExport.html"> IDataImportAndExport</a><p>
+<p>Implements IList<tmodel>, ICollection<tmodel>, IEnumerable<tmodel>, IEnumerable, IEnumerator<tmodel>, IEnumerator, IDisposable, <a href="../IDataImportAndExport/IDataImportAndExport.html">IDataImportAndExport</a><p>
 <h3 id="property"><strong>Property</strong></h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>名称</th>
-<th>返回类型</th>
-<th>描述</th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -97,7 +99,25 @@ TModel</p>
 <td><img src="../../../../images/property.jpeg" alt=""></td>
 <td><a href="Property/ChangeTrackingStrategy.html">ChangeTrackingStrategy</a></td>
 <td>Object</td>
-<td></td>
+<td>Gets the tracking strategy of ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Count.html">Count</a></td>
+<td>int</td>
+<td>Gets the number of model objects contained in ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Current.html">Current</a></td>
+<td>TModel</td>
+<td>Gets the model object in ModelStore at the current position of the enumerator.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/IsReadOnly.html">IsReadOnly</a></td>
+<td>bool</td>
+<td>Gets the value which indicates whether ModelStore is read-only.</td>
 </tr>
 </tbody>
 </table>
@@ -106,460 +126,590 @@ TModel</p>
 <thead>
 <tr>
 <th></th>
-<th>名称</th>
-<th>返回类型</th>
-<th>描述</th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Add.html">Add()</a></td>
+<td>TModel</td>
+<td>Appends a model object to the end of ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddEmpty.html">AddEmpty()</a></td>
 <td>TModel</td>
-<td></td>
+<td>Appends an empty model object to the end of ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddRange.html">AddRange(IEnumerable&lt;TModel&gt; models)</a></td>
 <td>void</td>
-<td></td>
+<td>Appends a sequence of model objects to the end of ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/BinarySearch.html">BinarySearch(Func&lt;TModel, object&gt; searchProperty, object propertyValue)</a></td>
 <td>int</td>
-<td></td>
+<td>Searches for the specified model object in ModelStore by using a binary search algorithm.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Clear.html">Clear()</a></td>
+<td>void</td>
+<td>Removes all model objects from ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Clone.html">Clone(int index)</a></td>
 <td>TModel</td>
-<td></td>
+<td>Makes a copy of the specified model object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/CloneRange.html">CloneRange(int index, int count)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td></td>
+<td>Copies a number of model objects from the specified position.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Contains.html">Contains(TModel item)</a></td>
+<td>Bool</td>
+<td>Determines whether ModelStore contains the specified model object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/CopyTo1.html">CopyTo(TModel[] array)</a></td>
+<td>void</td>
+<td>Copies all of the model objects of ModelStore to a one-dimensional sorted array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/CopyTo2.html">CopyTo(TModel[] array, int arrayIndex)</a></td>
+<td>void</td>
+<td>Copies the model objects of ModelStore to the specified position of the array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/CopyTo3.html">CopyTo(int index, TModel[] array, int arrayIndex, int count)</a></td>
+<td>void</td>
+<td>Copies a number of model objects from the specified position of ModelStore to the specified position of an array.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/CopyValuesFrom.html">CopyValuesFrom(int index, TModel model)</a></td>
 <td>void</td>
-<td></td>
+<td>Copies the property values from an external model object to the current ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Exists.html">Exists(Predicate&lt;TModel&gt; match)</a></td>
+<td>Bool</td>
+<td>Determines whether ModelStore contains the model object that matches the condition defined by the predicate.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportJson1.html">ExportJson(MappingMethod mappingMethod)</a></td>
 <td>string</td>
-<td>导出非格式化的json数据。</td>
+<td>Exports data from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportJson2.html">ExportJson(bool changeOnly, MappingMethod mappingMethod)</a></td>
 <td>string</td>
-<td>指定是否导出格式化json数据。</td>
+<td>Exports all model objects or only the changed model objects from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportJson3.html">ExportJson(int startRow, MappingMethod mappingMethod)</a></td>
 <td>string</td>
-<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+<td>Exports the model objects (from the specified position to the end) in ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportJson4.html">ExportJson(int startRow, int endRow, MappingMethod mappingMethod)</a></td>
 <td>string12</td>
-<td></td>
+<td>Exports the model objects (from the specified range) from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportJson5.html">ExportJson(int startRow, int endRow, short startColumn, MappingMethod mappingMethod)</a></td>
 <td>string12</td>
-<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+<td>Exports the model objects (from the specified range) and the properties (from the specified position to the end), from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportJson6.html">ExportJson(int startRow, int endRow, short startColumn, short endColumn, MappingMethod mappingMethod)</a></td>
 <td>string</td>
-<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+<td>Exports the model objects (from the specified range) and the properties of the model objects (from the specified range) from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportPlainJson1.html">ExportPlainJson()</a></td>
 <td>string</td>
-<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+<td>Exports data from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportPlainJson2.html">ExportPlainJson(bool changeOnly)</a></td>
 <td>string</td>
-<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+<td>Exports all model objects or only the changed model objects from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportPlainJson3.html">ExportPlainJson(int startRow)</a></td>
 <td>string</td>
-<td>将数据导出为字符串数据，默认导出列名。</td>
+<td>Exports the model objects (from the specified position to the end) in ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportPlainJson4.html">ExportPlainJson(int startRow, int endRow)</a></td>
 <td>string</td>
-<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+<td>Exports the model objects (from the specified range) from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportPlainJson5.html">ExportPlainJson(int startRow, int endRow, short startColumn)</a></td>
 <td>string</td>
-<td>将数据导出为字符串数据，默认导出列名。</td>
+<td>Exports the model objects (from the specified range) and the properties (from the specified position to the end), from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ExportPlainJson6.html">ExportPlainJson(int startRow, int endRow, short startColumn, short endColumn)</a></td>
 <td>string</td>
-<td>导出的Json数据是否只是被改变的数据和是否被格式化。</td>
+<td>Exports the model objects (from the specified range) and the properties of the model objects (from the specified range) from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Exists.html">Exists(Predicate&lt;TModel&gt; match)</a></td>
-<td>bool</td>
-<td>确定是否存在指定条件的元素。</td>
+<td><a href="Method/ExportString1.html">ExportString(bool colheading = true)</a></td>
+<td>string</td>
+<td>Exports data of all model objects in ModelStore to a string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString2.html">ExportString(int startRow, int endRow, bool colheading = true)</a></td>
+<td>string</td>
+<td>Exports data of the model objects (from the specified range) from ModelStore to a string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString3.html">ExportString(int startRow, int endRow, short startColumn, short endColumn, bool colheading = true)</a></td>
+<td>string</td>
+<td>Exports data of the model objects (from the specified range) and the properties (from the specified range) from ModelStore to a string.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Filter.html">Filter(Func&lt;TModel, bool&gt; predicate, bool removeFiltered = false)</a></td>
 <td>IModelStore&lt;TModel&gt;</td>
-<td>过滤数据，可以指定过虑条件。</td>
+<td>Filters the model objects which meets the filter criteria and returns a new ModelStore containing the filtered model objects.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Find.html">Find(Predicate&lt;TModel&gt; match)</a></td>
 <td>&lt;TModel&gt;</td>
-<td></td>
+<td>Searches for the model object which meets the condition defined by the predicate and returns the first occurrence.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/FindAll.html">FindAll(Predicate&lt;TModel&gt; match)</a></td>
 <td>IModelStore&lt;TModel&gt;</td>
-<td></td>
+<td>Searches for the model object which meets the condition defined by the predicate and returns a new ModelStore which contains all of the model objects found.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/FindIndex.html">FindIndex(Predicate&lt;TModel&gt; match)</a></td>
 <td>int</td>
-<td></td>
+<td>Searches for the model object that meets the condition defined by the predicate, and returns the index of the first occurrence.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/FindLast.html">FindLast(Predicate&lt;TModel&gt; match)</a></td>
 <td>TModel</td>
-<td></td>
+<td>Searches for the model object which meets the condition defined by the predicate and returns the last occurrence.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/FindLastIndex.html">FindLastIndex(Predicate&lt;TModel&gt; match)</a></td>
 <td>int</td>
-<td></td>
+<td>Searches for the model object that meets the condition defined by the predicate, and returns the index of the last occurrence.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Get.html">Get(int index)</a></td>
 <td>TValue</td>
-<td></td>
+<td>Gets the model object at the specified position of ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetEnumerator.html">GetEnumerator()</a></td>
+<td>IEnumerator</td>
+<td>Obtains the enumerator that can be used to iterate through ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetForUpdate.html">GetForUpdate(int index)</a></td>
 <td>TModel</td>
-<td></td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/GetHashCode.html">GetHashCode()</a></td>
-<td>int</td>
-<td>获取对象的哈希值。(继承自Object。)</td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/GetModelFactory.html">GetModelFactory()</a></td>
-<td>IModelFactory&lt;TModel&gt;</td>
-<td></td>
+<td>Gets the model object at the specified position of ModelStore when ModelStore is being tracked.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetModelState.html">GetModelState(int index)</a></td>
 <td>ModelState</td>
-<td></td>
+<td>Gets the current tracked state of the model object at the specified position in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetPropertyState1.html">GetPropertyState(int index, int propertyIndex)</a></td>
 <td>PropertyState</td>
-<td></td>
+<td>Gets the current tracked state of the specified property (by index) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetPropertyState2.html">GetPropertyState(int index, string propertyName)</a></td>
 <td>PropertyState</td>
-<td></td>
+<td>Gets the current tracked state of the specified property (by name) of the specified model object (by index) in ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetPropertyState3.html">GetPropertyState(int index, Expression&lt;Func&lt;TModel, object&gt;&gt; selector)</a></td>
+<td>PropertyState</td>
+<td>Gets the current tracked state of the specified property (by expression) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetRange.html">GetRange(int index, int count)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td></td>
+<td>Gets a subset of model objects from ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetValue1.html">GetValue&lt;TValue&gt;(int index, int propertyIndex, bool bOriginalValue = false)</a></td>
 <td>TValue</td>
-<td></td>
+<td>Gets the value of the specified property (by index) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetValue2.html">GetValue&lt;TValue&gt;(int index, string propertyName, bool bOriginalValue = false)</a></td>
 <td>TValue</td>
-<td></td>
+<td>Gets the value of the specified property (by name) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetValue3.html">GetValue(int index, int propertyIndex, bool bOriginalValue = false)</a></td>
 <td>object</td>
-<td></td>
+<td>Gets the value of the specified property (by index) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetValue4.html">GetValue(int index, string propertyName, bool bOriginalValue = false)</a></td>
 <td>object</td>
-<td></td>
+<td>Gets the value of the specified property (by name) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GroupAll.html">GroupAll&lt;TKey&gt;(Func&lt;TModel, TKey&gt; groupBy, bool sortByKey = false, bool decending = false)</a></td>
 <td>IDictionary&lt;TKey, IModelStore&lt;TModel&gt;&gt;</td>
-<td></td>
+<td>Groups the data in ModelStore according to the specified grouping rules and sorting rules, and returns an <code>IDictionary&lt;TKey, IModelStore &lt;TModel &gt;&gt;</code> object which contains the grouped data.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportEntry.html">ImportEntry(IModelEntry modelEntry)</a></td>
+<td>int</td>
+<td>Imports an <code>IModelEntry</code> object, which contains data and state, to the end of ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportEntry2.html">ImportEntry(IEnumerable&lt;IModelEntry&gt; modelEntries)</a></td>
+<td>int</td>
+<td>Imports a sequence of <code>IModelEntry</code> objects, which contain data and state, to the end of ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson1.html">ImportJson(string json)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson2.html">ImportJson(string json, int startRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore. You can specify the starting position in the JSON array. Data before the starting position will not be imported into ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson3.html">ImportJson(string json, int startRow, int endRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore. You can specify the starting and ending position in the JSON array. Data that are out of this range will not be imported into ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson4.html">ImportJson(string json, int startRow, int endRow, short startProperty)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore. You can specify the starting and ending positions in the JSON array, and you can specify the number of the first key value in the JSON object to be imported. Data that are out of this range will not be imported into ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson5.html">ImportJson(string json, int startRow, int endRow, short startProperty, short endProperty)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore. You can specify the starting and ending positions in the JSON array,  and you can specify the number of the first key value and the last key value in the JSON object to be imported. Data that are out of this range will not be imported into ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey1.html">ImportJsonByKey(string json)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore according to the key name of the JSON item.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey2.html">ImportJsonByKey(string json, int startRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore according to the key name of the JSON item. You can specify the starting position in the JSON array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey3.html">ImportJsonByKey(string json, int startRow, int endRow)</a></td>
+<td>int</td>
+<td>Inserts data from a JSON string into ModelStore according to the key name of the JSON item. You can specify the starting and ending positions in the JSON array.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString1.html">ImportString(string json)</a></td>
+<td>int</td>
+<td>Inserts the tab-separated data from a string into the ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString2.html">ImportString(string json, int startRow)</a></td>
+<td>int</td>
+<td>Inserts the tab-separated data from a string into the ModelStore. You can specify the starting and ending rows in the string.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString3.html">ImportString(string json, int startRow, int endRow)</a></td>
+<td>int</td>
+<td>Inserts the tab-separated data from a string into ModelStore. You can specify the starting and ending rows and the starting and ending columns in the string to be imported.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/IndexOf.html">IndexOf(TModel item)</a></td>
 <td>int</td>
-<td>获取数据项的索引。</td>
+<td>Searches for the specified model object and returns the index of the first occurrence in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Insert.html">Insert(int index, TModel item)</a></td>
 <td>void</td>
-<td>在指定索引处插入数据。</td>
+<td>Inserts a model object to the specified position in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/InsertEmpty.html">InsertEmpty(int index)</a></td>
 <td>TModel</td>
-<td></td>
+<td>Inserts a newly created model object as an empty row to the specified position in ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InsertRange.html">InsertRange(int index, IEnumerable&lt;TModel&gt; models)</a></td>
+<td>void</td>
+<td>Inserts a sequence of model objects to the specified position in ModelStore.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/MoveNext.html">MoveNext()</a></td>
+<td>bool</td>
+<td>Advances the enumerator to the next model object in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/OrderBy.html">OrderBy&lt;TKey&gt;(Func&lt;TModel, TKey&gt; keySelector)</a></td>
 <td>IOrderable&lt;TModel&gt;</td>
-<td>按照某个列对ModelStore的行进行排序。</td>
+<td>Sorts the model objects in ModelStore in ascending order according to a key.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/OrderByDescending.html">OrderByDescending&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</a></td>
+<td><a href="Method/OrderByDescending.html">OrderByDescending&lt;TKey&gt;(Func&lt;TModel, object&gt; keySelector)</a></td>
 <td>IOrderable&lt;TModel&gt;</td>
-<td>按照某个列对ModelStore的行进行排序。</td>
+<td>Sorts the model objects in ModelStore in descending order according to a key.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Remove.html">Remove(TModel item)</a></td>
 <td>bool</td>
-<td>从ModelStore中移除指定项。</td>
+<td>Removes the model object from ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/RemoveAll.html">RemoveAll(Predicate&lt;TModel&gt; match)</a></td>
 <td>int</td>
-<td>从ModelStore中移除匹配指定项的所有项。</td>
+<td>Finds and removes all model objects in ModelStore which meet the condition defined by the predicate.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/RemoveAt.html">RemoveAt(int index)</a></td>
 <td>void</td>
-<td>移除指定索引处的行。</td>
+<td>Removes the specified model object (by index) from ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/RemoveRange.html">RemoveRange(int index, int count)</a></td>
 <td>void</td>
-<td></td>
+<td>Removes a subset of model objects from the specified position in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Replace.html">Replace(int index, TModel model)</a></td>
 <td>void</td>
-<td></td>
+<td>Replaces a model object in ModelStore with another model object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Reset.html">Reset()</a></td>
 <td>void</td>
-<td>重置ModelStore和其子ModelStore的数据。</td>
+<td>Sets the enumerator to its initial position, which is before the first model object in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ResetState.html">ResetState(StateTrackable stateTrackable)</a></td>
 <td>void</td>
-<td></td>
+<td>Clears all tracked information for the specified model state(s).</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Retrieve1.html">Retrieve(DataContext context, params object[] parameters)</a></td>
 <td>int</td>
-<td></td>
+<td>Retrieves data from the database according to the SQL SELECT statement defined in <code>TModel</code>.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Retrieve2.html">Retrieve(DataContext context, ISqlQueryBuilder sqlBuilder, params object[] parameters)</a></td>
 <td>int</td>
-<td></td>
+<td>Retrieves data from the database according to the SQL SELECT statement defined in the <code>ISqlQueryBuilder</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Reverse1.html">Reverse()</a></td>
 <td>void</td>
-<td></td>
+<td>Reverses the order of the model objects in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Reverse2.html">Reverse(int index, int count)</a></td>
 <td>void</td>
-<td></td>
+<td>Reverses the order of the model objects in the specified range.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SaveChanges1.html">SaveChanges(DataContext context, bool batchExecute = false)</a></td>
 <td>IDbResult</td>
-<td></td>
+<td>Updates the data to the database, based on the state of the model objects being tracked and the state of the properties in each model object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SaveChanges2.html">SaveChanges(DataContext context, UpdateSqlStrategy updateSqlStrategy, bool batchExecute = false)</a></td>
 <td>IDbResult</td>
-<td></td>
+<td>Updates the data to the database, based on the state of the model objects being tracked and the state of the properties in each model object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SetModelState.html">SetModelState(int index, ModelState modelState)</a></td>
 <td>void</td>
-<td></td>
+<td>Sets the state for the specified model object in ModelStore, if ModelStore is being tracked.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SetPropertyState1.html">SetPropertyState(int index, int propertyIndex, PropertyState propertyState)</a></td>
 <td>void</td>
-<td></td>
+<td>Sets the state for the specified property (by index) of the specified model object (by index) in ModelStore, when ModelStore is being tracked using the <code>ChangeTrackingStrategy.PropertyState</code>  strategy.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SetPropertyState2.html">SetPropertyState(int index, string propertyName, PropertyState propertyState)</a></td>
 <td>void</td>
-<td></td>
+<td>Sets the state for the specified property (by name) of the specified model object (by index) in ModelStore, when ModelStore is being tracked using the <code>ChangeTrackingStrategy.PropertyState</code> strategy.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SetValue1.html">SetValue(int index, int propertyIndex, object value)</a></td>
 <td>void</td>
-<td></td>
+<td>Sets the value for the specified property (by index) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SetValue2.html">SetValue(int index, string propertyName, object value)</a></td>
 <td>void</td>
-<td></td>
+<td>Sets the value for the specified property (by name) of the specified model object (by index) in ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Skip.html">Skip(int count)</a></td>
 <td>IModelStore&lt;TModel&gt;</td>
-<td></td>
+<td>Bypasses a specified number of model object in ModelStore and then returns a new ModelStore which contains the remaining model objects.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/SkipWhile.html">SkipWhile(Func&lt;TModel, bool&gt; predicate)</a></td>
 <td>IModelStore&lt;TModel&gt;</td>
-<td></td>
+<td>Bypasses the model object in ModelStore which meets the specified condition and then returns a new ModelStore which contains the remaining model objects.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Sort.html">Sort&lt;TKey&gt;(Func&lt;TModel, TKey&gt; keySelector, bool descending = false)</a></td>
 <td>void</td>
-<td></td>
+<td>Sorts the model objects in ModelStore according to a key.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Take.html">Take(int count)</a></td>
 <td>IModelStore&lt;TModel&gt;</td>
-<td></td>
+<td>Takes the specified number of contiguous model objects from the beginning of the current ModelStore and returns them in a new ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/TakeWhile.html">TakeWhile(Func&lt;TModel, bool&gt; predicate)</a></td>
 <td>IModelStore&lt;TModel&gt;</td>
-<td></td>
+<td>Takes the model objects from ModelStore which meet the specified condition until a model object does not meet the specified condition; and returns a new ModelStore created by these model objects.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ToList.html">ToList(bool enforceCopy = false)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Track1.html">Track&lt;TModel&gt;(IModelEntry modelEntry)</a></td>
-<td>TModel</td>
-<td></td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Track2.html">Track&lt;TModel&gt;(IEnumerable&lt;IModelEntry&gt; modelEntries)</a></td>
-<td>IEnumerable&lt;TModel&gt;</td>
-<td></td>
+<td>Creates an <code>IList&lt;TModel&gt;</code> object with the model objects from ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/TrackChanges.html">TrackChanges(ChangeTrackingStrategy changeTrackingStrategy)</a></td>
 <td>IModelStore&lt;TModel&gt;</td>
-<td></td>
+<td>Specifies the change tracking strategy of ModelStore.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/TrackedCount.html">TrackedCount(StateTrackable stateTrackable)</a></td>
 <td>int</td>
-<td></td>
+<td>Gets the number of the model objects in the specified model state(s).</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/TrueForAll.html">TrueForAll(Predicate&lt;TModel&gt; match)</a></td>
 <td>bool</td>
-<td></td>
+<td>Determines whether every model object in ModelStore matches the conditions defined by the specified predicate.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Validate1.html">Validatie()</a></td>
 <td>bool</td>
-<td></td>
+<td>Validates the data of the model objects in ModelStore using the validation rules set in <code>TModel</code>.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Validate2.html">Validate(out List<validationresult> validationResults)</validationresult></a></td>
 <td>bool</td>
-<td></td>
+<td>Validates the data of the model objects in ModelStore using the validation rules set in <code>TModel</code>, and outputs the validation results.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<h3 id="examples"><strong>Examples</strong></h3>
 </tmodel></tmodel></tmodel></tmodel></article>
           </div>
           

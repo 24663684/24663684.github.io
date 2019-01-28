@@ -94,7 +94,7 @@
 <h3 id="备注"><strong>备注</strong></h3>
 <p>When building with a raw SQL, you can use the format <code>@parametername</code> as a parameter placeholder in the raw SQL Statement.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>以下案例演示查询Department表中满足条件的记录.条件的值是动态传入的，指定了动态参数类型，名称和前缀</p>
+<p>以下案例演示查询Department表中满足条件的记录.条件的值是动态传入的，指定了动态参数类型，名称</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -114,21 +114,20 @@ namespace Appeon.ApiDoc.SqlBuilderExamples
         {
             var sqlQueryBuilder = new SqlQueryBuilder();
 
-            // 定义Join条件
-            var join = SqlBuilder
-                .OnValue(&quot;Department.DepartmentID &quot;, 1);
+            // Create a parameter named 'id' using `int` as the type parameter.
+            var paramId = SqlBuilder.Parameter&lt;int&gt;(&quot;id&quot;);
 
             // 创建sql语法
             var query = sqlQueryBuilder
                 .Select(&quot;*&quot;)
                 .From(&quot;Department&quot;)
-                .Where(&quot;DepartmentID&quot;, SqlBuilder.Parameter&lt;int&gt;(&quot;id&quot;, &quot;ID&quot;));
+                .Where(&quot;DepartmentID&quot;, paramId);
 
             // 转换成context对应数据库的可执行语句
             string sql = query.ToSqlString(_context);
 
             Console.WriteLine(sql);
-            
+
             /*This code example produces the following output:           
 
             SELECT

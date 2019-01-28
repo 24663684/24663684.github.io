@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>改变ModelStore的追踪策略。</p>
-<p>Changes the tracking strategy of ModelStore.</p>
+<p>Specifies the change tracking strategy of ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -87,9 +86,9 @@
 <p><a href="../../IModelStore/IModelStore.html">Appeon.Data.IModelStore&lt;TModel&gt;</a></p>
 <p>Returns the current ModelStore which has cleared the original tracked information and began to use the new tracking strategy.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>If the <code>TrackChanges</code> method is used to change the tracking strategy to <code>ChangeTrackingStrategy.Snapshot</code> or <code>ChangeTrackingStrategy.PropertyState</code>, the existing references to the internal model object hold outside of ModelStore (for example, you got a reference of an internal model object by calling <code>GetInternalModel</code> method) cannot be used any more.</p>
+<p>If the <code>TrackChanges</code> method is used to set the tracking strategy to <code>ChangeTrackingStrategy.Snapshot</code> or <code>ChangeTrackingStrategy.PropertyState</code>, the existing references to the internal model object hold outside of ModelStore (for example, you got a reference of an internal model object by calling <code>GetInternalModel</code> method) cannot be used any more.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to set the tracking strategy of a ModelStore.设置ModelStore的ChangeTrackingStrategy</p>
+<p>The following code example demonstrates how to use the <code>TrackChanges</code> method to set the tracking strategy of a ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,22 +107,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            // ModelStore is not being tracked by default.
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Sets the ModelStore ChangeTrackingStrategy = PropertyState
+            // Sets the strategy to PropertyState.
             courses.TrackChanges(ChangeTrackingStrategy.PropertyState);
 
-            // Sets the value for column 2 in row 1
-            courses.SetValue(0, 1, &quot;test&quot;);
+            // Sets the value for property (at index 0) of the  
+            // model object (at index 1).
+            courses.SetValue(0, 1, &quot;New Course&quot;);
 
-            // Saves ModelStore
+            // Saves changes.
             var dbResult = courses.SaveChanges(_context);
 
             Console.WriteLine(&quot;{0} records have been updated into the database.&quot;,
-                              dbResult.AffectedCount);
+                dbResult.AffectedCount);
 
             /* This code example produces the following output:
             

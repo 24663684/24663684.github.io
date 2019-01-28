@@ -71,10 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>按照某个key对ModelStore中的model objects进行升序排序。</p>
-<p>它返回一个<code>IOrderable &lt;TModel&gt;</code>对象，你需要执行<code>IOrderabe &lt;TModel&gt; .Sort</code>方法来实际执行排序。</p>
 <p>Sorts the model objects in ModelStore in the ascending order according to a key.</p>
 <p>It returns an <code>IOrderable&lt;TModel&gt;</code> object. You need to execute the <code>IOrderabe&lt;TModel&gt;.Sort</code> method to actually sort the data.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
@@ -89,11 +87,9 @@
 <p><code>keySelector</code> System.Func&lt;TModel,TKey&gt;</p>
 <p>A function to extract a key from a model object.</p>
 <p><strong>Returns</strong></p>
-<p><a href="../../IOrderable/IOrderable.html">Appeon.Data.IOrderable&amp;&lt;TModel&gt;</a></p>
+<p><a href="../../../IOrderable/IOrderable.html">Appeon.Data.IOrderable&lt;TModel&gt;</a></p>
 <p>Returns an <code>IOrderable&lt;TModel&gt;</code> object which provides methods to add other sorting conditions or execute <code>sort</code>.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>对ModelStore按指定条件进行排序</p>
 <p>The following code example demonstrates how to sort the data in ModelStore by Department ID in the ascending order.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
@@ -113,16 +109,16 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the Department ID before sorted
-            Console.WriteLine(&quot;Before Order: &quot;);
-            foreach(var m in courses)
+            // Shows the Department ID before sorted.
+            Console.WriteLine(&quot;Before Sorted: &quot;);
+            foreach (var course in courses)
             {
-                Console.WriteLine(&quot;Department ID = {0}&quot;, m.DepartmentID);
+                Console.WriteLine(&quot;Department ID: {0}&quot;, course.DepartmentID);
             }
 
             // Sets to sort by DepartmentID in ascending order
@@ -130,40 +126,40 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             order.Sort();
 
             // Shows the Department ID after sorted
-            Console.WriteLine(&quot;After Order: &quot;);
-            foreach (var m in courses)
+            Console.WriteLine(&quot;After Sorted: &quot;);
+            foreach (var course in courses)
             {
-                Console.WriteLine(&quot;Department ID = {0}&quot;, m.DepartmentID);
+                Console.WriteLine(&quot;Department ID: {0}&quot;, course.DepartmentID);
             }
 
             /* This code example produces the following output:
              
-            Before Order:
-            Department ID = 7
-            Department ID = 1
-            Department ID = 1
-            Department ID = 2
-            Department ID = 2
-            Department ID = 2
-            Department ID = 7
-            Department ID = 4
-            Department ID = 4
-            Department ID = 4
-            Department ID = 7
+            Before Sorted:
+            Department ID: 7
+            Department ID: 1
+            Department ID: 1
+            Department ID: 2
+            Department ID: 2
+            Department ID: 2
+            Department ID: 7
+            Department ID: 4
+            Department ID: 4
+            Department ID: 4
+            Department ID: 7
 
-            After Order:
-            Department ID = 1
-            Department ID = 1
-            Department ID = 2
-            Department ID = 2
-            Department ID = 2
-            Department ID = 4
-            Department ID = 4
-            Department ID = 4
-            Department ID = 7
-            Department ID = 7
-            Department ID = 7
-             */
+            After Sorted:
+            Department ID: 1
+            Department ID: 1
+            Department ID: 2
+            Department ID: 2
+            Department ID: 2
+            Department ID: 4
+            Department ID: 4
+            Department ID: 4
+            Department ID: 7
+            Department ID: 7
+            Department ID: 7
+            */
         }
     }
 }

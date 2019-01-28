@@ -113,7 +113,7 @@ namespace Appeon.ApiDoc.ISqlQueryBuilderExamples
                 .From(&quot;Department&quot;, &quot;dept&quot;);
 
             // 排除重复记录
-            sqlbuilder.Distinst();
+            sqlbuilder.Distinct();
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
             string sql = sqlbuilder.ToSqlString(_context);

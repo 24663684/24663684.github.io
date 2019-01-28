@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取ModelStore中指定基于零的索引处的model object的属性(按属性基于零的索引指定)的当前的追踪到的状态。</p>
-<p>Gets the current tracked state of the property (specified by index) of the specified model object in ModelStore.</p>
+<p>Gets the current tracked state of the specified property (by index) of the specified model object (by index) in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -87,9 +86,8 @@
 <p><strong>Returns</strong></p>
 <p><a href="../../PropertyState/PropertyState.html">Appeon.Data.PropertyState</a></p>
 <p>Returns a value of the <code>PropertyState</code> enumerated datatype.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the tracked state of the specified property (by index) of the specified model object.获取ModelStore中指定行列数据的修改状态, 以列号方式指定。</p>
+<p>The following code example demonstrates how to get the tracked state of the specified property (by index) of the specified model object.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,24 +106,25 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1()
         {
-            // Specifies the ModelStore TrackingStrategy, in order to call GetForUpdate
-            IModelStore&lt;Department&gt; dept = 
-                new ModelStore&lt;Department&gt;( ChangeTrackingStrategy.PropertyState);
+            // Sets the tracking strategy to PropertyState.
+            var depts =
+                new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data from Department.
+            depts.Retrieve(_context);
 
-            // Modifies the data in row 2 and column 2
-            dept.SetValue(1, 1, &quot;test&quot;);
+            // Modifies the property (at index 1) of the model object (at index 1).
+            depts.SetValue(1, 1, &quot;New Department&quot;);
 
-            // Gets the tracked state of data in row 2 and column 2
-            var state = dept.GetPropertyState(1, 1);
+            // Gets the property state of the property (at index 1) of the 
+            // model object (at index 1).
+            var state = depts.GetPropertyState(1, 1);
 
-            Console.WriteLine(&quot;Property Status = {0}&quot;, state.ToString());
+            Console.WriteLine(&quot;Property State: {0}&quot;, state);
 
             /* This code example produces the following output:
             
-             Property Status = Modified
+             Property State: Modified
             */
         }
     }

@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>向HAVING子句添加OR逻辑运算符和一个raw SQL字符串。需要未raw SQL指定别名。</p>
-<p>Add the OR logical operator and a string if raw SQL to the HAVING clause. You need to specify an alias for the raw SQL.</p>
+<p>Add the OR logical operator and a string of raw SQL to the HAVING clause. You need to specify an alias for the raw SQL.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -86,13 +86,12 @@
 <p><code>alias</code>	System.String</p>
 <p>The alias specified for the raw SQL.</p>
 <p><code>parameters</code>	<a href="../../ISqlParameter/ISqlParameter.html">Appeon.Data.ISqlParameter</a></p>
-<p>(Optional) An array of <code>ISqlParameter</code> objects which defines the SQL parameters used in the raw SQL.</p>
+<p>(Optional) An array of <code>ISqlParameter</code> objects which define the SQL parameters used in the raw SQL.</p>
 <p><strong>Returns</strong></p>
 <p>TBuilder</p>
-<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions for current HAVING clause.</p>
-<h3 id="备注"><strong>备注</strong></h3>
+<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions to the current HAVING clause.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>增加分组条件</p>
+<p>增加分组条件The following code example demonstrates how to specify search conditions for groups.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -116,6 +115,10 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
             // 分组条件为StudentID = 6，或者StudentID等于一个输入参数
             // 输入参数在执行sql时指定
             // 将定义的分组条件起一个名称，供程序修改或者移除这个having条件
+            // Groups the &quot;StudentGrade&quot; table by StudentID and CourseID, and gets the sum of the Grades of each group.
+            // Specifies the search condition for the group as “StudentID = 6”, and adds a HAVING condition: StudentID is equal to the input parameter.
+            // The input parameter is specified when executing the SQL.
+            // Gives the HAVING condition a name to facilitate the program to modify or remove it.
             sqlQueryBuilder
                 .Select(&quot;StudentID&quot;)
                 .Select(&quot;sum(Grade)&quot;)
@@ -126,12 +129,14 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
                               SqlBuilder.Parameter&lt;int&gt;(&quot;studentid&quot;));
 
             // 将sqlQueryBuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.            
             string sql = sqlQueryBuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);
 
             // execute sql
             // 在执行sql时需传入参数
+            // Need pass an argument when executing the SQL.          
             var studentGrade = _context.SqlExecutor.Select&lt;DynamicModel&gt;(sql, 8);
 
             /*This code example produces the following output:           

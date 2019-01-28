@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从ModelStore中删除指定的model object。</p>
-<p>Removes the model object (specified by name) from ModelStore.</p>
+<p>Removes the specified model object from ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,10 +87,10 @@
 <p>True: if the model object is removed.</p>
 <p>False: if the model object is not removed.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>If ModelStore is being tracked, the removed model object will have the <code>ModelState.Deleted</code> state.</p>
+<p>If ModelStore is being tracked, you have to use the <code>GetForUpdate</code> method to get the reference of the internal model object, the removed model object will have the <code>ModelState.Deleted</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>Remove ModelStore中指定的记录</p>
-<p>The following code example demonstrates how to remove the course record in ModeStore.</p>
+<h4 id="example-1">Example 1</h4>
+<p>The following code example demonstrates how to remove the course record in ModeStore when using the <code>ChangeTrackingStrategy.NotTrack</code> strategy.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,21 +107,77 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             _context = dataContext;
         }
 
-        public void Example(Course moveCourse)
+        public void Example1()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            // Initializes a new ModelStore&lt;Course&gt; object with the default
+            // ChangeTrackingStrategy.NotTrack strategy.
+            var courses =
+                new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Remove the moveCourse record
-            courses.Remove(moveCourse);
+            // Gets the reference of the first course.
+            var courseToRemove = courses.Get(0);
 
+            Console.WriteLine(&quot;Count before removed: {0}&quot;,
+                courses.Count);
+
+            // Removes the first course.
+            courses.Remove(courseToRemove);
+
+            Console.WriteLine(&quot;Count after removed: {0}&quot;,
+                courses.Count);
+
+            /*This code example produces the following output:           
+
+            Count before removed: 10
+            Count after removed: 9
+            */
         }
     }
 }
 </code></pre>
-<h4 id="example-refer-to">Example Refer To</h4>
+<h4 id="example-2">Example 2</h4>
+<p>The following code example demonstrates how to remove the course record in ModeStore when using the <code>ChangeTrackingStrategy.PropertyState</code> strategy.</p>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Initializes a new ModelStore&lt;Course&gt; object and sets to  
+            // the ChangeTrackingStrategy.PropertyState strategy.
+            var courses =
+                new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
+
+            // Retrieves data.
+            courses.Retrieve(_context);
+
+            // Gets the reference of the first course.
+            // You must use GetForUpdate method to get the internal model object, 
+            // when models are being tracked.
+            // otherwise, you can only get a clone of the internal model object.
+            var courseToRemove = courses.GetForUpdate(0);
+
+            Console.WriteLine(&quot;Count before removed: {0}&quot;,
+                courses.Count);
+
+            // Removes the first course.
+            courses.Remove(courseToRemove);
+
+            Console.WriteLine(&quot;Count after removed: {0}&quot;,
+                courses.Count);
+
+            int count = courses.TrackedCount(StateTrackable.Deleted);
+            Console.WriteLine(&quot;The count of the tracked models: {0}&quot;,
+                count);
+
+            /*This code example produces the following output:           
+
+            Count before removed: 10
+            Count after removed: 9
+            The count of the tracked models: 1
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
 <p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>

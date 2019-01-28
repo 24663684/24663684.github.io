@@ -70,11 +70,10 @@
 
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
-<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从指定缓冲区导出model objects（从指定的起始位置到结束位置）, 仅包括指定的(model objects)的properties的数据（从指定的起始property索引到结束尾property索引）, 到标准格式JSON字符串。</p>
-<p>Exports the model objects (from the specified starting position to the ending position) and the properties of the model objects (from the specified starting property index to the ending property index), from ModelStore to a standard-format JSON string.</p>
+<p>Exports the model objects (from the specified range) and the properties (from the specified range) from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,26 +83,23 @@
 <p><code>startRow</code> System.Int32</p>
 <p>The zero-based number of the first model object in ModelStore that you want to export.</p>
 <p><code>endRow</code> System.Int32</p>
-<p>The zero-based number of the last model object in  ModelStore that you want to export. If it is negative, it indicates the rest of model objects.</p>
+<p>The zero-based number of the last model object in ModelStore that you want to export. If it is negative, it indicates the rest of model objects.</p>
 <p><code>startColumn</code> System.Int16</p>
 <p>The zero-based index of the first property in the model object that you want to export. If it is negative, 0 is used.</p>
 <p><code>endColumn</code> System.Int16</p>
 <p>The zero-based index of the last property in the model object that you want to export. If it is negative, it indicates the rest of properties.</p>
-<p><code>mappingMethod</code> <a href="../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
+<p><code>mappingMethod</code> <a href="../../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
 <p>A value of the <code>MappingMethod</code> enumerated datatype specifying the method for mapping columns.</p>
 <ul>
-<li>MappingMethod.JsonIndex -- Use the index of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 0.</li>
-<li>MappingMethod.MetaIndex -- Use the index of meta-columns to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 1.</li>
-<li>MappingMethod.JsonKey -- Use the key of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 2.</li>
+<li><code>MappingMethod.JsonIndex</code> -- Use the index of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 0.</li>
+<li><code>MappingMethod.MetaIndex</code> -- Use the index of meta-columns to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 1.</li>
+<li><code>MappingMethod.JsonKey</code> -- Use the key of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 2.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the standard-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>将modelstore中指定行的index区间与指定列区间的数据导出为json</p>
-<p>The following code example demonstrates how to export the department records in the specified rows and columns to a JSON string using startRow, endRow, startColumn, and endColumn parameters.</p>
+<p>The following code example demonstrates how to use the <code>ExportJson(Int32, Int32, Int16, Int16, MappingMethod)</code> method to export the department records to a JSON string using <code>startRow</code>, <code>endRow</code>, <code>startColumn</code>, and <code>endColumn</code> parameters.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -122,21 +118,22 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example6()
         {
-            // Creates ModelStore and retrieves data
-            IModelStore&lt;Department&gt; department =
+            // Creates ModelStore and retrieves data.
+            var department =
                 new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
             department.Retrieve(_context);
 
-            // Exports data from the specified position of ModelStore to the JSON file
+            // Exports model objects at index 0 through the end,
+            // and properties at index 1 through 3.
             string json1 =
-                department.ExportJson(0, department.Count, 1, 3, MappingMethod.JsonIndex);
+                department.ExportJson(0, -1, 1, 3, MappingMethod.JsonIndex);
 
             Console.WriteLine(json1);
 
             /* The exported JSON file is:
 
             ExportJson6.json  
-            */            
+            */
         }
     }
 }

@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>搜索指定的model object，并返回ModelStore中第一个匹配项的从零开始的索引。</p>
 <p>Searches for the specified model object and returns the index of the first occurrence in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -86,9 +85,8 @@
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>The zero-based index of the first occurrence of item in ModelStore, if found; otherwise, –1.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the index of record in ModelStore.查找记录在ModelStore中的Index</p>
+<p>The following code example demonstrates how to use the <code>IndexOf</code> method to seach for the index of a model object in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -105,17 +103,25 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             _context = dataContext;
         }
 
-        public void Example(Course course)
+        public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();            
-            
-            // Retrieves data from courses
+            var courses = new ModelStore&lt;Course&gt;();
+
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Searches for the Course record and returns the index
-            // Returns -1 if no record found
+            // Gets a Course object for this example.
+            var course = courses.Get(3);
+
+            // Gets the index of the Course object.
             int index = courses.IndexOf(course);
 
+            Console.WriteLine(&quot;Index: {0}&quot;, index);
+
+            /*This code produces the following output:
+            
+            Index: 3
+            */
         }
     }
 }

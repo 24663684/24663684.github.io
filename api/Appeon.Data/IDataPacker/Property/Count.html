@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>获取已添加到<code>DataPacker</code>对象的元素的数量。</p>
-<p>Get the number of elements that have been added into the <code>IDataPacker</code> object.</p>
+<p>Gets the number of elements that have been added into the <code>IDataPacker</code> object.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -85,6 +85,49 @@
 <p>Returns the number of elements in the <code>IDataPacker</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>计算DataPacker对象中的元素个数</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class CountExample
+    {
+        private readonly SchoolContext _context;
+
+        public CountExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            var dataStore = new DataStore(&quot;d_course&quot;, _context);
+
+            dataStore.Retrieve();
+
+            var key = nameof(dataStore);
+            packer.AddDataStore(key, dataStore);
+
+            packer.AddValue(&quot;name&quot;, &quot;appeon&quot;);
+
+            // 计算packer中的元素个数，并输出
+            Console.WriteLine(&quot;The element count: {0}&quot;, packer.Count.ToString());
+
+            /* This code example produces the following output:
+            
+            The element count: 2
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>DataWindow File: <a href="../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_course_srd.html">d_course</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

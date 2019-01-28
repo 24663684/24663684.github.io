@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>当ModelStore正在被追踪时，将根据要跟踪的model object的状态以及每个model object中的属性的状态把数据更新到指定的数据库。</p>
 <p>Updates the data to the database, based on the state of the model objects being tracked and the state of the properties in each model object.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -87,12 +86,11 @@
 <p>Do not use the <code>SaveChanges</code> method when ModelStore is not being tracked.</p>
 <p><strong>How to process the tracked information for each model object</strong></p>
 <p>ModelStore does nothing for the model object whose state is <code>ModelState.New</code> or <code>ModelState.NotModified</code>.</p>
-<p>When the state of the model object is <code>ModelState.NewModified</code>, the SQL Insert statement is generated according to the definition in TModel. When the state of the model object is <code>ModelState.Deleted</code>, the SQL Delete statement is generated according to the definition in TModel. When the state of the model object is <code>ModelState.Modified</code>, the SQL Update statement will be generated according to the definition in TModel (or SQL Delete and SQL Insert if the <code>updateSqlStrategy</code> argument is specified to <code>UpdateSqlStrategy.DeleteThenInsert</code>, see <a href="SaveChanges2.html">SaveChanges</a>).</p>
+<p>When the state of the model object is <code>ModelState.NewModified</code>, the SQL INSERT statement is generated according to the definition in <code>TModel</code>. When the state of the model object is <code>ModelState.Deleted</code>, the SQL DELETE statement is generated according to the definition in <code>TModel</code>. When the state of the model object is <code>ModelState.Modified</code>, the SQL UPDATE statement will be generated according to the definition in <code>TModel</code> (or SQL DELETE and SQL INSERT if the <code>updateSqlStrategy</code> argument is specified to <code>UpdateSqlStrategy.DeleteThenInsert</code>, see the <a href="SaveChanges2.html">SaveChanges(DataContext, UpdateSqlStrategy)</a> method).</p>
 <p><strong>Database Transaction</strong></p>
-<p>If you have not used the <code>context</code> argument (a <code>DataContext</code> object) to start the transaction using <code>DataContext.BeginTransaction</code>, the <code>SaveChanges</code> method will automatically start a transaction internally. If the database is updated successfully, the database transaction will be committed, otherwise the database transaction will be rolled back.</p>
+<p>If you have not used the <code>context</code> argument (a <code>DataContext</code> object) to start the transaction using the <code>DataContext.BeginTransaction</code> method, the <code>SaveChanges</code> method will automatically start a transaction internally. If the database is updated successfully, the database transaction will be committed, otherwise the database transaction will be rolled back.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>保存ModelStore数据</p>
-<p>The following code example demonstrates how to insert a record to ModelStore and save the change to the database.</p>
+<p>The following code example demonstrates how to use the <code>SaveChanges</code> method to insert a record to ModelStore and save the change to the database.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -111,25 +109,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1()
         {
-            IModelStore&lt;Course&gt; courses = 
-                new ModelStore&lt;Course&gt;( ChangeTrackingStrategy.PropertyState);
+            var courses =
+                new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
-            courses.Retrieve(_context);
-
-            // Create a Course record
+            // Creates a Course record
             Course course = new Course()
             {
                 CourseID = 1,
-                Title = &quot;test&quot;,
+                Title = &quot;New Course&quot;,
                 Credits = 1,
                 DepartmentID = 1
             };
-            
-            // Inserts the record to row 2
+
+            courses.Retrieve(_context);
+
+            // Inserts the record to index 1.
             courses.Insert(1, course);
 
-            // Saves data
+            // Saves data.
             var dbResult = courses.SaveChanges(_context);
 
             Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,

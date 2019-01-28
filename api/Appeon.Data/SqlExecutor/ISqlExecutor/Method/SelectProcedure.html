@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ISqlExecutor.SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters) &#26041;&#27861; </title>
+    <title>ISqlExecutor.SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters) Method </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ISqlExecutor.SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters) &#26041;&#27861; ">
+    <meta name="title" content="ISqlExecutor.SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters) Method ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
@@ -66,34 +66,34 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="isqlexecutorselectproceduretmodelstring-sqltext-params-object-parameters-方法"><strong>ISqlExecutor.SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters) 方法</strong></h2>
+<h2 id="isqlexecutorselectproceduretmodelstring-sqltext-params-object-parameters-method"><strong>ISqlExecutor.SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Executes a SQL stored procedure and returns an <code>IList&lt;TModel&gt;</code> object which contains the result set.</p>
-<p><strong>命名空间：</strong> Appeon.Data</p>
-<p><strong>程序集：</strong> Appeon.Data.dll</p>
-<h3 id="语法"><strong>语法</strong></h3>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public IList&lt;TModel&gt; SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters);
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p>TModel</p>
-<p>The datatype of the model object which matches each row in the result set.</p>
-<p>You can also specify <code>DynamicModel</code> to TModel if you don't want to define a custom model class.</p>
+<p>The datatype of the model object which represents the data row in the result set.</p>
+<p>You can also specify <code>DynamicModel</code> to TModel if you do not want to define a custom model class.</p>
 <p><strong>Parameters</strong></p>
 <p><code>sqlText</code>	System.String</p>
-<p>The SQL stored procedure's name.</p>
+<p>The name of the SQL stored procedure.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) The parameters  for executing the SQL stored procedure.</p>
-<p>One or more <code>ParamValue</code> objects, containing Parameter Direction and values, corresponding to the SQL stored procedure's parameters. See <a href="../../ParamValue/ParamValue.md">ParamValue</a> for more info.</p>
+<p>(Optional) The parameters for executing the SQL stored procedure.</p>
+<p>One or more <code>ParamValue</code> objects, containing the parameter direction and values, corresponding to the SQL stored procedure's parameters. See <a href="../../ParamValue/ParamValue.md">ParamValue</a> for more info.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IList&lt;TModel&gt;</p>
-<p>returns an <code>IList&lt;TModel&gt; object</code> that contains the result set.</p>
+<p>Returns an <code>IList&lt;TModel&gt; object</code> that contains the result set.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行数据库中指定的procedure，用于查询数据，并将查询结果返回到list中.</p>
+<p>执行数据库中指定的procedure，用于查询数据，并将查询结果返回到list中.The following code example demonstrates how to execute the specified procedure in the database and return the query result to a list of models.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -105,13 +105,14 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
 
         public SelectProcedureExample(SchoolContext dataContext)
         {
-            // Set data context
+            // Sets the data context
             _context = dataContext;
         }
 
         public void Example()
         {
-            // 指定要执行的procedure
+
+            // Specifies the procedure to be executed.
             var sql = &quot;test_selectproc&quot;;
 
             /*
@@ -120,24 +121,24 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
              select * from Course where CourseID = 8001
              */
 
-            // 执行SQL, 并返回查询结果
+            // Executes the SQL statement and returns the query result.
             var master = _context.SqlExecutor.SelectProcedure&lt;DynamicModel&gt;(sql);
 
-            Console.WriteLine(&quot;records Count = {0}.&quot;,
+            Console.WriteLine(&quot;Records Count = {0}.&quot;,
                               master.Count);
 
             /*This code produces the following output:
 
-            records Count = 1. 
+            Records Count = 1. 
            */
 
         }
     }
 }
 </code></pre>
-<h3 id="版本信息"><strong>版本信息</strong></h3>
-<p>.Net Standard</p>
-<p>自2.x起可用</p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
 </article>
           </div>
           

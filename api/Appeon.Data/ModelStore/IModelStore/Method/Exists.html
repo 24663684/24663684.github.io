@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>确定ModelStore中是否存在满足指定条件的model object。</p>
-<p>Determines whether there is a model object in ModelStore that meets the specified condition.</p>
+<p>Determines whether ModelStore contains the model object that matches the condition defined by the predicate.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,13 +81,12 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>match</code>	System.Predicate&lt;TModel&gt;</p>
-<p>The Predicate&lt;TModel&gt; that defines the condition.</p>
+<p>The <code>Predicate&lt;TModel&gt;</code> object that defines the condition.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
 <p>Returns <code>true</code> if there is a model object in ModelStore that satisfies the specified condition, otherwise <code>false</code>.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to check if a specific model object exists in ModelStore.判断ModelStore是否存在指定条件的数据。</p>
+<p>The following code example demonstrates how to use the <code>Exists</code> method to check whether there is a model object in ModelStore that meets the specified condition.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,29 +105,22 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
+            // Creates a ModelStore and retrieves data.
             IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
-
-            // Retrieves data from Department
             dept.Retrieve(_context);
 
-            // Checks if the record where DepartmentID == 1 exstis in ModelStore
-            // Data record exists
+            // Checks if the model object (DepartmentID = 1) exists.
             bool isExists = dept.Exists(m =&gt; m.DepartmentID == 1);
-            Console.WriteLine(&quot;Item exists = {0}&quot;, isExists.ToString());
+            Console.WriteLine(&quot;Existence (DepartmentID = 1): {0}&quot;, isExists);
 
-            /* This code example produces the following output:
-            
-            Item exists = True
-            */
-
-            // Checks if the record where DepartmentID == 100 exstis in ModelStore
-            // No such record exists
+            // Checks if the the model object (DepartmentID = 100) exists.
             isExists = dept.Exists(m =&gt; m.DepartmentID == 100);
-            Console.WriteLine(&quot;Item exists = {0}&quot;, isExists.ToString());
+            Console.WriteLine(&quot;Existence (DepartmentID = 100) {0}&quot;, isExists);
 
             /* This code example produces the following output:
             
-            Item exists = False
+            Existence (DepartmentID = 1): True
+            Existence (DepartmentID = 100) False
             */
         }
     }

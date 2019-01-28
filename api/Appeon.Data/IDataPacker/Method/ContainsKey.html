@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>检查当前<code>IDataPacker</code>对象中是否存在某个元素。</p>
-<p>Checks whether an element is existing in current <code>IDataPacker</code> object.</p>
+<p>Checks whether a specified element exists in the current <code>IDataPacker</code> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -82,12 +82,55 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>key</code> System.String</p>
-<p>The key of the element to check the existence.</p>
+<p>The key of the element to look for.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
 <p>Returns true if the element exists; otherwise, false.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例判断IDataPacker对象中，如果存在Key值返回True，否则返回False</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class ContainsKeyExample
+    {
+        private readonly SchoolContext _context;
+
+        public ContainsKeyExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            // 将值NameValue1和NameValue2添加到packer对象中
+            packer.AddValue(&quot;FirstParam&quot;, &quot;NameValue1&quot;);
+            packer.AddValue(&quot;SecondParam&quot;, &quot;NameValue2&quot;);
+
+            // 计算packer中的元素个数，并输出
+            Console.WriteLine(&quot;The element count: {0}&quot;, packer.Count.ToString());
+
+            // 判断IDataPacker对象中存在FirstParam元素并返回true
+            Console.WriteLine(packer.ContainsKey(&quot;FirstParam&quot;));
+
+            // 判断IDataPacker对象中不存在存在Other元素并返回false
+            Console.WriteLine(packer.ContainsKey(&quot;Other&quot;));
+
+            /* This code example produces the following output:
+            
+            The element count: 2
+            True
+            False
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

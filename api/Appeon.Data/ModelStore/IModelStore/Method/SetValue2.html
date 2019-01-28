@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>设置ModelStore中的一个model object(按基于零的索引指定)的一个属性(按property name指定)的值.</p>
-<p>Sets the value for the property (specified by name) of the model object in ModelStore.</p>
+<p>Sets the value for the specified property (by name) of the specified model object (by index) in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,9 +87,7 @@
 <p><code>value</code>	System.Object</p>
 <p>The value to set.</p>
 <p>The data type is the same as the property in the model object.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>按index设置ModelStore中属性的数据按属性名称进行设置</p>
 <p>The following code example demonstrates how to set the value for the property (specified by name) of the record in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
@@ -110,30 +107,29 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the Title value in row 1 before setvalue
-            var coldata = courses.GetValue(0, &quot;Title&quot;);
-            Console.WriteLine(&quot;Before SetValue: &quot;);
-            Console.WriteLine(&quot;Data Value = {0}&quot;, coldata.ToString());
+            // Shows the value of the Title property of the model object at index 0 
+            // before SetValue.
+            var title = courses.GetValue(0, &quot;Title&quot;);
+            Console.WriteLine(&quot;Data Value (Before SetValue): {0}&quot;,
+                title);
 
-            // Modifies the Title value in row 1
-            courses.SetValue(0, &quot;Title&quot;, &quot;test&quot;);
+            // Modifies the Title property.
+            courses.SetValue(0, &quot;Title&quot;, &quot;New Title&quot;);
 
-            // Shows the Title value in row 1 after setvalue
-            coldata = courses.GetValue(0, &quot;Title&quot;);
-            Console.WriteLine(&quot;After SetValue: &quot;);
-            Console.WriteLine(&quot;Data Value = {0}&quot;, coldata.ToString());
+            // Shows the value of the Title property after SetValue.
+            title = courses.GetValue(0, &quot;Title&quot;);
+            Console.WriteLine(&quot;Data Value (After SetValue): {0}&quot;,
+                title);
 
             /* This code example produces the following output:
             
-            Before SetValue:
-            Data Value = Chemistry
-            After SetValue:
-            Data Value = test
+            Data Value (Before SetValue): Calculus
+            Data Value (After SetValue): New Title
             */
         }
     }

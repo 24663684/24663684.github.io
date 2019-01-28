@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从ModelStore中移除按索引指定的model object。</p>
-<p>Removes the model object (specified by index) from ModelStore.</p>
+<p>Removes the specified model object (by index) from ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -86,8 +85,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the removed model object will have the <code>ModelState.Deleted</code> state. You can call <code>TrackedCount(StateTrackable.Deleted)</code> to get the number of the tracked model object in <code>ModelState.Deleted</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>Remove ModelStore中满足指定Index的记录</p>
-<p>The following code example demonstrates how to remove the record whose index is 1 in ModeStore.</p>
+<p>The following code example demonstrates how to remove the model object whose index is 1 in ModeStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -106,24 +104,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the number of records in ModelStore before removed
-            Console.WriteLine(&quot;Before Remove Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects in ModelStore before removed.
+            Console.WriteLine(&quot;Before Remove Count: {0}&quot;, courses.Count);
 
-            // Remove the record whose index is 1
+            // Removes the model object whose index is 1.
             courses.RemoveAt(1);
 
-            // Shows the number of records in ModelStore after removed
-            Console.WriteLine(&quot;After Remove Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects in ModelStore after removed.
+            Console.WriteLine(&quot;After Remove Count: {0}&quot;, courses.Count);
 
             /* This code example produces the following output:
             
-             Before Remove Count = 12
-             After Remove Count = 11
+            Before Remove Count: 12
+            After Remove Count: 11
             */
         }
     }

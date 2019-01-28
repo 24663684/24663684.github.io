@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将数据从JSON字符串插入ModelStore。可以指定JSON数组中的起始位置和结束位置, 同时可以指定要导入的JSON对象中第一个键值的编号，其他数据将不会被导入ModelStore。</p>
-<p>Inserts data from a JSON string into ModelStore. You can specify the starting and ending positions in the JSON array, and you can specify the number of the first key value in the JSON object to be imported. Data that are out of this range will not be imported into ModelStore.</p>
+<p>Inserts data from a JSON string into ModelStore. You can specify the starting and ending positions in the JSON array, and you can also specify the number of the first key in the JSON object to be imported. Data that are out of this range will not be imported into ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -83,22 +82,18 @@
 <p><strong>Parameters</strong></p>
 <p><code>json</code> System.String</p>
 <p>A string specifying the JSON data.</p>
-<p>The JSON string must comply with the <a href="Glossary/json_format.html">simple or standard format</a>.</p>
+<p>The JSON string must comply with the <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> or <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>.</p>
 <p><code>startRow</code> System.Int32</p>
 <p>The zero-based number of the first detail object in the JSON array that you want to import. If it is negative, 0 is used.</p>
 <p><code>endRow</code>	System.Int32</p>
-<p>The zero-based number of the last detail object in the JSON array that you want to import.  If it is negative, it
-indicates the rest of rows.</p>
+<p>The zero-based number of the last detail object in the JSON array that you want to import. If it is negative, it indicates the rest of rows.</p>
 <p><code>startProperty</code>	System.Int32</p>
-<p>The zero-based number of the first key value in the JSON object that you want to import.
-If it is negative, 0 is used.</p>
+<p>The zero-based number of the first key value in the JSON object that you want to import. If it is negative, 0 is used.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of model objects that were imported if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>将含有department信息的json从startRow to endRow之间的数据导入到ModelStore.同时指定开始导入的属性编号</p>
-<p>The following code example demonstrates how to import the department data from between the starting row and the ending row and from the starting column in a JSON string to ModelStore.</p>
+<p>The following code example demonstrates how to use the <code>ImportJson(String, Int32, Int32, Int16)</code> method to import the department data from between the starting detail object and the ending detail object and from the starting key of a JSON string to ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -118,26 +113,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example4()
         {
-            // Creates ModelStore
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            // Creates ModelStore.
+            var department = new ModelStore&lt;Department&gt;();
 
-            // Gets the JSON file. ImportJson2.json contains 4 records.
+            // Gets the JSON file. 
+            // ImportJson2.json contains 4 records.
             string path = Path.Combine(AppContext.BaseDirectory,
-                                @&quot;Jsons\IModelStore\ImportJson2.json&quot;);
+                                       @&quot;Jsons\IModelStore\ImportJson2.json&quot;);
             string json = File.ReadAllText(path);
 
-            // Imports data from JSON to ModelStore.
-            // Imports data from row 1 through the end.
-            // Imports data starting from column 1.
+            // Imports data from the first detail object through the end,
+            // and starting from the first key.
             department.ImportJson(json, 0, 3, 0);
 
-            Console.WriteLine(&quot;Rowcount: {0}&quot;, department.Count);
+            Console.WriteLine(&quot;Count: {0}&quot;, department.Count);
 
-            department.RemoveRange(0, department.Count);
-            
             /* This code produces the following output:
 
-            Rowcount: 4
+            Count: 4
            */
         }
     }

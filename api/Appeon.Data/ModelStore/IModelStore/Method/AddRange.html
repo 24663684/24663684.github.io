@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将一系列model objects添加到ModelStore的末尾。</p>
-<p>Appends a sequence of model objects (each as a row) to the end of ModelStore.</p>
+<p>Appends a sequence of model objects to the end of ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,14 +81,15 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>models</code>	System.Collections.Generic.IEnumerable&lt;TModel&gt;</p>
-<p>A sequence of model objects.</p>
+<p>A sequence of model objects to be added to the end of ModelStore.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the newly added model objects will have the <code>ModelState.NewModified</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to add multiple rows to the end of ModelStore.插入多行数据.</p>
+<p>The following code example demonstrates how to add multiple rows (model objects) to the end of ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System.Collections.Generic;
+using System;
 
 namespace Appeon.ApiDoc.IModelStoreExamples
 {
@@ -103,18 +103,47 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             _context = dataContext;
         }
 
-        public void Example(IEnumerable&lt;Course&gt; depts)
+        public void Example()
         {
-            IModelStore&lt;Course&gt; dept = new ModelStore&lt;Course&gt;();
+            // Create a List&lt;Department&gt; object and add two departments.
+            var deptList = new List&lt;Department&gt;();
 
-            dept.AddRange(depts);
+            var newdept = new Department()
+            {
+                DepartmentID = 8001,
+                Name = &quot;New Department&quot;,
+                Budget = 100000m,
+                StartDate = new DateTime(2019, 1, 1)
+            };
+            deptList.Add(newdept);
 
+            var newdept2 = new Department()
+            {
+                DepartmentID = 8002,
+                Name = &quot;New Department2&quot;,
+                Budget = 200000m,
+                StartDate = new DateTime(2019, 1, 1)
+            };
+            deptList.Add(newdept2);
+
+            // Create a new ModelStore.
+            var depts = new ModelStore&lt;Department&gt;();
+
+            // Adds the two departments to the end of ModelStore.
+            depts.AddRange(deptList);
+
+            Console.WriteLine(&quot;Count: {0}&quot;, depts.Count);
+
+            /* This code produces the following output:
+
+            Count = 2
+            */
         }
     }
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

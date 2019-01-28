@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将ModelStore 中的model objects的数据（从指定的起始索引到结束索引）导出为字符串数据，可以按需要导出指定的属性(从指定的起始的属性索引到结束的属性索引), 默认导出TModel的属性名称。</p>
-<p>Exports data of the model objects (from the specified starting index to the ending index) and the properties (from the specified starting position to the ending position) from ModelStore to a string. The specified properties in TModel can be exported as needed (from the specified starting property index to the ending property index). The property name of TModel is exported by default.</p>
+<p>Exports data from the model objects (from the specified range) and the properties (from the specified range) of ModelStore to a string. The specified properties in <code>TModel</code> can be exported as needed. The property names of <code>TModel</code> are exported by default.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -86,19 +85,19 @@
 <p><code>endRow</code> System.Int32</p>
 <p>The zero-based index of the model object in ModelStore for the ending position. If it is negative, it indicates the rest of model objects.</p>
 <p><code>startColumn</code> System.Int16</p>
-<p>The zero-based property index in TModel for the starting position.</p>
+<p>The zero-based index of the property in <code>TModel</code> for the starting position.</p>
 <p><code>endColumn</code> System.Int16</p>
-<p>The zero-based property index in TModel for the ending position. If it is negative, it indicates the rest of columns.</p>
+<p>The zero-based index of the property in <code>TModel</code> for the ending position. If it is negative, it indicates the rest of columns.</p>
 <p><code>colheading</code> System.Boolean</p>
-<p>True (default): to export the property name of TModel.</p>
-<p>False: not to export the property name of TModel.</p>
+<p>True (default): to export the property names of <code>TModel</code>.</p>
+<p>False: not to export the property names of <code>TModel</code>.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the string if it succeeds.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>Values are separated by tabs. A newline character (&quot;\r\n&quot; for non-Unix platforms and &quot;\n&quot; for Unix platforms) is placed at the end of each line.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the ExportString method to export the department records from the specified rows and columns of ModelStore to a string using the startRow, endRow, startColumn, and endColumn parameters.The lower bound of startRow and endRow is 0 indicating the first row (1 the second row, n the n+1 row); and the lower bound of startColumn and endColumn is 0 indicating the first column (1 the second column, n the n+1 column).</p>
+<p>The following code example demonstrates how to use the <code>ExportString(Int32, Int32, Int16, Int16, Boolean)</code> method to export the department records from ModelStore to a string using the <code>startRow</code>, <code>endRow</code>, <code>startColumn</code>, and <code>endColumn</code> parameters.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using Appeon.Data.PowerBuilder;
@@ -118,20 +117,19 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example3()
         {
-
-            // Creates ModelStore and retrieves data
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            // Creates ModelStore and retrieves data.
+            var department = new ModelStore&lt;Department&gt;();
             department.Retrieve(_context);
 
-            // Exports data from row 1 and 2 and
-            // from column 2 and 3 with column headings.
+            // Exports data of model object (starts at index 0 and ends index 1),
+            // and properties (starts at index 1 and ends at index 2) with column headings.
             string text = department.ExportString(0, 1, 1, 2);
 
             Console.WriteLine(&quot;ModelStore.ExportString(0, 1, 1, 2):&quot;);
             Console.WriteLine(text);
 
-            // Exports data from row 1 and 2 and
-            // from column 2 and 3 without column headings.
+            // Exports data of model object (starts at index 0 and ends at index 1),
+            // and properties (starts at index 1 and ends at index 2) without column headings.
             text = department.ExportString(0, 1, 1, 2, false);
 
             Console.WriteLine(&quot;ModelStore.ExportString(0, 1, 1, 2, false):&quot;);

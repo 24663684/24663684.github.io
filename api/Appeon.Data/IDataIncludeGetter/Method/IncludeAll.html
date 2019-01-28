@@ -73,7 +73,8 @@
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>待定</p>
+<p>按指定的名称从<code>IDataUnpacker</code>对象中获取<code>TModel</code>对象的所有<a href="../../../Glossary/EmbeddedProperty.html">embedded property</a>的数据。</p>
+<p>Gets the data of all <a href="../../../Glossary/EmbeddedProperty.html">embedded properties</a> of the <code>TModel</code> object from the <code>IDataUnpacker</code> object by the specified name.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -81,9 +82,64 @@
 </code></pre>
 <p><strong>Returns</strong></p>
 <p><a href="../IDataIncludeGetter.html">Appeon.Data.IDataIncludeGetter<tmodel></tmodel></a></p>
+<p>Return the current <code>IDataIncludeGetter</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>待定。</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例在IDataUnpacker对象中获取TModel对象的所有嵌套数据</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.ApiDoc.IDataIncludeGetterExamples
+{
+    public class IncludeAllExample
+    {
+        private readonly SchoolContext _context;
+
+        public IncludeAllExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            var modelmapping = new ModelMapper(_context);
+
+            var items = modelmapping.Load&lt;CourseInfo&gt;(2).IncludeAll().ToList();
+
+            // 将items对象及嵌套数据添加到packer对象中
+            string key = &quot;Models&quot;;
+            packer.AddModels(key, items)
+                .Include(&quot;Students&quot;, m =&gt; m.Students)
+                .Include(&quot;Instructors&quot;, m =&gt; m.Instructors);
+
+            var json = packer.GetTextString(DataFormat.Json);
+
+            var dataUnPacker = new DataUnpacker(json, DataFormat.Json);
+
+            // 根据key值获取dataUnPacker中的Model对象中的数据,并包含所有嵌套数据
+            var list = dataUnPacker.GetModels&lt;CourseInfo&gt;(key)
+                .IncludeAll()
+                .ToList(); 
+
+            // 计算models中嵌套数据总数，并输出
+            Console.WriteLine(&quot;The count is: {0}&quot;,
+                  list[0].Students.Count.ToString());
+
+            /* This code example produces the following output:
+            
+            The count is: 5
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br></p>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

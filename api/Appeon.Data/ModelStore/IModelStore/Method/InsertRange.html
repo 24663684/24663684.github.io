@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将一系列model object插入到ModelStore的指定索引处。</p>
 <p>Inserts a sequence of model objects to the specified position in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -86,10 +85,9 @@
 <p><code>models</code>	System.Collections.Generic.IEnumerable&lt;TModel&gt;</p>
 <p>A sequence of model objects to be inserted.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>If ModelStore is being tracked, the newly inserted model object will have the <code>ModelState.NewModified</code> state.</p>
+<p>If ModelStore is being tracked, the newly inserted model objects will have the <code>ModelState.NewModified</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>向ModelStore中插入多行记录</p>
-<p>The following code example demonstrates how to insert multiple data records to ModelStore.</p>
+<p>The following code example demonstrates how to use the <code>InsertRange</code> method to insert multiple model objects to ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -109,17 +107,17 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Creates the Course records
-            IList&lt;Course&gt; courseRange = new List&lt;Course&gt;();
+            // Creates the Course objects.
+            var courseRange = new List&lt;Course&gt;();
             Course course = new Course()
             {
                 CourseID = 1,
-                Title = &quot;test one&quot;,
+                Title = &quot;New Course 1&quot;,
                 Credits = 1,
                 DepartmentID = 1
             };
@@ -127,7 +125,7 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             Course course2 = new Course()
             {
                 CourseID = 2,
-                Title = &quot;test two&quot;,
+                Title = &quot;New Course 2&quot;,
                 Credits = 1,
                 DepartmentID = 1
             };
@@ -137,18 +135,18 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             courseRange.Add(course2);
 
             // Shows the number of records in ModelStore before insertion
-            Console.WriteLine(&quot;Before Insert Count = {0}&quot;, courses.Count);
+            Console.WriteLine(&quot;Before Insert Count: {0}&quot;, courses.Count);
 
             // Inserts the data record before row 2
             courses.InsertRange(1, courseRange);
 
             // Shows the number of records in ModelStore after insertion
-            Console.WriteLine(&quot;After Insert Count = {0}&quot;, courses.Count);
+            Console.WriteLine(&quot;After Insert Count: {0}&quot;, courses.Count);
 
             /* This code example produces the following output:
             
-             Before Insert Count = 11
-             After Insert Count = 13
+             Before Insert Count: 11
+             After Insert Count: 13
             */
         }
     }

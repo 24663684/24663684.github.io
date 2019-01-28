@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>使用TModel中设置的数据较验规则对ModelStore中的model objects的数据的合法性进行验证,并输出验证结果。</p>
-<p>Validates the data of the model objects in ModelStore using the validation rules set in TModel, and outputs the validation results.</p>
+<p>Validates the data of the model objects in ModelStore using the validation rules set in <code>TModel</code>, and outputs the validation results.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -85,15 +84,15 @@
 <p>A list of validation results.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
-<p>Returns true if all data meets the validation rules; false if any data does not meet the validation rules.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>Returns <code>true</code> if all data meets the validation rules; <code>false</code> if any data does not meet the validation rules.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to perform validity check to the data in ModelStore and output the result.对ModelStore中数据执行有效性检查，并输出结果</p>
+<p>The following code example demonstrates how to perform validity check to the data in ModelStore and display the result.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Appeon.ApiDoc.IModelStoreExamples
 {
@@ -109,29 +108,36 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            IModelStore&lt;Course&gt; courses =
-                new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
+            // Credits is not allowed to be less than 2 or greater than 5.
+            var courses = new ModelStore&lt;CourseValidation&gt;(
+                ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Validates the data and gets the result
-            List&lt;ValidationResult&gt; resultmsg = new List&lt;ValidationResult&gt;();
-            bool result = courses.Validate(out resultmsg);
+            // Sets an invalid value for Credits.
+            courses.SetValue(0, &quot;Credits&quot;, 6);
 
-            // Shows the result
-            Console.WriteLine(&quot;The validation returns {0}.&quot;, resultmsg.ToString());
+            // Validates the data and gets the result.
+            var resultList = new List&lt;ValidationResult&gt;();
+            bool result = courses.Validate(out resultList);
+
+            // Shows the result.
+            Console.WriteLine(&quot;Validate: {0}&quot;, result);
+            Console.WriteLine(&quot;Error Message: {0}&quot;,
+                resultList.FirstOrDefault().ErrorMessage);
 
             /* This code example produces the following output:
             
-            The validation returns True.
+            Validate: False
+            Error Message: The field Credits must be between 2 and 5.
             */
         }
     }
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/CourseValidation.html">CourseValidation</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

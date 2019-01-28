@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>当ModelStore被追踪时，在ModelStore的指定的从零开始的索引处获取model object, 该model object可以被用于更新ModelStore的数据.</p>
 <p>Gets the model object at the specified position of ModelStore when ModelStore is being tracked. This model object can be used to update data for ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -85,11 +84,11 @@
 <p>The zero-based index in ModelStore from which you get the model object.</p>
 <p><strong>Returns</strong></p>
 <p>TModel</p>
-<p>If ModelStore is being tracked, returns the internal model object directly; if ModelStore is not being tracked, it will throw an exception.</p>
+<p>If ModelStore is being tracked, returns the model object directly; if ModelStore is not being tracked, it will throw an exception.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>The <code>GetForUpdate</code> method should not be called if ModelStore is not being tracked.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the specified record and modify the data.获取ModelStore中指定行的数据，且可对获取到的数据进行修改。</p>
+<p>The following code example demonstrates how to use the <code>GetForUpdate</code> method to get the specified internal model object and modify the data when ModelStore is being tracked.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,25 +107,38 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            // Specifies the ModelStore TrackingStrategy, in order to call GetForUpdate
-            IModelStore&lt;Department&gt; dept = 
-                new ModelStore&lt;Department&gt;( ChangeTrackingStrategy.PropertyState);
+            // Sets the tracking strategy to PropertyState 
+            // in order to call GetForUpdate.
+            var depts =
+                new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data.
+            depts.Retrieve(_context);
 
-            // Gets the first record
-            var modelResult = dept.GetForUpdate(0);
+            // Gets the model object at index 0.
+            var dept = depts.GetForUpdate(0);
 
-            // Modifies the record and then saves it
-            modelResult.Name = &quot;Test Commit&quot;;
-            dept.SaveChanges(_context);
+            Console.WriteLine(&quot;Department Name (Original): {0}&quot;, dept.Name);
 
-            Console.WriteLine(&quot;department name = {0}&quot;, modelResult.Name);
+            // Modifies the model object.
+            // dept.Name = &quot;Engineering New&quot;;
+
+            int modifiedCount = depts.TrackedCount(StateTrackable.Modified);
+            Console.WriteLine(&quot;TrackedCount: {0}&quot;, modifiedCount);
+
+            // Saves the ModelStore.
+            depts.SaveChanges(_context);
+
+            // Retrieves data again to checks the result of SaveChanges.
+            depts.Retrieve(_context);
+            var dept2 = depts.Get(0);
+            Console.WriteLine(&quot;Department Name (After saved): {0}&quot;, dept2.Name);
 
             /* This code example produces the following output:
             
-            department name = Test Commit
+            Department Name (Original): Engineering
+            TrackedCount: 1
+            Department Name (After saved): Engineering New
             */
         }
     }

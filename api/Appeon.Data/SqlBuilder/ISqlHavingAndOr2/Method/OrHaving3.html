@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>向HAVING子句添加OR逻辑运算符和一个搜索条件，在运算符左侧和右侧指定SQL表达式，运算符使用'='。</p>
-<p>Adds the OR logical operator and a search condition to the HAVING clause, specifies SQL expressions on the left and right of the operator. The operator is '='.</p>
+<p>Adds the OR logical operator and a search condition to the HAVING clause. Specifies SQL expressions on the left and right of the operator. The operator is '='.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -87,10 +87,9 @@
 <p>A SQL expression on the right of the operator.</p>
 <p><strong>Returns</strong></p>
 <p>TBuilder</p>
-<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions for current HAVING clause.</p>
-<h3 id="备注"><strong>备注</strong></h3>
+<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions to the current HAVING clause.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>增加分组条件</p>
+<p>增加分组条件The following code example demonstrates how to specify search conditions for groups.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -102,7 +101,7 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
 
         public OrHavingExample(SchoolContext dataContext)
         {
-            // Set data context
+            // Sets the data context.
             _context = dataContext;
         }
 
@@ -112,6 +111,8 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
 
             // 在StudentGrade表中根据StudentID和CourseID分组，获取每个分组的Grade总和，
             // 分组条件为StudentID = 6，或者StudentID等于8
+            // Groups the &quot;StudentGrade&quot; table by StudentID and CourseID, and gets the sum of the Grades of each group.
+            // Specifies the search condition for the group as “StudentID = 6”, and adds an alternative condition: StudentID is equal to 8.
             sqlQueryBuilder
                 .Select(&quot;StudentID&quot;)
                 .Select(&quot;sum(Grade)&quot;)
@@ -121,6 +122,7 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
                 .OrHaving(&quot;StudentID&quot;, &quot;8&quot;);
 
             // 将sqlQueryBuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlQueryBuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);

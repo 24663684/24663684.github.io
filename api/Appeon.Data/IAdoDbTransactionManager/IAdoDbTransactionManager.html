@@ -73,7 +73,7 @@
 <a href="javascript:void(0)">0.5.0-alpha</a>
 <a href="javascript:void(0)">0.5.1-alpha(current)</a>
 </div>
-<p>待定。</p>
+<p>Provides methods to manage database transactions.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -124,7 +124,139 @@
 </tbody>
 </table>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>待定。</p>
+<h4 id="example-1">Example 1</h4>
+<p>IAdoDbTransaction中的方法和属性使用案例</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Data;
+
+namespace Appeon.ApiDoc.IAdoDbTransactionManagerExamples
+{
+    public class IAdoDbTransactionManagerExample
+    {
+        private readonly SchoolContext _context;
+        
+        // 声明IAdoDbTransactionManager对象
+        private IAdoDbTransactionManager managerTrans;
+        
+        public IAdoDbTransactionManagerExample(SchoolContext context)
+        {
+            _context = context;
+
+            // 实例化IAdoDbTransactionManager对象
+            managerTrans = _context.CurrentConnection;
+        }
+
+        public void Example1()
+        {
+            IAdoDbTransaction transobject;
+
+            // 开启事务，并将当前事务赋值给IAdoDbTransaction对象
+            transobject = managerTrans.BeginTransaction();
+
+            // 获取事务ID与DbTransaction
+            var transId = transobject.TransactionId;
+            var dbtrans = transobject.DbTransaction;
+
+            // 在当前事务内执行进行数据保存操作
+            var mapper = _context.ModelMapper;
+
+            var person = new Person()
+            {
+                LastName = &quot;Senior&quot;,
+                FirstName = &quot;Letitia&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            try
+            {
+                mapper.TrackCreate(person);
+                mapper.SaveChanges();
+
+                // 提交数据库
+                transobject.Commit();
+
+                // 输出保存成功提示，及当前事务ID
+                Console.WriteLine(&quot;Save Data Success, TransactionId = {0}&quot;, transId);
+            }
+            catch (Exception e)
+            {
+                // 如保存出错，则进行事务回滚
+                transobject.Rollback();
+
+                // 输出错误信息，及出错的事务ID
+                Console.WriteLine(&quot;{0}, TransactionId = {1}&quot;, e.Message, transId);
+
+                // 重新设置DbTransaction
+                managerTrans.UseTransaction(dbtrans);
+            }
+
+            /* The code produces the following output:
+            
+            Save Data Success, TransactionId = 56ece99e-0498-4865-8103-9778adae7553
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>IAdoDbTransaction中的方法和属性使用案例指定隔离级别</p>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            IAdoDbTransaction transobject;
+
+            // 开启事务，并将当前事务赋值给IAdoDbTransaction对象
+            // 并指定隔离级别
+            transobject = managerTrans.BeginTransaction(IsolationLevel.ReadCommitted);
+
+            // 获取事务ID与DbTransaction
+            var transId = transobject.TransactionId;
+            var dbtrans = transobject.DbTransaction;
+
+            // 在当前事务内执行进行数据保存操作
+            var mapper = _context.ModelMapper;
+
+            var person = new Person()
+            {
+                LastName = &quot;Senior&quot;,
+                FirstName = &quot;Letitia&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            try
+            {
+                mapper.TrackCreate(person);
+                mapper.SaveChanges();
+
+                // 提交数据库
+                transobject.Commit();
+
+                // 输出保存成功提示，及当前事务ID
+                Console.WriteLine(&quot;Save Data Success, TransactionId = {0}&quot;, transId);
+            }
+            catch (Exception e)
+            {
+                // 如保存出错，则进行事务回滚
+                transobject.Rollback();
+
+                // 输出错误信息，及出错的事务ID
+                Console.WriteLine(&quot;{0}, TransactionId = {1}&quot;, e.Message, transId);
+
+                // 重新设置DbTransaction
+                managerTrans.UseTransaction(dbtrans);
+            }
+
+            /* The code produces the following output:
+            
+            Save Data Success, TransactionId = 56ece99e-0498-4865-8103-9778adae7553
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
+<p>Model Class: <a href="../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
 </article>
           </div>
           

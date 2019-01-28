@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>向当前SQL Builder对象中的FROM从句添加一个(由raw SQL指定的) 表源(表，视图或者派生表), 并为此表源指定别名。</p>
-<p>Adds a table source (table, view or derived table), specified by an raw SQL, to the FROM clause in current SQL Builder object, and specifies an alias for this table source.</p>
+<p>Adds a table source (table, view or derived table), specified by a raw SQL, to the FROM clause of the current SQL Builder object, and specifies an alias for this table source.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -89,9 +89,8 @@
 <p><strong>Returns</strong></p>
 <p>Appeon.Data.ISqlFromBuilder</p>
 <p>Returns the current <code>ISqlFromBuilder</code> object.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示FromRaw(string fromClause, string builderAlias)方法。以下案例从子查询中查询所有记录，并指定子查询别名为Dept</p>
+<p>演示FromRaw(string fromClause, string builderAlias)方法。以下案例从子查询中查询所有记录，并指定子查询别名为DeptThe following code example demonstrates how to use the FromRaw(string fromClause, string builderAlias) method.It creates a derived table by a subquery with the name “dept” and retrieves all the records from the derived table.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -110,13 +109,17 @@ namespace Appeon.ApiDoc.ISqlFromBuilderExamples
         public void Example2()
         {
             // 声明SqlQueryBuilder
+            // Declares SqlQueryBuilder.
             var sqlbuilder = new SqlQueryBuilder();
 
             // 定义SQL语句，创建子查询设置其别名为Dept，并从中查询所有记录
+            // Defines a SQL statement to create a derived table by a subquery with the name “dept” 
+            // and retrieve all the records from the derived table. 
             sqlbuilder.Select(&quot;*&quot;)
                 .FromRaw(&quot;(select name, budget from department) as dept&quot;, &quot;Dept&quot;);
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlbuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);

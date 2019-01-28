@@ -153,7 +153,7 @@ namespace Appeon.ApiDoc.Models.School
         public String Discriminator { get; set; }
 
         [SqlEmbedded(&quot;select sum(Grade) from StudentGrade &quot; +
-            &quot;where StudentID =:personid&quot;, ParamValue = &quot;$PersonID&quot;
+            &quot;where StudentID = @personid&quot;, ParamValue = &quot;$PersonID&quot;
            )]
         public decimal? SumGrade { get; set; }
 

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ModelStore.Current Property </title>
+    <title>IModelStore&lt;TModel&gt;.Current Property </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ModelStore.Current Property ">
+    <meta name="title" content="IModelStore&lt;TModel&gt;.Current Property ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
@@ -66,14 +66,13 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="modelstorecurrent-property"><strong>ModelStore.Current Property</strong></h2>
+<h2 id="imodelstoretmodelcurrent-property"><strong>IModelStore&lt;TModel&gt;.Current Property</strong></h2>
 
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>在枚举器的当前位置获取ModelStore中的model object。</p>
 <p>Gets the model object in ModelStore at the current position of the enumerator.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -83,9 +82,8 @@
 <p><strong>Property Value</strong></p>
 <p>TModel</p>
 <p>The model object in ModelStore at the current position of the enumerator.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the current row in a ModelStore.获取ModelStore中当前行信息。</p>
+<p>The following code example demonstrates how to get the model object at the current position of the enumerator.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -106,18 +104,18 @@ namespace Appeon.ApiDoc.IModelStoreExamples
         {
             IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
 
-            // Retrieves data from Department
+            // Retrieves data.
             dept.Retrieve(_context);
 
-            // Moves to the next row in ModelStore
+            // Moves to the next model object in ModelStore.
             dept.MoveNext();
 
-            // Displays the data of the current row
+            // Displays the data of the current model object.
             Console.WriteLine(&quot;Current Department Name = {0}&quot;, dept.Current.Name);
 
             /*This code produces the following output:
             
-              Current Department Name = Engineering
+            Current Department Name = Engineering
             */
         }
     }

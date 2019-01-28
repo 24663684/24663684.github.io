@@ -74,7 +74,7 @@
 <a href="javascript:void(0)">0.5.1-alpha(current)</a>
 </div>
 表示一个可以把多种数据元素打包在一起的对象。
-<p>Represents an object that can package multiple kinds of  data element together.</p>
+<p>Represents an object that can package multiple types of data element together.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -95,13 +95,13 @@
 <td><img src="../../../images/property.jpeg" alt=""></td>
 <td><a href="Property/Count.html">Count</a></td>
 <td>int</td>
-<td></td>
+<td>Gets the number of elements that have been added into the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/property.jpeg" alt=""></td>
 <td><a href="Property/Keys.html">Keys</a></td>
 <td>string[]</td>
-<td></td>
+<td>Gets the keys for the elements which have been added into the <code>IDataPacker</code> object.</td>
 </tr>
 </tbody>
 </table>
@@ -120,25 +120,25 @@
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddRaw.html">AddRaw(string key, string value)</a></td>
 <td>void</td>
-<td></td>
+<td>Add a raw text string as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt="">       </td>
 <td><a href="Method/ContainsKey.html">ContainsKey(string key)</a></td>
 <td>bool</td>
-<td></td>
+<td>Checks whether a specified element exists in the current <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetTextString.html">GetTextString(DataFormat format)</a></td>
 <td>string</td>
-<td></td>
+<td>Gets a text string in the specified format which contains all elements in the current <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/RemoveKey.html">RemoveKey(string key)</a></td>
 <td>bool</td>
-<td></td>
+<td>Removes the specified element from the <code>IDataPacker</code> object.</td>
 </tr>
 </tbody>
 </table>
@@ -157,61 +157,61 @@
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddDataStore1.html">AddDataStore([NotNull]this IDataPacker packer, [NotNull]string key, [NotNull]IDataStore value)</a></td>
 <td>void</td>
-<td></td>
+<td>Adds an <code>IDataStore</code> object as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddDataStore2.html">AddDataStore([NotNull]this IDataPacker packer, [NotNull]string key, [NotNull]IDataStore value), [NotNull]bool changedOnly</a></td>
 <td>void</td>
-<td></td>
+<td>Adds an <code>IDataStore</code> object as an element to the <code>IDataPacker</code> object, and specifies whether to export only the changed data from the <code>IDataStore</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt="">       </td>
 <td><a href="Method/AddDataTable1.html">AddDataTable([NotNull]this IDataPacker packer,[NotNull]string key, [NotNull]DataTable value)</a></td>
 <td>void</td>
-<td></td>
+<td>Add a <code>DataTable</code> object as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddDataTable2.html">AddDataTable([NotNull]this IDataPacker packer,[NotNull]string key, [NotNull]DataTable value, [NotNull]bool changedOnly)</a></td>
 <td>void</td>
-<td></td>
+<td>Add a <code>DataTable</code> object as an element to the <code>IDataPacker</code> object, and specifies whether to export only the changed data from the <code>DataTable</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddModel.html">AddModel<tmodel>([NotNull]this IDataPacker packer, [NotNull]string key, [NotNull]TModel value)</tmodel></a></td>
 <td>void</td>
-<td></td>
+<td>Adds a model object as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddModelEntries.html">AddModelEntries<tmodel>([NotNull]this IDataPacker packer, [NotNull]string key,[NotNull]IEnumerable&lt;IModelEntry<tmodel>&gt; modelEntries)</tmodel></tmodel></a></td>
 <td>void</td>
-<td></td>
+<td>Adds an <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code> object as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddModels.html">AddModels<tmodel>([NotNull]this IDataPacker packer, [NotNull]string key, [NotNull]IEnumerable<tmodel> models)</tmodel></tmodel></a></td>
 <td>void</td>
-<td></td>
+<td>Adds an <code>IEnumerable&lt;TModel&gt;</code> object as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddModelStore1.html">AddModelStore<tmodel>([NotNull]this IDataPacker packer,[NotNull]string key, [NotNull]IModelStore<tmodel> value)</tmodel></tmodel></a></td>
 <td>void</td>
-<td></td>
+<td>Adds an <code>IModelStore&lt;TModel&gt;</code> object as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddModelStore2.html">AddModelStore<tmodel>([NotNull]this IDataPacker packer,[NotNull]string key, [NotNull]IModelStore<tmodel> value)</tmodel></tmodel></a></td>
 <td>void</td>
-<td></td>
+<td>Adds an <code>IModelStore&lt;TModel&gt;</code> object as an element to the <code>IDataPacker</code> object, and specifies whether to export only the changed data from the <code>IModelStore&lt;TModel&gt;</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AddValue.html">AddValue<tvalue>([NotNull]this IDataPacker packer, [NotNull]string key, [NotNull]TValue value)</tvalue></a></td>
 <td>void</td>
-<td></td>
+<td>Adds a value as an element to the <code>IDataPacker</code> object.</td>
 </tr>
 </tbody>
 </table>

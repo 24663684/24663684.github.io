@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>返回当前查找条件在相应数据库的原生SQL字符串。</p>
-<p>Returns the raw SQL of current search condition for the corresponding database.</p>
+<p>Returns the raw SQL string of the current search condition for the corresponding database.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -86,9 +86,8 @@
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the raw SQL string.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示ToSqlString方法。将sqlWhereCondition语法转换成context对应数据库的可执行语句</p>
+<p>演示ToSqlString方法。将sqlWhereCondition语法转换成context对应数据库的可执行语句 The following code example demonstrates how to use the ToSqlString method.It returns the raw SQL for the database corresponding to the data context.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -106,19 +105,23 @@ namespace Appeon.ApiDoc.ISqlConditionBuilderExamples
 
         public void Example()
         {
-            // Gets a search conditon for WHERE clause.
+            // Gets the search conditon of the WHERE clause.
             var sqlWhereCondition = SqlBuilder.WhereValue(&quot;DepartmentId&quot;, 1);
 
             // 将sqlWhereCondition语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             Console.WriteLine(&quot;The search conditon is: \n{0}&quot;,
                 sqlWhereCondition.ToSqlString(_context));
 
             // 定义SQL语句, 使用sqlWhereCondition
+            // Defines a SQL statement to use sqlWhereCondition.
             var sqlbuilder = SqlBuilder.Select(&quot;name&quot;)
                                         .From(&quot;Department&quot;)
                                         .Where(sqlWhereCondition);
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
+
             string sql = sqlbuilder.ToSqlString(_context);
 
             Console.WriteLine();

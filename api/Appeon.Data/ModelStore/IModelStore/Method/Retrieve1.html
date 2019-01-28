@@ -71,27 +71,24 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>根据TModel中定义的SQL Select Statement, 从数据库中检索数据，如果TModel中定义了SQL 参数则应该传入对应的参量。</p>
-<p>Retrieves data from the database according to the SQL SELECT statement defined in TModel. If there are SQL parameters defined in TModel, the corresponding arguments should be passed in.</p>
+<p>Retrieves data from the database according to the SQL SELECT statement defined in <code>TModel</code>. If there are SQL parameters defined in <code>TModel</code>, the corresponding arguments should be passed in.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public int Retrieve(DataContext context, params object[] parameters);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>context</code> <a href="../../DataContext/DataContext.html">Appeon.Data.DataContext</a></p>
+<p><code>context</code> <a href="../../../DataContext/DataContext.html">Appeon.Data.DataContext</a></p>
 <p>A <code>DataContext</code> object which contains the database connection information.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) One or more values that you want to use as retrieval arguments in the SQL SELECT statement defined in TModel.</p>
+<p>(Optional) One or more values that you want to use as retrieval arguments in the SQL SELECT statement defined in TModel. See <a href="../../../ParamValue/ParamValue.html">ParamValue</a> for more info.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of model objects retrieved from database.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>检索ModelStore中的记录按ModelStore中设置的查询条件进行检索</p>
-<p>The following code example demonstrates how to retrieve data according to the retrieval arguments defined by ModelStore.</p>
+<p>The following code example demonstrates how to retrieve data according to the SQL SELECT statement defined by <code>TModel</code>.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -110,24 +107,40 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             int count = courses.Retrieve(_context);
 
-            // Shows the number of records in ModelStore
-            Console.WriteLine(&quot;Item Count = {0}&quot;, count);
+            Console.WriteLine(&quot;Count: {0}&quot;, count);
+
+            // The CourseByTitle class defines a parameter.
+            var courses2 = new ModelStore&lt;CourseByTitle&gt;();
+
+            // Passes in the argument by a value and retrieves data.
+            count = courses2.Retrieve(_context, &quot;Chemistry&quot;);
+
+            Console.WriteLine(&quot;Count: {0}&quot;, count);
+
+            // Passes in the argument by a ParamValue object and retrieves data.
+            // ParamValue is recommended when there are muliple parameters defined.
+            var paramValue = ParamValue.New&lt;string&gt;(&quot;titleArgument&quot;, &quot;Chemistry&quot;);
+            count = courses2.Retrieve(_context, paramValue);
+
+            Console.WriteLine(&quot;Count: {0}&quot;, count);
 
             /* This code example produces the following output:
             
-             Item Count = 11
+            Count: 10
+            Count: 1
+            Count: 1
             */
         }
     }
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
+<p>Model Classes: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <a href="../../../../SourceCode/Examples/Models/School/Query/CourseByTitle.html">CourseByTitle</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

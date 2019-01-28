@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将一个model object中的值复制到ModelStore的现有的从零开始的索引。</p>
-<p>Copies the data of a model object to the specified position of ModelStore.</p>
+<p>Copies the property values from an external model object to the current ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,14 +81,14 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>index</code>	System.Int32</p>
-<p>A zero-based index of ModelStore to which data will be copied.</p>
+<p>A zero-based index of ModelStore to which data values will be copied.</p>
 <p><code>model</code>	TModel</p>
 <p>A model object from which data will be copied.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to copy the data record to the specified position in ModelStore.根据index将指定记录copy到ModelStore中。</p>
+<p>The following code example demonstrates how to use the CopyValuesFrom method to copy the data from an external model object to an internal model object at the specified position in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
+using System;
 
 namespace Appeon.ApiDoc.IModelStoreExamples
 {
@@ -103,13 +102,52 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             _context = dataContext;
         }
 
-        public void Example(Course course)
+        public void Example()
         {
-            IModelStore&lt;Course&gt; currentCourse = new ModelStore&lt;Course&gt;();
+            // Creates the &quot;courseNew&quot; model object.
+            var courseNew = new Course()
+            {
+                CourseID = 5000,
+                Title = &quot;New Course&quot;,
+                Credits = 4,
+                DepartmentID = 4
+            };
 
-            // Copies the course record to the row where index = 1 in ModelStore
-            currentCourse.CopyValuesFrom(1, course);
+            // Creates a ModelStore and retrieves data.
+            var courses = new ModelStore&lt;Course&gt;();
+            courses.Retrieve(_context);
 
+            // Displays the original values of the model object at index 1 in ModelStore.
+            var course = courses.Get(1);
+            Console.WriteLine(&quot;CourseID (Orginal): {0}&quot;, course.CourseID);
+            Console.WriteLine(&quot;Title (Orginal): {0}&quot;, course.Title);
+            Console.WriteLine(&quot;Credits (Orginal): {0}&quot;, course.Credits);
+            Console.WriteLine(&quot;DepartmentID (Orginal): {0}&quot;, course.DepartmentID);
+
+            // Copies the values from courseNew to the model object 
+            // at index 1 in ModelStore.
+            courses.CopyValuesFrom(1, courseNew);
+
+            // Displays the new values of the model object at index 1 in ModelStore.
+            course = courses.Get(1);
+            Console.WriteLine();
+            Console.WriteLine(&quot;CourseID (current): {0}&quot;, course.CourseID);
+            Console.WriteLine(&quot;Title (current): {0}&quot;, course.Title);
+            Console.WriteLine(&quot;Credits (current): {0}&quot;, course.Credits);
+            Console.WriteLine(&quot;DepartmentID (current): {0}&quot;, course.DepartmentID);
+
+            /* This code produces the following output:
+
+            CourseID (Orginal): 1050
+            Title (Orginal): Chemistry
+            Credits (Orginal): 4
+            DepartmentID (Orginal): 1
+
+            CourseID (current): 5000
+            Title (current): New Course
+            Credits (current): 4
+            DepartmentID (current): 4
+            */
         }
     }
 }

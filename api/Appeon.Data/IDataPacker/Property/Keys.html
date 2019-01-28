@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>获取已添加到<code>IDataPacker</code>对象中的元素的keys。</p>
-<p>Get the keys for the elements which have been added into the <code>IDataPacker</code> object.</p>
+<p>Gets the keys for the elements which have been added into the <code>IDataPacker</code> object.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -85,6 +85,57 @@
 <p>The keys for the elements which have been added into the <code>IDataPacker</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>获取DataPacker对象中元素的keys，并逐一输出</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class KeysExample
+    {
+        private readonly SchoolContext _context;
+
+        public KeysExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            var dataStore = new DataStore(&quot;d_course&quot;, _context);
+
+            dataStore.Retrieve();
+
+            var key = nameof(dataStore);
+            packer.AddDataStore(key, dataStore);
+
+            packer.AddValue(&quot;name&quot;, &quot;appeon&quot;);
+
+            // 获取packer对象中元素的keys
+            var keys = packer.Keys;
+
+            // 逐一获取Keys中的值，并输出
+            String keyvalues = &quot;&quot;;
+            for (int i = 0; i &lt; packer.Count; i++)
+            {
+                keyvalues += keys.GetValue(i).ToString() + &quot;,&quot;;
+            }
+            Console.WriteLine(&quot;Key Values: {0}&quot;, keyvalues);
+
+            /* This code example produces the following output:
+            
+            Key Values: dataStore,name,
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>DataWindow File: <a href="../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_course_srd.html">d_course</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

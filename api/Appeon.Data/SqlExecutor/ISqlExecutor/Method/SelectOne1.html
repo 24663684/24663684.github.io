@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ISqlExecutor.SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters) &#26041;&#27861; </title>
+    <title>ISqlExecutor.SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters) Method </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ISqlExecutor.SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters) &#26041;&#27861; ">
+    <meta name="title" content="ISqlExecutor.SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters) Method ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
@@ -66,37 +66,37 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="isqlexecutorselectonetmodelstring-sqltext-params-object-parameters-方法"><strong>ISqlExecutor.SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters) 方法</strong></h2>
+<h2 id="isqlexecutorselectonetmodelstring-sqltext-params-object-parameters-method"><strong>ISqlExecutor.SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Executes the SQL Select statement and returns the first row in the result returned by the query. All other rows are ignored.</p>
-<p><strong>命名空间：</strong> Appeon.Data</p>
-<p><strong>程序集：</strong> Appeon.Data.dll</p>
-<h3 id="语法"><strong>语法</strong></h3>
+<p>Executes the SQL SELECT statement and returns the first row in the result set. All other rows are ignored.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public TModel SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters);
 </code></pre>
 <p><strong>Type Parameters</strong></p>
 <p>TModel</p>
-<p>The datatype of the model object which matches each row in the result set.</p>
-<p>You can also specify <code>DynamicModel</code> to TModel if you don't want to define a custom model class.</p>
+<p>The datatype of the model object which represents the data row in the result set.</p>
+<p>You can also specify <code>DynamicModel</code> to TModel if you do not want to define a custom model class.</p>
 <p><strong>Parameters</strong></p>
 <p><code>sqlText</code>	System.String</p>
-<p>A raw SQL Statement which can contain parameter placeholders.</p>
-<p>Proper syntax of a parameter placeholder is to use an '@' or ':' symbol prefix on the parameter name (e.g.: <code>@newFirstName</code>), to make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with actual parameter values when the SQL Statement executes.</p>
+<p>A raw SQL Statement which contains the parameter placeholders.</p>
+<p>The proper syntax of a parameter placeholder is to use the '@' or ':' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) One or more <code>ParamValue</code> objects which containing the values corresponding to the SQL parameter identifier names;</p>
+<p>(Optional) One or more <code>ParamValue</code> objects which contain the values corresponding to the SQL parameter identifier names.</p>
 <p>You can also pass the arguments directly in the order in which they appear in <code>sqlText</code> without using the <code>ParamValue</code> object.</p>
 <p><strong>Returns</strong></p>
 <p>TModel</p>
-<p>Returns a <code>TModel</code> object which represents the first row of of the result set. Returns null if there are no rows in the result set.</p>
-<h3 id="备注"><strong>备注</strong></h3>
-<p>You can use the format <code>@parametername</code> as a parameter placeholder in the raw SQL Statement.</p>
+<p>Returns a <code>TModel</code> object which represents the first row of the result set. Returns null if there are no rows in the result set.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>You can use the format <code>@parametername</code> as the parameter placeholder in the raw SQL statement.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行SQL语句，将查询出的数据放入Model中.只会返回一条查询结果</p>
+<p>执行SQL语句，将查询出的数据放入Model中.只会返回一条查询结果The following code example demonstrates how to execute the SQL statement and put the query result to a model. Only one data row will be returned.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -108,17 +108,18 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
 
         public SelectOneExample(SchoolContext dataContext)
         {
-            // Set data context
+            // Sets the data context
             _context = dataContext;
         }
 
         public void Example1()
         {
-            // 定义SQL语句
+
+            // Defines the SQL statement.
             var sql = &quot;select CourseID, Title from Course&quot; +
                       &quot; where CourseID = 8001&quot;;
 
-            // 执行SQL, 并将查询出的数据放入Model中.
+            // Executes the SQL statement and puts the query result to a model.
             var master = _context.SqlExecutor.SelectOne&lt;DynamicModel&gt;(sql);
 
             Console.WriteLine(&quot;Title = {0}.&quot;,
@@ -133,9 +134,9 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
     }
 }
 </code></pre>
-<h3 id="版本信息"><strong>版本信息</strong></h3>
-<p>.Net Standard</p>
-<p>自2.x起可用</p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
 </article>
           </div>
           

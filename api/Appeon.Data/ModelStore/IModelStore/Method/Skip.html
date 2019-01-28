@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>跳过ModelStore中指定数量的model objects，然后返回一个新的ModelStore，该ModelStore由剩余的model objects创建的。</p>
-<p>Bypasses a specified number of model object in ModelStore and then returns the remaining model objects in a new ModelStore.</p>
+<p>Bypasses a number of model object in ModelStore and then returns a new ModelStore which contains the remaining model objects.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,14 +81,12 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>count</code>	System.Int32</p>
-<p>The number of model objects to skip before returning the remaining model objects.</p>
+<p>The number of model objects to skip.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../IModelStore/IModelStore.html">Appeon.Data.IModelStore&lt;TModel&gt;</a></p>
 <p>If ModelStore is being tracked, returns the copies of the remaining model objects; otherwise, returns the remaining model objects directly.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>跳过ModelStore中指定的记录行数，返回剩余记录</p>
-<p>The following code example demonstrates how to skip a number of records and returns the remaining records in a new ModelStore.</p>
+<p>The following code example demonstrates how to skip a number of model objects and returns a new ModelStore created by the remaining model objects.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,29 +105,25 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the number of records
-            Console.WriteLine(&quot;Before Skip:&quot;);
-            Console.WriteLine(&quot;Row Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects.
+            Console.WriteLine(&quot;Count (Before Skip): {0}&quot;, courses.Count);
 
-            // Skips the first two records
-            // Returns the remaining records
-            var skipModel = courses.Skip(2);
+            // Skips the first two model objects.
+            // Returns the remaining model objects.
+            var skipResult = courses.Skip(2);
 
-            // Shows the number of records in the new ModelStore after executing Skip
-            Console.WriteLine(&quot;After Skip:&quot;);
-            Console.WriteLine(&quot;Row Count = {0}&quot;, skipModel.Count);
+            // Shows the number of model objects in the new ModelStore.
+            Console.WriteLine(&quot;Count (After Skip): {0}&quot;, skipResult.Count);
 
             /* This code example produces the following output:
             
-            Before Skip:
-            Row Count = 11
-            After Skip:
-            Row Count = 9
+            Count (Before Skip): 10
+            Count (After Skip): 8
             */
         }
     }

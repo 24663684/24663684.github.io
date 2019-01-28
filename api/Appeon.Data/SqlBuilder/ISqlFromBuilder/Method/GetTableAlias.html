@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>获取一个已使用<code>From</code>或<code>FromRaw</code>方法添加到当前SQL Builder对象的表源的别名。</p>
-<p>Gets the alias for a table source that has been added to the current SQL Builder object using the <code>From</code> or <code>FromRaw</code> methods.</p>
+<p>Gets the alias of a table source that has been added to the current SQL Builder object using the <code>From</code> or <code>FromRaw</code> method.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -85,11 +85,10 @@
 <p>The name of a table source that has been added to the current SQL Builder object.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
-<p>Returns the alias of the specified table source if the table source exists;</p>
+<p>Returns the alias of the specified table source if the table source exists.</p>
 <p>Returns null if the table source doesn't exist.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示GetTableAlias(string tableName)方法。以下案例创建一个sqlbuilder，并获取Department表的别名</p>
+<p>演示GetTableAlias(string tableName)方法。以下案例创建一个sqlbuilder，并获取Department表的别名The following code example demonstrates how to use the GetTableAlias(string tableName) method.It creates a sqlbuilder object and gets the alias of the &quot;Department&quot; table.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -101,25 +100,29 @@ namespace Appeon.ApiDoc.ISqlFromBuilderExamples
 
         public GetTableAliasExample(SchoolContext dataContext)
         {
-            // Set Data Context
+            // Sets the Data Context.
             _context = dataContext;
         }
 
         public void Example()
         {
             // 声明SqlQueryBuilder
+            // Declares SqlQueryBuilder.
             var sqlbuilder = new SqlQueryBuilder();
 
             // 定义SQL语句，指定Department的别名为dept
+            // Defines a SQL statement to specify the alias of the &quot;Department&quot; table as &quot;dept&quot;.
             sqlbuilder.Select(&quot;*&quot;)
                 .From(&quot;Department&quot;, &quot;dept&quot;);
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlbuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);
 
             // 输出sqlbuilder中Department的别名
+            // Outputs the alias of the &quot;Department&quot; table.
             Console.WriteLine(&quot;Get the alias of the table Department:{0}&quot;,
                               sqlbuilder.GetTableAlias(&quot;Department&quot;));
 

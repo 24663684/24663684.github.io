@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将所有model objects或仅更改的model objects从ModelStore 导出为简单格式的JSON字符串。</p>
-<p>Exports all model objects or only the changed model objects from ModelStore to a simple-format  JSON string.</p>
+<p>Exports all model objects or only the changed model objects from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,14 +83,12 @@
 <p><code>changeOnly</code> System.Boolean</p>
 <p>A <code>boolean</code> specifying the changing flag.</p>
 <p>True: to export data of the changed model objects only.</p>
-<p>False (default): to export all model objects.</p>
+<p>False: to export all model objects.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the simple-format  JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>???功能待确认参数changeOnly为true时，导出deleted buffer和 primary/filered buffer中修改过的数据为json格式;参数changeOnly为false时，导出所有 buffer数据为json格式.The following code example demonstrates how to export the department records to JSON strings using the changeOnly argument.When changeOnly is true, exports the modified data to a JSON string; when changeOnly is false, exports all data to a JSON string.</p>
+<p>The following code example demonstrates how to use the <code>ExportPlainJson(Booelean)</code> method to export the department records to a JSON string using the <code>changeOnly</code> argument. When changeOnly is <code>true</code>, exports the modified data to a JSON string; when changeOnly is <code>false</code>, exports all data to a JSON string.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -110,20 +107,21 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            // Creates ModelStore
-            IModelStore&lt;Department&gt; department =
+            // Creates ModelStore and retrieves data.
+            var department =
                 new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Performs CRUD operations to data in ModelStore
             department.Retrieve(_context);
-            department.RemoveAt(1);
-            department.SetValue(0, 1, &quot;department name&quot;);
+
+            // Removes the filtered model objects from the current ModelStore.
+            // Only one model object (whose DepartmentID is 7) is left.
             department.Filter(m =&gt; m.DepartmentID &lt; 5, removeFiltered: true);
 
-            // When changeOnly is true, exports the modified data
+            // When changeOnly is true, exports the modified data.
             string json1 = department.ExportPlainJson(true);
 
-            // No record is exported
+            // Since the model object whose DepartmentID is 7 has not been modified, 
+            // no record is exported.
             Console.WriteLine(&quot;datastore.ExportJson(true, &quot; +
                               &quot;MappingMethod.JsonIndex):&quot;);
             Console.WriteLine(json1);
@@ -133,7 +131,8 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             ExportPlainJson2_1.json  
             */
 
-            // When changeOnly is false, exports all data
+            // When changeOnly is false, exports the model object whose DepartmentID 
+            // is 7. 
             string json2 = department.ExportPlainJson(false);
 
             Console.WriteLine(&quot;datastore.ExportJson(false, &quot; +
@@ -149,7 +148,7 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br>JSON Files: <a href="../../../../SourceCode/Examples/Jsons/IModelStore/ExportPlainJson2_1.html">ExportPlainJson2_1</a> <a href="../../../../SourceCode/Examples/Jsons/IModelStore/ExportPlainJson2_2.html">ExportPlainJson2_2</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

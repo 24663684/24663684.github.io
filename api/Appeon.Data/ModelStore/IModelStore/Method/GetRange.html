@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取由零基础索引start和count指定的model objects的集合。</p>
-<p>Gets a collection of the model objects in ModelStore.</p>
+<p>Gets a subset of model objects from ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,15 +81,14 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>index</code>	System.Int32</p>
-<p>The zero-based index from which to start to get.</p>
+<p>The zero-based index at which the range starts.</p>
 <p><code>count</code>	System.Int32</p>
 <p>A number specifying how many model objects (started from the <code>index</code> parameter) to get.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IList&lt;TModel&gt;</p>
 <p>If ModelStore is being tracked, returns the copies of the model objects; otherwise, returns the model objects directly.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get two records starting from row 1.获取ModelStore中指定行开始的多行数据。</p>
+<p>The following code example demonstrates how to get two model objects starting from index 0.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -109,19 +107,19 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data.
+            depts.Retrieve(_context);
 
-            // Gets two records starting from row 1
-            var modelResult = dept.GetRange(0, 2);
+            // Gets two models starting from index 0.
+            var modelList = depts.GetRange(0, 2);
 
-            Console.WriteLine(&quot;row count = {0}&quot;, modelResult.Count);
+            Console.WriteLine(&quot;Count: {0}&quot;, modelList.Count);
 
             /* This code example produces the following output:
             
-             row count = 2
+            Count: 2
             */
         }
     }

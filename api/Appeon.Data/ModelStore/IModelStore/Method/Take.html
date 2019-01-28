@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从ModelStore的开头返回由指定数量的连续model objects创建的新ModelStore。</p>
-<p>Returns the specified number of contiguous model objects in a new ModelStore from the start of the current ModelStore.</p>
+<p>Takes the specified number of contiguous model objects from the beginning of the current ModelStore and returns them in a new ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -86,10 +85,8 @@
 <p><strong>Returns</strong></p>
 <p><a href="../../IModelStore/IModelStore.html">Appeon.Data.IModelStore&lt;TModle&gt;</a></p>
 <p>If ModelStore is being tracked, returns the copies of the model objects; otherwise, returns the model objects directly.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>获取ModelStore中多行记录</p>
-<p>The following code example demonstrates how to take the first two records from ModelStore.</p>
+<p>The following code example demonstrates how to use the <code>Take</code> method to take the first two model objects from ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,20 +105,20 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Gets the first two records
-            var takeitem = courses.Take(2);
+            // Takes the first two model objects and returns them in a new ModelStore.
+            var takeMs = courses.Take(2);
 
-            // Shows the number of records that are taken
-            Console.WriteLine(&quot;Take Count = {0}&quot;, takeitem.Count);
+            // Shows the number of model objects that are taken
+            Console.WriteLine(&quot;Take Count: {0}&quot;, takeMs.Count);
 
             /* This code example produces the following output:
             
-            Take Count = 2
+            Take Count: 2
             */
         }
     }

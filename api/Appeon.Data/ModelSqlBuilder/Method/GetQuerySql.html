@@ -75,18 +75,64 @@
 </div>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<p>根据model类中的定义,指定的select list以及数据上下文获取一个SQL SELECT statement。</p>
+<p>Gets a SQL SELECT statement based on the definitions in the model class, the specified select list, and the data context.</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">public string GetQuerySql(string selectName) 
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>selectName</code> Systme.String</p>
+<p>A name specified for a select list predefined in the model class.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
+<p>Returns the new generated SQL SELECT statement.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>根据ModelSqlBuilder关联Model上的SqlSelect，返回SQL查询语句</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ModelSqlBuilderExamples
+{
+    public class GetQuerySqlExample
+    {
+        private readonly SchoolContext _context;
+
+        public GetQuerySqlExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            ModelSqlBuilder build;
+
+            // 创建ModelSqlBuilder对象
+            build = ModelSqlBuilder.GetBuilder&lt;CourseInfo&gt;(_context);
+
+            string query = build.GetQuerySql(&quot;SelectCourse&quot;);
+
+            Console.WriteLine(&quot;GetQuerySql = {0}&quot;, query);
+
+            /* The code produces the following output:
+            
+            GetQuerySql = SELECT
+             [Title]
+            FROM [dbo].[Course]
+            WHERE ([DepartmentId] = @deptId)
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.Net Standard</p>
 <p>2.x</p>
+<h3 id="see-also"><strong>See Also</strong></h3>
+<p><a href="../Property/QuerySql.html">ModelSqlBuilder.QuerySql</a></p>
 </article>
           </div>
           

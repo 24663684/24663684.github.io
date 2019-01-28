@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>从ModelStore中移除按索引指定的model object并插入一个新的model object。</p>
 <p>Replaces a model object in ModelStore with another model object. It will remove the model object first and then insert the new model object.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -82,14 +81,13 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>index</code>	System.Int32</p>
-<p>The zero-based index of the model object in ModelStore to be replaced.</p>
+<p>The zero-based index of the model object in ModelStore which will be replaced.</p>
 <p><code>model</code>	TModel</p>
 <p>The new model object which will replace the old model object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the removed model object will have the <code>ModelState.Deleted</code> state, and the newly inserted model object will have the <code>ModelState.NewModified</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>用新记录替换ModelStore中指定记录</p>
-<p>The following code example demonstrates how to replace an existing record in ModelStore with another record.</p>
+<p>The following code example demonstrates how to replace an existing model object in ModelStore with another model object.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,35 +106,35 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Creates a new course record
+            // Creates a new Course object
             Course itemCourse = new Course()
             {
-                CourseID =1,
-                Title = &quot;test&quot;,
+                CourseID = 1,
+                Title = &quot;New Course&quot;,
                 Credits = 1,
                 DepartmentID = 1
             };
 
-            // Shows the Title info of row 2 before replaced
+            // Shows the Title info of model object at index 1 before replaced
             Course oldCourse = courses.Get(1);
-            Console.WriteLine(&quot;Title = {0}&quot;, oldCourse.Title);
+            Console.WriteLine(&quot;Title: {0}&quot;, oldCourse.Title);
 
-            // Replaces row 2 with the new course record
+            // Replaces model object at index 1 with the new Course object.
             courses.Replace(1, itemCourse);
 
-            // Shows the Title info of row 2 after replaced
+            // Shows the Title info of model object at index 1 after replaced.
             Course newCourse = courses.Get(1);
-            Console.WriteLine(&quot;Title = {0}&quot;, newCourse.Title);
+            Console.WriteLine(&quot;Title: {0}&quot;, newCourse.Title);
 
             /* This code example produces the following output:
             
-            Title = Chemistry
-            Title = test
+            Title: Chemistry
+            Title: New Course
             */
         }
     }

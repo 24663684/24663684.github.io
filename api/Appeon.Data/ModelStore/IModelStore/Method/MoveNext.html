@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>使枚举数前进到ModelsStore中的下一个model object。</p>
 <p>Advances the enumerator to the next model object in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -84,10 +83,8 @@
 <p>System.Boolean</p>
 <p>True: if the enumerator was successfully advanced to the next model object;</p>
 <p>False: if the enumerator has passed the end of ModelStore.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>移动当前行标记到ModelStore中的下一条记录</p>
-<p>The following code example demonstrates how to move to the next record in ModelStore.</p>
+<p>The following code example demonstrates how to advance the enumerator to the next model object in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -106,29 +103,30 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
             // Calls MoveNext in a loop to show data in ModelStore
             while (courses.MoveNext())
             {
-                Console.WriteLine(&quot;Current Course Title = {0}&quot;, courses.Current.Title);
+                Console.WriteLine(&quot;Current Course Title: {0}&quot;,
+                    courses.Current.Title);
             }
 
             /* This code example produces the following output:
             
-             Current Course Title = test
-             Current Course Title = Chemistry
-             Current Course Title = Physics
-             Current Course Title = Composition
-             Current Course Title = Poetry
-             Current Course Title = Literature
-             Current Course Title = Trigonometry
-             Current Course Title = Microeconomics
-             Current Course Title = Macroeconomics
-             Current Course Title = Quantitative
+             Current Course Title: Calculus
+             Current Course Title: Chemistry
+             Current Course Title: Physics
+             Current Course Title: Composition
+             Current Course Title: Poetry
+             Current Course Title: Literature
+             Current Course Title: Trigonometry
+             Current Course Title: Microeconomics
+             Current Course Title: Macroeconomics
+             Current Course Title: Quantitative
             */
         }
     }

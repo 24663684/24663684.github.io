@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>获取指定格式的文本字符串，它包含在此<code>IDataPacker</code>对象中所有数据。</p>
-<p>Gets a string of text in specified format, it contains all elements in this <code>IDataPacker</code> object .</p>
+<p>Gets a text string in the specified format which contains all elements in the current <code>IDataPacker</code> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -82,13 +82,67 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>format</code> <a href="">Appeon.Data.DataFormat</a></p>
-<p>The format of the text you want to get.</p>
+<p>The format of the text string you want to get.</p>
 <p>It supports <code>DataFormat.Json</code> and <code>DataFormat.Xml</code> so far.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
-<p>Returns the string of text in specified format.</p>
+<p>Returns the string of text in the specified format.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例将DataStore对象中修改的记录添加到IDataPacker对象中，并输出</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class GetTextStringExample
+    {
+        private readonly SchoolContext _context;
+
+        public GetTextStringExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            var dataStore = new DataStore(&quot;d_course&quot;, _context);
+
+            dataStore.Retrieve();
+
+            // 修改dataStore中第一条记录，将Title修改为English
+            dataStore.SetItem(0, &quot;Title&quot;, &quot;English&quot;);
+
+            // 将dataStore对象添加到packer对象中,并只添加修改的数据
+            var key = nameof(dataStore);
+            packer.AddDataStore(key, dataStore, true);
+
+            // 获取packer对象中所有数据，并以json格式显示
+            Console.WriteLine(packer.GetTextString(DataFormat.Json));
+
+            /* This code example produces the following output:
+            
+            {&quot;dataStore&quot;:{&quot;identity&quot;:&quot;70c86603-983b-4bd9-adbc-259436e43cbd&quot;,
+            &quot;version&quot;:1.0,&quot;platform&quot;:&quot;C#&quot;,&quot;mapping-method&quot;:0,&quot;dataobject&quot;:
+            {&quot;name&quot;:&quot;d_course&quot;,&quot;meta-columns&quot;:[{&quot;name&quot;:&quot;Courseid&quot;,&quot;index&quot;:0,
+            &quot;datatype&quot;:&quot;System.Int32&quot;,&quot;nullable&quot;:0},{&quot;name&quot;:&quot;Title&quot;,&quot;index&quot;:1,
+            &quot;datatype&quot;:&quot;System.String&quot;,&quot;nullable&quot;:0},{&quot;name&quot;:&quot;Credits&quot;,&quot;index&quot;:2,
+            &quot;datatype&quot;:&quot;System.Int32&quot;,&quot;nullable&quot;:0},{&quot;name&quot;:&quot;Departmentid&quot;,
+            &quot;index&quot;:3,&quot;datatype&quot;:&quot;System.Int32&quot;,&quot;nullable&quot;:0}],
+            &quot;primary-rows&quot;:[{&quot;row-status&quot;:1,&quot;columns&quot;:{&quot;Courseid&quot;:[1045],
+            &quot;Title&quot;:[&quot;English&quot;,1,&quot;test&quot;],&quot;Credits&quot;:[4],&quot;Departmentid&quot;:[7]}}],
+            &quot;filter-rows&quot;:[],&quot;delete-rows&quot;:[]}}}
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>DataWindow File: <a href="../../../SourceCode/Examples/ExamplesClient.pbw/examplesclient.pbt/school.pbl/d_course_srd.html">d_course</a> <br></p>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

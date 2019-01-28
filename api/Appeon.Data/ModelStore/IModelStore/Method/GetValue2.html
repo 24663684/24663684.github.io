@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取ModelStore中model object（由基于零的索引指定）的属性值（由属性名称指定）。 它默认获取当前值。返回值的数据类型已被指定。</p>
-<p>Get the value of a property (specified by name) of a model object (specified by index) in ModelStore. It gets the current value by default. The datatype of the return value must be specified.</p>
+<p>Gets the value of the specified property (by name) of the specified model object (by index) in ModelStore. It gets the current value by default. The datatype of the return value must be specified.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -94,9 +93,8 @@
 <p><strong>Returns</strong></p>
 <p>TValue</p>
 <p>Returns the value in the specified model object and property. The datatype of the returned data corresponds to the datatype of the property.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the value of the specified row and column (by name). The data type is specified to string.获取ModelStore中指定行列的数据，以列名方式获取。已知该列的数据类型。</p>
+<p>The following code example demonstrates how to get the value of the specified row and column (by name). The data type is specified to string.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -115,19 +113,41 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data.
+            depts.Retrieve(_context);
 
-            // Gets the value of &quot;Name&quot; column in row 1
-            string name = dept.GetValue&lt;string&gt;(0, &quot;Name&quot;);
+            // Gets the value of &quot;Name&quot; property of the model object at index 0.
+            string name = depts.GetValue&lt;string&gt;(0, &quot;Name&quot;);
 
-            Console.WriteLine(&quot;department name = {0}&quot;, name);
+            Console.WriteLine(&quot;Department Name: {0}&quot;, name);
+
+            // Creates a ModelStore and sets the tracking strategy to PropertyState.
+            var depts2 =
+                new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
+
+            // Retrieves data.
+            depts2.Retrieve(_context);
+
+            // Modifies the value.
+            depts2.SetValue(0, &quot;Name&quot;, &quot;New Department&quot;);
+
+            // Gets the original value.
+            name = depts2.GetValue&lt;string&gt;(0, &quot;Name&quot;, true);
+            Console.WriteLine();
+            Console.WriteLine(&quot;Department Name (Orginal): {0}&quot;, name);
+
+            // Gets the current value.
+            name = depts2.GetValue&lt;string&gt;(0, &quot;Name&quot;);
+            Console.WriteLine(&quot;Department Name (Current): {0}&quot;, name);
 
             /* This code example produces the following output:
             
-             department name = Engineering
+            Department Name: Engineering
+
+            Department Name (Orginal): Engineering
+            Department Name (Current): New Department
             */
         }
     }

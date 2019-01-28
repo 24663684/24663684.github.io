@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>创建SQL DELETE语句并指定要从中删除行的表或视图的名称。</p>
-<p>Creates the SQL DELETE statement and specifies the name of the table or view from which the rows are to be removed.</p>
+<p>Creates a SQL DELETE statement and specifies the name of the table or view from which the rows are to be removed.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -86,9 +86,8 @@
 <p><strong>Returns</strong></p>
 <p>Appeon.Data.ISqlDeleteBuilder</p>
 <p>Returns the current <code>ISqlDeleteBuilder</code> object.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示ISqlDeleteBuilder Delete(string table)方法。构造deletebuilder语句删除Department表中name=&quot;English&quot;的记录</p>
+<p>演示ISqlDeleteBuilder Delete(string table)方法。The following code example demonstrates how to use the ISqlDeleteBuilder Delete(string table) method.构造deletebuilder语句删除Department表中name=&quot;English&quot;的记录It builds a SQL DELETE statement by a SqlDeleteBuilder object to delete the records where name=&quot;English&quot; from the “Department” table.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -107,13 +106,17 @@ namespace Appeon.ApiDoc.ISqlDeleteBuilderExamples
         public void Example1()
         {
             // 声明SqlDeleteBuilder
+            // Declares SqlDeleteBuilder.
             var sqlbuilder = new SqlDeleteBuilder();
 
             // 构建Delete语句，删除Department表中name=&quot;English&quot;的记录
+            // Builds a SQL DELETE statement to delete the records where name=&quot;English&quot; from the &quot;Department&quot; table.
             sqlbuilder.Delete(&quot;Department&quot;)
                 .WhereValue(&quot;name&quot;, SqlBinaryOperator.Equals, &quot;English&quot;);
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
+
             string sql = sqlbuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);

@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将来自一个字符串中按tab分割的数据插入ModelStore。您可以指定在字符串中的起始行和结束行。</p>
-<p>Inserts the tab-separated data from a string into the DataStore. You can specify the starting and ending rows in the string.</p>
+<p>Inserts the tab-separated data from a string into the ModelStore. You can specify the starting and ending rows of the string.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -92,12 +91,12 @@
 <p>System.Int32</p>
 <p>Returns the number of model objects that were imported if it succeeds.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>The string must be formatted in tab-separated. Each line must end with a carriage return and a newline character (<sub>r</sub>n). If the string has four tab-separated columns, one line might look like for a tab-separated string:</p>
+<p>The string must be formatted in tab-separated. Each line must end with a carriage return and a newline character (\r\n). If the string has four tab-separated columns, one line might look like for a tab-separated string:</p>
 <pre><code>col1_data\t col2_data\t col3_data\t col4_data\r\n
 </code></pre>
 <p>The string should consist of rows of data. If the data includes column headings or row labels, set the <code>startRow</code> and  <code>startColumn</code> arguments to skip them. The datatype and order of the properties of the model object in ModelStore must match with the columns of data in the string.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to import the first and the second department records to ModelStore.</p>
+<p>The following code example demonstrates how to use the <code>ImportString(String, Int32, Int32)</code> method to import the first and the second department records to ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -117,35 +116,36 @@ namespace Appeon.ApiDoc.IModelStoreExamples
         public void Example2()
         {
             // Creates ModelStore
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
             string importString = GetImportString2();
 
-            // Imports data starting from row 1 to 2 from the string to modelstore
-            department.ImportString(importString, 0, 1);
+            // Imports data starting from row 1 to 2 from the string.
+            depts.ImportString(importString, 0, 1);
 
-            Console.WriteLine(&quot;Rowcount: {0}&quot;, department.Count);
+            Console.WriteLine(&quot;Count: {0}&quot;, depts.Count);
 
-            for (int row = 0, rowcount = department.Count; row &lt; rowcount; row++)
+            foreach (var dept in depts)
             {
-                Console.WriteLine(&quot;DepartmentID: {0}; Name: {1}; Budget: {2}&quot;,
-                                  department.GetValue&lt;int&gt;(row, &quot;departmentid&quot;),
-                                  department.GetValue&lt;string&gt;(row, &quot;name&quot;),
-                                  department.GetValue&lt;decimal&gt;(row, &quot;budget&quot;));
+                Console.WriteLine(
+                    &quot;DepartmentID: {0}; Name: {1}; Budget: {2}&quot;,
+                    dept.DepartmentID,
+                    dept.Name,
+                    dept.Budget);
             }
 
             /*This code produces the following output:
 
-            Rowcount: 2
+            Count: 2
             DepartmentID: 1; Name: Engineering; Budget: 350000.0000
             DepartmentID: 2; Name: English; Budget: 120000.0000
            */
         }
 
-        // Creates the string to be imported for Example2
+        // Creates the string to be imported for Example2.
         private string GetImportString2()
         {
-            // The string to be imported
+            // The string to be imported.
             return &quot;1\tEngineering\t350000.0000\t9/1/2007 12:00:00 AM\t2\r\n&quot; +
                    &quot;2\tEnglish\t120000.0000\t9/1/2007 12:00:00 AM\t6\r\n&quot; +
                    &quot;4\tEconomics\t200000.0000\t9/1/2007 12:00:00 AM\t4&quot;;

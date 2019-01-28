@@ -134,7 +134,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>The parameter can be referenced by its name in the SQL expression parameter for the other attributes in the model class. The format to make reference: <code>@paramName</code>.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to use the SqlParameter attribute. It applies the SqlParameter attribute named &quot;nameArgument&quot; to the DepartmentByName class. Then you can use &quot;@nameArgument&quot; in any raw SQL expression parameter for the other attributes applied to the DepartmentByName class.</p>
+<p>The following code example demonstrates how to use the SqlParameter attribute. It applies the SqlParameter attribute named &quot;nameArgument&quot; to the DepartmentByName class. Then you can use &quot;:nameArgument&quot; in any raw SQL expression parameter for the other attributes applied to the DepartmentByName class.</p>
 <h5 id="model-departmentbyname">Model: DepartmentByName</h5>
 <pre><code class="lang-C#">using System;
 using System.ComponentModel.DataAnnotations;
@@ -154,7 +154,7 @@ namespace Appeon.ApiDoc.Models.School
     [SqlParameter(&quot;nameArgument&quot;, typeof(string))]
     [Table(&quot;Department&quot;, Schema = &quot;dbo&quot;)]
     [UpdateWhereStrategy(UpdateWhereStrategy.KeyColumns)]
-    [SqlWhere(&quot;Name = :nameArgument&quot;)]
+    [SqlWhere(&quot;Name = @nameArgument&quot;)]
     public class DepartmentByName
     {
         [Key]

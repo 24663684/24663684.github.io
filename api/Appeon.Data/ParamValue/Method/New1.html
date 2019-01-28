@@ -90,6 +90,60 @@
 <p>Returns the new created <code>ParamValue</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>创建一个ParamValue对象，并为其指定name及value不指定Direction时，默认为input</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Data;
+
+namespace Appeon.ApiDoc.ParamValueExamples
+{
+    public class NewExample
+    {
+        private readonly SchoolContext _context;
+
+        public NewExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example1()
+        {
+            // 声明一个string类型变量， 并为其设置值
+            string data = &quot;Economics&quot;;
+
+            // 创建ParamValue对象
+            var param = ParamValue.New(&quot;data1&quot;, data);
+
+            // 输出ParamValue对象的name，value及Direction信息
+            Console.WriteLine(&quot;ParamValue.Name = {0}&quot;, param.Name);
+            Console.WriteLine(&quot;ParamValue.Value = {0}&quot;, param.Value);
+            Console.WriteLine(&quot;ParamValue.Direction = {0}&quot;, param.Direction);
+
+            // 定义一个SqlQueryBuilder
+            var sqlBuilder = new SqlQueryBuilder();
+            sqlBuilder.AddParameters(
+               SqlBuilder.Parameter&lt;string&gt;(&quot;deptName&quot;));
+
+            sqlBuilder.Select(&quot;name&quot;)
+                    .From(&quot;Department&quot;)
+                    .Where(&quot;name&quot;, &quot;@deptName&quot;);
+
+            // 在查询中使用ParamValue对象
+            var result = _context.SqlExecutor.Scalar&lt;string&gt;(sqlBuilder, param);
+
+            /*This code produces the following output:
+            
+            ParamValue.Name = data1
+            ParamValue.Value = Economics
+            ParamValue.Direction = Input
+            */
+
+
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.Net Standard</p>
 <p>2.x</p>

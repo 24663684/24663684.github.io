@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>使用指定的key从<code>IDataPacker</code>对象中删除元素。</p>
-<p>Removes the element from the <code>IDataPacker</code> object with the specified key.</p>
+<p>Removes the specified element from the <code>IDataPacker</code> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -88,6 +88,56 @@
 <p>Returns true if the element is successfully removed; returns false if the element was not found.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例从IDataPacker对象中，删除指定key值</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class RemoveKeyExample
+    {
+        private readonly SchoolContext _context;
+
+        public RemoveKeyExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            // 将值NameValue1和NameValue2添加到packer对象中
+            packer.AddValue(&quot;FirstParam&quot;, &quot;NameValue1&quot;);
+            packer.AddValue(&quot;SecondParam&quot;, &quot;NameValue2&quot;);
+
+            // 移除前计算packer中的元素个数，并输出
+            Console.WriteLine(&quot;Before delete, the element count: {0}&quot;, 
+                packer.Count.ToString());
+
+            Console.WriteLine(packer.GetTextString(DataFormat.Json));
+
+            // 从packer对象中删除key=FirstParam的记录
+            packer.RemoveKey(&quot;FirstParam&quot;);
+
+            // 移除后计算packer中的元素个数，并输出
+            Console.WriteLine(&quot;After delete, the element count: {0}&quot;, 
+                packer.Count.ToString());
+
+            Console.WriteLine(packer.GetTextString(DataFormat.Json));
+
+            /* This code example produces the following output:
+            
+            Before delete, the element count: 2
+            {&quot;FirstParam&quot;:&quot;NameValue1&quot;,&quot;SecondParam&quot;:&quot;NameValue2&quot;}
+            After delete, the element count: 1
+            {&quot;SecondParam&quot;:&quot;NameValue2&quot;}
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

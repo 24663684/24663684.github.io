@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将model objects（从指定的起始位置到结束位置）从ModelStore导出为简单格式的JSON字符串。</p>
-<p>Exports the model objects (from the specified starting position to the ending position) from ModelStore to a simple-format JSON string.</p>
+<p>Exports the model objects (from the specified range) from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,15 +83,12 @@
 <p><code>startRow</code> System.Int32</p>
 <p>The zero-based index of the first model object in ModelStore that you want to export.</p>
 <p><code>endRow</code> System.Int32</p>
-<p>The zero-based index of the last model object in ModelStore that you want to export.</p>
-<p>If it is negative, it indicates the rest of model objects.</p>
+<p>The zero-based index of the last model object in ModelStore that you want to export. If it is negative, it indicates the rest of model objects.</p>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the simple-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the department records in rows 1 and 2 to a JSON string.</p>
+<p>The following code example demonstrates how to use <code>ExportPlainJson(Int32, Int32)</code> method to export the data of model objects (starting at index 0 and ending at index 1) to a JSON string.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -112,10 +108,10 @@ namespace Appeon.ApiDoc.IModelStoreExamples
         public void Example4()
         {
             // Creates ModelStore and retrieves data 
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            var department = new ModelStore&lt;Department&gt;();
             department.Retrieve(_context);
 
-            // Exports records in rows 1 and 2 
+            // Exports data of model objects (starts at index 0 and ends at index 1). 
             string json = department.ExportPlainJson(0, 1);
 
             Console.WriteLine(json);
@@ -129,7 +125,7 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br>JSON File: <a href="../../../../SourceCode/Examples/Jsons/IModelStore/ExportPlainJson4.html">ExportPlainJson4</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

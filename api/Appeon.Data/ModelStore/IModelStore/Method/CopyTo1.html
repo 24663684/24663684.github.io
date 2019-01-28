@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src=""></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>把ModelStore的model objects复制到一维数组中。</p>
-<p>Copies the model objects of ModelStore to an array.</p>
+<p>Copies all of the model objects of ModelStore to a one-dimensional sorted array.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,10 +81,9 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>array</code>	TModel[]</p>
-<p>The one-dimensional System.Array to which the model objects of ModelStore will be copied.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The one-dimensional <code>System.Array</code> to which the model objects of ModelStore will be copied.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to 将ModelStore中的数据copy到model数组中。</p>
+<p>The following code example demonstrates how to use the <code>CopyTo(TModel[])</code> method to copy all of the model objects of ModelStore to an array.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -104,23 +102,25 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1()
         {
-            // 创建ModelStore对象，并检索数据
-            IModelStore&lt;Course&gt; currentCourse = new ModelStore&lt;Course&gt;();
-            currentCourse.Retrieve(_context);
+            // Creates the ModelStore 
+            var courseMs = new ModelStore&lt;Course&gt;();
+            courseMs.Retrieve(_context);
 
-            // 创建一个Course数组，并将ModelStore中的数据拷贝到该数组中
-            Course[] courses = new Course[20];
-            currentCourse.CopyTo(courses);
+            // Creates an array.
+            Course[] courseArray = new Course[courseMs.Count];
 
-            // 循环输出数组中的数据
-            foreach(Course m in courses)
+            // Copies the data from the ModelStore into the array.
+            courseMs.CopyTo(courseArray);
+
+            // Shows the course titles.
+            foreach (var course in courseArray)
             {
-                if (m == null) break;
-                Console.WriteLine(m.Title);
+                Console.WriteLine(course.Title);
             }
 
             /*This code produces the following output:
              
+            Calculus
             Chemistry
             Physics
             Composition
@@ -131,7 +131,6 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             Macroeconomics
             Quantitative
             */
-
         }
     }
 }

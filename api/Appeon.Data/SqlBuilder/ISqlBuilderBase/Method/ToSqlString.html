@@ -113,7 +113,7 @@ namespace Appeon.ApiDoc.ISqlBuilderBaseExamples
                     .WhereValue(&quot;DepartmentId&quot;, 1);
 
             // Gets the SQL statement generated for the specified database. 
-            bool valid = sqlBuilder.Validation(_context);
+            bool valid = sqlBuilder.Validate(_context);
             Console.WriteLine(&quot;The SQL statement: \n{0}&quot;,
                 sqlBuilder.ToSqlString(_context));
 

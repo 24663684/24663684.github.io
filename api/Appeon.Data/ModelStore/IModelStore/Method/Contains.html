@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>确定ModelStore是否包含特定的model object。</p>
-<p>Determines whether the specified model object exists in ModelStore.</p>
+<p>Determines whether ModelStore contains the specified model object.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -82,13 +81,15 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>item</code> TModel</p>
-<p>The model object to locate in ModelStore.</p>
+<p>The model object to look for in ModelStore.</p>
 <p><strong>Returns</strong></p>
 <p>System.Boolean</p>
 <p>True if <code>item</code> is found in ModelStore; otherwise, false.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
+<p>If ModelStore is being tracked, you have to use the <code>GetForUpdate</code> method to get the reference of the internal model object.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to 查找ModelStore中是否包含指定的记录</p>
+<h4 id="example-1">Example 1</h4>
+<p>The following code example demonstrates how to use the <code>Contains</code> method to determine whether the specified model object exists in a ModelStore which is not beging tracked.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -105,57 +106,98 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             _context = dataContext;
         }
 
-        public void Example()
+        public void Example1()
         {
-            // 定义两条Department记录
-            Department newdept = new Department()
+            // Creates two Department objects.
+            Department dept1 = new Department()
             {
                 DepartmentID = 8001,
-                Name = &quot;test department&quot;,
-                Budget = 1m,
+                Name = &quot;New Department1&quot;,
+                Budget = 10000m,
                 StartDate = DateTime.Parse(&quot;2018-12-12&quot;)
             };
 
-            Department newdept2 = new Department()
+            Department dept2 = new Department()
             {
                 DepartmentID = 1,
-                Name = &quot;Engineering&quot;,
+                Name = &quot;New Department2&quot;,
                 Budget = 350000.00m,
-                StartDate = DateTime.Parse(&quot;2007-09-01&quot;),
+                StartDate = DateTime.Parse(&quot;2019-09-01&quot;),
                 Administrator = 2
             };
 
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
-            //  Retrieves data from Department
-            dept.Retrieve(_context);
+            //  Adds dept2 to the ModelStore.
+            depts.Add(dept2);
 
-            // 查找ModelStore中是否包含指定记录1
-            bool find = dept.Contains(newdept);
+            // Checks whether dept1 exists in ModelStore.
+            bool find = depts.Contains(dept1);
+            Console.WriteLine(&quot;Existence (dept1): {0}&quot;, find);
 
-            // 未发现匹配记录，返回false
-            Console.WriteLine(&quot;Result = {0}&quot;, find);
-
-            /*This code produces the following output:
-             
-              Result = False
-            */
-
-            // 查找ModelStore中是否包含指定记录2
-            bool finds = dept.Contains(newdept2);
-
-            // 发现匹配记录，返回true
-            Console.WriteLine(&quot;Result = {0}&quot;, finds);
+            // Checks whether dept2 exists in ModelStore.
+            find = depts.Contains(dept2);
+            Console.WriteLine(&quot;Existence (dept2): {0}&quot;, find);
 
             /*This code produces the following output:
             
-              Result = True
+            Existence (dept1): False
+            Existence (dept2): True
             */
         }
     }
 }
 </code></pre>
-<h4 id="example-refer-to">Example Refer To</h4>
+<h4 id="example-2">Example 2</h4>
+<p>The following code example demonstrates how to use the <code>Contains</code> method to determine whether the specified model object exists in a ModelStore which is being tracked.</p>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            // Creates two Department objects.
+            Department dept = new Department()
+            {
+                DepartmentID = 8001,
+                Name = &quot;New Department&quot;,
+                Budget = 10000m,
+                StartDate = DateTime.Parse(&quot;2018-12-12&quot;)
+            };
+
+            var depts =
+                new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
+
+            //  Adds dept2 to the ModelStore.
+            depts.Add(dept);
+
+            // Check whether dept exists in ModelStore.
+            bool find = depts.Contains(dept);
+            Console.WriteLine(&quot;Existence (dept): {0}&quot;, find);
+
+
+            // There is only one model object store in the ModelStore.
+            // If the ModelStore is being tracked, you can only get a clone of 
+            // the internal model object.
+            var deptGet = depts.Get(0);
+
+            // Check whether deptGet exists in ModelStore.
+            find = depts.Contains(deptGet);
+            Console.WriteLine(&quot;Existence (Get): {0}&quot;, find);
+
+
+            // Uses the GetForUpdate method to get the internal model object.
+            var deptGetForUpdate = depts.GetForUpdate(0);
+
+            // Check whether deptGetForUpdate exists in ModelStore.
+            find = depts.Contains(deptGetForUpdate);
+            Console.WriteLine(&quot;Existence (GetForUpdate): {0}&quot;, find);
+
+            /*This code produces the following output:
+            
+            Existence (dept): True
+            Existence (deptGet): False
+            Existence (deptGetForUpdate): True
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
 <p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>

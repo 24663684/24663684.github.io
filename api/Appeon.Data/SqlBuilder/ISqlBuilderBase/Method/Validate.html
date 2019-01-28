@@ -118,7 +118,7 @@ namespace Appeon.ApiDoc.ISqlBuilderBaseExamples
 
 
             // Validates the SQL statement in database. 
-            bool valid = sqlBuilder.Validation(_context);
+            bool valid = sqlBuilder.Validate(_context);
             Console.WriteLine(&quot;Validate Result (first time): {0}&quot;, valid);
             Console.WriteLine(sqlBuilder.ToSqlString(_context));
 
@@ -127,7 +127,7 @@ namespace Appeon.ApiDoc.ISqlBuilderBaseExamples
             sqlBuilder.Where(&quot;CourseId&quot;, &quot;1&quot;);
 
             // Validates without throwing the exception.
-            valid = sqlBuilder.Validation(_context, throwError: false);
+            valid = sqlBuilder.Validate(_context, throwError: false);
             Console.WriteLine();
             Console.WriteLine(&quot;Validate Result (second time): {0}&quot;, valid);
             Console.WriteLine(sqlBuilder.ToSqlString(_context));
@@ -135,7 +135,7 @@ namespace Appeon.ApiDoc.ISqlBuilderBaseExamples
             try
             {
                 // Validates and throws the exception.
-                valid = sqlBuilder.Validation(_context, throwError: true);
+                valid = sqlBuilder.Validate(_context, throwError: true);
             }
             catch (Exception e)
             {

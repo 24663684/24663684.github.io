@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将一个model object插入到ModelStore的指定索引处。</p>
 <p>Inserts a model object to the specified position in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -88,7 +87,7 @@
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the newly inserted model object will have the <code>ModelState.NewModified</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>向ModelStore中插入一条记录The following code example demonstrates how to insert a data record to ModelStore.</p>
+<p>The following code example demonstrates how to insert a modol object to ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,33 +106,33 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Creates a Course record
+            // Creates a Course record.
             Course course = new Course()
             {
                 CourseID = 1,
-                Title = &quot;test&quot;,
+                Title = &quot;New Course&quot;,
                 Credits = 1,
                 DepartmentID = 1
             };
 
-            // Shows the number of records in ModelStore before insertion
-            Console.WriteLine(&quot;Before Insert Count = {0}&quot;, courses.Count);
+            // Shows the number of records in ModelStore before insertion.
+            Console.WriteLine(&quot;Before Insert Count: {0}&quot;, courses.Count);
 
             // Inserts the data record before row 2
             courses.Insert(1, course);
 
-            // Shows the number of records in ModelStore after insertion
-            Console.WriteLine(&quot;After Insert Count = {0}&quot;, courses.Count);
+            // Shows the number of records in ModelStore after insertion.
+            Console.WriteLine(&quot;After Insert Count: {0}&quot;, courses.Count);
 
             /* This code example produces the following output:
             
-             Before Insert Count = 11
-             After Insert Count = 12
+             Before Insert Count: 11
+             After Insert Count: 12
             */
         }
     }

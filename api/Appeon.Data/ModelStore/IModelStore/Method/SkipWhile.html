@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>只要指定的条件为true，就会跳过ModelStore中的model objects，然后返回由其余model objects创建的新ModelStore。</p>
-<p>Bypasses the model object in ModelStore as long as the specified condition is true and then returns the remaining model objects in a new ModelStore.</p>
+<p>Bypasses the model object in ModelStore which meets the specified condition and then returns a new ModelStore which contains the remaining model objects.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -85,12 +84,10 @@
 <p>A function to test each model object for a condition.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../IModelStore/IModelStore.hmtl">Appeon.Data.IModelStore&lt;TModel&gt;</a></p>
-<p>A ModelStore that contains model objects that do not pass the test specified by <code>predicate</code>.</p>
+<p>A ModelStore that contains the model objects that do not pass the test specified by <code>predicate</code>.</p>
 <p>If ModelStore is being tracked, returns the copies of the remaining model objects; otherwise, returns the remaining model objects directly.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>按指定条件跳过ModelStore中的记录，返回剩余记录</p>
-<p>The following code example demonstrates how to skip the record that meets the condition and returns the remaining records in a new ModelStore.</p>
+<p>The following code example demonstrates how to skip the model objects that meet the condition and returns the remaining model objects in a new ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -109,29 +106,27 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the number of records
-            Console.WriteLine(&quot;Before Skip:&quot;);
-            Console.WriteLine(&quot;Row Count = {0}&quot;, courses.Count);
+            // Shows the number of model objects in the ModelStore.
+            Console.WriteLine(&quot;Count (Before SkipWhile): {0}&quot;,
+                courses.Count);
 
-            // Skips the record whose DepartmentID ==7
-            // Returns the remaining records
-            var skipModel = courses.SkipWhile(m =&gt; m.DepartmentID ==7);
+            // Skips the model object whose DepartmentID is 7.
+            // Returns the remaining records.
+            var skipModel = courses.SkipWhile(m =&gt; m.DepartmentID == 7);
 
-            // Shows the number of records in the new ModelStore after executing SkipWhile
-            Console.WriteLine(&quot;After Skip:&quot;);
-            Console.WriteLine(&quot;Row Count = {0}&quot;, skipModel.Count);
+            // Shows the number of model objects in the new ModelStore after 
+            // executing SkipWhile.
+            Console.WriteLine(&quot;Count (After SkipWhile): {0}&quot;, skipModel.Count);
 
             /* This code example produces the following output:
             
-            Before Skip:
-            Row Count = 11
-            After Skip:
-            Row Count = 10
+            Count (Before SkipWhile): 10
+            Count (After SkipWhile): 9
             */
         }
     }

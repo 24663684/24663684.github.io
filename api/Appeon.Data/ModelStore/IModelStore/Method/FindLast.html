@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>查找ModelStore中符合指定谓词的条件的model object，返回符合条件的最后一个结果。</p>
-<p>Finds the last model object in ModelStore which meets the condition defined by the predicate.</p>
+<p>Searches for the model object which meets the condition defined by the predicate and returns the last occurrence.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -85,10 +84,10 @@
 <p>A <code>Predicate&lt;TModel&gt;</code> object which specifies the the condition.</p>
 <p><strong>Returns</strong></p>
 <p>TModel</p>
-<p>If the current ModelStore is being tracked, returns the copy of the model object; otherwise, returns the model object directly.</p>
+<p>If the current ModelStore is being tracked, returns the copy of the model object; otherwise, returns the internal model object directly.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find the last department record that meets the specified criteria.按指定条件，以倒序方式，查找ModelStore中满足条件的数据。</p>
+<p>The following code example demonstrates how to find the model object that meets the specified criteria and return the last model object found.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,28 +106,29 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var dept = new ModelStore&lt;Department&gt;();
 
-            // Retrieves data from Department and sorts data
+            // Retrieves data from Department and sorts data.
             dept.Retrieve(_context);
             dept.Sort(m =&gt; m.DepartmentID);
 
-            // Searches for records whose DepartmentID = 1 and returns the last record found
+            // Searches for model objects whose DepartmentID is 1 and returns the last 
+            // model object found.
             var findResult = dept.FindLast(m =&gt; m.DepartmentID == 1);
 
-            if(findResult == null)
+            if (findResult == null)
             {
-                // Returns an empty string if no record found
+                // Returns an empty string if no model object found.
                 Console.WriteLine(&quot;Not Found!&quot;);
             }
             else
             {
-                Console.WriteLine(&quot;Department ID = {0}&quot;, findResult.DepartmentID);
+                Console.WriteLine(&quot;Department ID: {0}&quot;, findResult.DepartmentID);
             }
 
             /* This code example produces the following output:
             
-            Department ID = 1
+            Department ID: 1
             */
         }
     }

@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>查找ModelStore中符合指定谓词的条件的model object，返回符合条件的第一个结果。</p>
-<p>Finds the first model object in ModelStore which meets the conditions defined by the predicate.</p>
+<p>Searches for the model object which meets the condition defined by the predicate and returns the first occurrence.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,7 +87,7 @@
 <p>If the current ModelStore is being tracked, returns the copy of the model object found; otherwise, returns the model object found directly.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to find the first department record that meets the specified criteria.按指定条件，查找出ModelStore中的数据。</p>
+<p>The following code example demonstrates how to find the model object that meets the specified criteria and return the first model object found.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,29 +106,29 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var dept = new ModelStore&lt;Department&gt;();
 
             // Retrieves data from Department and sorts data
             dept.Retrieve(_context);
             dept.Sort(m =&gt; m.DepartmentID);
 
-            // Finds the record whose DepartmentID = 1 and returns the first record found
+            // Finds the model object whose DepartmentID is 1 and returns the first 
+            // model object found.
             var findResult = dept.Find(m =&gt; m.DepartmentID == 1);
 
             if (findResult == null)
             {
-                // If no record found, returns an empty string
+                // If no model object found, returns an empty string.
                 Console.WriteLine(&quot;Not Found!&quot;);
             }
             else
             {
-                Console.WriteLine(&quot;Department ID = {0}&quot;, findResult.DepartmentID);
+                Console.WriteLine(&quot;Department ID: {0}&quot;, findResult.DepartmentID);
             }
 
             /* This code example produces the following output:
             
-            Department ID = 1
-            
+            Department ID: 1
             */
         }
     }

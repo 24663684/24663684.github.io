@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>初始化一个<code>ModelMapper&lt;TModel&gt;</code>类的不追踪数据变化的新实例。。</p>
-<p>Initializes a new instance of the ModelStore class where the data changes are not tracked.</p>
+<p>Initializes a new instance of the <code>ModelStore</code> class where the data changes are not tracked.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -82,6 +82,43 @@
 </code></pre>
 <h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>实例化一个ModelStore对象。The following code example initializes a ModelStore object.</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.ApiDoc.ModelStoreExamples
+{
+    public class ModelStoreExample
+    {
+        private SchoolContext _context;
+
+        public ModelStoreExample(SchoolContext dataContext)
+        {
+            // Sets the data context
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            // Initializes a ModelStore object
+            IModelStore&lt;Course&gt; model = new ModelStore&lt;Course&gt;();
+
+            // Shows the object type
+            Console.WriteLine(&quot;{0}.&quot;,
+                model.ToString());
+
+            /*This code produces the following output:
+
+            Appeon.Data.ModelStore`1[Appeon.ApiDoc.Models.School.Course].
+           */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

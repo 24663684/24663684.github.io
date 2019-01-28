@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>将一个包含<code>IDataStore</code>对象及指定的键的新元素添加到<code>IDataPacker</code>对象。</p>
-<p>Adds an element, which contains a <code>IDataStore</code> object and the specified key, to the <code>IDataPacker</code> object.</p>
+<p>Adds an <code>IDataStore</code> object as an element to the <code>IDataPacker</code> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -84,11 +84,51 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>key</code> System.String</p>
-<p>The key specified for the element, which is the identifier of the element in the <code>IDataPacker</code> object.</p>
+<p>The key for the element, which is the identifier of the element in the <code>IDataPacker</code> object.</p>
 <p><code>value</code> <a href="../../../PowerBuilder/IDataStore/IDataStore.html">Appeon.Data.PowerBuilder.IDataStore</a></p>
-<p>A  <code>IDataStore</code> object, which is the value of the element to be added to the <code>IDataPacker</code> object.</p>
+<p>An <code>IDataStore</code> object, which is the value of the element to be added to the <code>IDataPacker</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例将DataStore对象添加到IDataPacker对象中，并输出DataPacker中元素个数</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class AddDataStoreExample
+    {
+        private readonly SchoolContext _context;
+
+        public AddDataStoreExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example1()
+        {
+            var packer = new DataPacker();
+
+            var dataStore = new DataStore(&quot;d_course&quot;, _context);
+
+            dataStore.Retrieve();
+
+            // 将dataStore对象添加到packer对象中
+            var key = nameof(dataStore);
+            packer.AddDataStore(key, dataStore);
+
+            // 计算packer中的元素个数，并输出
+            Console.WriteLine(&quot;The element count: {0}&quot;, packer.Count.ToString());
+
+            /* This code example produces the following output:
+            
+            The element count: 1
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

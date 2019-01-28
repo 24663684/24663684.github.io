@@ -73,18 +73,80 @@
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>待定</p>
+<p>将<code>TModel</code>对象的所有<a href="../../../Glossary/EmbeddedProperty.html">embedded properties</a>的数据添加到<code>IDataPacker</code>对象。</p>
+<p>Adds data of all <a href="../../../Glossary/EmbeddedProperty.html">embedded properties</a> of <code>TModel</code> object to the <a href="../../IDataPacker/IDataPacker.html">IDataPacker</a> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
 <pre><code class="lang-c#">void IncludeAll();
 </code></pre>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>待定。</p>
+<p>If you use <a href="../../IDataPacker/Method/AddModel.html">IDataPacker.AddModel</a> to add the data of a <code>TModel</code> object to the <a href="../../IDataPacker/IDataPacker.html">IDataPacker</a> object and name it <code>Key1</code>, then use the <code>IDataIncludeSetter.IncludeAll</code> method to add data of all <a href="../../../Glossary/EmbeddedProperty.html">embedded properties</a> of the <code>TModel</code> object to the <a href="../../IDataPacker/IDataPacker.html">IDataPacker</a> object.  Then actually name will be combined to <code>Key1.PropertyName</code> for the data from each property, <code>PropertyName</code> is the name of the property.</p>
+<p>If you use <a href="../../IDataPacker/Method/AddModels.html">IDataPacker.AddModels</a> to add the data of a collection of  <code>TModel</code> objects to the <a href="../../IDataPacker/IDataPacker.html">IDataPacker</a> object and name it <code>Key1</code>, then use the <code>IDataIncludeSetter.IncludeAll</code> method to add data of all <a href="../../../Glossary/EmbeddedProperty.html">embedded properties</a> of the <code>TModel</code> object to the <a href="../../IDataPacker/IDataPacker.html">IDataPacker</a> object.  Then actually name will be combined to <code>Key1[n].PropertyName</code> for the data from each property, <code>n</code> is the zero-based index of a <code>TModel</code> object in its collection, <code>PropertyName</code> is the name of the property.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例将TModel对象及所有嵌套数据打包</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.ApiDoc.IDataIncludeSetterExamples
+{
+    public class IncludeAllExample
+    {
+        private readonly SchoolContext _context;
+
+        public IncludeAllExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            var modelmapping = new ModelMapper(_context);
+
+            var items = modelmapping.Load&lt;CourseInfo&gt;(2).IncludeAll().ToList();
+
+            // 将items对象及所有嵌套数据添加到packer对象中
+            string key = &quot;Models&quot;;
+            packer.AddModels(key, items)
+                  .IncludeAll();
+
+            // 计算packer中数据总数，并输出
+            Console.WriteLine(&quot;The count is: {0}&quot;,
+                packer.Count.ToString());
+
+            // 获取packer中所有key值，并输出
+            string keys = &quot;&quot;;
+            for (int i = 0; i &lt; packer.Count; i++)
+            {
+                keys = keys + packer.Keys[i] + &quot;,&quot;;
+            }
+            Console.WriteLine(&quot;The key values is: {0}&quot;, keys);
+
+            /* This code example produces the following output:
+            
+            The count is: 10
+            The key values is: Models,Models[0].Students,Models[1].Students,
+            Models[2].Students,Models[0].Instructors,Models[1].Instructors,
+            Models[2].Instructors,Models[0].OnlineFlag,Models[1].OnlineFlag,
+            Models[2].OnlineFlag,
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br></p>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>
+<h3 id="see-also"><strong>See Also</strong></h3>
+<p><a href="../../IDataPacker/Method/AddModel.html">IDataPacker.AddModel</a></p>
+<p><a href="../../IDataPacker/Method/AddModels.html">IDataPacker.AddModels</a></p>
 </article>
           </div>
           

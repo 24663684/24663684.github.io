@@ -113,8 +113,8 @@ namespace Appeon.ApiDoc.ISqlRawBuilderExamples
             // 查询Department表中DepartmentID小于变量a并且budget小于变量b的记录
             sqlbuilder.Raw(&quot;select * from Department where &quot; +
                 &quot; DepartmentID &lt; @a and budget &lt; @b&quot;,
-                SqlBuilder.Parameter&lt;int&gt;(&quot;a&quot;,&quot;first&quot;),
-                SqlBuilder.Parameter&lt;decimal&gt;(&quot;b&quot;, &quot;second&quot;));
+                SqlBuilder.Parameter&lt;int&gt;(&quot;a&quot;),
+                SqlBuilder.Parameter&lt;decimal&gt;(&quot;b&quot;));
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
             string sql = sqlbuilder.ToSqlString(_context);
@@ -124,7 +124,7 @@ namespace Appeon.ApiDoc.ISqlRawBuilderExamples
             // execute sql 查询符合条件的记录总数
             var values = _context.SqlExecutor.Select&lt;DynamicModel&gt;(sql, 7, 300000).Count;
 
-            Console.WriteLine(&quot;Number of records that satisfy the condition:{0}&quot;, 
+            Console.WriteLine(&quot;Number of records that satisfy the condition:{0}&quot;,
                 values);
 
             /*This code produces the following output:

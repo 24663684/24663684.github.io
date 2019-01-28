@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将数据从ModelStore导出为简单格式的JSON字符串。</p>
-<p>Exports data from ModelStore to a simple-format JSON string.</p>
+<p>Exports data from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -83,9 +82,8 @@
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to export the department records to JSON strings.</p>
+<p>The following code example demonstrates how to uses the <code>ExportPlainJson</code> method to export the department records to a JSON string.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -105,7 +103,7 @@ namespace Appeon.ApiDoc.IModelStoreExamples
         public void Example1()
         {
             // Creates ModelStore and retrieves data
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            var department = new ModelStore&lt;Department&gt;();
             department.Retrieve(_context);
 
             // Exports data to the simple-format JSON string
@@ -117,13 +115,12 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
             ExportPlainJson1.json
             */
-            
         }
     }
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br>JSON File: <a href="../../../../SourceCode/Examples/Jsons/IModelStore/ExportPlainJson1.html">ExportPlainJson1</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

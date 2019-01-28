@@ -76,7 +76,7 @@
 代表一个用于创建GROUP BY clause的SQL Builder object.
 <p>GROUP BY clause是将查询结果划分为多个行组的SELECT语句子句。</p>
 <p>Represents a SQL Builder object used to create a GROUP BY clause.</p>
-<p>A GROUP BY clause  is a SELECT statement clause that divides the query result into group of rows.</p>
+<p>A GROUP BY clause is a SELECT statement clause that divides the query result into groups of rows.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="继承结构"><strong>继承结构</strong></h3>
@@ -103,42 +103,22 @@
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AsHaving.html">AsHaving()</a></td>
 <td><a href="../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Returns a SQL Builder object that can be used to add a search condition to a group or an aggregate in the HAVING clause.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GroupBy1.html">GroupBy(params string[] groupExpressions)</a></td>
 <td><a href="../ISqlGroupBuilder/ISqlGroupBuilder.html">ISqlGroupBuilder</a></td>
-<td></td>
+<td>Creates a GROUP BY clause and adds an array of SQL expressions (each expression specifies a column or a non-aggregate calculation on a column).</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GroupBy2.html">GroupBy(string groupClause)</a></td>
 <td><a href="../ISqlGroupBuilder/ISqlGroupBuilder.html">ISqlGroupBuilder</a></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/GroupBy3.html">GroupBy(string groupClause, string alias)</a></td>
-<td><a href="../ISqlGroupBuilder/ISqlGroupBuilder.html">ISqlGroupBuilder</a></td>
-<td></td>
+<td>Creates a GROUP BY clause, and adds a raw SQL string containing one or more column expressions (each expression specifies a column or a non-aggregate calculation on a column).</td>
 </tr>
 </tbody>
 </table>
-<h3 id="备注"><strong>备注</strong></h3>
-<table>
-<thead>
-<tr>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="examples"><strong>Examples</strong></h3>
 </article>
           </div>
           

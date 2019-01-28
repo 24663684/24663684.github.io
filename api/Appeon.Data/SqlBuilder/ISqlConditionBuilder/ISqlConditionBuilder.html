@@ -74,7 +74,7 @@
 <a href="javascript:void(0)">0.5.1-alpha(current)</a>
 </div>
 表示SQL中的搜索条件, 它是`ISqlWhereCondition`, `ISqlJoinCondition`  和`ISqlHavingCondition`的基接口。
-<p>Represents a search condition in SQL. It's the base interface of <code>ISqlWhereCondition</code> , <code>ISqlJoinCondition</code> and <code>ISqlHavingCondition</code> .</p>
+<p>Represents a search condition in a SQL statement. It's the base interface of <code>ISqlWhereCondition</code> , <code>ISqlJoinCondition</code>, and <code>ISqlHavingCondition</code> .</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -95,7 +95,7 @@
 <td><img src="../../../../images/property.jpeg" alt=""></td>
 <td><a href="Property/UsedParameters.html">UsedParameters</a></td>
 <td>IReadOnlyDictionary&lt;string, <a href="../ISqlParameter/ISqlParameter.html">ISqlParameter</a>&gt;</td>
-<td></td>
+<td>Gets an <code>IReadOnlyDictionary&lt;string, ISqlParameter&gt;</code> object that contains all the parameters used in the current search condition.</td>
 </tr>
 </tbody>
 </table>
@@ -114,24 +114,10 @@
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/ToSqlString.html">ToSqlString(DataContext context)</a></td>
 <td>string</td>
-<td></td>
+<td>Returns the raw SQL string of the current search condition for the corresponding database.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="备注"><strong>备注</strong></h3>
-<table>
-<thead>
-<tr>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="examples"><strong>Examples</strong></h3>
 </article>
           </div>
           

@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将一个新创建的model object插入到ModelStore的指定索引处。</p>
 <p>Inserts a newly created model object as an empty row to the specified position in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -85,11 +84,11 @@
 <p>The zero-based index at which the model object should be inserted.</p>
 <p><strong>Returns</strong></p>
 <p>TModel</p>
-<p>The newly created model object to be inserted.</p>
+<p>The newly created internal model object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>If ModelStore is being tracked, the newly inserted model object will have the <code>ModelState.New</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>向ModelStore中指定的位置插入空行The following code example demonstrates how to insert an empty row to the specified position in ModelStore.</p>
+<p>The following code example demonstrates how to insert an empty model object to the specified position in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -108,24 +107,33 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the number of records in ModelStore before insertion
-            Console.WriteLine(&quot;Before Insert Count = {0}&quot;, courses.Count);
+            // Shows the number of records in ModelStore before insertion.
+            Console.WriteLine(&quot;Before Insert Count: {0}&quot;, courses.Count);
 
-            // Inserts the data record before row 2
-            courses.InsertEmpty(1);
+            // Inserts the data record before index 1.
+            var newModel = courses.InsertEmpty(1);
 
-            // Shows the number of records in ModelStore after insertion
-            Console.WriteLine(&quot;After Insert Count = {0}&quot;, courses.Count);
+            // Shows the number of records in ModelStore after insertion.
+            Console.WriteLine(&quot;After Insert Count: {0}&quot;, courses.Count);
+
+            // You can use the reference of internal model object to modify data 
+            // directly.
+            newModel.Title = &quot;New Course&quot;;
+
+            // Outputs the Title.
+            var title = courses.GetValue&lt;string&gt;(1, &quot;Title&quot;);
+            Console.WriteLine(&quot;Title: {0}&quot;, title);
 
             /* This code example produces the following output:
             
-             Before Insert Count = 11
-             After Insert Count = 12
+            Before Insert Count: 10
+            After Insert Count: 11
+            Title: New Course
             */
         }
     }

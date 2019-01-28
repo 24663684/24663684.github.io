@@ -85,6 +85,37 @@
 <p>The data type of the parameter value.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>获取ParamValue对象的数据类型</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ParamValueExamples
+{
+    public class DataTypeExample
+    {
+        private readonly SchoolContext _context;
+
+        public DataTypeExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            string data1 = &quot;Economics&quot;;
+            var param = ParamValue.New(&quot;data1&quot;, data1);
+
+            // 输出ParamValue对象的数据类型
+            Console.WriteLine(&quot;ParamValue.DataType = {0}&quot;, param.DataType);
+
+            /*This code produces the following output:
+              
+             ParamValue.DataType = System.String
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.Net Standard</p>
 <p>2.x</p>

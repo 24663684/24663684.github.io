@@ -75,18 +75,53 @@
 </div>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<p>根据model类中的定义以及指定的select list获取一个新创建的<a href="../../SqlBuilder/ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a>对象。</p>
+<p>Gets a new created <a href="../../SqlBuilder/ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a> object based on the definitions in the model class and the specified select list.</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">public ISqlQueryBuilder GetQueryBuilder(string selectName)
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>selectName</code> System.String</p>
+<p>A name specified for a select list predefined in the model class.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../../ISqlQueryBuilder/ISqlQueryBuilder.html">Appeon.Data.ISqlQueryBuilder</a></p>
+<p>Returns the new created <a href="../../SqlBuilder/ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>根据ModelSqlBuilder关联Model上的SqlSelect，返回一个ISqlQueryBuilder对象</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+
+namespace Appeon.ApiDoc.ModelSqlBuilderExamples
+{
+    public class GetQueryBuilderExample
+    {
+        private readonly SchoolContext _context;
+
+        public GetQueryBuilderExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            ModelSqlBuilder build;
+
+            // 创建ModelSqlBuilder对象
+            build = ModelSqlBuilder.GetBuilder&lt;CourseInfo&gt;(_context);
+
+            var query = build.GetQueryBuilder(&quot;SelectCourse&quot;);
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.Net Standard</p>
 <p>2.x</p>
+<h3 id="see-also"><strong>See Also</strong></h3>
+<p><a href="../Property/QueryBuilder.html">ModelSqlBuilder.QueryBuilder</a></p>
 </article>
           </div>
           

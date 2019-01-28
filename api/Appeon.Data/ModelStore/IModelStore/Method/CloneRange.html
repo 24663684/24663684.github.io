@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取由零基础索引start和count指定的model objects的副本的collection。</p>
-<p>Copies a number of model objects starting from the specified position.</p>
+<p>Copies a number of model objects from the specified position.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,11 +87,11 @@
 <h3 id="returns"><strong>Returns</strong></h3>
 <p>System.Collections.Generic.IList&lt;TModel&gt;</p>
 <p>A new collection of model objects.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to Clone ModelStore中指定的多行数据。</p>
+<p>The following code example demonstrates how to use the <code>CloneRange</code> method to copy two model objects from the specified position.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
+using System;
 
 namespace Appeon.ApiDoc.IModelStoreExamples
 {
@@ -108,14 +107,26 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
             // Retrieves data from Department
-            dept.Retrieve(_context);
+            depts.Retrieve(_context);
 
-            //Clone ModelStore中从index = 1 行开始的两行数据
-            dept.CloneRange(1, 2);
+            // Clones two model objects starting at index 1.
+            var deptList = depts.CloneRange(1, 2);
 
+            foreach (var dept in deptList)
+            {
+                Console.WriteLine(&quot;Department ID: {0}, Name: {1}&quot;,
+                    dept.DepartmentID,
+                    dept.Name);
+            }
+
+            /* This code produces the following output:
+
+            Department ID: 2, Name: English
+            Department ID: 4, Name: Economics
+            */
         }
     }
 }

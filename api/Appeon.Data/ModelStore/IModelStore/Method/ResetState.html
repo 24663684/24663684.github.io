@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>清除指定model state(s)的所有已跟踪的信息。</p>
-<p>Clears all tracked information for the specified model state(s).</p>
+<p>Clears all tracked information for the specified model state(s). It is only useful when the ModelStore is being tracked.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -84,9 +83,9 @@
 <p><code>stateTrackable</code> <a href="../../StateTrackable/StateTrackable.html">Appeon.Data.StateTrackable</a></p>
 <p>A value of the <code>StateTrackable</code> enumerated datatype.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
+<p>If the tracked information of a model object with <code>ModelState.Deleted</code> is cleared, when saving changes to database using the <code>SaveChanges</code> method, it will not execute the SQL DELETE statement on the database; if the tracked information of a model object with other model state is cleared, it will get the <code>ModelState.NotTracked</code> state.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>清空ModelStore中指定StateTrackable的记录</p>
-<p>The following code example demonstrates how to remove records according to the specified state.</p>
+<p>The following code example demonstrates how to use the <code>ResetState</code> method to clear all tracked information for the specified model state.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -105,24 +104,61 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            // Sets the PropertyState tracking strategy.
+            var courses =
+                new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the number of records in ModelStore before Reset
-            Console.WriteLine(&quot;Before Reset Count = {0}&quot;, courses.Count);
+            // Adds a model object.
+            var newCourse = courses.AddEmpty();
 
-            // Removes the record whose StateTrackable = Deleted
-            courses.ResetState( StateTrackable.Deleted);
+            // Sets Title.
+            newCourse.Title = &quot;New Course&quot;;
+            //courses.SetValue(courses.Count - 1, &quot;Title&quot;, &quot;New Course&quot;);
 
-            // Shows the number of records in ModelStore after Reset
-            Console.WriteLine(&quot;After Reset Count = {0}&quot;, courses.Count);
+            int trackedCount = courses.TrackedCount(StateTrackable.NewModified);
+            Console.WriteLine(&quot;NewModified Count (Before ResetState): {0}&quot;,
+                trackedCount);
+
+            // Clears all tracked information for the NewModified state.
+            courses.ResetState(StateTrackable.NewModified);
+
+            trackedCount = courses.TrackedCount(StateTrackable.NewModified);
+            Console.WriteLine(&quot;NewModified Count (After ResetState): {0}&quot;,
+                trackedCount);
+
+            // Gets the current ModelState of the newly added model object.
+            var state = courses.GetModelState(courses.Count - 1);
+            Console.WriteLine(&quot;Current State (After ResetState): {0}&quot;,
+                state);
+
+
+            // Removes a model object.
+            courses.RemoveAt(0);
+
+            // Shows the number of the tracked models in Deleted state.
+            trackedCount = courses.TrackedCount(StateTrackable.Deleted);
+            Console.WriteLine();
+            Console.WriteLine(&quot;Deleted Count (Before ResetState): {0}&quot;,
+                trackedCount);
+
+            // Clears all tracked information for the Deleted state.
+            courses.ResetState(StateTrackable.Deleted);
+
+            trackedCount = courses.TrackedCount(StateTrackable.Deleted);
+            Console.WriteLine(&quot;Deleted Count (After ResetState): {0}&quot;,
+                trackedCount);
 
             /* This code example produces the following output:
             
-             Before Reset Count = 12
-             After Reset Count = 11
+            NewModified Count (Before ResetState): 1
+            NewModified Count (After ResetState): 0
+            Current State (After ResetState): NotTracked
+
+            Deleted Count (Before ResetState): 1
+            Deleted Count (After ResetState): 0
             */
         }
     }

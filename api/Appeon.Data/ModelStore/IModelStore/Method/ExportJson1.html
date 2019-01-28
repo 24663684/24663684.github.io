@@ -71,31 +71,27 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将数据从ModelStore导出为标准格式的JSON字符串。</p>
-<p>Exports data from ModelStore to a standard-format JSON string.</p>
+<p>Exports data from ModelStore to a <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a> string.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public string ExportJson(MappingMethod mappingMethod);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>mappingMethod</code> <a href="../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
+<p><code>mappingMethod</code> <a href="../../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
 <p>A value of the <code>MappingMethod</code> enumerated datatype specifying the method for mapping columns.</p>
 <ul>
-<li>MappingMethod.JsonIndex -- Use the index of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 0.</li>
-<li>MappingMethod.MetaIndex -- Use the index of meta-columns to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 1.</li>
-<li>MappingMethod.JsonKey -- Use the key of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 2.</li>
+<li><code>MappingMethod.JsonIndex</code> -- Use the index of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 0.</li>
+<li><code>MappingMethod.MetaIndex</code> -- Use the index of meta-columns to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 1.</li>
+<li><code>MappingMethod.JsonKey</code> -- Use the key of JSON item to map with the DataStore column. The &quot;mapping-method&quot; value in the exported JSON string is 2.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p>System.String</p>
 <p>Returns the JSON string.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
-<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the standard-format JSON.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates export department records to JSON strings using different MappingMethods.当指定MappingMethod.JsonIndex时，导出json的&quot;mapping-method&quot;为 0;当指定MappingMethod.MetaIndex，导出json的&quot;mapping-method&quot;为 1;当指定MappingMethod.JsonKey，导出json的&quot;mapping-method&quot;为 2.</p>
-<p>The following code example demonstrates how to export the department records to JSON strings using different MappingMethods.</p>
+<p>The following code example demonstrates how to use the <code>ExportJson(MappingMethod)</code> method to export department records to the JSON string using different mapping methods.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -114,12 +110,13 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1()
         {
-            // Creates ModelStore and retrieves data
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            // Creates ModelStore and retrieves data.
+            var department = new ModelStore&lt;Department&gt;();
             department.Retrieve(_context);
 
-            // Exports data from ModelStore to the JSON string
-            // The mapping-method for exporting to JSON is set to 0 which indicates mapping by the JSON index.
+            // Exports data from ModelStore to the JSON string.
+            // The mapping-method for exporting to JSON is set to 0 which indicates 
+            // mapping by the JSON index.
             string json1 = department.ExportJson(MappingMethod.JsonIndex);
 
             Console.WriteLine(json1);
@@ -129,8 +126,9 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             ExportJson1_JsonIndex.json
             */
 
-            // Exports data from ModelStore to the JSON string
-            // The mapping-method for exporting to JSON is set to 3 which indicates mapping by the JSON key.
+            // Exports data from ModelStore to the JSON string.
+            // The mapping-method for exporting to JSON is set to 3 which indicates 
+            // mapping by the JSON key.
             string json2 = department.ExportJson(MappingMethod.JsonKey);
 
             Console.WriteLine(json2);
@@ -140,8 +138,9 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             ExportJson1_JsonKey.json
             */
 
-            // Exports data from ModelStore to the JSON string
-            // The mapping-method for exporting to JSON is set to 2 which indicates mapping by the meta index.
+            // Exports data from ModelStore to the JSON string.
+            // The mapping-method for exporting to JSON is set to 2 which indicates 
+            // mapping by the meta index.
             string json3 = department.ExportJson(MappingMethod.MetaIndex);
 
             Console.WriteLine(json3);

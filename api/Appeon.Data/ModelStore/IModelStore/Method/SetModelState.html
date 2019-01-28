@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>当ModelStore正在被追踪，设置ModelStore中指定基于零的索引处的model object的state.</p>
 <p>Sets the state for the specified model object in ModelStore, if ModelStore is being tracked.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -85,10 +84,55 @@
 <p>The zero-based index of the model object in ModelStore to which you will set state.</p>
 <p><code>modelState</code> <a href="../../ModelState/ModelState.html">Appeon.Data.ModelState</a></p>
 <p>A value of the <code>ModelState</code> enumerated datatype.</p>
+<p>It only supports <code>ModelState.New</code>, <code>ModelState.NewModified</code>, <code>ModelState.NotModified</code> and <code>ModelState.Modified</code>.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
+<p>The <code>SetModelState</code> method only supports changing model state between <code>ModelState.New</code>, <code>ModelState.NewModified</code>, <code>ModelState.NotModified</code> and <code>ModelState.Modified</code>.</p>
+<p>If the original state of the model is <code>ModelState.NotTracked</code>, it will be changed to <code>ModelState.Modified</code> first, then changed to the specified model state.</p>
+<p>You cannot change any model state to <code>ModelState.NotTracked</code>.</p>
+<p>The following table illustrates the effect of changing from one model state to another. It will throw an exception if unsupported.</p>
+<table>
+<thead>
+<tr>
+<th>Original state</th>
+<th>Change to New</th>
+<th>Change to NewModified</th>
+<th>Change to NotModified</th>
+<th>Change to Modified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>NewModified</td>
+<td>No</td>
+<td>-</td>
+<td>Yes (but state will be changed to New)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>NotModified</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Modified</td>
+<td>Yes (but state will be changed to NewModified)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>设置ModelStore中指定记录的状态</p>
-<p>The following code example demonstrates how to set the state for the specified record in ModelStore.</p>
+<p>The following code example demonstrates how to set the state for the specified model object in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,30 +151,27 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses =
+                new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the state of the first record
+            // Shows the state of the first model object.
             var state = courses.GetModelState(0);
-            Console.WriteLine(&quot;Before SetModelState:&quot;);
-            Console.WriteLine(&quot;Item state = {0}&quot;, state.ToString());
+            Console.WriteLine(&quot;State (Before SetModelState): {0}&quot;, state);
 
-            // Modifies the state of the first record
+            // Modifies the state of the first model object.
             courses.SetModelState(0, ModelState.Modified);
 
-            // Shows the state of the first record after modified
+            // Shows the state of the first model object after modified.
             state = courses.GetModelState(0);
-            Console.WriteLine(&quot;After SetModelState:&quot;);
-            Console.WriteLine(&quot;Item state = {0}&quot;, state.ToString());
+            Console.WriteLine(&quot;State (After SetModelState): {0}&quot;, state);
 
             /* This code example produces the following output:
             
-            Before SetModelState:
-            Item state = NotTracked
-            After SetModelState:
-            Item state = Modified
+            State (Before SetModelState): NotTracked
+            State (After SetModelState): Modified
             */
         }
     }

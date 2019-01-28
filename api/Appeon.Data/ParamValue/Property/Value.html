@@ -85,6 +85,37 @@
 <p>The value of the parameter.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>获取ParamValue对象的Value</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ParamValueExamples
+{
+    public class ValueExample
+    {
+        private readonly SchoolContext _context;
+
+        public ValueExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            string data1 = &quot;Economics&quot;;
+            var param = ParamValue.New(&quot;param1&quot;, data1);
+
+            // 输出ParamValue对象的Name
+            Console.WriteLine(&quot;ParamValue.Name = {0}&quot;, param.Value);
+
+            /*This code produces the following output:
+            
+            ParamValue.Value = Economics
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.Net Standard</p>
 <p>2.x</p>

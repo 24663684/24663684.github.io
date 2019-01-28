@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>根据JSON项的键名将数据从JSON字符串插入ModelStore。可以指定JSON数组中的起始位置。</p>
 <p>Inserts data from a JSON string into ModelStore according to the key name of the JSON item. You can specify the starting position in the JSON array.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -83,16 +82,14 @@
 <p><strong>Parameters</strong></p>
 <p><code>json</code>	System.String</p>
 <p>A string specifying the JSON data.</p>
-<p>The JSON string must comply with the <a href="Glossary/json_format.html">simple or standard format</a>.</p>
+<p>The JSON string must comply with the <a href="../../../../Glossary/DataFormat/JsonFormat/Simple.html">simple-format JSON</a> or <a href="../../../../Glossary/DataFormat/JsonFormat/Standard.html">standard-format JSON</a>.</p>
 <p><code>startRow</code>	System.Int32</p>
 <p>The zero-based number of the first detail object in the JSON array that you want to import. If it is negative, 0 is used.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of model objects that were imported if it succeeds.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>将含有department信息的json从startRow开始，导入到ModelStore.</p>
-<p>The following code example demonstrates how to import the department data starting from the specified row of a JSON string to ModelStore.</p>
+<p>The following code example demonstrates how to use the <code>ImportJson(String, Int32)</code> method to import the department data starting from the specified detail object of a JSON string to ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -112,31 +109,31 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            // Creates ModelStore
-            IModelStore&lt;Department&gt; department = new ModelStore&lt;Department&gt;();
+            // Creates ModelStore.
+            var department = new ModelStore&lt;Department&gt;();
 
-            // Gets the JSON file. ImportJson2.json contains 4 records.
+            // Gets the JSON file. 
+            // ImportJson2.json contains 4 records.
             string path = Path.Combine(AppContext.BaseDirectory,
-                                @&quot;Jsons\IModelStore\ImportJson2.json&quot;);
+                                       @&quot;Jsons\IModelStore\ImportJson2.json&quot;);
             string json = File.ReadAllText(path);
 
-            // Imports data from JSON to ModelStore.
-            // Imports data starting from row 1.
+            // Imports data starting from the first detail object (index 0) to the end of JSON array.
             department.ImportJsonByKey(json, 0);
 
-            Console.WriteLine(&quot;Rowcount:{0}&quot;, department.Count);
+            Console.WriteLine(&quot;Count:{0}&quot;, department.Count);
 
             department.Clear();
 
-            // Imports data starting from row 2.
+            // Imports data starting from the second detail object (index 1) to the end of JSON array.
             department.ImportJsonByKey(json, 1);
 
-            Console.WriteLine(&quot;Rowcount: {0}&quot;, department.Count);
+            Console.WriteLine(&quot;Count: {0}&quot;, department.Count);
 
             /*This code produces the following output:
 
-            Rowcount: 4
-            Rowcount: 3
+            Count: 4
+            Count: 3
            */
         }
     }

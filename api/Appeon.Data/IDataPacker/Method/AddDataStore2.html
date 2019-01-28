@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>将一个包含<code>IDataStore</code>对象及指定的key的元素添加到<code>IDataPacker</code>对象，指定是否仅导出已更改的数据。</p>
-<p>Adds an element, which contains a <code>IDataStore</code> object and the specified key, to the <code>IDataPacker</code> object, specifying whether export the changed data only.</p>
+<p>Adds an <code>IDataStore</code> object as an element to the <code>IDataPacker</code> object, and specifies whether to export only the changed data from the <code>IDataStore</code> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -86,15 +86,67 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>key</code> System.String</p>
-<p>The key specified for the element, which is the identifier of the element in the <code>IDataPacker</code> object.</p>
+<p>The key for the element, which is the identifier of the element in the <code>IDataPacker</code> object.</p>
 <p><code>value</code> <a href="../../../PowerBuilder/IDataStore/IDataStore.html">Appeon.Data.PowerBuilder.IDataStore</a></p>
-<p>A  <code>IDataStore</code> object, which is the value of the element to be added to the <code>IDataPacker</code> object.</p>
+<p>An <code>IDataStore</code> object, which is the value of the element to be added to the <code>IDataPacker</code> object.</p>
 <p><code>changeOnly</code> System.Boolean</p>
 <p>System.Boolean</p>
-<p>True -- to export the changed rows in the <code>IDataStore</code> object only (and all rows of the Delete buffer).</p>
+<p>True -- to export the changed rows in the <code>IDataStore</code> object only (and all rows of the delete buffer).</p>
 <p>False -- to export all rows in the <code>IDataStore</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例将DataStore对象中修改的记录添加到IDataPacker对象中</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class AddDataStoreExample
+    {
+        private readonly SchoolContext _context;
+
+        public AddDataStoreExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example2()
+        {
+            var packer = new DataPacker();
+
+            var dataStore = new DataStore(&quot;d_course&quot;, _context);
+
+            dataStore.Retrieve();
+
+            // 修改dataStore中第一条记录，将Title修改为English
+            dataStore.SetItem(0, &quot;Title&quot;, &quot;English&quot;);
+
+            // 将dataStore对象添加到packer对象中,并只添加修改的数据
+            var key = nameof(dataStore);
+            packer.AddDataStore(key, dataStore, true);
+
+            // 获取packer对象中所有数据，并以json格式显示
+            Console.WriteLine(packer.GetTextString(DataFormat.Json));
+
+            /* This code example produces the following output:
+            
+            {&quot;dataStore&quot;:{&quot;identity&quot;:&quot;70c86603-983b-4bd9-adbc-259436e43cbd&quot;,
+            &quot;version&quot;:1.0,&quot;platform&quot;:&quot;C#&quot;,&quot;mapping-method&quot;:0,&quot;dataobject&quot;:
+            {&quot;name&quot;:&quot;d_course&quot;,&quot;meta-columns&quot;:[{&quot;name&quot;:&quot;Courseid&quot;,&quot;index&quot;:0,
+            &quot;datatype&quot;:&quot;System.Int32&quot;,&quot;nullable&quot;:0},{&quot;name&quot;:&quot;Title&quot;,&quot;index&quot;:1,
+            &quot;datatype&quot;:&quot;System.String&quot;,&quot;nullable&quot;:0},{&quot;name&quot;:&quot;Credits&quot;,&quot;index&quot;:2,
+            &quot;datatype&quot;:&quot;System.Int32&quot;,&quot;nullable&quot;:0},{&quot;name&quot;:&quot;Departmentid&quot;,
+            &quot;index&quot;:3,&quot;datatype&quot;:&quot;System.Int32&quot;,&quot;nullable&quot;:0}],
+            &quot;primary-rows&quot;:[{&quot;row-status&quot;:1,&quot;columns&quot;:{&quot;Courseid&quot;:[1045],
+            &quot;Title&quot;:[&quot;English&quot;,1,&quot;test&quot;],&quot;Credits&quot;:[4],&quot;Departmentid&quot;:[7]}}],
+            &quot;filter-rows&quot;:[],&quot;delete-rows&quot;:[]}}}
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

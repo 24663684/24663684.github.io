@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>根据一个<code>ISqlQueryBuilder</code> object中定义的SQL Select Statement, 从数据库中检索数据，如果<code>ISqlQueryBuilder</code> object中定义了SQL 参数则应该传入对应的参量。</p>
 <p>Retrieves data from the database according to the SQL SELECT statement defined in the <code>ISqlQueryBuilder</code> object. If there are SQL parameters defined in the <code>ISqlQueryBuilder</code> object, the corresponding arguments should be passed in.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -81,19 +80,17 @@
 <pre><code class="lang-c#">  public int Retrieve(DataContext context, ISqlQueryBuilder sqlBuilder, params object[] parameters);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>context</code>	<a href="../../DataContext/DataContext.html">Appeon.Data.DataContext</a></p>
+<p><code>context</code>	<a href="../../../DataContext/DataContext.html">Appeon.Data.DataContext</a></p>
 <p>A <code>DataContext</code> object which contains the database connection information.</p>
-<p><code>sqlBuilder</code>	<a href="../../ISqlQueryBuilder/ISqlQueryBuilder.html">Appeon.Data.ISqlQueryBuilder</a></p>
-<p>An <code>ISqlQueryBuilder</code> object used to build the SQL SELECT statement dynamically. The result set of this SQL SELECT statement should have the same column names and data types as the properties of TModel for the current ModelStore.</p>
+<p><code>sqlBuilder</code>	<a href="../../../SqlBuilder/ISqlQueryBuilder/ISqlQueryBuilder.html">Appeon.Data.ISqlQueryBuilder</a></p>
+<p>An <code>ISqlQueryBuilder</code> object used to build the SQL SELECT statement dynamically. The result set of this SQL SELECT statement should have the same column names and data types as the properties of <code>TModel</code> for the current ModelStore.</p>
 <p><code>parameters</code>	System.Object</p>
-<p>(Optional) One or more values that you want to use as retrieval arguments in the SQL SELECT statement defined in the  <code>ISqlQueryBuilder</code> object.</p>
+<p>(Optional) One or more values that you want to use as retrieval arguments in the SQL SELECT statement defined in the <code>ISqlQueryBuilder</code> object. See <a href="../../../ParamValue/ParamValue.html">ParamValue</a> for more info.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of model objects retrieved from database.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>检索ModelStore中的记录自定义查询条件进行检索</p>
-<p>The following code example demonstrates how to retrieve data according to the retrieval arguments defined by the developer.</p>
+<p>The following code example demonstrates how to retrieve data according to the SQL SELECT statement and the retrieval arguments defined in the <code>ISqlQueryBuilder</code> object.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -112,29 +109,25 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Creates the column
-            string[] columns = new string[2];
-            columns[0] = &quot;CourseID&quot;;
-            columns[1] = &quot;Title&quot;;
-
-            // Generates the SqlQueryBuilder Select statement
+            // Builds the SQL Query.
             ISqlQueryBuilder querySql = new SqlQueryBuilder();
-            querySql.Select(columns)
+            querySql.Select(&quot;CourseID&quot;)
+                    .Select(&quot;Title&quot;)
                     .From(&quot;Course&quot;)
-                    .Where(&quot;Courseid&quot;, SqlBinaryOperator.Equals, 
+                    .Where(&quot;Courseid&quot;, SqlBinaryOperator.Equals,
                             SqlBuilder.Parameter(typeof(int)));
-            
-            // Retrieves the data whose CourseID = 1
+
+            // Retrieves data whose CourseID = 1.
             int count = courses.Retrieve(_context, querySql, 1);
 
-            // Shows the number of records in ModelStore
-            Console.WriteLine(&quot;Item Count = {0}&quot;, count);
+            // Shows the number of mode objects in ModelStore.
+            Console.WriteLine(&quot;Count: {0}&quot;, count);
 
             /* This code example produces the following output:
             
-             Item Count = 1
+            Count: 1
             */
         }
     }

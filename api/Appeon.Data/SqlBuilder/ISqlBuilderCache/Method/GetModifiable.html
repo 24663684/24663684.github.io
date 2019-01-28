@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ISqlBuilderCache.GetModifiable(string sqlBuilderName)&#26041;&#27861; </title>
+    <title>ISqlBuilderCache.GetModifiable&lt;TSqlBuilder&gt;(string sqlBuilderName)&#26041;&#27861; </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ISqlBuilderCache.GetModifiable(string sqlBuilderName)&#26041;&#27861; ">
+    <meta name="title" content="ISqlBuilderCache.GetModifiable&lt;TSqlBuilder&gt;(string sqlBuilderName)&#26041;&#27861; ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
@@ -66,28 +66,79 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="isqlbuildercachegetmodifiablestring-sqlbuildername方法"><strong>ISqlBuilderCache.GetModifiable<tsqlbuilder>(string sqlBuilderName)方法</tsqlbuilder></strong></h2>
+<h2 id="isqlbuildercachegetmodifiabletsqlbuilderstring-sqlbuildername方法"><strong>ISqlBuilderCache.GetModifiable&lt;TSqlBuilder&gt;(string sqlBuilderName)方法</strong></h2>
 
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>dai ding</p>
+<p>用指定的缓存名称获取一个可修改的<code>TSqlBuilder</code>对象。</p>
+<p>Gets an modifiable  <code>TSqlBuilder</code> object by the specified cache name.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
 <pre><code class="lang-c#">TSqlBuilder GetModifiable&lt;TSqlBuilder&gt;(string sqlBuilderName) where TSqlBuilder : ISqlBuilder;
 </code></pre>
+<p><strong>Type Parameters</strong></p>
+<p>TSqlBuilder</p>
+<p>The type of a SQL Builder object inherited from <a href="../../ISqlBuilder/ISqlBuilder.html">ISqlBuilder</a>. e.g.: <a href="../../ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a>.</p>
 <p><strong>Parameters</strong></p>
 <p><code>sqlBuilderName</code> System.String</p>
+<p>The cache name specified for the  SQL Builder object when it was cached.</p>
 <p><strong>Returns</strong></p>
 <p>TSqlBuilder</p>
+<p>If the <code>TSqlBuilder</code> object is specified read-only when cached, returns an <code>TSqlBuilder</code> object by the specified cache name;</p>
+<p>Otherwise, throw an exception.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>通过缓存名称获取一个可修改的ISqlBuild对象</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ISqlBuilderCacheExamples
+{
+    public class GetModifiableExample
+    {
+        private readonly SchoolContext _context;
+
+        public GetModifiableExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            // 创建一个SqlQueryBuilder对象
+            var build = SqlBuilderFactory.Create&lt;ISqlQueryBuilder&gt;(&quot;original sql&quot;);
+            build.Select(&quot;select Title from Course wherer CourseID = 1050&quot;);
+
+            // 通过SqlBuilderFactory.Cache，生成一个SqlBuilderCache对象
+            var cache = SqlBuilderFactory.Cache;
+
+            // 将SqlQueryBuilder注入SqlBuilderCache对象中
+            // 只读属性必须设置为false
+            cache.Set(&quot;querySql&quot;, build, false);
+
+            // 从缓存中获取名为querySql的ISqlBuild对象
+            var get = cache.GetModifiable&lt;ISqlQueryBuilder&gt;(&quot;querySql&quot;);
+
+            Console.WriteLine(&quot;SqlBuild Name = {0}&quot;, get.Name);
+
+            /*This code produces the following output:
+            
+            SqlBuild Name = original sql
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>
+<h3 id="see-also"><strong>See Also</strong></h3>
+<p><a href="Get.html">Get(String)</a></p>
+<p><a href="Set.html">Set(String, ISqlBuilder, Boolean)</a></p>
 </article>
           </div>
           

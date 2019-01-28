@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取ModelStore中model object（由基于零的索引指定）的属性值（由基于零的属性索引指定）。 它默认获取当前值。</p>
-<p>Get the value of a property (specified by index) of a model object (specified by index) in ModelStore. It gets the current value by default.</p>
+<p>Gets the value of the specified property (by index) of the specified model object (by index) in ModelStore. It gets the current value by default.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -91,9 +90,8 @@
 <p><strong>Returns</strong></p>
 <p>System.Object</p>
 <p>Returns the value in the specified model object and property. The datatype of the returned data is <code>object</code>.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the value of the specified row and column (by index). The data type is unknown.获取ModelStore中指定行列的数据。不用提前指定该列数据类型</p>
+<p>The following code example demonstrates how to get the value of the specified row and column (by index). The data type is not specified.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -112,19 +110,43 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example3()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data.
+            depts.Retrieve(_context);
 
-            // Gets the value of column 1 and row 1
-            var id = dept.GetValue(0, 0);
+            // Gets the value of the property (at index 0) of the model object 
+            // (at index 0).
+            var id = depts.GetValue(0, 0);
 
-            Console.WriteLine(&quot;data = {0}&quot;, id);
+            Console.WriteLine(&quot;Department ID: {0}&quot;, id);
+
+
+            // Creates a ModelStore and sets the tracking strategy to PropertyState.
+            var depts2 =
+                new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
+
+            // Retrieves data.
+            depts2.Retrieve(_context);
+
+            // Modifies the value to 11.
+            depts2.SetValue(0, 0, 11);
+
+            // Gets the original value.
+            id = depts2.GetValue(0, 0, true);
+            Console.WriteLine();
+            Console.WriteLine(&quot;Department ID (Orginal): {0}&quot;, id);
+
+            // Gets the current value.
+            id = depts2.GetValue(0, 0);
+            Console.WriteLine(&quot;Department ID (Current): {0}&quot;, id);
 
             /* This code example produces the following output:
             
-             data = 1
+            Department ID: 1
+
+            Department ID (Orginal): 1
+            Department ID (Current): 11
             */
         }
     }

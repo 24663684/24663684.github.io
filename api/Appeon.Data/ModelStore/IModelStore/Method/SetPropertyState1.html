@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>当ModelStore正在被追踪，设置ModelStore中的一个model object(按基于零的索引指定)的一个属性(按基于零的property index)的状态.</p>
-<p>Sets the state for the specified property (by index) of the model object in ModelStore, when ModelStore is being tracked.</p>
+<p>Sets the state for the specified property (by index) of the specified model object (by index) in ModelStore, when ModelStore is being tracked using the <code>ChangeTrackingStrategy.PropertyState</code> strategy.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -87,9 +86,7 @@
 <p>The zero-based index of the property to which you will set state.</p>
 <p><code>propertyState</code>	<a href="../../PropertyState/PropertyState.html">Appeon.Data.PropertyState</a></p>
 <p>A value of the <code>PropertyState</code> enumerated datatype.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>设置ModelStore中指定记录中指定属性的状态以属性index设置</p>
 <p>The following code example demonstrates how to set the state for the property (specified by index) of the record in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
@@ -109,31 +106,42 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example1()
         {
-            IModelStore&lt;Course&gt; courses = 
+            var courses =
                 new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Shows the state of column 1 in row 1
+            // Shows the state of the CourseID property (at index 0) of 
+            // the model object (at index 0).
             var state = courses.GetPropertyState(0, 0);
-            Console.WriteLine(&quot;Before SetPropertyState:&quot;);
-            Console.WriteLine(&quot;Property State = {0}&quot;, state.ToString());
+            Console.WriteLine(&quot;Property State (Before SetPropertyState): {0}&quot;,
+                state);
 
-            // Modifies the state of column 1 in row 1
+            // Shows the model state before modified.
+            Console.WriteLine(&quot;Model State (Before SetPropertyState): {0}&quot;,
+                courses.GetModelState(0));
+
+            // Modifies the state of the CourseID property.
             courses.SetPropertyState(0, 0, PropertyState.Modified);
 
-            // Shows the state of column 1 in row 1 after modified
+            // Shows the state after modified
             state = courses.GetPropertyState(0, 0);
-            Console.WriteLine(&quot;After SetPropertyState:&quot;);
-            Console.WriteLine(&quot;Property State = {0}&quot;, state.ToString());
+            Console.WriteLine();
+            Console.WriteLine(&quot;Property State (After SetPropertyState): {0}&quot;,
+                state);
+
+            // Shows the model state after modified.
+            Console.WriteLine(&quot;Model State (After SetPropertyState): {0}&quot;,
+                courses.GetModelState(0));
 
             /* This code example produces the following output:
             
-            Before SetPropertyState:
-            Property State = NotModified
-            After SetPropertyState:
-            Property State = Modified
+            Property State (Before SetPropertyState): NotModified
+            Model State (Before SetPropertyState): NotTracked
+
+            Property State (After SetPropertyState): Modified
+            Model State (After SetPropertyState): Modified
             */
         }
     }

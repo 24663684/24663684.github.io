@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>在ModelStore的指定的从零开始的索引处获取model object。</p>
 <p>Gets the model object at the specified position of ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -88,7 +87,7 @@
 <p>If ModelStore is being tracked, returns the copy of the model object; otherwise, returns the model object directly.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to get the data of the specified position in ModelStore.获取ModelStore中指定行的数据。</p>
+<p>The following code example demonstrates how to get the data at the specified position in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,13 +106,13 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            IModelStore&lt;Department&gt; depts = new ModelStore&lt;Department&gt;();
 
             // Retrieves data from Department
-            dept.Retrieve(_context);
+            depts.Retrieve(_context);
 
             // Gets the first record
-            var modelResult = dept.Get(0);
+            var modelResult = depts.Get(0);
 
             Console.WriteLine(&quot;Department ID = {0}&quot;, modelResult.DepartmentID);
 

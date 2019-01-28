@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>IDataIncludeGetter Interface </title>
+    <title>IDataIncludeGetter&lt;TModel&gt; Interface </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="IDataIncludeGetter Interface ">
+    <meta name="title" content="IDataIncludeGetter&lt;TModel&gt; Interface ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../images/logo-appeon.png ">
@@ -66,14 +66,15 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="idataincludegetter-interface"><strong>IDataIncludeGetter<tmodel> Interface</tmodel></strong></h2>
+<h2 id="idataincludegettertmodel-interface"><strong>IDataIncludeGetter&lt;TModel&gt; Interface</strong></h2>
 
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../images/dropdown.png" class="dropdownpic"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
 <a href="javascript:void(0)">0.5.1-alpha(current)</a>
 </div>
-<p>待定。</p>
+提供在调用[IDataUnpacker.GetModel](../IDataUnpacker/Method/GetModel.html) 或 [IDataUnpacker.GetModels](../IDataUnpacker/Method/GetModels.html)方法后所需的一系列方法, 这些方法可以用来获取`TModel`对象或者`TModel`对象的集合,或者继续从`IDataUnpacker`对象获取`TModel`对象的[embedded properties](../../Glossary/EmbeddedProperty.html)的数据。
+<p>Provides a series of methods needed after calling <a href="../IDataUnpacker/Method/GetModel.html">IDataUnpacker.GetModel</a> method or <a href="../IDataUnpacker/Method/GetModels.html">IDataUnpacker.GetModels</a> method. These methods can be used get a <code>TModel</code> object, get a collection of <code>TModel</code> object, or continue to get data of <a href="../../Glossary/EmbeddedProperty.html">embedded properties</a> of <code>TModel</code> object from the <a href="../IDataUnpacker/IDataUnpacker.html">IDataUnpacker</a> object.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -130,6 +131,9 @@
 </tbody>
 </table>
 <h3 id="examples"><strong>Examples</strong></h3>
+<h3 id="see-also"><strong>See Also</strong></h3>
+<p><a href="../IDataUnpacker/Method/GetModel.html">IDataUnpacker.GetModel</a></p>
+<p><a href="../IDataUnpacker/Method/GetModels.html">IDataUnpacker.GetModels</a></p>
 </article>
           </div>
           

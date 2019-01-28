@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>向HAVING子句添加OR逻辑运算符和一个搜索条件(该搜索条件由<code>ISqlWhereCondition</code>对象指定)。</p>
-<p>Adds the OR logical operator and a search condition (specified by a <code>ISqlWhereCondition</code> object) to the HAVING clause.</p>
+<p>Adds the OR logical operator and a search condition (specified by an <code>ISqlWhereCondition</code> object) to the HAVING clause.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -82,14 +82,13 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>condition</code> <a href="../../ISqlHavingCondition/ISqlHavingCondition.html">Appeon.Data.ISqlHavingCondition</a></p>
-<p>A <code>ISqlHavingCondition</code> which represents a search condition for HAVING Clause.</p>
-<p>This object can be created by using <code>SqlBuilder.Having</code> method and so on.</p>
+<p>An <code>ISqlHavingCondition</code> object which represents a search condition of the HAVING clause.</p>
+<p>This object can be created by using the <code>SqlBuilder.Having</code> method and so on.</p>
 <p><strong>Returns</strong></p>
 <p>TBuilder</p>
-<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions for current HAVING clause.</p>
-<h3 id="备注"><strong>备注</strong></h3>
+<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions to the current HAVING clause.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>增加分组条件</p>
+<p>增加分组条件The following code example demonstrates how to specify search conditions for groups.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -101,7 +100,7 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
 
         public OrHavingExample(SchoolContext dataContext)
         {
-            // Set data context
+            // Sets the data context.
             _context = dataContext;
         }
 
@@ -110,10 +109,13 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
             var sqlQueryBuilder = new SqlQueryBuilder();
 
             // 定义Haveing条件
+            // Defines a HAVING condition.
             var having = SqlBuilder.HavingRaw(&quot;StudentID = 8&quot;);
 
             // 在StudentGrade表中根据StudentID和CourseID分组，获取每个分组的Grade总和，
             // 分组条件为StudentID = 6，或者为以上的定义条件（StudentID = 8）
+            // Groups the &quot;StudentGrade&quot; table by StudentID and CourseID, and gets the sum of the Grades of each group.
+            // Specifies the search condition for the group as “StudentID = 6”, and adds an alternative condition which is defined above (StudentID = 8).
             sqlQueryBuilder
                 .Select(&quot;StudentID&quot;)
                 .Select(&quot;sum(Grade)&quot;)
@@ -123,6 +125,7 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
                 .OrHaving(having);
 
             // 将sqlQueryBuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.          
             string sql = sqlQueryBuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);            

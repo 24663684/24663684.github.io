@@ -71,18 +71,15 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将枚举数设置为其初始位置，该位置位于ModelStore中的第一个model object之前。</p>
-<p>Sets the enumerator to its initial position, which is before the first model object in ModelStore. (Inherited from IEnumerator)</p>
+<p>Sets the enumerator to its initial position, which is before the first model object in ModelStore. (Inherited from <code>IEnumerator&lt;T&gt;</code>)</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public void Reset();
 </code></pre>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>重置ModelStore中记录的索引该方法继承自IEnumerator</p>
 <p>The following code example demonstrates how to reset the enumerator to its initial position in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
@@ -102,31 +99,35 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
             // Moves to the next record
             courses.MoveNext();
 
-            // Shows the value of Title for the current record
-            Console.WriteLine(&quot;Current Title:&quot;);
-            Console.WriteLine(&quot;{0}&quot;, courses.Current.Title);
+            // Shows the value of Title for the current model object.
+            Console.WriteLine(&quot;Current Title: {0}&quot;, courses.Current.Title);
 
-            // Resets the enumerator
+            // Resets the enumerator to its initial position, which is before the 
+            // first model object in ModelStore.
             courses.Reset();
 
-            // Shows the value for the current record
-            Console.WriteLine(&quot;After Reset, Current Row:&quot;);
-            Console.WriteLine(&quot;{0}&quot;, courses.Current);
+            Console.WriteLine(&quot;After Reset, Current model is null: {0}&quot;,
+                courses.Current == null);
+
+            // Moves to the next record
+            courses.MoveNext();
+
+            // Shows the value of Title for the current model object.
+            Console.WriteLine(&quot;Current Title: {0}&quot;, courses.Current.Title);
 
             /* This code example produces the following output:
             
-            Current Title:
-            test
-            After Reset, Current Row:
-
+            Current Title: Calculus
+            After Reset, Current model is null: True
+            Current Title: Calculus
             */
         }
     }

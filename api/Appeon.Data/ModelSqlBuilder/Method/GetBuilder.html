@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ModelSqlBuilder.GetBuilder(DataContext context) Method </title>
+    <title>ModelSqlBuilder.GetBuilder&lt;TModel&gt;(DataContext context) Method </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ModelSqlBuilder.GetBuilder(DataContext context) Method ">
+    <meta name="title" content="ModelSqlBuilder.GetBuilder&lt;TModel&gt;(DataContext context) Method ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
@@ -66,24 +66,57 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="modelsqlbuildergetbuilderdatacontext-context-method"><strong>ModelSqlBuilder.GetBuilder<tmodel>(DataContext context) Method</tmodel></strong></h2>
+<h2 id="modelsqlbuildergetbuildertmodeldatacontext-context-method"><strong>ModelSqlBuilder.GetBuilder&lt;TModel&gt;(DataContext context) Method</strong></h2>
 
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
+<p>创建一个指定model class和数据上下文的<a href="../ModelSqlBuilder.html">ModelSqlBuilder</a>对象。</p>
+<p>Creates a <a href="../ModelSqlBuilder.html">ModelSqlBuilder</a> object specifying the model class and the data context.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">public static ModelSqlBuilder GetBuilder&lt;TModel&gt;(DataContext context)
 </code></pre>
+<p><strong>Type Parameters</strong></p>
+<p>TModel</p>
+<p>The type of the <a href="../../../Glossary/model.html">model</a> class used to create SQL Builder object.</p>
 <p><strong>Parameters</strong></p>
-<p><code>context</code> <a href="../../../DataContext/DataContext.html">Appeon.Data.DataContext</a></p>
+<p><code>context</code> <a href="../../DataContext/DataContext.html">Appeon.Data.DataContext</a></p>
+<p>The <code>DataContext</code> object used to generate SQL statement.</p>
 <p><strong>Returns</strong></p>
-<p><a href="../../ModelSqlBuilder.html">Appeon.Data.ModelSqlBuilder</a></p>
+<p><a href="../ModelSqlBuilder.html">Appeon.Data.ModelSqlBuilder</a></p>
+<p>Returns the new created <code>ModelSqlBuilder</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>根据指定Model，返回一个ModelSqlBuilder对象</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+
+namespace Appeon.ApiDoc.ModelSqlBuilderExamples
+{
+    public class GetBuilderExample
+    {
+        private readonly SchoolContext _context;
+
+        public GetBuilderExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            ModelSqlBuilder build;
+
+            build = ModelSqlBuilder.GetBuilder&lt;Person&gt;(_context);
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.Net Standard</p>
 <p>2.x</p>

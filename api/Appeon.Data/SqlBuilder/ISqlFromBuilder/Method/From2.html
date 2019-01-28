@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>向当前SQL Builder对象的FROM从句中添加不指定的别名的表或视图。</p>
-<p>Adds a table or view, without specifying the alias, to the FROM clause in current SQL Builder object.</p>
+<p>Adds a table or view, without specifying the alias, to the FROM clause of the current SQL Builder object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -82,13 +82,12 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>table</code>	System.String</p>
-<p>The name of a table or view.</p>
+<p>The name of the table or view.</p>
 <p><strong>Returns</strong></p>
 <p>Appeon.Data.ISqlFromBuilder</p>
 <p>Returns the current <code>ISqlFromBuilder</code> object.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示From(string table)方法。以下案例从Department表中查询所有记录</p>
+<p>演示From(string table)方法。以下案例从Department表中查询所有记录The following code example demonstrates how to use the From(string table) method to retrieve all the records from the &quot;Department&quot; table.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -107,13 +106,16 @@ namespace Appeon.ApiDoc.ISqlFromBuilderExamples
         public void Example2()
         {
             // 声明SqlQueryBuilder
+            // Declares SqlQueryBuilder.
             var sqlbuilder = new SqlQueryBuilder();
 
-            // 构建SQL语法，查询Department表中查询所有记录
+            // 构建SQL语法，查询Department表中查询所有记录 
+            // Builds a SQL statement to retrieve all the records from the &quot;Department&quot; table.
             sqlbuilder.Select(&quot;*&quot;)
                 .From(&quot;Department&quot;);
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlbuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ISqlExecutor.ExecuteProcedure(string sqlText, params object[] parameters) &#26041;&#27861; </title>
+    <title>ISqlExecutor.ExecuteProcedure(string sqlText, params object[] parameters) Method </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="ISqlExecutor.ExecuteProcedure(string sqlText, params object[] parameters) &#26041;&#27861; ">
+    <meta name="title" content="ISqlExecutor.ExecuteProcedure(string sqlText, params object[] parameters) Method ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../../images/logo-appeon.png ">
@@ -66,29 +66,29 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="isqlexecutorexecuteprocedurestring-sqltext-params-object-parameters-方法"><strong>ISqlExecutor.ExecuteProcedure(string sqlText, params object[] parameters) 方法</strong></h2>
+<h2 id="isqlexecutorexecuteprocedurestring-sqltext-params-object-parameters-method"><strong>ISqlExecutor.ExecuteProcedure(string sqlText, params object[] parameters) Method</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>Executes a SQL stored procedure which doesn't need to return the result set.</p>
-<p><strong>命名空间：</strong> Appeon.Data</p>
-<p><strong>程序集：</strong> Appeon.Data.dll</p>
-<h3 id="语法"><strong>语法</strong></h3>
+<p>Executes a SQL stored procedure which does not need to return the result set.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public int ExecuteProcedure(string sqlText, params object[] parameters);
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>sqlText</code>	System.String</p>
-<p>The SQL stored procedure's name.</p>
+<p>The name of the SQL stored procedure.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) The parameters  for executing the SQL stored procedure.</p>
-<p>One or more <code>ParamValue</code> objects, containing Parameter Direction and values, corresponding to the SQL stored procedure's parameters. See <a href="../../ParamValue/ParamValue.md">ParamValue</a> for more info.</p>
+<p>(Optional) The parameters for executing the SQL stored procedure.</p>
+<p>One or more <code>ParamValue</code> objects, containing the parameter direction and values, corresponding to the SQL stored procedure's parameters. See <a href="../../ParamValue/ParamValue.md">ParamValue</a> for more info.</p>
 <p><strong>Returns</strong></p>
-<p>Return the count of the affected rows if succeeds.</p>
+<p>Returns the number of the affected rows if succeeds.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行数据库中指定的procedure，主要用于对数据进行更新.</p>
+<p>执行数据库中指定的procedure，主要用于对数据进行更新.The following code example demonstrates how to execute the specified procedure in the database to update data.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 using System.Data;
@@ -102,16 +102,16 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
 
         public ExecuteProcedureExample(SchoolContext dataContext)
         {
-            // Set data context
+            // Sets the data context
             _context = dataContext;
         }
 
         public void Example()
         {
-            // 指定要执行的procedure
+            // Specifies the procedure to be executed.
             var sql = &quot;test_proc&quot;;
 
-            // 设置参数
+            // Sets the parameters.
             int id = 8001;
             var inparam = ParamValue.New&lt;int&gt;(&quot;id&quot;, id, ParameterDirection.Input);
             var outparam = ParamValue.New&lt;string&gt;(&quot;out&quot;, ParameterDirection.Output);
@@ -123,24 +123,24 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
              select output = 'success';
              */
 
-            // 执行SQL, 并返回受影响的行数
+            // Executes the SQL statement and returns the number of the rows which are updated.
             var row = _context.SqlExecutor.ExecuteProcedure(sql, inparam, outparam);
 
-            Console.WriteLine(&quot;{0} records have been Updated into the database. {1}&quot;,
+            Console.WriteLine(&quot;{0} records have been updated into the database. {1}&quot;,
                               row, outparam.Value);
 
             /*This code produces the following output:
 
-            1 records have been Updated into the database. success·
+            1 records have been updated into the database. success
            */
 
         }
     }
 }
 </code></pre>
-<h3 id="版本信息"><strong>版本信息</strong></h3>
-<p>.Net Standard</p>
-<p>自2.x起可用</p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
 </article>
           </div>
           

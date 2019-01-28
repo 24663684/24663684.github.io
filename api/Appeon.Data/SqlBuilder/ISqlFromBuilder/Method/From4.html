@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>向当前SQL Builder对象的FROM从句中添加指定别名和架构的表或视图。</p>
-<p>Adds a table or view, specifying the alias and the schema, to the FROM clause in current SQL Builder object.</p>
+<p>Adds a table or view, with the alias and the schema specified, to the FROM clause of the current SQL Builder object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -90,9 +90,8 @@
 <p><strong>Returns</strong></p>
 <p>Appeon.Data.ISqlFromBuilder</p>
 <p>Returns the current <code>ISqlFromBuilder</code> object.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示From(string table, string alias, string schema)方法。以下案例将Department表设置别名为d，并指定schema，查询其中3列的所有记录</p>
+<p>演示From(string table, string alias, string schema)方法。Demonstrates how to use the From(string table, string alias, string schema) method.以下案例将Department表设置别名为d，并指定schema，查询其中3列的所有记录It sets the alias of the &quot;Department&quot; table as &quot;d&quot;, specifies the schema, and retrieves all the records of the 3 columns &quot;name&quot;, &quot;budget&quot;, and &quot;startdate&quot; from the &quot;Department&quot; table.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -111,16 +110,21 @@ namespace Appeon.ApiDoc.ISqlFromBuilderExamples
         public void Example4()
         {
             // 声明SqlQueryBuilder
+            // Declares SqlQueryBuilder.
             var sqlbuilder = new SqlQueryBuilder();
 
             // 构建SQL语法，设置Department表别名为d，指定schema为dbo
+            // Builds a SQL statement to set the alias of the &quot;Department&quot; table as &quot;d&quot; and specify the schema as &quot;dbo&quot;.
             // 查询Department表中列名为name，budget，startdate的所有记录
+            // Retrieves all the records of the 3 columns &quot;name&quot;, &quot;budget&quot;, and &quot;startdate&quot; from the &quot;Department&quot; table.
+
             sqlbuilder.Select(new string[] { &quot;d.name&quot;,
                 &quot;d.budget&quot;,
                 &quot;d.startdate&quot; })
                 .From(&quot;Department&quot;, &quot;d&quot;, &quot;dbo&quot;);
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlbuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);

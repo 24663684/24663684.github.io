@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>返回一个<code>ISqlJoinOnAndOr</code>对象，该对象表示用于在SQL语句中构建JOIN子句的SQL Builder对象。</p>
-<p>Returns a <code>ISqlJoinOnAndOr</code> object which represents a SQL Builder object used to build the JOIN clause in a SQL statement.</p>
+<p>Returns an <code>ISqlJoinOnAndOr</code> object which represents a SQL Builder object used to build the JOIN clause in a SQL statement.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -82,10 +82,9 @@
 </code></pre>
 <p><strong>Returns</strong></p>
 <p><a href="../../ISqlJoinOnAndOr1/ISqlJoinOnAndOr.html">Appeon.Data.ISqlJoinOnAndOr</a></p>
-<p>Returns the <code>ISqlJoinOnAndOr</code> object which can be used to build  the JOIN clause in a SQL statement (e.g.: add search conditions to the JOIN clause).</p>
-<h3 id="备注"><strong>备注</strong></h3>
+<p>Returns the <code>ISqlJoinOnAndOr</code> object which can be used to build  the JOIN clause in a SQL statement (e.g.: adding search conditions to the JOIN clause).</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>演示AsJoin()方法。获取Join标识后，可以继续增加Join条件</p>
+<p>演示AsJoin()方法。获取Join标识后，可以继续增加Join条件The following code example demonstrates how to use the AsJoin() method to add a JOIN condition.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc;
 using Appeon.Data;
 using Appeon.Data.PowerBuilder;
@@ -106,9 +105,11 @@ namespace Appeon.ApiDoc.ISqlFromBuilderExamples
         public void Example()
         {
             // 声明SqlQueryBuilder
+            // Declares SqlQueryBuilder.
             var sqlbuilder = new SqlQueryBuilder();
 
             // 定义一个含有Join的SQL语法
+            // Defines a SQL statement with JOIN.
             sqlbuilder.Select(&quot;d.name&quot;)
                 .Select(&quot;c.title&quot;)
                 .From(&quot;Department&quot;, &quot;d&quot;)
@@ -117,9 +118,11 @@ namespace Appeon.ApiDoc.ISqlFromBuilderExamples
                 .WhereRaw(&quot;c.Credits = 4&quot;);
 
             // 获取Join标识,并添加Department.budget &gt; 300000条件
+            // Gets the JOIN keyword and adds the condition: Department.budget &gt; 300000.
             sqlbuilder.AsJoin().AndOnRaw(&quot;d.budget &gt; 300000&quot;);
 
             // 将sqlbuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlbuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);

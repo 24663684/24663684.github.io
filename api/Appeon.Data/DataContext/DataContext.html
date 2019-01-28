@@ -74,7 +74,7 @@
 <a href="javascript:void(0)">0.5.1-alpha(current)</a>
 </div>
 表示数据库的入口，其中包含数据库连接信息，操作数据库事务的方法以及其他易于使用的属性。
-<p>Represents the entry to the database, which contains database connection info, methods for manipulating database transactions and other easy-to-use properties.</p>
+<p>Represents the entry to the database, which contains the database connection information, methods for manipulating database transactions, and other easy-to-use properties.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -202,6 +202,37 @@
 </tbody>
 </table>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>The following code example demonstrates how to create a <code>DataContextExample</code> class which can be used to connect the connect a SQL Server database.</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.SqlServer;
+using System.Data.SqlClient;
+
+namespace Appeon.ApiDoc.DataContextExamples
+{
+    public class DataContextExample : SqlServerDataContext
+    {
+        /// &lt;summary&gt;
+        /// 构造DataContext类
+        /// 使用DataContextOptions参数来构造
+        /// &lt;/summary&gt;              
+        public DataContextExample(IDataContextOptions&lt;DataContextExample&gt; options)
+            : base((SqlServerDataContextOptions)options)
+        {
+
+        }
+
+        /// &lt;summary&gt;
+        /// 构造DataContext类
+        /// 使用SqlConnection参数来构造
+        /// &lt;/summary&gt;        
+        public DataContextExample(SqlConnection conns)
+            : base(conns)
+        {
+
+        }
+    }
+}
+</code></pre>
 </article>
           </div>
           

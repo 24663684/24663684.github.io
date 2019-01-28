@@ -73,7 +73,6 @@
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>获取ModelStore中包含的model object的数量。</p>
 <p>Gets the number of model objects contained in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -82,9 +81,8 @@
 <p><strong>Property Value</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of model objects contained in ModelStore.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to return the number of rows in a ModelStore.返回ModelStore中数据的行数。</p>
+<p>The following code example demonstrates how to return the number of rows (model objects) in a ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -110,11 +108,11 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
             // Returns the number of rows in ModelStore
             int count = dept.Count;
-            Console.WriteLine(&quot;Row Count = {0}&quot;, count);
+            Console.WriteLine(&quot;Count: {0}&quot;, count);
 
-            /*This code produces the following output:
+            /* This code produces the following output:
             
-              Row Count = 4
+            Count: 4
             */
         }
     }

@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>添加一个包含值和指定的键的元素到<code>IDataPacker</code> object中.</p>
-<p>Add an element, which contains a value and the specified key, to the <code>IDataPacker</code> object.</p>
+<p>Adds a value as an element to the <code>IDataPacker</code> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -85,11 +85,53 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>key</code> System.String</p>
-<p>The key specified for the element, which is the identifier of the element in the</p>
+<p>The key for the element, which is the identifier of the element in the <code>IDataPacker</code> object.</p>
 <p><code>value</code> TValue</p>
 <p>The value of the element to be added to the <code>IDataPacker</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例将值添加到IDataPacker对象中，并输出DataPacker中元素个数及具体内容</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+using System.Collections.Generic;
+using System.Data;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class AddValueExample
+    {
+        private readonly SchoolContext _context;
+
+        public AddValueExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            // 将值NameValue添加到packer对象中
+            packer.AddValue(&quot;Value&quot;, &quot;NameValue&quot;);
+
+            // 计算packer中的元素个数，并输出
+            Console.WriteLine(&quot;The element count: {0}&quot;, packer.Count.ToString());
+
+            // 使用json格式输出packer中的内容
+            Console.WriteLine(packer.GetTextString(DataFormat.Json));
+
+            /* This code example produces the following output:
+            
+            The element count: 1
+            {&quot;Value&quot;:&quot;NameValue&quot;}
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

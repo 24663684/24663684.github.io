@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>创建GROUP BY子句，添加一个包含一个或者多个列表达式的raw SQL字符串 (每个表达式指定列或列上的非聚合计算)。</p>
-<p>Creates a GROUP BY clause, adds a raw SQL string containing one or more column expressions (each expression specifies a column or a non-aggregate calculation on a column).</p>
+<p>Creates a GROUP BY clause, and adds a raw SQL string containing one or more column expressions (each expression specifies a column or a non-aggregate calculation on a column).</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -86,9 +86,8 @@
 <p><strong>Returns</strong></p>
 <p><a href="../../ISqlWhereAndOr/ISqlGroupBuilder.html">Appeon.Data.ISqlGroupBuilder</a></p>
 <p>Returns the current <code>ISqlGroupBuilder</code> object.</p>
-<h3 id="备注"><strong>备注</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>设置分组列，多个分组列用逗号隔开</p>
+<p>设置分组列，多个分组列用逗号隔开The following code example demonstrates how to group by columns. When grouping by multiple columns, separates different groups by commas.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -100,7 +99,7 @@ namespace Appeon.ApiDoc.ISqlGroupBuilderExamples
 
         public GroupByExample(SchoolContext dataContext)
         {
-            // Set data context
+            // Sets the data context.
             _context = dataContext;
         }
 
@@ -110,6 +109,8 @@ namespace Appeon.ApiDoc.ISqlGroupBuilderExamples
 
             // 在StudentGrade表中根据按StudentID和CourseID列分组(传入一个参数，多列用逗号分隔)
             // 获取每个分组的Grade总和
+            // Groups the &quot;StudentGrade&quot; table by the columns &quot;StudentID&quot; and &quot;CourseID&quot; (passing one parameter; separating different groups by commas).
+            // Gets the Grade sum of each group.   
             sqlQueryBuilder
                 .Select(&quot;StudentID&quot;)
                 .Select(&quot;sum(Grade)&quot;)
@@ -117,6 +118,7 @@ namespace Appeon.ApiDoc.ISqlGroupBuilderExamples
                 .GroupBy(&quot;StudentID, CourseID&quot;);
 
             // 将sqlQueryBuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlQueryBuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);

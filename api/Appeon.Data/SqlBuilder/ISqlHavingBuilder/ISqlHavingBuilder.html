@@ -75,8 +75,8 @@
 </div>
 代表一个用于构建SQL statement中的HAVING clause的SQL Builder object. 
 <p>HAVING子句指定组或聚合的搜索条件。</p>
-<p>Represents a SQL Builder object used to build the HAVING clause in a SQL statement.</p>
-<p>The HAVING clause specifies a search condition for a group or an  aggregate.</p>
+<p>Represents a SQL Builder object used to build a HAVING clause in a SQL statement.</p>
+<p>The HAVING clause specifies a search condition for a group or an aggregate.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="继承结构"><strong>继承结构</strong></h3>
@@ -87,25 +87,6 @@
 <h3 id="语法"><strong>语法</strong></h3>
 <pre><code class="lang-c#">  public interface ISqlHavingBuilder: ISqlOrderBuilder, ISqlBuilder, ISqlBuilderBase, ICloneable&lt;ISqlBuilder&gt;;
 </code></pre>
-<h3 id="属性"><strong>属性</strong></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>名称</th>
-<th>返回类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="../../../../images/property.jpeg" alt=""></td>
-<td><a href="Property/HasWhere.html">HasWhere</a></td>
-<td>bool</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h3 id="方法"><strong>方法</strong></h3>
 <table>
 <thead>
@@ -121,96 +102,82 @@
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AsOrderBy.html">AsOrderBy()</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Returns an <code>ISqlOrderThenBuilder</code> object which can be used to add sorting criteria to the ORDER clause.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having1.html">Having(string left, ISqlParameter parameter)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies a SQL expression on the left of the operator and a SQL parameter on the right of the operator. The operator is '='.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having2.html">Having(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies a SQL expression on the left of the operator and a SQL parameter on the right of the operator.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having3.html">Having(string left, string right)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies SQL expressions on the left and right of the operator. The operator is '='.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having4.html">Having(string left, SqlBinaryOperator sqlOperator, string right)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies SQL expressions on the left and right of the operator.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having5.html">Having(string left, ISqlBuilder sqlBuilder)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies a SQL expression on the left of the operator and specifies a SQL subquery on the right side. The operator is '='.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having6.html">Having(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies a SQL expression on the left of the operator and specifies a SQL subquery on the right side.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having7.html">Having(ISqlHavingCondition condition)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause by an <code>ISqlHavingCondition</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/Having8.html">Having(ISqlHavingCondition condition, string havingName)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause. Adds a search condition to the HAVING clause by an <code>ISqlHavingCondition</code> object and specifies a name for the search condition.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/HavingRaw1.html">HavingRaw(string havingClause, params ISqlParameter[] parameters)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a raw SQL to the HAVING clause.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/HavingRaw2.html">HavingRaw(string havingClause, string havingName, params ISqlParameter[] parameters)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause. Adds a raw SQL to the HAVING clause and specifies a name for the raw SQL.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/HavingValue1.html">HavingValue(string left, object value)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies a SQL expression on the left the operator and a specific value on the right of the operator. The operator is '='.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/HavingValue2.html">HavingValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
 <td><a href="../ISqlHavingAndOr1/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
-<td></td>
+<td>Creates a HAVING clause and adds a search condition to the HAVING clause. Specifies the SQL expression on the left the operator and a specific value on the right of the operator.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="备注"><strong>备注</strong></h3>
-<table>
-<thead>
-<tr>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="examples"><strong>Examples</strong></h3>
 </article>
           </div>
           

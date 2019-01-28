@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>向ModelStore的末尾导入一个系列含有数据和状态的<code>IModelEntry</code> objects.</p>
 <p>Imports a sequence of <code>IModelEntry</code> objects, which contain data and state, to the end of ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -81,13 +80,13 @@
 <pre><code class="lang-c#">  public int ImportEntry(IEnumerable&lt;IModelEntry&gt; modelEntries);
 </code></pre>
 <p><strong>Parameters</strong></p>
-<p><code>modelEntries</code>	System.Collections.Generic.IEnumerable&lt;<a href="../../IModelEntry/IModelEntry.html">Appeon.Data.IModelEntry</a>&gt;</p>
+<p><code>modelEntries</code> System.Collections.Generic.IEnumerable&lt;<a href="../../IModelEntry/IModelEntry.html">Appeon.Data.IModelEntry</a>&gt;</p>
 <p>A sequence of <code>IModelEntry</code> objects which contain data and state.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>Returns the number of the <code>IModelEntry</code> objects that were imported if it succeeds.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to import multiple ModelEntry records to the end of ModelStore.向ModelStore中导入多条ModelEntry数据</p>
+<p>The following code example demonstrates how to import multiple <code>IModelEntry</code> objects to the end of ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
 using Appeon.Data;
 using System;
@@ -105,16 +104,16 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             _context = dataContext;
         }
 
-        public void Example2(IEnumerable&lt;IModelEntry&lt;Person&gt;&gt; persondatas)
+        public void Example2(IEnumerable&lt;IModelEntry&lt;Person&gt;&gt; persondata)
         {
-            // Creates ModelStore and imports multiple records
-            // Saves the changes
-            IModelStore&lt;Person&gt; person = new ModelStore&lt;Person&gt;();
+            // Creates ModelStore. 
+            var persons = new ModelStore&lt;Person&gt;();
 
-            person.ImportEntry(persondatas);
-            // Shows the saving result
-            Console.WriteLine(&quot;Rowcount:{0}&quot;,
-                              person.Count);
+            // Imports an IEnumerable&lt;IModelEntry&lt;Person&gt;&gt; object which contains 2 
+            // IModelEntry&lt;Person&gt; objects.
+            persons.ImportEntry(persondata);
+
+            Console.WriteLine(&quot;Rowcount:{0}&quot;, persons.Count);
 
             /* The code example produces the following output:
             

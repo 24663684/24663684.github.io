@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>将一个包含 <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code>对象及指定的键的元素添加到<code>IDataPacker</code>对象。</p>
-<p>Adds an element, which contains a <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code> object and the specified key, to the <code>IDataPacker</code> object.</p>
+<p>Adds an <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code> object as an element to the <code>IDataPacker</code> object.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -87,9 +87,59 @@
 <p><code>key</code> System.String</p>
 <p>The key of the element, which is the identifier of the element in the <code>IDataPacker</code> object.</p>
 <p><code>value</code> System.Collections.Generic.IEnumerable&lt;<a href="../../IModelEntry1/IModelEntry1.html">IModelEntry&lt;TModel&gt;</a>&gt;</p>
-<p>The  <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code>  object, which is the value of the element to be added to the <code>IDataPacker</code> object.</p>
+<p>The <code>IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt;</code> object, which is the value of the element to be added to the <code>IDataPacker</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例将多条Model记录添加到IDataPacker对象中，并输出DataPacker中元素个数</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+using System.Collections.Generic;
+using System.Data;
+
+namespace Appeon.ApiDoc.IDataPackerExamples
+{
+    public class AddModelEntriesExample
+    {
+        private readonly SchoolContext _context;
+
+        public AddModelEntriesExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            //创建modle
+            var course = new ModelStore&lt;Course&gt;();
+
+            course.Retrieve(_context);
+
+            var a = course.Take(1);
+            // 将items对象添加到packer对象中
+            //packer.AddModelEntries&lt;Course&gt;(&quot;Models&quot;, a);
+
+            // 计算packer中的元素个数，并输出
+            Console.WriteLine(&quot;The element count: {0}&quot;, packer.Count.ToString());
+
+            // 使用json格式输出packer中的内容
+            Console.WriteLine(packer.GetTextString(DataFormat.Json));
+
+            /* This code example produces the following output:
+            
+            The element count: 1
+            {&quot;Models&quot;:[
+            {&quot;CourseID&quot;:1000,&quot;Title&quot;:&quot;Chiness&quot;,&quot;Credits&quot;:2,&quot;DepartmentID&quot;:1},
+            {&quot;CourseID&quot;:1001,&quot;Title&quot;:&quot;English&quot;,&quot;Credits&quot;:2,&quot;DepartmentID&quot;:1}]}
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

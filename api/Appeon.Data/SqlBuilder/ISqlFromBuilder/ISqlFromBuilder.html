@@ -76,7 +76,7 @@
 <p>代表一个用于构建SQL statement中的FROM clause的SQL Builder object.</p>
 <p>From子句指定DELETE，SELECT和UPDATE语句中使用的表，视图，派生表和连接表。</p>
 <p>Represents a SQL Builder object used to build the FROM clause in a SQL statement.</p>
-<p>The From clause specifies the tables, views, derived tables, and joined tables used in DELETE, SELECT, and UPDATE statements.</p>
+<p>The From clause specifies the tables, views, derived tables, and joined tables used in the DELETE, SELECT, and UPDATE statements.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="实现接口"><strong>实现接口</strong></h3>
@@ -106,7 +106,7 @@
 <td><img src="../../../../images/property.jpeg" alt=""></td>
 <td><a href="Property/HasTable.html">HasTable</a></td>
 <td>bool</td>
-<td></td>
+<td>Gets whether any table sources have been added to the current SQL Builder object using the <code>From</code> or <code>FromRaw</code> method.</td>
 </tr>
 </tbody>
 </table>
@@ -125,66 +125,53 @@
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/AsJoin.html">AsJoin()</a></td>
 <td><a href="../ISqlJoinOnAndOr1/ISqlJoinOnAndOr.html">ISqlJoinOnAndOr</a></td>
-<td></td>
+<td>Returns an <code>ISqlJoinOnAndOr</code> object which represents a SQL Builder object used to build the JOIN clause in a SQL statement.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/From1.html">From(ISqlBuilder sqlBuilder, string alias)</a></td>
 <td><a href="../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
-<td></td>
+<td>Adds a derived table, specified by another <code>ISqlBuilder</code> object and an alias, to the FROM clause of the current SQL Builder object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/From2.html">From(string table)</a></td>
 <td><a href="../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
-<td></td>
+<td>Adds a table or view, with the alias specified, to the FROM clause of the current SQL Builder object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/From3.html">From(string table, string alias)</a></td>
 <td><a href="../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
-<td></td>
+<td>Adds a table or view, with the alias and the schema specified, to the FROM clause of the current SQL Builder object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/From4.html">From(string table, string alias, string schema)</a></td>
 <td><a href="../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
-<td></td>
+<td>Adds a table or view, with the alias and the schema specified, to the FROM clause of the current SQL Builder object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/FromRaw1.html">FromRaw(string fromClause)</a></td>
 <td><a href="../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
-<td></td>
+<td>Adds a table source (table, view or derived table), specified by an raw SQL, to the FROM clause of the current SQL Builder object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/FromRaw2.html">FromRaw(string fromClause, string builderAlias)</a></td>
 <td><a href="../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
-<td></td>
+<td>Adds a table source (table, view or derived table), specified by an raw SQL, to the FROM clause in current SQL Builder object, and specifies an alias for this table source.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
 <td><a href="Method/GetTableAlias.html">GetTableAlias(string tableName)</a></td>
 <td>string</td>
-<td></td>
+<td>Gets the alias for a table source that has been added to the current SQL Builder object using the <code>From</code> or <code>FromRaw</code> method.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="备注"><strong>备注</strong></h3>
-<table>
-<thead>
-<tr>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="examples"><strong>Examples</strong></h3>
+<h3 id="section"></h3>
 </article>
           </div>
           

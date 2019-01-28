@@ -71,26 +71,24 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>将指定数量的从指定的ModelStore索引开始的model objects复制到一个数组。</p>
-<p>Copies a number of the model objects (starting from the specified position) of ModelStore to the specified position of an array.</p>
+<p>Copies a number of model objects from the specified position of ModelStore to the specified position of an array.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public void CopyTo(int index, TModel[] array, int arrayIndex, int count);
 </code></pre>
 <p><code>index</code> System.Int32</p>
-<p>The index of a data item in ModelStore at which copying begins.</p>
-<p><code>array</code>	TModel[]</p>
-<p>The one-dimensional System.Array to which the model objects of ModelStore will be copied.</p>
+<p>The zero-based index of ModelStore at which copying begins.</p>
+<p><code>array</code> TModel[]</p>
+<p>The one-dimensional <code>System.Array</code> to which model objects will be copied.</p>
 <p><code>arrayIndex</code> System.Int32</p>
-<p>The zero-based index of the array at which copying begins.</p>
+<p>The zero-based index of the array at which storing begins.</p>
 <p><code>count</code> System.Int32</p>
-<p>A number specifying how many data items will be copied.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>A number specifying how many model objects will be copied.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>将ModelStore中的数据copy到model数组中。指定目标数组的插入位置索引。指定要copy的ModelStore中的记录索引，及要拷贝的记录数</p>
+<p>The following code example demonstrates how to use the <code>CopyTo(Int32, TModel[], Int32, Int32)</code> method to copy a range of model objects from the specified position of ModelStore to the specified position of the array.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -109,28 +107,28 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example3()
         {
-            // 创建ModelStore对象，并检索数据
-            IModelStore&lt;Course&gt; currentCourse = new ModelStore&lt;Course&gt;();
-            currentCourse.Retrieve(_context);
+            // Creates a ModelStore and retrieves data.
+            IModelStore&lt;Course&gt; courseMs = new ModelStore&lt;Course&gt;();
+            courseMs.Retrieve(_context);
 
-            // 创建一个Course数组
-            Course[] courses = new Course[5];
+            // Creates an array.
+            Course[] courseArray = new Course[5];
 
-            // 指定从数组的index = 2开始，将ModelStore中从index=2位置开始的两条数据拷贝到该数组中
-            currentCourse.CopyTo(2, courses, 2, 2);
+            // Copies two model object from the ModelStore (starting at index 2) to
+            // the array (starting at index 2).
+            courseMs.CopyTo(2, courseArray, 2, 2);
 
-            // 循环输出数组中的数据
-            foreach (Course m in courses)
+            // Displays the titles.
+            foreach (var course in courseArray)
             {
-                if (m == null)
+                if (course == null)
                 {
                     Console.WriteLine(&quot;null&quot;);
                 }
                 else
                 {
-                    Console.WriteLine(m.Title);
+                    Console.WriteLine(course.Title);
                 }
-
             }
 
             /*This code produces the following output:
@@ -141,7 +139,6 @@ namespace Appeon.ApiDoc.IModelStoreExamples
             Composition
             null
             */
-
         }
     }
 }

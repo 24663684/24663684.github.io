@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>向HAVING子句添加AND逻辑运算符和raw SQL。</p>
-<p>Add the AND logical operator and an raw SQL to the HAVING clause.</p>
+<p>Adds the AND logical operator and a raw SQL to the HAVING clause.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -84,13 +84,12 @@
 <p><code>clause</code>	System.String</p>
 <p>A string of raw SQL added to the HAVING clause.</p>
 <p><code>parameters</code>	<a href="../../ISqlParameter/ISqlParameter.html">Appeon.Data.ISqlParameter</a></p>
-<p>(Optional) An array of <code>ISqlParameter</code> objects which defines the SQL parameters used in the raw SQL.</p>
+<p>(Optional) An array of <code>ISqlParameter</code> objects which define the SQL parameters used in the raw SQL.</p>
 <p><strong>Returns</strong></p>
 <p>TBuilder</p>
-<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions for current HAVING clause.</p>
-<h3 id="备注"><strong>备注</strong></h3>
+<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions to the current HAVING clause.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>增加分组条件</p>
+<p>增加分组条件The following code example demonstrates how to specify search conditions for groups.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -113,6 +112,9 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
             // 在StudentGrade表中根据StudentID和CourseID分组，获取每个分组的Grade总和，
             // 分组条件为StudentID &gt; 0，并且StudentID小于一个输入参数
             // 输入参数在执行sql时指定
+            // Groups the &quot;StudentGrade&quot; table by StudentID and CourseID, and gets the Grade sum of each group.
+            // Specifies the search condition specified for the group as “StudentID &gt; 0” and adds a HAVING condition: StudentID is smaller than the input parameter.
+            // The input parameter is specified when executing the SQL.
             sqlQueryBuilder
                 .Select(&quot;StudentID&quot;)
                 .Select(&quot;sum(Grade)&quot;)
@@ -123,11 +125,13 @@ namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
                               SqlBuilder.Parameter&lt;int&gt;(&quot;studentid&quot;));
 
             // 并将sqlQueryBuilder语法转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
             string sql = sqlQueryBuilder.ToSqlString(_context);
 
             Console.WriteLine(sql);
 
             // execute sql, 指定输入参数为10
+            // Executes the SQL and specifies the input parameter as &quot;10&quot;.
             var studentGrade = _context.SqlExecutor.Select&lt;DynamicModel&gt;(sql, 10);
 
             /*This code example produces the following output:           

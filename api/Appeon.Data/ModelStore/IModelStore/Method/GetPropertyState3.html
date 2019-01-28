@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取ModelStore中指定基于零的索引处的model object的属性(按一个expression指定)的当前的追踪到的状态。</p>
-<p>Gets the current tracked state of the property (specified by the expression) of the specified model object in ModelStore.</p>
+<p>Gets the current tracked state of the specified property (by expression) of the specified model object (by index) in ModelStore.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -88,9 +87,8 @@
 <p><strong>Returns</strong></p>
 <p><a href="../../PropertyState/PropertyState.html">Appeon.Data.PropertyState</a></p>
 <p>Returns a value of the <code>PropertyState</code> enumerated datatype.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>获取Model中指定行列数据的修改状态, 以属性方式指定列。The following code example demonstrates how to get the tracked state of the specified property (by expression) of the specified model object.</p>
+<p>The following code example demonstrates how to get the tracked state of the specified property (by expression) of the specified model object.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -109,24 +107,24 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example3()
         {
-            // Specifies the ModelStore TrackingStrategy, in order to call GetForUpdate
-            IModelStore&lt;Department&gt; dept =
+            // Sets the tracking strategy to PropertyState.
+            var depts =
                 new ModelStore&lt;Department&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data from Department.
+            depts.Retrieve(_context);
 
-            // Modifies the value of &quot;Name&quot; column in row 2
-            dept.SetValue(1, &quot;Name&quot;, &quot;test&quot;);
+            // Modifies the value of Name property.
+            depts.SetValue(1, &quot;Name&quot;, &quot;test&quot;);
 
-            // Gets the tracked state of &quot;Name&quot; column in row 2
-            var state = dept.GetPropertyState(1, m =&gt; m.Name);
+            // Gets the property state of Name property.
+            var state = depts.GetPropertyState(1, m =&gt; m.Name);
 
-            Console.WriteLine(&quot;Property Status = {0}&quot;, state.ToString());
+            Console.WriteLine(&quot;Property State: {0}&quot;, state);
 
             /* This code example produces the following output:
             
-             Property Status = Modified
+             Property State = Modified
             */
         }
     }

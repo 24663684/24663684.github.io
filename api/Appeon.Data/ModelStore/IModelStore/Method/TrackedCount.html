@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>获取指定model状态下的model objects的计数。</p>
 <p>Gets the number of the model objects in the specified model state(s).</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -86,9 +85,8 @@
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of the model objects in the specified state(s).</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to calculate the number of records that are in the Modified state.统计ModelStore中状态为指定StateTrackable的记录行数</p>
+<p>The following code example demonstrates how to use the <code>TrackedCount</code> method to calculate the number of model objects that are in the <code>ModelState.Modified</code> state.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -107,35 +105,33 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Course&gt; courses = 
+            var courses =
                 new ModelStore&lt;Course&gt;(ChangeTrackingStrategy.PropertyState);
 
-            // Retrieves data from courses
+            // Retrieves data.
             courses.Retrieve(_context);
 
-            // Gets the number of records that are in the Modified state
+            // Gets the number of model objects that are in the Modified state
             int count = courses.TrackedCount(StateTrackable.Modified);
 
-            // Shows the number of records that are in the Modified state
-            Console.WriteLine(&quot;Modified State Count = {0}&quot;, count);
+            // Shows the number of model objects that are in the Modified state
+            Console.WriteLine(&quot;Modified State Count (Before Modified): {0}&quot;,
+                count);
 
-            /* This code example produces the following output:
-            
-            Modified State Count = 0
-            */
+            // Modifies the value.
+            courses.SetValue(0, 1, &quot;New Course&quot;);
 
-            // Sets value for column 2 in row 1
-            courses.SetValue(0, 1, &quot;test&quot;);
-
-            // Gets the number of records that are in the Modified state
+            // Gets the number of model objects that are in the Modified state
             count = courses.TrackedCount(StateTrackable.Modified);
 
-            // Shows the number of records that are in the Modified state
-            Console.WriteLine(&quot;Modified State Count = {0}&quot;, count);
+            // Shows the number of model objects that are in the Modified state
+            Console.WriteLine(&quot;Modified State Count (After Modified): {0}&quot;,
+                count);
 
             /* This code example produces the following output:
             
-           Modified State Count = 1
+            Modified State Count (Before Modified): 0
+            Modified State Count (After Modified): 1
             */
         }
     }

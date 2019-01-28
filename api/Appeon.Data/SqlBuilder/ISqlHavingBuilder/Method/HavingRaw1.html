@@ -74,7 +74,7 @@
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
 <p>创建HAVING子句,向HAVING子句添加raw SQL。</p>
-<p>Creates the HAVING clause, and adds an raw SQL to the HAVING clause.</p>
+<p>Creates a HAVING clause and adds a raw SQL to the HAVING clause.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -84,11 +84,10 @@
 <p><code>havingClause</code> System.String</p>
 <p>A string of raw SQL added to the HAVING clause.</p>
 <p><code>parameters</code>	<a href="../../ISqlBuilder/ISqlBuilder.html">Appeon.Data.ISqlBuilder[]</a></p>
-<p>(Optional) An array of <code>ISqlParameter</code> objects which defines the SQL parameters used in the raw SQL.</p>
+<p>(Optional) An array of <code>ISqlParameter</code> objects which define the SQL parameters used in the raw SQL.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../ISqlHavingAndOr/ISqlHavingAndOr.html">Appeon.Data.ISqlHavingAndOr</a></p>
-<p>Returns the <code>ISqlHavingAndOr</code> object which can be used to add more search conditions for current HAVING clause.</p>
-<h3 id="备注"><strong>备注</strong></h3>
+<p>Returns the <code>ISqlHavingAndOr</code> object which can be used to add more search conditions to the current HAVING clause.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
 <p>增加分组条件</p>
 <pre><code class="lang-C#">using Appeon.Data;

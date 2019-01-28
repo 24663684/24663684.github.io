@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>IDataIncludeGetter.Include(string name, Expression&lt;Func&lt;TModel, TKey&gt;&gt; property)&#26041;&#27861; </title>
+    <title>IDataIncludeGetter.Include&lt;TKey&gt;(string name, Expression&lt;Func&lt;TModel, TKey&gt;&gt; property)&#26041;&#27861; </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="IDataIncludeGetter.Include(string name, Expression&lt;Func&lt;TModel, TKey&gt;&gt; property)&#26041;&#27861; ">
+    <meta name="title" content="IDataIncludeGetter.Include&lt;TKey&gt;(string name, Expression&lt;Func&lt;TModel, TKey&gt;&gt; property)&#26041;&#27861; ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
@@ -66,27 +66,86 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="idataincludegetterincludestring-name-expressionfunctmodel-tkey-property方法"><strong>IDataIncludeGetter.Include<tkey>(string name, Expression&lt;Func&lt;TModel, TKey&gt;&gt; property)方法</tkey></strong></h2>
+<h2 id="idataincludegetterincludetkeystring-name-expressionfunctmodel-tkey-property方法"><strong>IDataIncludeGetter.Include&lt;TKey&gt;(string name, Expression&lt;Func&lt;TModel, TKey&gt;&gt; property)方法</strong></h2>
 
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>待定</p>
+<p>按指定的名称从<code>IDataUnpacker</code>对象中获取<code>TModel</code>对象的一个<a href="../../../Glossary/EmbeddedProperty.html">embedded property</a>的数据。</p>
+<p>Gets the data of an <a href="../../../Glossary/EmbeddedProperty.html">embedded property</a> of the <code>TModel</code> object from the <code>IDataUnpacker</code> object by the specified name.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
 <pre><code class="lang-c#">IDataIncludeGetter&lt;TModel&gt; Include&lt;TKey&gt;(string name, Expression&lt;Func&lt;TModel, TKey&gt;&gt; property);
 </code></pre>
+<p><strong>Type Parameter</strong></p>
+<p>TKey</p>
+<p>The type of the <a href="../../../Glossary/EmbeddedProperty.html">embedded property</a> in the <code>TModel</code> object to be included.</p>
 <p><strong>Parameters</strong></p>
 <p><code>name</code> System.String</p>
-<p><code>property</code> System.LInq.Expressions.Expression&lt;Func&lt;TModel, TKey&gt;&gt;</p>
+<p>The name specified for the data.</p>
+<p><code>property</code> System.Linq.Expressions.Expression&lt;Func&lt;TModel, TKey&gt;&gt;</p>
+<p>An <code>Expression&lt;Func&lt;TModel,TKey&gt;&gt;</code> object used to specify the <a href="../../../Glossary/EmbeddedProperty.html">embedded property</a> in the <code>TModel</code> object to be included..</p>
 <p><strong>Returns</strong></p>
 <p><a href="../IDataIncludeGetter.html">Appeon.Data.IDataIncludeGetter</a></p>
+<p>Return the current <code>IDataIncludeGetter</code> object.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
-<p>待定。</p>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>以下案例在IDataUnpacker对象中获取TModel对象的嵌套数据</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Collections.Generic;
+
+namespace Appeon.ApiDoc.IDataIncludeGetterExamples
+{
+    public class IncludeExample
+    {
+        private readonly SchoolContext _context;
+
+        public IncludeExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example()
+        {
+            var packer = new DataPacker();
+
+            var modelmapping = new ModelMapper(_context);
+
+            var items = modelmapping.Load&lt;CourseInfo&gt;(2).IncludeAll().ToList();
+
+            // 将items对象及嵌套数据添加到packer对象中
+            string key = &quot;Models&quot;;
+            packer.AddModels(key, items).Include(&quot;Students&quot;, m =&gt; m.Students);
+
+            var json = packer.GetTextString(DataFormat.Json);
+
+            var dataUnPacker = new DataUnpacker(json, DataFormat.Json);
+
+            // 根据key值获取dataUnPacker中的Model对象中的数据,并包含嵌套数据
+            var list = dataUnPacker.GetModels&lt;CourseInfo&gt;(key)
+                .Include(&quot;Students&quot;, m =&gt; m.Students)
+                .ToList();
+
+            // 计算嵌套数据总记录数，并输出
+            Console.WriteLine(&quot;The count is: {0}&quot;,
+                list[0].Students.Count.ToString());
+
+            /* This code example produces the following output:
+            
+            The count is: 5
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>Model Class: <a href="../../../SourceCode/Examples/Models/School/Embedded/CourseInfo.html">CourseInfo</a> <br></p>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>

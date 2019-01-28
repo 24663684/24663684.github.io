@@ -73,7 +73,8 @@
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
 <p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
 </div>
-<p>dai ding</p>
+<p>用指定的缓存名称获取一个<code>ISqlReadOnlyBuilder</code>对象。</p>
+<p>Gets an <code>ISqlReadOnlyBuilder</code> object by the specified cache name.</p>
 <p><strong>命名空间：</strong> Appeon.Data</p>
 <p><strong>程序集：</strong> Appeon.Data.dll</p>
 <h3 id="语法"><strong>语法</strong></h3>
@@ -81,13 +82,58 @@
 </code></pre>
 <p><strong>Parameters</strong></p>
 <p><code>sqlBuilderName</code> System.String</p>
+<p>The cache name specified for the SQL Builder object when it was cached.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../ISqlReadOnlyBuilder/ISqlReadOnlyBuilder.html">Appeon.Data.ISqlReadOnlyBuilder</a></p>
+<p>Returns an <code>ISqlReadOnlyBuilder</code> object by the specified cache name.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
+<p>通过缓存名称获取一个ISqlReadOnlyBuilder对象</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ISqlBuilderCacheExamples
+{
+    public class GetExample
+    {
+        private readonly SchoolContext _context;
+
+        public GetExample(SchoolContext context)
+        {
+            _context = context;
+        }
+
+        public void Example()
+        {
+            // 创建一个SqlQueryBuilder对象
+            var build = SqlBuilderFactory.Create&lt;ISqlQueryBuilder&gt;(&quot;original sql&quot;);
+            build.Select(&quot;select Title from Course wherer CourseID = 1050&quot;);
+
+            // 通过SqlBuilderFactory.Cache，生成一个SqlBuilderCache对象
+            var cache = SqlBuilderFactory.Cache;
+
+            // 将SqlQueryBuilder注入SqlBuilderCache对象中
+            cache.Set(&quot;querySql&quot;, build, true);
+
+            // 从缓存中获取名为querySql的ISqlReadOnlyBuilder对象
+            var get = cache.Get(&quot;querySql&quot;);
+
+            Console.WriteLine(&quot;SqlBuild Name = {0}&quot;, get.Name);
+
+            /*This code produces the following output:
+            
+            SqlBuild Name = original sql
+            */
+        }
+    }
+}
+</code></pre>
 <h3 id="版本信息"><strong>版本信息</strong></h3>
 <p>.Net Standard</p>
 <p>自2.x起可用</p>
+<h3 id="see-also"><strong>See Also</strong></h3>
+<p><a href="Set.html">Set(String, ISqlBuilder, Boolean)</a></p>
+<p><a href="GetModifiable.html">GetModifiable&lt;TSqlBuilder&gt;(String)</a></p>
 </article>
           </div>
           

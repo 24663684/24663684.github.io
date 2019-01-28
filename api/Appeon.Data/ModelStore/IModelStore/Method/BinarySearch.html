@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>使用二分查找算法在ModelStore中查找特定model object。</p>
 <p>Searches for the specified model object in ModelStore by using a binary search algorithm.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -87,11 +86,12 @@
 <p>The value which will be used to compare with the result of the transform function.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
-<p>Returns the zero-based index of the model object found in the ModelStore.</p>
+<p>Returns the zero-based index of the model object found in ModelStore.</p>
 <p>Returns -1 if no data item was found.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
+<p>ModelStore must be sorted before using the <code>BinarySearch</code> method.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to 使用二分搜索方式，按设置的查找条件对ModelStore中的数据进行查找。</p>
+<p>The following code example demonstrates how to use the <code>BinarySearch</code> method to search for the specified model object in ModelStore.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
 using System;
@@ -110,30 +110,29 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var cources = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from Department
-            dept.Retrieve(_context);
+            // Retrieves data.
+            cources.Retrieve(_context);
 
-            //对检索出的数据进行排序
-            //使用BinarySearch前，必须对Model进行排序
-            dept.Sort(m =&gt; m.DepartmentID);
+            //ModelStore must be sorted before using the BinarySearch method.
+            cources.Sort(m =&gt; m.CourseID);
 
-            //查找ModelStore中，DepartmentID = 1的记录，返回值为记录索引 
-            int row = dept.BinarySearch(m =&gt; m.DepartmentID, 1);
+            // Searches for the model object whose CourseID is 3141.
+            int index = cources.BinarySearch(m =&gt; m.CourseID, 3141);
 
-            Console.WriteLine(&quot;row = {0}&quot;, row);
+            Console.WriteLine(&quot;Index: {0}&quot;, index);
 
             /* This code example produces the following output:
             
-             row = 0
+            Index: 6
             */
         }
     }
 }
 </code></pre>
 <h4 id="example-refer-to">Example Refer To</h4>
-<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Department.html">Department</a> <br></p>
+<p>Model Class: <a href="../../../../SourceCode/Examples/Models/School/Course.html">Course</a> <br></p>
 <h3 id="applies-to"><strong>Applies to</strong></h3>
 <p>.NET Standard</p>
 <p>2.x</p>

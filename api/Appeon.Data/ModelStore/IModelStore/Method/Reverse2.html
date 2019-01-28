@@ -71,9 +71,8 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
-<p>反转指定范围内的model objects的顺序。</p>
 <p>Reverses the order of the model objects in the specified range.</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
@@ -85,9 +84,7 @@
 <p>The zero-based index of the model object in ModelStore from which you start to reverse.</p>
 <p><code>count</code>	System.Int32</p>
 <p>The number of model objects in the range to reverse.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>将Model中的指定范围内的记录倒序排列</p>
 <p>The following code example demonstrates how to reverse the order of records in the specified range.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
@@ -107,30 +104,32 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example2()
         {
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
 
-            // Retrieves data from courses
-            courses.Retrieve(_context);            
+            // Retrieves data.
+            courses.Retrieve(_context);
 
-            // Gets the third record
-            var thirdItem = courses.Get(2);
+            // Gets the model object at index 2.
+            var course = courses.Get(2);
 
-            // Shows the CourseID value for the third record
-            Console.WriteLine(&quot;Before Reverse, third CourseID = {0}&quot;, thirdItem.CourseID);
+            // Shows the CourseID value.
+            Console.WriteLine(&quot;The Third CourseID (Before Reverse): {0}&quot;,
+                course.CourseID);
 
-            // Reverses the order of the first three records
+            // Reverses the order of the first three model objects.
             courses.Reverse(0, 3);
 
-            // Gets the first record
-            var firstItem = courses.Get(0);
+            // Gets the first model object.
+            course = courses.Get(0);
 
             // Shows the CourseID value for the first record
-            Console.WriteLine(&quot;After Reverse, first CourseID = {0}&quot;, firstItem.CourseID);
+            Console.WriteLine(&quot;The First CourseID (After Reverse): {0}&quot;,
+                course.CourseID);
 
             /* This code example produces the following output:
             
-            Before Reverse, third CourseID = 1061
-            After Reverse, first CourseID = 1061
+            The Third CourseID (Before Reverse): 1061
+            The First CourseID (After Reverse): 1061
             */
         }
     }

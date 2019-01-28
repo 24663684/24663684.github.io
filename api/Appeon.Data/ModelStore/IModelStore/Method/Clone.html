@@ -71,10 +71,9 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>Makes a copy of the specified model object.</p>
-<p>获取指定索引的数据项的副本。</p>
 <p><strong>Namespace:</strong> Appeon.Data</p>
 <p><strong>Assembly:</strong> Appeon.Data.dll</p>
 <h3 id="syntax"><strong>Syntax</strong></h3>
@@ -85,12 +84,12 @@
 <p>The zero-based index of the model object that you want to make a copy.</p>
 <p><strong>Returns</strong></p>
 <p>TModel</p>
-<p>Returns a new TModel instance which is a copy of the model object at the specified index.</p>
-<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>Returns a new <code>TModel</code> object which is a copy of the model object at the specified index.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>The following code example demonstrates how to Clone ModelStore中指定行的数据。</p>
+<p>The following code example demonstrates how to use the <code>Clone</code> method.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using Appeon.ApiDoc.Models.School;
+using System;
 
 namespace Appeon.ApiDoc.IModelStoreExamples
 {
@@ -106,14 +105,22 @@ namespace Appeon.ApiDoc.IModelStoreExamples
 
         public void Example()
         {
-            IModelStore&lt;Department&gt; dept = new ModelStore&lt;Department&gt;();
+            var depts = new ModelStore&lt;Department&gt;();
 
             //  Retrieves data from Department
-            dept.Retrieve(_context);
+            depts.Retrieve(_context);
 
-            // Clone ModelStore中第一行的数据
-            Department cloneRow = dept.Clone(0);
+            // Clones the first model object in the ModelStore.
+            var deptClone = depts.Clone(0);
 
+            Console.WriteLine(&quot;Department ID: {0}, Name: {1}&quot;,
+                   deptClone.DepartmentID,
+                   deptClone.Name);
+
+            /* This code produces the following output:
+
+            Department ID: 1, Name: Engineering
+            */
         }
     }
 }
