@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SqlExecutor &#31867; </title>
+    <title>SqlExecutor Class </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="SqlExecutor &#31867; ">
+    <meta name="title" content="SqlExecutor Class ">
     <meta name="generator" content="docfx 2.37.0.0">
     
     <link rel="shortcut icon" href="../../../../images/logo-appeon.png ">
@@ -66,27 +66,26 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="sqlexecutor-类"><strong>SqlExecutor 类</strong></h2>
+<h2 id="sqlexecutor-class"><strong>SqlExecutor Class</strong></h2>
 
-<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
 <div class="otherversions" value="versdiv">
 <a href="javascript:void(0)">0.5.0-alpha</a>
-<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
 </div>
-SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供了更多常用数据库操作方法和参数兼容性，支持直接执行动态SQL语句、SQLBuilder对象、Model自动化查询等功能特性。
 <p>SQLExecutor is a set of database manipulation interfaces that have encapsulated the core components of ADO.NET. It is a C# replacement for PowerBuilder's embedded SQL feature. Using SQLExecutor you can directly run dynamic SQL statements, perform SQLBuilder object functions, and do model queries.</p>
-<p><strong>命名空间：</strong> Appeon.Data</p>
-<p><strong>程序集：</strong> Appeon.Data.dll</p>
-<h3 id="语法"><strong>语法</strong></h3>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
 <pre><code class="lang-c#">  public class SqlExecutor : ISqlExecutor;
 </code></pre>
-<h3 id="构造函数"><strong>构造函数</strong></h3>
+<h3 id="constructor"><strong>Constructor</strong></h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>名称</th>
-<th>描述</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
@@ -97,7 +96,7 @@ SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供�
 </tr>
 </tbody>
 </table>
-<h3 id="property">Property</h3>
+<h3 id="property"><strong>Property</strong></h3>
 <table>
 <thead>
 <tr>
@@ -110,7 +109,7 @@ SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供�
 <tbody>
 <tr>
 <td><img src="../../../../images/property.jpeg" alt=""></td>
-<td><a href="Property/DataContext.html">DataContext</a></td>
+<td><a href="../ISqlExecutor/Property/DataContext.html">DataContext</a></td>
 <td>DataContext</td>
 <td>Gets the <code>DataContext</code> object.</td>
 </tr>
@@ -129,109 +128,92 @@ SQLExecutor是基于ADO.NET进行封装的一个数据库操作接口，提供�
 <tbody>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Execute.html">Execute(string sqlText, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/Execute.html">Execute(string sqlText, params object[] parameters)</a></td>
 <td>int</td>
 <td>Executes the SQL statements like UPDATE, INSERT, DELETE etc.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/ExecuteProcedure.html">ExecuteProcedure(string sqlText, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/ExecuteProcedure.html">ExecuteProcedure(string sqlText, params object[] parameters)</a></td>
 <td>int</td>
 <td>Executes a stored procedure.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Scalar1.html">Scalar&lt;TValue&gt;(string sqlText, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/Scalar1.html">Scalar&lt;TValue&gt;(string sqlText, params object[] parameters)</a></td>
 <td>TValue</td>
 <td>Executes the SQL SELECT statement and returns the first column of the first row in the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Scalar2.html">Scalar&lt;TValue&gt;(ISqlQueryBuilder sqlQueryBuilder, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/Scalar2.html">Scalar&lt;TValue&gt;(ISqlQueryBuilder sqlQueryBuilder, params object[] parameters)</a></td>
 <td>TValue</td>
-<td>Executes the SQL SELECT statement and returns the first column of the first row in the result set.</td>
+<td>Executes the SQL SELECT statement created by an <code>ISqlQueryBuilder</code> object and returns the first column of the first row in the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Select1.html">Select&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/Select1.html">Select&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td>IList&lt;TModel&gt;</td>
 <td>Executes the SQL SELECT statement and returns an <code>IList&lt;TModel&gt;</code> object.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/Select2.html">Select&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/Select2.html">Select&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td>Executes the SQL SELECT statement and returns an <code>IList&lt;TModel&gt;</code> object.</td>
+<td>Executes the SQL SELECT statement generated by an <code>ISqlQueryBuilder</code> object and returns an <code>IList&lt;TModel&gt;</code> object which contains the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectLazy1.html">SelectLazy&lt;TModel&gt;(params object[] parameters)</a></td>
-<td>IEnumerable&lt;TModel&gt;</td>
-<td>Executes the SQL SELECT statement and returns an <code>IEnumerable &lt;TModel&gt;</code> object that can be used to load the result set lazily.</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectLazy2.html">SelectLazy&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/SelectLazy1.html">SelectLazy&lt;TModel&gt;(params object[] parameters)</a></td>
 <td>IEnumerable&lt;TModel&gt;</td>
 <td>Executes the SQL SELECT statement and returns an <code>IEnumerable &lt;TModel&gt;</code> object that can be used to load the result set lazily.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectOne2.html">SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
-<td>TModel</td>
-<td>Executes the SQL SELECT statement and returns a <code>TModel</code> object.</td>
+<td><a href="../ISqlExecutor/Method/SelectLazy2.html">SelectLazy&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td>IEnumerable&lt;TModel&gt;</td>
+<td>Executes the SQL SELECT statement generated by an <code>ISqlQueryBuilder</code> object and returns an <code>IEnumerable &lt;TModel&gt;</code> object that can be used to load the result set lazily.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectOne3.html">SelectOne&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/SelectOne2.html">SelectOne&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td>TModel</td>
-<td>Executes the SQL SELECT statement and returns a <code>TModel</code> object.</td>
+<td>Executes the SQL SELECT statement and returns the first row in the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectProcedure.html">SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/SelectOne3.html">SelectOne&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td>TModel</td>
+<td>Executes the SQL SELECT statement generated by an <code>ISqlQueryBuilder</code> object and returns the first row in the result set.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="../ISqlExecutor/Method/SelectProcedure.html">SelectProcedure&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td>IList&lt;TModel&gt;</td>
-<td>Executes a SQL stored procedure and returns an <code>IList&lt;TModel&gt;</code> object.</td>
+<td>Executes a SQL stored procedure and returns an <code>IList&lt;TModel&gt;</code> object which contains the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectProcedureToStore.html">SelectProcedureToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/SelectProcedureToStore.html">SelectProcedureToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td><a href="../../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
-<td>Executes a SQL stored procedure and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
+<td>Executes a SQL stored procedure and returns an <code>IModelStore&lt;TModel&gt;</code> object which contains the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectToStore1.html">SelectToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/SelectToStore1.html">SelectToStore&lt;TModel&gt;(string sqlText, params object[] parameters)</a></td>
 <td><a href="../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
-<td>Executes the SQL SELECT statement and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
+<td>Executes the SQL SELECT statement and returns an <code>IModelStore&lt;TModel&gt;</code> object which contains the result set.</td>
 </tr>
 <tr>
 <td><img src="../../../../images/method.jpeg" alt=""></td>
-<td><a href="Method/SelectToStore2.html">SelectToStore&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td><a href="../ISqlExecutor/Method/SelectToStore2.html">SelectToStore&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
 <td><a href="../IModelStore/IModelStore.html">IModelStore&lt;TModel&gt;</a></td>
-<td>Executes the SQL SELECT statement and returns an <code>IModelStore&lt;TModel&gt;</code> object.</td>
+<td>Executes the SQL SELECT statement generated by an <code>ISqlQueryBuilder</code> object and returns an <code>IModelStore&lt;TModel&gt;</code> object which contains the result set.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="备注"><strong>备注</strong></h3>
-<table>
-<thead>
-<tr>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SQLExecutor is a set of database manipulation interfaces that have encapsulated the core components of ADO.NET. Using SQLExecutor you can directly run dynamic SQL statements, perform SQLBuilder object functions, and do model queries. <br>1. supports raw SQL as well as automatic SQL generation.<br>2. supports lazy loading of data to prevent unnecessary performance bottlenecks.<br>3. can bind result-sets to POCO or dynamic models.<br></td>
-</tr>
-</tbody>
-</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>SQLExecutor is a set of database manipulation interfaces that have encapsulated the core components of ADO.NET. Using SQLExecutor you can directly run dynamic SQL statements, perform SQLBuilder object functions, and do model queries. <br>1. supports raw SQL as well as automatic SQL generation.<br>2. supports lazy loading of data to prevent unnecessary performance bottlenecks.<br>3. can bind result-sets to POCO or dynamic models.<br></p>
 </article>
           </div>
           

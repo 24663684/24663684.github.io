@@ -82,23 +82,24 @@
 <p><strong>Type Parameters</strong></p>
 <p>TModel</p>
 <p>The datatype of the model object which represents the data row in the result set.</p>
-<p>You can also specify <code>DynamicModel</code> to TModel if you do not want to define a custom model class.</p>
+<p>You can also specify <a href="../../../DynamicModel/DynamicModel.html">DynamicModel</a> to <code>TModel</code> if you do not want to define a custom model class.</p>
 <p><strong>Parameters</strong></p>
 <p><code>sqlText</code>	System.String</p>
 <p>A raw SQL statement which contains the parameter placeholders.</p>
-<p>The proper syntax of a parameter placeholder is to use the '@' or ':' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
+<p>The proper syntax of a parameter placeholder is to use the '@' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) One or more <code>ParamValue</code> objects which contain the values corresponding to the SQL parameter identifier names.</p>
-<p>You can also pass the arguments directly in the order in which they appear in <code>sqlText</code> without using the <code>ParamValue</code> object.</p>
+<p>(Optional) One or more <a href="../../../ParamValue/ParamValue.html">ParamValue</a> objects which contain the values corresponding to the SQL parameter identifier names.</p>
+<p>You can also pass the arguments directly in the order in which each parameter identifier name appear in <code>sqlText</code> for the first time, without using the <a href="../../../ParamValue/ParamValue.html">ParamValue</a> object.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IList&lt;TModel&gt;</p>
 <p>Returns an <code>IList&lt;TModel&gt;</code> object which contains the result set.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>You can use the format <code>@parametername</code> as the parameter placeholder in the raw SQL statement.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行SQL语句，将查询出的数据放入List中.The following code example demonstrates how to execute the SQL statement and put the query result to a list of models.</p>
+<p>The following code example demonstrates how to use the <code>Select&lt;TModel&gt;(String, params object[])</code> method to execute the SQL SELECT statement and put the query result to a list of models.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
+using System.Linq;
 
 namespace Appeon.ApiDoc.ISqlExecutorExamples
 {
@@ -114,22 +115,29 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
 
         public void Example1()
         {
-
             // Defines the SQL statement.
-            var sql = &quot;select CourseID, Title from Course&quot; +
-                      &quot; where CourseID = 8001&quot;;
+            var sql = @&quot;SELECT CourseID, Title 
+                        FROM Course
+                        WHERE CourseID = @id&quot;;
 
-            // Executes the SQL statement and puts the query result to a list of models.
-            var master = _context.SqlExecutor.Select&lt;DynamicModel&gt;(sql);
+            // Queries data and puts the query result to a list of 
+            // models.
+            var list = _context.SqlExecutor.Select&lt;DynamicModel&gt;(sql, 1061);
 
-            Console.WriteLine(&quot;records Count = {0}.&quot;,
-                              master.Count);
+            Console.WriteLine(&quot;Count: {0}.&quot;, list.Count);
+
+            Console.WriteLine(&quot;CourseID: {0}&quot;,
+                list.FirstOrDefault().GetValue&lt;int&gt;(&quot;CourseID&quot;));
+
+            Console.WriteLine(&quot;Title: {0}&quot;,
+                list.FirstOrDefault().GetValue&lt;string&gt;(&quot;Title&quot;));
 
             /*This code produces the following output:
 
-            records Count = 1. 
+            Count: 1.
+            CourseID: 1061
+            Title: Physics
            */
-
         }
     }
 }

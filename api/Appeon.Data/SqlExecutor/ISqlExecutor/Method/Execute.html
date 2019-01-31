@@ -82,18 +82,19 @@
 <p><strong>Parameters</strong></p>
 <p><code>sqlText</code>	System.String</p>
 <p>A raw SQL statement which contains the parameter placeholders.</p>
-<p>The proper syntax of a parameter placeholder is to use the '@' or ':' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
+<p>The proper syntax of a parameter placeholder is to use the '@' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) One or more <code>ParamValue</code> objects which contain the values corresponding to the SQL parameter identifier names.</p>
-<p>You can also pass the arguments directly in the order in which they appear in <code>sqlText</code> without using the <code>ParamValue</code> object.</p>
+<p>(Optional) One or more <a href="../../../ParamValue/ParamValue.html">ParamValue</a> objects which contain the values corresponding to the SQL parameter identifier names.</p>
+<p>You can also pass the arguments directly in the order in which each parameter identifier name appear in <code>sqlText</code> for the first time, without using the <a href="../../../ParamValue/ParamValue.html">ParamValue</a> object.</p>
 <p><strong>Returns</strong></p>
 <p>System.Int32</p>
 <p>Returns the number of the affected rows if succeeds.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>You can use the format <code>@parametername</code> as the parameter placeholder in the raw SQL statement.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行SQL语句，用于对数据进行更新.The following code example demonstrates how to execute the SQL statement to update data.</p>
-<pre><code class="lang-C#">using System;
+<p>The following code example demonstrates how to use the <code>Execute</code> method to execute the SQL statement to insert, delete and update data.</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
 
 namespace Appeon.ApiDoc.ISqlExecutorExamples
 {
@@ -109,21 +110,47 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
 
         public void Example()
         {
-            // Defines the SQL statement.
-            var sql = &quot;update Course set Title = 'test one'&quot; +
-                      &quot; where CourseID = 8001&quot;;
+            // Inserts a new course record, uses the parameter placeholders in the 
+            // raw SQL. 
+            string sql = @&quot;INSERT Course(CourseID, Title, Credits, DepartmentID)
+                        VALUES (@id, @title, @credits, @departmentId)&quot;;
 
-            // Executes the SQL statement and returns the number of the rows which are updated.
-            var row = _context.SqlExecutor.Execute(sql);
+            // Executes the SQL INSERT statement.
+            // Passes the arguments directly in the order in which each parameter 
+            // identifier name appear in `sqlText` for the first time.
+            int row = _context.SqlExecutor.Execute(sql, 1, &quot;New Course&quot;, 3, 7);
+
+            Console.WriteLine(&quot;{0} records have been inserted into the database.&quot;,
+                              row);
+
+
+            // Deletes a course record.
+            sql = @&quot;DELETE FROM Course 
+                    WHERE CourseID = @id&quot;;
+
+            // Passes 1 as the argument.
+            row = _context.SqlExecutor.Execute(sql, 1);
+
+            Console.WriteLine(&quot;{0} records have been deleted from the database.&quot;,
+                              row);
+
+
+            // Updates the title for the Course whose ID is 1045.
+            sql = @&quot;UPDATE Course SET Title = 'New Course'
+                    WHERE CourseID = 1045&quot;;
+
+            // Executes the SQL UPDATE statement.
+            row = _context.SqlExecutor.Execute(sql);
 
             Console.WriteLine(&quot;{0} records have been updated into the database.&quot;,
                               row);
 
             /*This code produces the following output:
 
-            1 records have been updated into the database. 
-           */
-
+            1 records have been inserted into the database.
+            1 records have been deleted from the database.
+            1 records have been updated into the database.
+            */
         }
     }
 }

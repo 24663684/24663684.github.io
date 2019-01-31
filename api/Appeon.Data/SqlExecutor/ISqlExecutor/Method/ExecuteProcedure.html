@@ -84,11 +84,11 @@
 <p>The name of the SQL stored procedure.</p>
 <p><code>parameters</code>	System.Object[]</p>
 <p>(Optional) The parameters for executing the SQL stored procedure.</p>
-<p>One or more <code>ParamValue</code> objects, containing the parameter direction and values, corresponding to the SQL stored procedure's parameters. See <a href="../../ParamValue/ParamValue.md">ParamValue</a> for more info.</p>
+<p>One or more <a href="../../../ParamValue/ParamValue.html">ParamValue</a> objects, containing the parameter direction and values, which correspond to the SQL stored procedure's parameters. See <a href="../../../ParamValue/ParamValue.html">ParamValue</a> for more info.</p>
 <p><strong>Returns</strong></p>
 <p>Returns the number of the affected rows if succeeds.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行数据库中指定的procedure，主要用于对数据进行更新.The following code example demonstrates how to execute the specified procedure in the database to update data.</p>
+<p>The following code example demonstrates how to use the <code>ExecuteProcedure</code> method to execute the specified procedure in the database to get the name of a department.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 using System.Data;
@@ -109,31 +109,40 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
         public void Example()
         {
             // Specifies the procedure to be executed.
-            var sql = &quot;test_proc&quot;;
+            // It inserts a person record to database and returns the new PersonID.
+            var procedureName = &quot;GetDepartmentName&quot;;
 
-            // Sets the parameters.
-            int id = 8001;
-            var inparam = ParamValue.New&lt;int&gt;(&quot;id&quot;, id, ParameterDirection.Input);
-            var outparam = ParamValue.New&lt;string&gt;(&quot;out&quot;, ParameterDirection.Output);
+            /* StoredProcedure GetDepartmentName：
             
-            /*
-                         
-             test_proc sql statements:
-             update Course set Title = 'test one' where CourseID = @id;
-             select output = 'success';
-             */
+            CREATE PROCEDURE[dbo].[GetDepartmentName]
+            @ID int,
+            @Name nvarchar(50) OUTPUT
+            AS
+            SELECT @Name = Name FROM Department
+            WHERE DepartmentID = @ID
 
-            // Executes the SQL statement and returns the number of the rows which are updated.
-            var row = _context.SqlExecutor.ExecuteProcedure(sql, inparam, outparam);
+            GO
+            */
 
-            Console.WriteLine(&quot;{0} records have been updated into the database. {1}&quot;,
-                              row, outparam.Value);
+            // Sets the parameter values.
+            // The parameter direction defaults to ParameterDirection.Input,
+            // so you can omit it.
+            var idParam = ParamValue.New&lt;string&gt;(&quot;id&quot;, &quot;4&quot;);
+
+            // The parameter 'Name' is InputOutput type.
+            var nameParam = ParamValue.New&lt;string&gt;(
+                &quot;name&quot;, ParameterDirection.InputOutput);
+
+            // Executes the SQL statement and gets the department by nameParam.
+            _context.SqlExecutor.ExecuteProcedure(
+               procedureName, idParam, nameParam);
+
+            Console.WriteLine(&quot;Department Name: {0}&quot;, nameParam.Value);
 
             /*This code produces the following output:
 
-            1 records have been updated into the database. success
-           */
-
+            Department Name: Economics
+            */
         }
     }
 }

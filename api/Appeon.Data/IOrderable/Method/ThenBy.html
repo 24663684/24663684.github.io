@@ -71,7 +71,7 @@
 <p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../images/dropdown.png"></a></p>
 <div class="otherversions" value="versdiv">
 <p><a href="javascript:void(0)">0.5.0-alpha</a></p>
-<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
 </div>
 <p>根据键按升序对当前可排序对象中的model objects进行后续排序。</p>
 <p>Performs a subsequent ordering of the model objects in the current sortable object in ascending order according to a key.</p>
@@ -108,7 +108,7 @@ namespace Appeon.ApiDoc.IOrderableExamples
         public void Example()
         {
             // Retrieves data for ModelStore
-            IModelStore&lt;Course&gt; courses = new ModelStore&lt;Course&gt;();
+            var courses = new ModelStore&lt;Course&gt;();
             courses.Retrieve(_context);
 
             // Sets the primary sorting rules (first by DepartmentID)

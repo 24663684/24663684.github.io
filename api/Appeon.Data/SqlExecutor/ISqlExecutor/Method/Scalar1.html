@@ -85,18 +85,17 @@
 <p><strong>Parameters</strong></p>
 <p><code>sqlText</code>	System.String</p>
 <p>A raw SQL statement which contains the parameter placeholders.</p>
-<p>The proper syntax of a parameter placeholder is to use the '@' or ':' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
+<p>The proper syntax of a parameter placeholder is to use the '@' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) One or more <code>ParamValue</code> objects which contain the values corresponding to the SQL parameter identifier names.</p>
-<p>You can also pass the arguments directly in the order in which they appear in <code>sqlText</code> without using the <code>ParamValue</code> object.</p>
+<p>(Optional) One or more <a href="../../../ParamValue/ParamValue.html">ParamValue</a> objects which contain the values corresponding to the SQL parameter identifier names.</p>
+<p>You can also pass the arguments directly in the order in which each parameter identifier name appear in <code>sqlText</code> for the first time, without using the <a href="../../../ParamValue/ParamValue.html">ParamValue</a> object.</p>
 <p><strong>Returns</strong></p>
 <p>TValue</p>
-<p>The first column of the first row in the result set.</p>
-<p>If the first column of the first row in the result set is not found, a null reference is returned.</p>
+<p>Returns the value of the first column of the first row in the result set. Returns a <code>null</code>, if no data is found in the result set.</p>
 <h3 id="remarks"><strong>Remarks</strong></h3>
 <p>When building a raw SQL, you can use the format <code>@parametername</code> as the parameter placeholder in the raw SQL statement.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行SQL语句，主要用于查询数据库中的字段.The following code example demonstrates how to execute the SQL statement to query the data in database.</p>
+<p>The following code example demonstrates how to use the <code>Scalar(String, params Object[])</code> method to execute the SQL SELECT statement and return the first column of the first row in the result set.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -115,18 +114,17 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
         public void Example1()
         {
             // Defines the SQL statement.
-            var sql = &quot;select title from Course where CourseID = 8001&quot;;
+            var sql = &quot;select title from Course where CourseID = 2042&quot;;
 
             // Executes the SQL statement and returns the query result.
             var title = _context.SqlExecutor.Scalar&lt;string&gt;(sql);
 
-            Console.WriteLine(&quot;Title = {0} &quot;, title);
+            Console.WriteLine(&quot;Title: {0} &quot;, title);
 
             /*This code produces the following output:
 
-            Title = test course 
-           */
-
+            Title: Literature
+            */
         }
     }
 }

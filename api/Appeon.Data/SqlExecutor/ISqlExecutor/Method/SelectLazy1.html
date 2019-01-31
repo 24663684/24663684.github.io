@@ -82,19 +82,23 @@
 <p><strong>Type Parameters</strong></p>
 <p>TModel</p>
 <p>The datatype of the model object which represents the data row in the result set.</p>
-<p>You can also specify <code>DynamicModel</code> to TModel if you do not want to define a custom model class.</p>
+<p>You can also specify <a href="../../../DynamicModel/DynamicModel.html">DynamicModel</a> to <code>TModel</code> if you do not want to define a custom model class.</p>
 <p><strong>Parameters</strong></p>
 <p><code>sqlText</code>	System.String</p>
 <p>A raw SQL Statement which contains the parameter placeholders.</p>
-<p>The proper syntax of a parameter placeholder is to use the '@' or ':' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
+<p>The proper syntax of a parameter placeholder is to use the '@' symbol as the prefix of the parameter name (e.g.: <code>@newFirstName</code>). To make a parameterized SQL ( e.g: <code>update Person set FirstName = @newFirstName where PersonId = 1</code>), these placeholders are filled in with the actual parameter values when the SQL statement is executed.</p>
 <p><code>parameters</code>	System.Object[]</p>
-<p>(Optional) One or more <code>ParamValue</code> objects which contain the values corresponding to the SQL parameter identifier names.</p>
-<p>You can also pass the arguments directly in the order in which they appear in <code>sqlText</code> without using the <code>ParamValue</code> object.</p>
+<p>(Optional) One or more <a href="../../../ParamValue/ParamValue.html">ParamValue</a> objects which contain the values corresponding to the SQL parameter identifier names.</p>
+<p>You can also pass the arguments directly in the order in which each parameter identifier name appear in <code>sqlText</code> for the first time, without using the <a href="../../../ParamValue/ParamValue.html">ParamValue</a> object.</p>
 <p><strong>Returns</strong></p>
 <p>System.Collections.Generic.IEnumerable&lt;TModel&gt;</p>
 <p>Returns an <code>IEunmerable&lt;TModel&gt;</code> object which can load the result set lazily.</p>
+<p><strong>Remarks</strong></p>
+<p>This method uses command behavior of <code>CommandBehavior.SequentialAccess</code> internally, which provides a way for the <code>DataReader</code> to handle rows that contain columns with large binary values.</p>
+<p>It creates each model object and reads data from database to this model object only when the data is asked for. You can use this method to save resources and improve performance by deferring the initialization of expensive objects until they are requested.</p>
+<p>You have to open the current connection (<code>DataContext.CurrentConnection</code> property) explicitly before calling this method and close the connection explicitly after calling this method.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行SQL语句，将查询出的数据放入Model中.The following code example demonstrates how to execute the SQL statement and put the query result to a model.</p>
+<p>The following code example demonstrates how to use the <code>SelectLazy&lt;TModel&gt;(String, params object[])</code> method to execute the SQL statement lazily.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -114,31 +118,34 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
         {
 
             // Defines the SQL statement.
-            var sql = &quot;select CourseID, Title from Course&quot; +
-                      &quot; where CourseID = 8001&quot;;
+            var sql = @&quot;SELECT CourseID, Title
+                        FROM Course
+                        WHERE CourseID = @Courseid&quot;;
 
             // Opens the current connection.
             _context.CurrentConnection.Open();
 
-            // Executes the SQL statement and puts the query result to an enumeration.
-            var master = _context.SqlExecutor.SelectLazy&lt;DynamicModel&gt;(sql);
+            // Executes the SQL statement.
+            // It dosen't get the result set from database eagerly.
+            // This method is usually used to handle rows that contain columns  
+            // with large binary values.
+            var result = _context.SqlExecutor.SelectLazy&lt;DynamicModel&gt;(sql, 2030);
+
+            // Gets each row of the result set from database one by one. 
+            // It creates each model object and reads data from database to 
+            // this model object only when the data is asked for.
+            foreach (var model in result)
+            {
+                Console.WriteLine(&quot;Title: {0}.&quot;, model.GetValue(1));
+            }
 
             // Closes the current connection.
             _context.CurrentConnection.Close();
 
-            // Outputs the query result via a loop. 
-            foreach(var model in master)
-            {
-                Console.WriteLine(&quot;Title = {0}.&quot;,
-                              model.GetValue(1));
-            }
-
-
             /*This code produces the following output:
 
-            Title = Test Course. 
-           */
-
+            Title: Poetry.
+            */
         }
     }
 }

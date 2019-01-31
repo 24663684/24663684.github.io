@@ -82,18 +82,18 @@
 <p><strong>Type Parameters</strong></p>
 <p>TModel</p>
 <p>The datatype of the model object which represents the data row in the result set.</p>
-<p>You can also specify <code>DynamicModel</code> to TModel if you do not want to define a custom model class.</p>
+<p>You can also specify <a href="../../../DynamicModel/DynamicModel.html">DynamicModel</a> to <code>TModel</code> if you do not want to define a custom model class.</p>
 <p><strong>Parameters</strong></p>
-<p><code>sqlText</code>	System.String</p>
+<p><code>sqlText</code> System.String</p>
 <p>The name of the SQL stored procedure.</p>
 <p><code>parameters</code>	System.Object[]</p>
 <p>(Optional) The parameters for executing the SQL stored procedure.</p>
-<p>One or more <code>ParamValue</code> objects, containing the parameter direction and values, corresponding to the SQL stored procedure's parameters. See <a href="../../ParamValue/ParamValue.md">ParamValue</a> for more info.</p>
+<p>One or more <a href="../../../ParamValue/ParamValue.html">ParamValue</a> objects, containing the parameter direction and values, which correspond to the SQL stored procedure's parameters. See <a href="../../../ParamValue/ParamValue.html">ParamValue</a> for more info.</p>
 <p><strong>Returns</strong></p>
 <p><a href="../../IModelStore/IModelStore.html">Appeon.Data.IModelStore&lt;TModel&gt;</a></p>
-<p>Returns an <code>IModelStore&lt;TModel&gt; object</code> that contains the result set.</p>
+<p>Returns an <code>IModelStore&lt;TModel&gt;</code> object that contains the result set.</p>
 <h3 id="examples"><strong>Examples</strong></h3>
-<p>执行数据库中指定的procedure，用于查询数据，并将查询结果返回到modelstore实例中.The following code example demonstrates how to execute the specified procedure in database and return the query result to a ModelStore object.</p>
+<p>The following code example demonstrates how to execute the specified procedure in database and return the query result to a ModelStore object.</p>
 <pre><code class="lang-C#">using Appeon.Data;
 using System;
 
@@ -111,27 +111,56 @@ namespace Appeon.ApiDoc.ISqlExecutorExamples
 
         public void Example()
         {
-
             // Specifies the procedure to be executed.
-            var sql = &quot;test_selectproc&quot;;
+            var proc = &quot;GetStudentGrades&quot;;
 
-            /*
-                         
-             test_selectproc sql statements:
-             select * from Course where CourseID = 8001
-             */
+            /* StoredProcedure GetStudentGrades:
+            
+            CREATE PROCEDURE [dbo].[GetStudentGrades]
+            @StudentID int
+            AS
+            SELECT EnrollmentID, Grade, CourseID, StudentID FROM dbo.StudentGrade
+            WHERE StudentID = @StudentID
 
-            // Executes the SQL statement and returns the query result.
-            var master = _context.SqlExecutor.SelectProcedureToStore&lt;DynamicModel&gt;(sql);
+            GO
+            */
 
-            Console.WriteLine(&quot;Records Count = {0}.&quot;,
-                              master.Count);
+            // Sets value for the @StudentID parameter.
+            var studentId = ParamValue.New&lt;int&gt;(&quot;StudentID&quot;, 7);
+
+            // Executes the SQL statement and returns a ModelStore.
+            var ms = _context.SqlExecutor
+                .SelectProcedureToStore&lt;DynamicModel&gt;(proc, studentId);
+
+            Console.WriteLine(&quot;Count: {0}.&quot;, ms.Count);
+            Console.WriteLine();
+
+            foreach (var model in ms)
+            {
+                Console.WriteLine(&quot;Student ID: {0}.&quot;,
+                   model.GetValue&lt;int&gt;(&quot;StudentID&quot;));
+
+                Console.WriteLine(&quot;Course ID: {0}.&quot;,
+                    model.GetValue&lt;int&gt;(&quot;CourseID&quot;));
+
+                Console.WriteLine(&quot;Grade: {0}.&quot;,
+                    model.GetValue&lt;decimal&gt;(&quot;Grade&quot;));
+
+                Console.WriteLine();
+            }
 
             /*This code produces the following output:
 
-            Records Count = 1.
-           */
+            Count: 2.
 
+            Student ID: 7.
+            Course ID: 2021.
+            Grade: 3.50.
+
+            Student ID: 7.
+            Course ID: 2042.
+            Grade: 4.00.
+            */
         }
     }
 }
