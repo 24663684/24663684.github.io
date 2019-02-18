@@ -1,0 +1,682 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore Interface </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore Interface ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastore-interface"><strong>IDataStore<tmodel> Interface</tmodel></strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+</div>
+<p>待定。</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<p>IDataStore接口代表一个DataStore对象。DataStore是一个基于.NET Standard开发的数据操作组件，是对PowerScript的DataStore对象向C#的迁移，提供了与PowerScript的DataStore基本一致的行为，并且扩展了符合C#语法特性的方法，比如Linq，委托，事件都在DataStore中得到很好的应用，与ASP.NET服务框架充分整合能够很好的与不同客户端进行数据交互，使用DataStore组件可以保持PowerScript的编码风格在服务端简单方便的进行数据操作。</p>
+<p>The <code>IDataStore</code> interface represents a C# DataStore object. C# DataStore is a .NET version of the native PowerBuilder DataStore.  It provides almost the same set of APIs as the native PowerBuilder DataStore, and allows you to use standard C# features such as LINQ, delegates and transactions.</p>
+<p>You can migrate existing PowerBuilder DataWindow/DataStore data objects to become C# DataStore, and take advantages of the simple and convenient PowerScript coding styles to implement data operations at the server side.</p>
+<p>C# DataStore can exchange data easily with different client types because it fully integrates with ASP.NET framework.  C# DataStore is a totally different solution from the legacy PB.NET DataStore: It is fully optimized for handling large-scale and high concurrency access requests, and can yield overall significantly better performance and scalability.</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public interface IDataStore&lt;TModel&gt; :  IEnumerator&lt;TModel&gt;, IEnumerable, IDisposable;
+</code></pre>
+<h3 id="events"><strong>Events</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnInitialized.html">OnInitialized</a></td>
+<td>在初始化DataStore对象时发生。 </td>
+</tr>
+<tr>
+<td><img src="../../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRowDeleting.html">OnRowDeleting</a></td>
+<td>在删除DataStore中的行即将开始时发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRowDeleted.html">OnRowDeleted</a></td>
+<td>在完成DataStore的行删除时发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRetrieveStart.html">OnRetrieveStart</a></td>
+<td>在DataStore的检索即将开始时发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnRetrieveEnd.html">OnRetrieveEnd</a></td>
+<td>在完成DataStore的检索时发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnUpdateStart.html">OnUpdateStart</a></td>
+<td>在脚本调用Update方法之后，并且在将DataStore中的更改发送到数据库之前发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/event.jpeg" alt=""></td>
+<td><a href="Event/OnUpdateEnd.html">OnUpdateEnd</a></td>
+<td>在DataStore完成对数据库的所有更新时发生。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties"><strong>Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Current.html">Current</a></td>
+<td>Object</td>
+<td>遍历DataStore时取得当前元素。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Object.html">Object</a></td>
+<td>IDataObject</td>
+<td>用于从脚本直接操作IDataObject对象中的对象。例如，这些对象可以是列或文本对象。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DeletedCount.html">DeletedCount</a></td>
+<td>int</td>
+<td>获取被删除的数据总数。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/FilteredCount.html">FilteredCount</a></td>
+<td>int</td>
+<td>获取被过滤的数据总数。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Index.html">Index</a></td>
+<td>int</td>
+<td>遍历时获取元素的索引。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/ModifiedCount.html">ModifiedCount</a></td>
+<td>int</td>
+<td>获取被修改的数据总数。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DataObject.html">DataObject</a></td>
+<td>string</td>
+<td>指定与控件关联的Report对象的名称。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/RowCount.html">RowCount</a></td>
+<td>int</td>
+<td>获取数据总行数。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/TotalCount.html">TotalCount</a></td>
+<td>int</td>
+<td>获取数据总数。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods"><strong>Methods</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt="">       </td>
+<td><a href="Method/Add.html">Add(TModel item)</a></td>
+<td>void</td>
+<td>在末尾处添加数据项。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Contains.html">Contains(TModel item)</a></td>
+<td>bool</td>
+<td>确认某项数据是否存在DataStore中。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/CopyTo.html">CopyTo(TModel[] array, int arrayIndex)</a></td>
+<td>void</td>
+<td>从目标数组的指定索引处开始, 把DataStore的所有数据复制到兼容的一维数组。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportEntry1.html">ImportEntry(IModelEntry modelEntry)</a></td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="Method/ImportEntry2.html">ImportEntry(IEnumerable<imodelentry> modelEntries)</imodelentry></a></td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson1.html">ExportJson(MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>将数据从DataStore对象导出到Json字符串。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson2.html">ExportJson(bool changeOnly, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从DataStore对象导出的Json字符串是否格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson3.html">ExportJson(DwBuffer dwbuffer, bool changedOnly, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从DataStore对象导出的Json数据是否只是被改变以及是否被格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson4.html">ExportJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从缓冲区导出的Json数据是否只是被改变以及是否被格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson5.html">ExportJson(DwBuffer dwbuffer, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>指定要导出Json数据的缓冲区并且指定是否导出DataStore的子数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson6.html">ExportJson(DwBuffer dwbuffer, int startRow, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>指定要导出Json数据的缓冲区并且指定导出DataStore的子数据以及导出的Json数据是否格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson7.html">ExportJson(DwBuffer dwbuffer, int startRow, int endRow, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从指定缓冲区导出非格式化Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson8.html">ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从指定缓冲区开始导出指定行的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportJson9.html">ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, short endColumn, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从指定缓冲区中导出指定行和列的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson1.html">ExportPlainJson(MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>将数据从DataStore对象导出到Json字符串。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson2.html">ExportPlainJson(bool changeOnly, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从DataStore对象导出的Json字符串是否格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson3.html">ExportPlainJson(DwBuffer dwbuffer, bool changedOnly, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从DataStore对象导出的Json数据是否只是被改变以及是否被格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson4.html">ExportPlainJson(bool primaryData, bool filterData, bool deleteData, bool dwcdata, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从缓冲区导出的Json数据是否只是被改变以及是否被格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson5.html">ExportPlainJson(DwBuffer dwbuffer, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>指定要导出Json数据的缓冲区并且指定是否导出DataStore的子数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson6.html">ExportPlainJson(DwBuffer dwbuffer, int startRow, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>指定要导出Json数据的缓冲区并且指定导出DataStore的子数据以及导出的Json数据是否格式化。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson7.html">ExportPlainJson(DwBuffer dwbuffer, int startRow, int endRow, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从指定缓冲区导出非格式化Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson8.html">ExportPlainJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从指定缓冲区开始导出指定行的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportPlainJson9.html">ExportPlainJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, short endColumn, MappingMethod mappingMethod)</a></td>
+<td>string</td>
+<td>从指定缓冲区中导出指定行和列的Json数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString1.html">ExportString(bool colheading = true)</a></td>
+<td>string</td>
+<td>将数据导出为字符串数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString2.html">ExportString(int startRow, int endRow, bool colheading = true)</a></td>
+<td>string</td>
+<td>指定开始行和结束行导出字符串数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ExportString3.html">ExportString(int startRow, int endRow, short startColumn, short endColumn, bool colheading = true)</a></td>
+<td>string</td>
+<td>指定开始行，结束行，起始列和结束列导出字符串数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Filter1.html">Filter(string format = null)</a></td>
+<td>void</td>
+<td>将不符合当前筛选条件的行移动到筛选缓冲区。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Filter2.html">Filter&lt;TModel&gt;(Predicate&lt;TModel&gt; predicate)</a></td>
+<td>bool</td>
+<td>将符合指定序列中条件的元素过滤。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FilterEx1.html">FilterEx(Expression&lt;Predicate&lt;TModel&gt;&gt; expression)</a></td>
+<td>bool</td>
+<td>将符合指定lambda表达式的元素过滤。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FilterEx2.html">FilterEx&lt;TModel&gt;(Expression&lt;Predicate&lt;TModel&gt;&gt; expression)</a></td>
+<td>void</td>
+<td>泛型方法，将符合指定lambda表达式的元素过滤。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetSqlSelect.html">GetSqlSelect()</a></td>
+<td>string</td>
+<td>获取DataStore的当前SELECT语句。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson1.html">ImportJson(string Json)</a></td>
+<td>int</td>
+<td>将数据从Json字符串插入DataStore。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson2.html">ImportJson(string Json, DwBuffer dwbuffer)</a></td>
+<td>int</td>
+<td>将数据从指定缓冲区的Json字符串插入DaTaStore。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson3.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow)</a></td>
+<td>int</td>
+<td>将指定缓冲区的Json字符串导入到指定的行。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson4.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow)</a></td>
+<td>int</td>
+<td>将指定缓冲区的Json字符串导入到指定的起始行和结束行。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson5.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn)</a></td>
+<td>int</td>
+<td>将指定缓冲区的Json字符串导入到指定的起始行、结束行和起始列。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson6.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn, int endColumn)</a></td>
+<td>int</td>
+<td>将指定缓冲区的Json字符串导入到指定的起始行、结束行、起始列和结束列。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJson7.html">ImportJson(string Json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn, int endColumn, int dwStartColumn)</a></td>
+<td>int</td>
+<td>将指定缓冲区的Json字符串导入到指定的起始行、结束行、起始列和结束列。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey1.html">ImportJsonByKey(string Json)</a></td>
+<td>int</td>
+<td>根据Json密钥名称将数据从Json字符串插入DataStore。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey2.html">ImportJsonByKey(string Json, DwBuffer dwbuffer)</a></td>
+<td>int</td>
+<td>根据Json密钥名称将数据从指定缓冲区的Json字符串插入DataStore。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey3.html">ImportJsonByKey(string Json, DwBuffer dwbuffer, int startRow)</a></td>
+<td>int</td>
+<td>根据Json密钥名称将数据从指定缓冲区的Json字符串插入DataStore中指定的起始行。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportJsonByKey4.html">ImportJsonByKey(string Json, DwBuffer dwbuffer, int startRow, int endRow)</a></td>
+<td>int</td>
+<td>根据Json密钥名称将数据从指定缓冲区的Json字符串插入DataStore中指定的起始行和起始列。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString1.html">ImportString(string value)</a></td>
+<td>int</td>
+<td>将数据从字符串复制到DataStore。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString2.html">ImportString(string value, int startRow, int endRow = -1)</a></td>
+<td>int</td>
+<td>将数据从字符串复制到DataStore中指定的开始行和结束行。此处-1值表示复制到DataStore的最后一行。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ImportString3.html">ImportString(string value, int startRow, int endRow, short startColumn, short endColumn)</a></td>
+<td>int</td>
+<td>将数据从字符串复制到DataStore中指定的起始行、起始列、结束行和结束列。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/IndexOf.html">IndexOf(TModel item)</a></td>
+<td>int</td>
+<td>获取数据项的索引。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Initialized.html">Initialized()</a></td>
+<td>void</td>
+<td>DataStore初始化后调用。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Insert.html">Insert(int index, TModel item)</a></td>
+<td>void</td>
+<td>在指定索引处插入数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/MoveNext.html">MoveNext()</a></td>
+<td>bool</td>
+<td>使枚举数前进到DataStore的下一个元素。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderBy.html">OrderBy&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</a></td>
+<td>IOrderable&lt;TModel&gt;</td>
+<td>按照某个列对DataStore的行进行排序。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderByDescending.html">OrderByDescending&lt;TModel&gt;(Func&lt;TModel, object&gt; keySelector)</a></td>
+<td>IOrderable&lt;TModel&gt;</td>
+<td>按照某个列对DataStore的行进行降序排序。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Remove.html">Remove(TModel item)</a></td>
+<td>bool</td>
+<td>从DataStore中移除匹配指定项的第一项。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RemoveAt.html">RemoveAt(int index)</a></td>
+<td>void</td>
+<td>移除指定索引处的行。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ReselectRow.html">ReselectRow(int row)</a></td>
+<td>int</td>
+<td>访问数据库以重新选择可以更新的所有列，并刷新DataStore中一行中的所有时间戳列。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Reset.html">Reset()</a></td>
+<td>void</td>
+<td>清除DataStore中的所有数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ResetUpdate.html">ResetUpdate()</a></td>
+<td>bool</td>
+<td>清除主缓冲区和过滤缓冲区的更新标志并且清空删除缓冲区的数据。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Retrieve.html">Retrieve(params object[] arguments)</a></td>
+<td>int</td>
+<td>使DataStore从数据库中检索行。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RetrieveEnd.html">RetrieveEnd(object sender, DwRetrieveEventArgs e)</a></td>
+<td>void</td>
+<td>在DataStore完成数据检索之后发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RetrieveStart.html">RetrieveStart(object sender, DwRetrieveEventArgs e)</a></td>
+<td>void</td>
+<td>在DataStore进行数据检索之前发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowDeleted.html">RowDeleted(object sender, DwRowChangeEventArgs e)</a></td>
+<td>void</td>
+<td>方法的调用发生在行被删除后，会执行OnRowDeleted事件。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowDeleting.html">RowDeleting(object sender, DwRowChangeEventArgs e)</a></td>
+<td>void</td>
+<td>方法的调用发生在行被删除之前，会执行OnRowDeleting事件。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RowsMove.html">RowsMove(int startrow, int endrow, DwBuffer movebuffer, IDataStore targetdw, int beforerow, DwBuffer targetbuffer)</a></td>
+<td>bool</td>
+<td>清除DataStore中的一系列行，并将行插入另一个DataStore或同一DataStore的另一个缓冲区中。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetDataContext.html">SetDataContext(DataContext context)</a></td>
+<td>bool</td>
+<td>设置数据上下文。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SetSqlSelect.html">SetSqlSelect(string statement, bool isValidation = true)</a></td>
+<td>bool</td>
+<td>更改DataStore的当前SELECT语句。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Sort.html">Sort(string format = null)</a></td>
+<td>bool</td>
+<td>使用SetSort设置的排序规则或者传入排序规则进行数据排序。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Update.html">Update(bool resetflag = true)</a></td>
+<td>int</td>
+<td>向数据库发送DataStore的所有插入，删除和更新。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/UpdateEnd.html">UpdateEnd(object sender, DwUpdateEventArgs e)</a></td>
+<td>void</td>
+<td>在DataStore更新数据之后发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/UpdateStart.html">UpdateStart(object sender, DwUpdateEventArgs e)</a></td>
+<td>void</td>
+<td>在DataStore更新数据之前发生。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Validate1.html">Validate()</a></td>
+<td>bool</td>
+<td>使用DataStore中设置的数据较验规则对数据的合法性进行验证。</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Validate2.html">Validate(out List&lt;ValidationResult&gt; ValidationResults)</a></td>
+<td>bool</td>
+<td>使用DataStore中设置的数据较验规则对输出的结果数据的合法性进行验证。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataStore is used in almost exactly the same way as the PowerBuilder DataStore; and on top of that, DataStore also supports to use the advanced .NET development methods, such as LINQ set operations.  DataStore is very useful when you want to access the database and manipulate the data. 几乎一样的使用方式，集合并在此基础上扩充了一些.Net开发使用的高级方法，甚至可以像集合操作那样操作DataStore。 当你要访问数据并对数据进行操作时DataStore非常有用，你可以使用DataStore做以下事情:<br>1 访问数据库数据。Access the data in the database.<br>2 对数据进行增删改查并可以简单方便的把修改反映到数据库。Append, delete, modify or query the data and commit the change to the database conveniently.<br>3 可以对数据进行分组排序等。Group or sort the data.<br>4 自动管理数据库事物也可以进行手动管理。Manage the database transactions automatically or manually.<br>5 提供了对数据合法性验证。Check the data validity and integrity.<br>6 可以跟踪数据的修改。Track the data modification.<br>7 为PowerBuilder项目的迁移提供了较好的解决方案。Used as the replacement for the migrated PowerBuilder DataStore.<br> <br>创建DataStore时必需关联到一个DataWindow对象，使用Retrieve方法对数据进行检索，并把数据放到Primary缓冲区，可以传入DataWindow中定义的参数进行数据检索，使用AddRow向DataStore中追加数据，DeleteRow可以删除DataStore的数据，但数据并没真正从DataStore中删除而是把数据移到Delete缓冲区，你也以可以对Delete缓冲区的数据进行操作,当需要排序时使用SetSort设置排序条件，调用Sort后会对数据进行排序，SetFilter可以设置你想要过滤的数据，被过滤的数据会被移到Filter缓冲区，update方法可以将修改保存到数据库。When DataStore is created, it must be associated with a DataWindow object. It uses the Retrieve method to obtain the data and place the data to the primary buffer. Parameters defined in the DataWindow can also be passed in to retrieve data. AddRow method can be used to append data to the DataStore; and DeleteRow method can be used to remove data from the DataStore, however, data is not directly deleted from the DataStore, it is only moved to the delete buffer where you can still manipulate it later. SetSort method can be used to set the sorting criteria and Sort method to sort the data according to the predefined criteria.  SetFilter method can be used to filter the data, and the data will be moved to the filter buffer. Update method can be used to finally commit the change to the database.<br>DataStore还提供了许多事件用于数据被变时调用。包括OnRowDeleting, OnRowDeleted, OnRetrieveStart, OnRetrieveEnd, OnUpdateStart, OnUpdateEnd。DataStore also provides many events that will occur on data change; these events include OnRowDeleting, OnRowDeleted, OnRetrieveStart, OnRetrieveEnd, OnUpdateStart, and OnUpdateEnd.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples"><strong>Examples</strong></h3>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

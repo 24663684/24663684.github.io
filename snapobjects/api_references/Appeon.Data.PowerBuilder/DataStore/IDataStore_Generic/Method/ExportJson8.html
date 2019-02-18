@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore.ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore.ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../../index.html">
+        	<img id="logo" src="../../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastoreexportjsondwbuffer-dwbuffer-int-startrow-int-endrow-short-startcolumn-mappingmethod-mappingmethod-method"><strong>IDataStore.ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>从指定缓冲区导出行（从指定的起始位置到结束位置）和列（从指定的起始位置到结尾）到标准格式JSON字符串。</p>
+<p>Exports the rows (from the specified starting position to the ending position) and the columns (from the specified starting position to the end) from the specified buffer to a standard-format JSON string.</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public string ExportJson(DwBuffer dwbuffer, int startRow, int endRow, short startColumn, MappingMethod mappingMethod);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>dwbuffer</code> <a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataWindow buffer from which you want to export the data.</p>
+<p><code>startRow</code> System.Int32</p>
+<p>The zero-based number of the first detail row in the buffer that you want to export.</p>
+<p><code>endRow</code> System.Int32</p>
+<p>The zero-based number of the last detail row in the buffer that you want to export.</p>
+<p>If it is negative, it indicates the rest of rows.</p>
+<p><code>startColumn</code> System.Int16</p>
+<p>The zero-based number of the first column in the buffer that you want to export.</p>
+<p>If it is negative, 0 is used.</p>
+<p><code>mappingMethod</code> <a href="../../../CoreService.Data/MappingMethod/MappingMethod.html">Appeon.Data.MappingMethod</a></p>
+<p>A value of the <code>MappingMethod</code> enumerated datatype specifying the method for mapping columns.</p>
+<p><strong>Returns</strong></p>
+<p>System.String</p>
+<p>Returns the JSON string if it succeeds.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>See <a href="Glossary/json_format.html">JSON formats</a> for details about the standard-format JSON.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>The following code example demonstrates export department records to JSON string using
+startRow,endRow and startColumn parameters.</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.PowerBuilder;
+using System;
+
+namespace Appeon.ApiDoc.IDataStoreExamples
+{
+    public class ExportJsonExample
+    {
+        private SchoolContext _context;
+
+        public ExportJsonExample(SchoolContext dataContext)
+        {
+            // Set Data Context
+            _context = dataContext;
+        }
+
+        public void Example8()
+        {
+            // Instantiate the datastore with datawindow:d_department
+            var datastore = new DataStore(&quot;d_department&quot;, _context);
+
+            datastore.Retrieve();
+
+            // 导出primary buffer内从第1行到第11行的,从第2列开始到最后一列终止的数据
+            string json = datastore.ExportJson(DwBuffer.Primary, 0, 10, 1, MappingMethod.JsonIndex);
+
+            Console.WriteLine(json);
+
+            /*This export json file is :
+
+            ExportJson8.json  
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>JSON File: <a href="../../../SourceCode/Examples/Jsons/IDatastore/ExportJson8.html">ExportJson8</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/main.js"></script>
+  </body>
+</html>

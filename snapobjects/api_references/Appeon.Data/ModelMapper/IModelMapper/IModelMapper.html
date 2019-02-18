@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IModelMapper Interface </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IModelMapper Interface ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="imodelmapper-interface"><strong>IModelMapper Interface</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current version (0.5.0-alpha) <img src="../../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
+</div>
+<p>ModelMapper is a data manipulation component compliant with .NET Standard.</p>
+<p>Compared to DataStore and ModelStore, it can handle complicated business logics in a more efficient way with significantly less coding. It can build models with data from multiple tables, support nested levels of relationships, and provide implicit transaction management for business entities (i.e. a top-level object and all of its children).</p>
+<p>When ModelMapper is used to save data, it can automatically commit all tracked data operations in one transaction to achieve data integrity.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#"> public interface IModelMapper;
+</code></pre>
+<h3 id="methods"><strong>Methods</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt="">       </td>
+<td><a href="Method/Avg.html">Avg&lt;TModel&gt;(string expression,params object[] parameters)</a></td>
+<td>object</td>
+<td>Computes the average value using the specified SQL expression for the data retrieved according to the criteria specified in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Count.html">Count&lt;TModel&gt;(params object[] parameters)</a></td>
+<td>int</td>
+<td>Gets the number of rows in the result set retrieved according to the criteria specified in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/DistinctCount.html">DistinctCount&lt;TModel&gt;(string expression,params object[] parameters)</a></td>
+<td>int</td>
+<td>Retrieves a count of all distinct values specified by the SQL expression, according to the criteria specified in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Exists.html">Exists&lt;TModel&gt;(params object[] parameters)</a></td>
+<td>bool</td>
+<td>Checks whether any record exists according to the retrieval criteria specified in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/KeyExists.html">KeyExists&lt;TModel&gt;(params object[] parameters)</a></td>
+<td>bool</td>
+<td>Checks whether data exists when retrieved according to the primary key defined in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Load1.html">Load&lt;TModel&gt;(params object[] parameters)</a></td>
+<td>[ILoadable&lt;TModel&gt;</td>
+<td>Retrieves data according to the SQL query defined in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Load2.html">Load&lt;TModel&gt;(ISqlQueryBuilder queryBuilder, params object[] parameters)</a></td>
+<td>[ILoadable&lt;TModel&gt;</td>
+<td>Retrieves data according to the SQL query defined in the SqlQueryBuilder instance.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LoadByKey.html">LoadByKey&lt;TModel&gt;(params object[] parameters)</a></td>
+<td>[ILoadable&lt;TModel&gt;</td>
+<td>Retrieves data according to the primary key defined in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LoadEmbedded.html">LoadEmbedded&lt;TModel&gt;(TModel model, params object[] parameters)</a></td>
+<td><a href="../IEmbeddedLoadable/IEmbeddedLoadable.html">IEmbeddedLoadable&lt;TModel&gt;</a></td>
+<td>Obtains the IEmbeddedLoadable&lt;TModel&gt; interface which can be used to load the embedded property of a <code>TModel</code> instance.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Max.html">Max&lt;TModel&gt;(string expression, params object[] parameters)</a></td>
+<td>object</td>
+<td>Gets the maximum value for the specified SQL expression according to the retrieval criteria specified in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Min.html">Min&lt;TModel&gt;(string expression, params object[] parameters)</a></td>
+<td>object</td>
+<td>Gets the minimum value for the specified SQL expression according to the retrieval criteria specified in a Model class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SaveChanges.html">SaveChanges()</a></td>
+<td><a href="../IDbResult/IDbResult.html">IDbResult</a></td>
+<td>Updates the database by executing the data changes tracked by a ModelMapper instance.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Scalar.html">Scalar&lt;TModel, TValue&gt;(string expression, params object[] parameters)</a></td>
+<td>TValue</td>
+<td>Retrieves data of the first column in the first row for the specified SQL expression according to the criteria specified in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ScalarByKey.html">ScalarByKey&lt;TModel, TValue&gt;(string expression, params object[] parameters)</a></td>
+<td>TValue</td>
+<td>Retrieves data of the first column in the first row for the specified SQL expression according to the primary key in a <code>TModel</code> class.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Track1.html">Track(Action&lt;ISaveContext&gt; saveAction)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks an <code>Action&lt;ISaveContext&gt;</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Track2.html">Track&lt;TModel&gt;(IModelEntry&lt;TModel&gt; modelEntry)</a></td>
+<td>TModel</td>
+<td>Tracks a ModelEntry&lt;TModel&gt; instance including data and status.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Track3.html">Track&lt;TModel&gt;(IModelEntry&lt;TModel&gt; modelEntry, Action&lt;ISaveContext&gt; afterSaveAction)</a></td>
+<td>TModel</td>
+<td>Tracks a ModelEntry&lt;TModel&gt; instance including data and status, and calls an <code>Action&lt;ISaveContext&gt;</code> object after updating the specified database successfully.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackCreate1.html">TrackCreate&lt;TModel&gt;(TModel model)</a></td>
+<td>[IModelMapper]</td>
+<td>Tracks a <code>TModel</code> instance. Used for adding a record to the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackCreate2.html">TrackCreate&lt;TModel&gt;(TModel model, Action&lt;ISaveContext&gt; afterSaveAction)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a <code>TModel</code> instance, used for adding a record to the database and calling an <code>Action&lt;ISaveContext&gt;</code> object after adding the record.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackCreateRange.html">TrackCreateRange&lt;TModel&gt;(IEnumerable&lt;TModel&gt; models)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a collection of the specified <code>TModel</code> type. Used for adding one or multiple records to a database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackDelete1.html">TrackDelete&lt;TModel&gt;(TModel model)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a <code>TModel</code> instance. Used for deleting the database record that corresponds to the <code>TModel</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackDelete2.html">TrackDelete&lt;TModel&gt;(TModel model, Action&lt;ISaveContext&gt; afterSaveAction)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a <code>TModel</code> instance. Used for deleting the database record corresponding to the <code>TModel</code> object and calling an <code>Action&lt;ISaveContext&gt;</code> object after saving the data and before committing to the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackSqlBuilder2.html">TrackSqlBuilder(ISqlDeleteBuilder deleteBuilder, params object[] parameters)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks an instance which has implemented the ISqlDeleteBuilder interface and passes in the parameter(s) required by the instance for the constructed SQL. Used for finally deleting the record in the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackDeleteByKey.html">TrackDeleteByKey&lt;TModel&gt;(params object[] parameters)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks the data that is deleted according to the primary key in <code>TModel</code>. Used for finally deleting the database records.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackDeleteRange.html">TrackDeleteRange&lt;TModel&gt;(IEnumerable&lt;TModel&gt; models)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a collection of the specified <code>TModel</code> type. Used for deleting one or multiple records in a database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackSqlBuilder1.html">TrackSqlBuilder(ISqlInsertBuilder insertBuilder, params object[] parameters)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks an instance which has implemented the ISqlInsertBuilder interface and passes in the parameter(s) required by the instance for the constructed SQL. Used for finally inserting the record into the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackMaster1.html">TrackMaster&lt;TModel&gt;(IModelEntry&lt;TModel&gt; modelEntry)</a></td>
+<td><a href="../IDetailTracker/IDetailTracker.html">IDetailTracker&lt;TModel&gt;</a></td>
+<td>Tracks a ModelEntry&lt;TModel&gt; instance which includes the data and status of the master Model, when working with multiple Models which have master-detail relationships. Used for updating the data of the master Model in the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackMaster2.html">TrackMaster&lt;TModel&gt;(IModelEntry&lt;TModel&gt; modelEntry, Action&lt;ISaveContext&gt; afterSaveAction)</a></td>
+<td><a href="../IDetailTracker/IDetailTracker.html">IDetailTracker&lt;TModel&gt;</a></td>
+<td>Tracks a ModelEntry&lt;TModel&gt; instance which includes the data and status of the master Model, when working with multiple Models which have master-detail relationships. Used for updating the data of the master Model in the database and calling an <code>Action&lt;ISaveContext&gt;</code> object after saving the data and before committing to the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackRange.html">TrackRange&lt;TModel&gt;(IEnumerable&lt;IModelEntry&lt;TModel&gt;&gt; modelEntries)</a></td>
+<td>IList&lt;TModel&gt;</td>
+<td>Tracks a collection of ModelEntries with the specified <code>TModel</code> type.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackSqlCUD.html">TrackSqlCUD(string sqlText, params object[] parameters)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks an INSERT, UPDATE, or DELETE SQL statement.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackUpdate1.html">TrackUpdate&lt;TModel&gt;(TModel model)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a <code>TModel</code> instance. Used for updating the database record corresponding to the <code>TModel</code> instance.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackUpdate2.html">TrackUpdate&lt;TModel&gt;(TModel model, Action&lt;ISaveContext&gt; afterSaveAction)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a <code>TModel</code> instance. Used for updating the database record corresponding to the <code>TModel</code> instance and calling an <code>Action&lt;ISaveContext&gt;</code> object after saving the data and before committing to the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackSqlBuilder3.html">TrackSqlBuilder&lt;TModel&gt;(ISqlUpdateBuilder updateBuilder, params object[] parameters)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks an instance which has implemented the ISqlUpdateBuilder interface and passes in the parameter(s) required by the instance for the constructed SQL. Used for finally updating the record in the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/TrackUpdateRange.html">TrackUpdateRange&lt;TModel&gt;(IEnumerable&lt;TModel&gt; models)</a></td>
+<td><a href="../IModelMapper/IModelMapper.html">IModelMapper</a></td>
+<td>Tracks a collection of the specified <code>TModel</code> type. Used for updating one or multiple records to a database.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ValidateTrackedModels1.html">ValidateTrackedModels()</a></td>
+<td>bool</td>
+<td>Performs validity check to all of the data tracked by ModelMapper.</td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ValidateTrackedModels2.html">ValidateTrackedModels(out List&lt;ValidationResult&gt; ValidationResults)</a></td>
+<td>bool</td>
+<td>Performs validity check to all of the data tracked by ModelMapper and gets the validation result.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<p>ModelMapper is an easy-to-use data manipulation component. It maps the database table to the C# objects and provides flexible interfaces for manipulating the database. Developer can easily manage the object relationships and cascading operations with simple coding, and perform various operations to the database via writing almost no SQL statements.</p>
+<p><strong>Tracking</strong></p>
+<p>ModelMapper provides various track methods. The track method keeps track of the database operation only, but does not execute the operations. When multiple track methods are called, the order of the tracks determines the order of the database operations to be executed. When the <a href="Method/SaveChanges.html">IModeMapper.SaveChanges</a> method is called to actually execute the database operations, all of these operations will be executed in the same transaction. When a succeeding operation relies on the execution result of a proceeding operation, the developer can use the <code>Action&lt;ISaveAction&gt;</code> parameter of the <a href="Method/Track1.html">IModelMapper.Track</a> method to receive and pass along the context when the data is saved. After the <a href="Method/SaveChanges.html">IModeMapper.SaveChanges</a> method executes the database operations, all of the tracked operations will be restored to the initial state.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

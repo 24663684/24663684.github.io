@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SqlBuilder &#31867; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SqlBuilder &#31867; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="sqlbuilder-类"><strong>SqlBuilder 类</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
+</div>
+SQLBuilder提供结构化的SQL语句构建方式，SQLBuilder只负责SQL语法结构的构建，并不依赖于具体的数据库，支持根据不同的DataContext生成不同数据库的SQL语句，使用SQLBuilder可以方便的动态构建SQL并将其缓存起来重复利用，还可以进行克隆和修改，解决了实际项目中大量SQL难以维护的难题。 
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="语法"><strong>语法</strong></h3>
+<pre><code class="lang-c#"> public class SqlBuilder;
+</code></pre>
+<h3 id="方法"><strong>方法</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt="">       </td>
+<td><a href="Method/Delete1.html">Delete(string table)</a></td>
+<td><a href="../ISqlDeleteBuilder/ISqlDeleteBuilder.html">ISqlDeleteBuilder</a></td>
+<td>    </td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Delete2.html">Delete(string table, string schema)</a></td>
+<td><a href="../ISqlDeleteBuilder/ISqlDeleteBuilder.html">ISqlDeleteBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHaving1.html">EmbeddedHaving(string left, string right)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHaving2.html">EmbeddedHaving(string left, SqlBinaryOperator sqlOperator, string right)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHaving3.html">EmbeddedHaving(string left, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHaving4.html">EmbeddedHaving(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHaving5.html">EmbeddedHaving(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHaving6.html">EmbeddedHaving(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHavingRaw1.html">EmbeddedHavingRaw(string clause, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHavingRaw2.html">EmbeddedHavingRaw(string clause, string havingName, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHavingValue1.html">EmbeddedHavingValue(string left, object value)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedHavingValue2.html">EmbeddedHavingValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOn1.html">EmbeddedOn(string left, string right)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOn2.html">EmbeddedOn(string left, SqlBinaryOperator sqlOperator, string right)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOn3.html">EmbeddedOn(string left, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOn4.html">EmbeddedOn(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOn5.html">EmbeddedOn(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOn6.html">EmbeddedOn(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOnRaw1.html">EmbeddedOnRaw(string clause, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOnRaw2.html">EmbeddedOnRaw(string clause, string conditionName, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOnValue1.html">EmbeddedOnValue(string left, object value)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedOnValue2.html">EmbeddedOnValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbededWhere1.html">EmbeddedWhere(string left, string right)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhere2.html">EmbeddedWhere(string left, SqlBinaryOperator sqlOperator, string right)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhere3.html">EmbeddedWhere(string left, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhere4.html">EmbeddedWhere(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhere5.html">EmbeddedWhere(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhere6.html">EmbeddedWhere(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereExists.html">EmbeddedWhereExists(ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereIsNotNull.html">EmbeddedWhereIsNotNull(string left)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereIsNull.html">EmbeddedWhereIsNull(string left)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereNotExists.html">EmbeddedWhereNotExists(ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereRaw1.html">EmbeddedWhereRaw(string clause, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereRaw2.html">EmbeddedWhereRaw(string clause, string whereName, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereValue1.html">EmbeddedWhereValue(string left, object value)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/EmbeddedWhereValue2.html">EmbeddedWhereValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having1.html">Having(string left, string right)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having2.html">Having(string left, SqlBinaryOperator sqlOperator, string right)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having3.html">Having(string left, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having4.html">Having(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having5.html">Having(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having6.html">Having(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingRaw1.html">HavingRaw(string clause, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingRaw2.html">HavingRaw(string clause, string havingName, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingValue1.html">HavingValue(string left, object value)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingValue2.html">HavingValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href="../ISqlHavingCondition/ISqlHavingCondition.html">ISqlHavingCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Insert1.html">Insert(string table)</a></td>
+<td><a href="../ISqlInsertBuilder/ISqlInsertBuilder.html">ISqlInsertBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Insert2.html">Insert(string table, string schema)</a></td>
+<td><a href="../ISqlInsertBuilder/ISqlInsertBuilder.html">ISqlInsertBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/On1.html">On(string left, string right)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/On2.html">On(string left, SqlBinaryOperator sqlOperator, string right)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/On3.html">On(string left, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/On4.html">On(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/On5.html">On(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/On6.html">On(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnRaw1.html">OnRaw(string clause, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnRaw2.html">OnRaw(string clause, string conditionName, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnValue1.html">OnValue(string left, object value)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OnValue2.html">OnValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href="../ISqlJoinCondition/ISqlJoinCondition.html">ISqlJoinCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Parameter1.html">Parameter&lt;TType&gt;(string name = &quot;&quot;, string prifx = &quot;&quot;)</a></td>
+<td><a href="../ISqlParameter/ISqlParameter.html">ISqlParameter</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Parameter2.html">Parameter(Type type, string name = &quot;&quot;, string prifx = &quot;&quot;)</a></td>
+<td><a href="../ISqlParameter/ISqlParameter.html">ISqlParameter</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Select1.html">Select(string column, string alias = &quot;&quot;)</a></td>
+<td><a href="../ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Select2.html">Select(string[] columns)</a></td>
+<td><a href="../ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Select3.html">Select(ISqlBuilder sqlBuilder, string alias = &quot;&quot;)</a></td>
+<td><a href="../ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/SelectRaw.html">SelectRaw(string selectRaw, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlQueryBuilder/ISqlQueryBuilder.html">ISqlQueryBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Update1.html">Update(string table)</a></td>
+<td><a href="../ISqlUpdateBuilder/ISqlUpdateBuilder.html">ISqlUpdateBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Update2.html">Update(string table, string schema)</a></td>
+<td><a href="../ISqlUpdateBuilder/ISqlUpdateBuilder.html">ISqlUpdateBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where1.html">Where(string left, string right, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where2.html">Where(string left, SqlBinaryOperator sqlOperator, string right, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetItemTime3.html">Where(string left, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where4.html">Where(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where5.html">Where(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where6.html">Where(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereExists.html">WhereExists(ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereIsNotNull.html">WhereIsNotNull(string left)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereIsNull.html">WhereIsNull(string left)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereNotExists.html">WhereNotExists(ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereRaw1.html">WhereRaw(string clause, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereRaw2.html">WhereRaw(string clause, string whereName, params ISqlParameter[] parameters)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereValue1.html">WhereValue(string left, object value)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereValue2.html">WhereValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href="../ISqlWhereCondition/ISqlWhereCondition.html">ISqlWhereCondition</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="备注"><strong>备注</strong></h3>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples"><strong>Examples</strong></h3>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

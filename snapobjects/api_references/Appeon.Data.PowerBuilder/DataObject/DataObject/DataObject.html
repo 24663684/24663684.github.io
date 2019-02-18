@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DataObject &#31867; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="DataObject &#31867; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="dataobject-类"><strong>DataObject 类</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha(current)</a>
+</div>
+<p><strong>命名空间：</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>程序集：</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="语法"><strong>语法</strong></h3>
+<pre><code class="lang-c#">  public class DataObject : DwProperty, IDataObject, IReadOnlyDataObject, IDataObjectBase, ICloneable&lt;IDataObject&gt;;
+</code></pre>
+<h3 id="构造函数"><strong>构造函数</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/DataObject.html">DataObject(string name, Type modelType)</a></td>
+<td>使用dataobject初始化一个DataObject类的新实例。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<h3 id="属性"><strong>属性</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Bands1.html">Bands</a></td>
+<td>IDwBands</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Bands2.html">Bands</a></td>
+<td>IDwReadOnlyBands</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Buttons1.html">Buttons</a></td>
+<td>IDwoList&lt;IDwoButton&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Buttons2.html">Buttons</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyButton&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Columns1.html">Columns</a></td>
+<td>IDwoList&lt;IDwoColumn&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Columns2.html">Columns</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyColumn&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Computes1.html">Computes</a></td>
+<td>IDwoList&lt;IDwoCompute&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Computes2.html">Computes</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyCompute&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Data.html">Data</a></td>
+<td>object[]</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DataWindow1.html">DataWindow</a></td>
+<td>IDwoDataWindow</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DataWindow2.html">DataWindow</a></td>
+<td>IDwoReadOnlyDataWindow</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Graphs1.html">Graphs</a></td>
+<td>IDwoList&lt;IDwoGraph&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Graphs2.html">Graphs</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyGraph&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/GroupBoxes1.html">GroupBoxes</a></td>
+<td>IDwoList&lt;IDwoGroupBox&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/GroupBoxes2.html">GroupBoxes</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyGroupBox&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Groups1.html">Groups</a></td>
+<td>IList&lt;IDwGroup&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Groups2.html">Groups</a></td>
+<td>IReadOnlyList&lt;IDwReadOnlyGroup&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/InkPictures1.html">InkPictures</a></td>
+<td>IDwoList&lt;IDwoInkPicture&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/InkPictures2.html">InkPictures</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyInkPicture&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Lines1.html">Lines</a></td>
+<td>IDwoList&lt;IDwoLine&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Lines2.html">Lines</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyLine&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/ModelType.html">ModelType</a></td>
+<td>Type</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Name.html">Name</a></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Nested.html">Nested</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Objects1.html">Objects</a></td>
+<td>IDwoObjects</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Objects2.html">Objects</a></td>
+<td>IDwoReadOnlyObjects</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/OleObjects1.html">OleObjects</a></td>
+<td>IDwoList&lt;IDwoOleObject&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/OleObjects2.html">OleObjects</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyOleObject&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Ovals1.html">Ovals</a></td>
+<td>IDwoList&lt;IDwoOval&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Ovals2.html">Ovals</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyOval&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Pictures1.html">Pictures</a></td>
+<td>IDwoList&lt;IDwoPicture&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Pictures2.html">Pictures</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyPicture&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Rectangles1.html">Rectangles</a></td>
+<td>IDwoList&lt;IDwoRectangle&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Rectangles2.html">Rectangles</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyRectangle&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Release.html">Release</a></td>
+<td>IDwRelease</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Reports1.html">Reports</a></td>
+<td>IDwoList&lt;IDwoReport&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Reports2.html">Reports</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyReport&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/RoundRectangles1.html">RoundRectangles</a></td>
+<td>IDwoList&lt;IDwoRoundRectangle&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/RoundRectangles2.html">RoundRectangles</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyRoundRectangle&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/SrdPath.html">SrdPath</a></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Syntax.html">Syntax</a></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/TableBlobs1.html">TableBlobs</a></td>
+<td>IDwoList&lt;IDwoTableBlob&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/TableBlobs2.html">TableBlobs</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyTableBlob&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Texts1.html">Texts</a></td>
+<td>IDwoList&lt;IDwoText&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Texts2.html">Texts</a></td>
+<td>IDwoReadOnlyList&lt;IDwoReadOnlyText&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/WorkspaceName.html">WorkspaceName</a></td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法"><strong>方法</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt="">       </td>
+<td><a href="Method/Clone1.html">Clone()</a></td>
+<td>IDataObject</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Clone2.html">Clone()</a></td>
+<td>TModel</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetInitModels.html">GetInitModels&lt;TModel&gt;</a></td>
+<td>IList&lt;TModel&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="备注"><strong>备注</strong></h3>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>待定。</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

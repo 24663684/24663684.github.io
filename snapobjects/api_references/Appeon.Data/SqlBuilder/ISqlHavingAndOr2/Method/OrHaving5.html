@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ISqlHavingAndOr&lt;TBuilder&gt;.OrHaving(string left, ISqlBuilder sqlBuilder) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ISqlHavingAndOr&lt;TBuilder&gt;.OrHaving(string left, ISqlBuilder sqlBuilder) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../../index.html">
+        	<img id="logo" src="../../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="isqlhavingandortbuilderorhavingstring-left-isqlbuilder-sqlbuilder-method"><strong>ISqlHavingAndOr&lt;TBuilder&gt;.OrHaving(string left, ISqlBuilder sqlBuilder) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
+</div>
+<p>向HAVING子句添加OR逻辑运算符和一个搜索条件，在运算符左侧指定SQL表达式，在右侧指定SQL子查询。运算符使用'='。</p>
+<p>Adds the OR logical operator and a search condition to the HAVING clause. Specifies a SQL expression on the left of the operator and a SQL subquery on the right of the operator. The operator is '='.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  TBuilder OrHaving(string left, ISqlBuilder sqlBuilder);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>left</code>	System.String</p>
+<p>A SQL expression on the left of the operator.</p>
+<p><code>sqlBuilder</code>	<a href="../../ISqlBuilder/ISqlBuilder.html">Appeon.Data.ISqlBuilder</a></p>
+<p>An <code>ISqlBuilder</code> object which represents a SQL subquery on the right of the operator.</p>
+<p><strong>Returns</strong></p>
+<p>TBuilder</p>
+<p>Returns the <code>TBuilder</code> object which can be used to add more search conditions to the current HAVING clause.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>增加分组条件The following code example demonstrates how to specify search conditions for groups.</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ISqlHavingAndOrExamples
+{
+    public class OrHavingExample
+    {
+        private readonly SchoolContext _context;
+
+        public OrHavingExample(SchoolContext dataContext)
+        {
+            // Sets the data context.
+            _context = dataContext;
+        }
+
+        public void Example5()
+        {
+            var sqlQueryBuilder = new SqlQueryBuilder();
+
+            // 设置一个查询，用来获取最小Course ID
+            // Sets a query to get the minimum Course ID.
+            var sqlBuilder = new SqlQueryBuilder();
+            sqlBuilder.SelectRaw(&quot;min(CourseID)&quot;)
+                      .From(&quot;Course&quot;);
+
+            // 在StudentGrade表中根据StudentID和CourseID分组，获取每个分组的Grade总和，
+            // 分组条件为CourseID = 2030，或者CourseID等于一个子查询的值
+            // Groups the &quot;StudentGrade&quot; table by StudentID and CourseID, and gets the sum of the Grades of each group.
+            // Specifies the search condition for the group as “CourseID = 2030”, and adds an alternative condition:  CourseID is equal to the return value of a subquery.
+            sqlQueryBuilder
+                .Select(&quot;StudentID&quot;)
+                .Select(&quot;sum(Grade)&quot;)
+                .From(&quot;StudentGrade&quot;)
+                .GroupBy(&quot;StudentID, CourseID&quot;)
+                .HavingRaw(&quot;CourseID = 2030&quot;)
+                .OrHaving(&quot;CourseID&quot;, sqlBuilder);
+
+            // 将sqlQueryBuilderSyntax转换成context对应数据库的可执行语句
+            // Returns the raw SQL for the database corresponding to the data context.
+            string sql = sqlQueryBuilder.ToSqlString(_context);
+
+            Console.WriteLine(sql);
+
+            /*This code example produces the following output:           
+              SELECT
+                [StudentID],
+                sum(Grade)
+              FROM [StudentGrade]
+              GROUP BY
+                [StudentID],
+                [CourseID]
+                HAVING ([CourseID] = 2030
+                OR [CourseID] = (SELECT
+                                 MIN([CourseID])
+                                 FROM [Course]))
+           */
+        }
+    }
+}
+</code></pre>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/main.js"></script>
+  </body>
+</html>

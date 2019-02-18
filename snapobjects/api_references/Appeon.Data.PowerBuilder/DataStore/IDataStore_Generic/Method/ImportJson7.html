@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IDataStore.ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow,int startColumn, int endColumn, int dwStartColumn) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IDataStore.ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow,int startColumn, int endColumn, int dwStartColumn) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../../index.html">
+        	<img id="logo" src="../../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="idatastoreimportjsonstring-json-dwbuffer-dwbuffer-int-startrow-int-endrowint-startcolumn-int-endcolumn-int-dwstartcolumn-method"><strong>IDataStore.ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow,int startColumn, int endColumn, int dwStartColumn) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version(0.5.0-alpha) <img src="../../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>将数据从JSON字符串插入DataStore的指定的缓冲区。可以指定JSON数组中的起始位置和结束位置, 同时可以指定要导入的JSON对象中第一个键值的编号和最后一个键值的编号。您还可以指定DataStore中应接收数据的第一列的编号。</p>
+<p>Inserts data from a JSON string into the specified buffer of DataStore. You can specify the starting and ending positions in the JSON array,  and specify the number of the first key value and the number of the last key value in the JSON object to be imported. You can also specify the number of the first column in the DataStore that should receive data.</p>
+<p><strong>Namespace:</strong> Appeon.Data.PowerBuilder</p>
+<p><strong>Assembly:</strong> Appeon.Data.PowerBuilder.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public int ImportJson(string json, DwBuffer dwbuffer, int startRow, int endRow, int startColumn, int endColumn, int dwStartColumn);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>json</code>	System.String</p>
+<p>A string specifying the JSON data.</p>
+<p>The JSON string must comply with the <a href="Glossary/json_format.html">simple or standard format</a>.</p>
+<p><code>dwbuffer</code>	<a href="../../DwBuffer/DwBuffer.html">Appeon.Data.PowerBuilder.DwBuffer</a></p>
+<p>The specified buffer of the DataStore.</p>
+<p>A value of the <code>DwBuffer</code> enumerated datatype identifying the DataStore buffer into which you want to import the data.</p>
+<p>For simple JSON: Imports the JSON data to the specified buffer.</p>
+<p>For standard (DataWindow) JSON: Imports data from the specified buffer from the JSON string to the corresponding buffer.</p>
+<p><code>startRow</code>	System.Int32</p>
+<p>The zero-based number of the first detail object in the JSON array that you want to import. If it is negative, 0 is used.</p>
+<p><code>endRow</code>	System.Int32</p>
+<p>The zero-based number of the last detail object in the JSON array that you want to import. If it is negative, it indicates the rest of rows.</p>
+<p><code>startColumn</code>	System.Int32</p>
+<p>The zero-based number of the first key value in the JSON object that you want to import. If it is negative, 0 is used.</p>
+<p><code>endColumn</code>	System.Int32</p>
+<p>The zero-based number of the last key value in the JSON object that you want to import. If it is  negative, it indicates the rest of columns.</p>
+<p><strong>Returns</strong></p>
+<p>System.Int32</p>
+<p>Returns the number of rows that were imported if it succeeds.</p>
+<h3 id="remarks"><strong>Remarks</strong></h3>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>ImportJson(string Json, DwBuffer dwbuffer,
+int startRow, int endRow,
+int startColumn, int endColumn,
+int dwStartColumn)
+startRow, endRow从0开始，0表示第一行，1表示第二行...,n为n+1行
+startColumn，endColumn从0开始，0表示第一列，1表示第二列..,n为n+1列<br>
+dwStartColumn从0开始，0表示第一列，1表示第二列..,n为n+1列
+将json从startRow to endRow之间的数据导入到datastore指定buffer
+startColumn, endColumn指定将json从startColumn to endColumn导入到datastore中
+dwStartColumn是datastore导入数据时从哪一列开始</p>
+<pre><code class="lang-C#">using Appeon.Data.PowerBuilder;
+using System;
+using System.IO;
+
+namespace Appeon.ApiDoc.IDataStoreExamples
+{
+    public class ImportJsonExample
+    {
+        private SchoolContext _context;
+
+        public ImportJsonExample(SchoolContext dataContext)
+        {
+            // Set Data Context
+            _context = dataContext;
+        }
+
+        public void Example7()
+        {
+
+            // Instantiate the datastore with datawindow:d_department
+            var datastore = new DataStore(&quot;d_department&quot;, _context);
+
+            // get json file, ImportJson8中包含四行数据
+            string path = Path.Combine(AppContext.BaseDirectory,
+                                @&quot;Jsons\IDatastore\ImportJson8.json&quot;);
+            string json = File.ReadAllText(path);
+
+            // import json to datastore's primary buffer
+            // 从json首行到最后一行开始导入数据到datastore
+            // 将json数据从第二列开始，导入到datastore
+            // 由于datastore是从第二列开始导入，所有第一列没有数据
+            datastore.ImportJson(json, DwBuffer.Primary, 0, 3, 1, 10, 1);
+
+            Console.WriteLine(&quot;Rowcount:{0}&quot;, datastore.RowCount);
+
+            for (int row = 0, rowcount = datastore.RowCount; row &lt; rowcount; row++)
+            {
+                Console.WriteLine(&quot;Department ID:{0}; Budget:{1}&quot;,
+                                  datastore.GetItem&lt;int&gt;(row, &quot;departmentid&quot;),
+                                  datastore.GetItem&lt;string&gt;(row, &quot;name&quot;));
+            }
+
+            datastore.Reset();
+
+            // 从json第二三行数据导入到datastore
+            // 数据从第二列开始导入，第一列数据不会导入
+            // 将json数据从第二列开始，导入一列到datastore
+            // 由于datastore是从第二列开始导入，所有第一列没有数据
+
+            datastore.ImportJson(json, DwBuffer.Primary, 1, 2, 1, 1, 1);
+
+            Console.WriteLine(&quot;Rowcount:{0}&quot;, datastore.RowCount);
+
+            for (int row = 0, rowcount = datastore.RowCount; row &lt; rowcount; row++)
+            {
+                Console.WriteLine(&quot;Name:{0}; Budget:{1}&quot;,
+                                  datastore.GetItem&lt;int&gt;(row, &quot;departmentid&quot;),
+                                  datastore.GetItem&lt;string&gt;(row, &quot;name&quot;));
+            }
+
+            /*This code produces the following output:
+
+            Rowcount:4
+            Department ID:0; Budget:Engineering
+            Department ID:0; Budget:English
+            Department ID:0; Budget:Economics
+            Department ID:0; Budget:Mathematics
+            Rowcount:2
+            Name:0; Budget:English
+            Name:0; Budget:Economics
+           */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-refer-to">Example Refer To</h4>
+<p>JSON File: <a href="../../../SourceCode/Examples/Jsons/IDatastore/ImportJson8.html">ImportJson8</a> <br></p>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/main.js"></script>
+  </body>
+</html>

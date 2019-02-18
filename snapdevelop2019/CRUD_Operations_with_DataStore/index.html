@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Create a Web API with C# DataStore </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Create a Web API with C# DataStore ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+        	<img id="logo" src="../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>[TOC]</p>
+<h1 id="create-a-web-api-with-c-datastore">Create a Web API with C# DataStore</h1>
+<p>This tutorial demonstrates the basics of creating, in SnapDevelop, a Web API with ASP.NET Core that will use C# DataStore as its data manipulation component.</p>
+<p>In this tutorial, you will learn to:</p>
+<ul>
+<li>Create a Web API project</li>
+<li>Test the API</li>
+<li>Add a database context</li>
+<li>Register the database context</li>
+<li>Add a C# DataStore Model</li>
+<li>Add a Service</li>
+<li>Perform CRUD operations using the Web API</li>
+<li>Call the Web API from PowerBuilder.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>SnapDevelop 1.0</li>
+<li>Sample database setup
+<ol>
+<li>Download the database backup file from <a href="https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2012.bak">https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2012.bak</a>.</li>
+<li>Install SQL Server Express or SQL Server if it is not installed.</li>
+<li>Restore database using the downloaded database backup file.</li>
+</ol>
+</li>
+</ul>
+<h2 id="create-a-web-api-project">Create a Web API project</h2>
+<p>Start SnapDevelop and select <strong>Create New Project</strong> from the <strong>Start</strong> page. Or, from the <strong>File</strong> menu, select <strong>New</strong> and then <strong>Project...</strong>.</p>
+<p>In the <strong>New Project</strong> dialog, select <strong>.NET Core</strong>, and in the list of project templates,  select <strong>ASP.NET Core Web API</strong>. Name the project &quot;WebAPI1&quot;, name the solution &quot;WebAPI DS Tutorial&quot; and click <strong>Ok</strong>.</p>
+<p><img src="assets/NewProject.png" alt="New DataStore Web API"></p>
+<h3 id="test-the-web-api">Test the Web API</h3>
+<p>The project template creates a <code>sample</code> Web API. Call the <code>GET</code> HTTP verb from a browser to test the app.</p>
+<p>Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample</code>.</p>
+<p><strong>If it's the first time to run you may need to wait several seconds for initiating .NET runtime after the browser launched.</strong></p>
+<p>The following JSON is returned:</p>
+<pre><code class="lang-json">[&quot;value1&quot;,&quot;value2&quot;]
+</code></pre>
+<h2 id="add-a-database-context">Add a database context</h2>
+<p>The <em>database context</em> is the class that manages database connections and transactions. This class is created by deriving from the <code>SnapObjects.Data.DataContext</code> class.</p>
+<p>Right-click the <em>WebAPI1</em> project and select <strong>Add</strong> &gt; <strong>New Item...</strong>. In the item template list select <strong>DataContext</strong>  and Name the class <em>DataContext1</em>.cs and click <strong>OK</strong>.</p>
+<p><img src="assets/NewDataContext.png" alt="New DataContext"></p>
+<p>In the <strong>DataContext Wizard</strong> dialog, click <strong>New Connection</strong>.</p>
+<p><img src="assets/NewConnection.png" alt="New Connection"></p>
+<p>In the <strong>Connection Properties</strong> dialog, fill in database connection information and click <strong>OK</strong>.</p>
+<p><img src="assets/ConnectionProperties-0249630.png" alt="Connection Properties"></p>
+<p>Then back to the <strong>DataContext Wizard</strong> dialog, <strong>Connection String</strong> is generated by the <strong>Connection Properties</strong> dialog, click <strong>OK</strong>.</p>
+<p>The <strong>Connection String</strong> is saved in <code>appsettings.json</code> and the <code>DataContext1</code> class is created.</p>
+<h2 id="register-the-database-context">Register the database context</h2>
+<p>In ASP.NET Core, services such as the DataContext must be registered with the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2">dependency injection (DI)</a> container. The container provides the service to controllers.</p>
+<p>Update <em>Startup.cs</em> according to the comments:</p>
+<pre><code class="lang-c#">// Uncomment the following line to connect to the SQL server database.
+// Note: Replace &quot;ContextName&quot; with the configured context name; replace &quot;key&quot; with the database connection name that exists in appsettings.json. The sample code is as follows:
+services.AddDataContext&lt;DataContext1&gt;(m =&gt; 	        m.UseSqlServer(Configuration[&quot;ConnectionStrings:AdventureWorks2012&quot;]));
+</code></pre>
+<p><img src="assets/RegisterConnection.png" alt="Register DB Context"></p>
+<h2 id="add-a-c-datastore-model">Add a C# DataStore Model</h2>
+<p>C# DataStore is a .NET version of the native PowerBuilder DataStore. It provides almost the same set of APIs as the native PowerBuilder DataStore. A C# DataStore is created using PowerBuilder's DataWindow Designer.</p>
+<h3 id="create-a-dataobject-in-the-powerbuilder-ide">Create a DataObject in the PowerBuilder IDE</h3>
+<p>Start PowerBuilder and create a <a href="https://www.appeon.com/support/documents/appeon_online_help/pb2018/getting_started/ch03s02.html">template application</a> with no database connection. Then <a href="https://www.appeon.com/support/documents/appeon_online_help/pb2018/getting_started/ch09s01.html">add a new Grid DataWindow</a>, using the DataWindow Designer, that maps to the table: <code>HumanResources.Department</code>. Add a retrieval argument named <code>departmentId</code> that will be used in the SQL WHERE clause to filter by <code>DepartmentID</code>. Save the DataObject with the name <code>d_department</code>.</p>
+<h3 id="generate-the-c-data-model">Generate the C# Data Model</h3>
+<p>Right-click on the new DataObject from PowerBuilder's System Tree. Click on <strong>Generate Data Models (C#)</strong>.</p>
+<p><img src="assets/GenerateCSModel.png" alt="Generate C# Model"></p>
+<p>On the <strong>Database Connection</strong> popup window click on <strong>Ok</strong>.</p>
+<p><img src="assets/DBConnection.png" alt="DB Connection"></p>
+<p>In the <strong>C# Editor</strong> window click on <strong>Model Export</strong>.</p>
+<p><img src="assets/ModelExport.png" alt="Model Export"></p>
+<p>On the <strong>DataWindow Export</strong> popup window select the project by clicking in <strong>Browse</strong> and then click on <strong>Export</strong>.</p>
+<p><img src="assets/DWExport.png" alt="DW Export"></p>
+<p>Back on SnapDevelop, Click on <strong>Sync with Active Document</strong> to refresh the files and folders.</p>
+<p><img src="assets/Sync.png" alt="Sync"></p>
+<p>Your C# DataStore Model and DataObject have been created in a new folder.</p>
+<p><img src="assets/NewDS.png" alt="New DS"></p>
+<h2 id="add-a-service">Add a Service</h2>
+<p>A <em>service</em> is a component that's intended for common consumption in an app and commonly implements an <em>interface</em>. This is where you develop the bussiness logic of your Web API.</p>
+<p>The <em>interface</em> contains only the declaration of the methods, properties and events, but not the implementation.</p>
+<p>Right-click on the Web API Project. Then click <strong>Add</strong> &gt; <strong>New Folder</strong>. Name it <em>Services</em>. Now add a sub-folder to it and name it <em>Impl</em>. Next, Right-click on that folder and click on <strong>Add</strong> &gt; <strong>Interface</strong>.</p>
+<p><img src="assets/AddInterface-0247639.png" alt="Add Service"></p>
+<p>Name it as <em>IDepartmentService.cs</em> and click <strong>Ok</strong>.</p>
+<p><img src="../../Getting%20Started%20v3.0/C%23%20DataStore/assets/NewInterface.png" alt="New Interface"></p>
+<p>Add the declaration of the methods we will implement on the service.</p>
+<p><img src="../../Getting%20Started%20v3.0/C%23%20DataStore/assets/Interface-0170169.png" alt="Interface"></p>
+<p>To add the <em>Service</em> right-click on the <em>Service</em> &gt; <em>Impl</em> sub-folder and click on <strong>Add</strong> &gt; <strong>Class</strong>. Name it <em>DepartmentService.cs</em> and click <strong>Ok</strong>. (<em>Notice the difference between the name of the interface &quot;<strong>I</strong>DepartmentService.cs&quot; and the name of the service &quot;DepartmentService.cs&quot;</em>)</p>
+<p>In ASP.NET Core, services such as the <code>DepartmentService</code> must be registered with the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2">dependency injection (DI)</a> container. The container provides the service to controllers.</p>
+<p>Update <em>Startup.cs</em> according to the comments:</p>
+<pre><code class="lang-c#"> // The service needs to be registered in the ConfigureServices method of the Startup class. Sample code as follows:
+// services.AddScoped&lt;IDepartmentService1Service, DepartmentService1Service&gt;();
+services.AddScoped&lt;IDepartmentService1Service, DepartmentService1Service&gt;();
+</code></pre>
+<h2 id="perform-crud-operations-using-the-web-api">Perform CRUD operations using the Web API</h2>
+<p>Since the C# DataStore and PowerBuilder's DataStore are essentially the same, you perform CRUD operations virtually the same in the Web API.</p>
+<p>The Web API requires one more component called <strong>Controller</strong>. A default <strong>Controller</strong> was created when you created the Web API project; but you can also create a new one by right-clicking on the <em>Controllers</em> folder, then click on <strong>Add</strong> -&gt; <strong>New Item</strong> -&gt; <strong>API Controller Class</strong>.</p>
+<p>A <em>controller</em> determines what response to send back to a user when a client makes an HTTP request.</p>
+<p><img src="assets/ControllerFile.png" alt="Interface, Service and Controller"></p>
+<h3 id="retrieve-the-c-datastore">Retrieve the C# DataStore</h3>
+<p>To retrieve data from the C# DataStore we will use the <em>RetrieveOne()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="retrieveone-method-in-the-service">RetrieveOne() method in the Service</h4>
+<p>Create an instance of DataStore using specified DataObject and DataContext, then call the DataStore's Retrieve method to retrieve data.</p>
+<p><img src="assets/RetrieveOneService-0162577.png" alt="RetrieveOne Method in the Service"></p>
+<h4 id="retrieveone-method-in-the-controller">RetrieveOne() method in the Controller</h4>
+<p>The RetrieveOne() method is called by the client using the HTTP verb GET. It accepts an integer value that corresponds to the actual department id to retrieve, produces a response type 404 if the id was not found and returns the retrieved row in JSON format.</p>
+<p><img src="assets/RetrieveOneController-0162656.png" alt="RetrieveOne Method in the Controller"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added a <code>retrieveone</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample/retrieveone/1</code>.</p>
+<p>The last digit on the url is the actual department id to retrieve. Change the url's last digit: <code>http://localhost:5000/api/smaple/retrieveone/6</code> and <strong>Refresh</strong> the browser.</p>
+<p>The following JSON is returned:</p>
+<pre><code class="lang-json">{&quot;departmentId&quot;:6,&quot;name&quot;:&quot;Research and Development&quot;,&quot;groupName&quot;:&quot;Research and Development&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;}
+</code></pre>
+<h3 id="createinsert-a-new-row-into-the-c-datastore">Create/Insert a new row into the C# DataStore</h3>
+<p>To insert data into the C# DataStore we will use the <em>Create()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="create-method-in-the-service">Create() method in the Service</h4>
+<p>Create an instance of DataStore using specified DataObject and DataContext, then call the DataStore's <em>AddRow()</em> method, passing the DataStore to it, and call the <em>Update()</em> method to insert the data into the DataBase. Return the number of rows affected if it succeeds.</p>
+<p><img src="assets/CreateServiceMethod.png" alt="Create method of the service"></p>
+<h4 id="create-method-in-the-controller">Create() method in the Controller</h4>
+<p>The Create() method is called by the client using the HTTP verb POST. It accepts a DataStore that corresponds to the actual department table to update, and produces a response type 201 with the url of the <code>retrieveone</code> method and the new <code>department Id</code>. If an internal server error occurred it produces a response type 500.</p>
+<p><img src="assets/CreateMethodController.png" alt="Create method in the Controller"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added a <code>create</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample/retrieveone/1</code>.</p>
+<p>To consume this method of the Web API, change the url: <code>http://localhost:5000/api/smaple/create</code> and call it with your client application passing in the body of the request the JSON containing the row you want to Create/Insert. (<em>To learn how to call this method from PowerBuilder, refer to the following tutorial: <a href="">Call the Web API from PowerBuilder</a></em>)</p>
+<h3 id="update-changes-into-the-c-datastore">Update changes into the C# DataStore</h3>
+<p>To insert data into the C# DataStore we will use the <em>Update()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="update-method-in-the-service">Update() method in the Service</h4>
+<p>Create an instance of DataStore using specified DataObject and DataContext, then call the DataStore's <em>Update()</em> method to update the data from the database. Return the number of rows affected if it succeeds.</p>
+<p><img src="assets/UpdateMethodService.png" alt="Update Method in the Service"></p>
+<h4 id="update-method-in-the-controller">Update() method in the Controller</h4>
+<p>The <em>Update()</em> method is called by the client using the HTTP verb POST. It accepts a DataStore that corresponds to the actual department table to update, and produces a response type 201 if the update was successful. If an internal server error occured it produces a response type 500.</p>
+<p><img src="assets/UpdateMethodController.png" alt="Update Method in the Controller"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added an <code>update</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample/retrieveone/1</code>.</p>
+<p>To consume this method of the Web API, change the url: <code>http://localhost:5000/api/smaple/update</code> and call it with your client application passing in the JSON containing the rows you want to Update. (<em>To learn how to call this method from PowerBuilder, refer to the following tutorial: <a href="">Call the Web API from PowerBuilder</a></em>)</p>
+<h3 id="delete-changes-from-the-c-datastore">Delete changes from the C# DataStore</h3>
+<p>To delete data from the C# DataStore we will use the <em>Delete()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="delete-method-in-the-service">Delete() method in the Service</h4>
+<p>Create an instance of DataStore by using the return value of a call to the <em>RetrieveOne()</em> method from this Service to get the row to delete. Use the <code>DeleteRow()</code>function from the DataStore and update the changes. Return the number of rows affected if it succeeds.</p>
+<p><img src="assets/DeleteMethodService.png" alt="Delete Method in the Service"></p>
+<h4 id="delete-method-in-the-controller">Delete() method in the Controller</h4>
+<p>The <em>Delete()</em> method is called by the client using the HTTP verb DELETE. It accepts an integer value that corresponds to the actual department id to delete, and produces a response type 201 if the delete was successful. If an internal server error occured it produces a response type 500.</p>
+<p><img src="assets/DeleteMethodController.png" alt="Delete Method in the Controller"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added a <code>delete</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample/retrieveone/1</code>.</p>
+<p>To consume this method of the Web API, change the url: <code>http://localhost:5000/api/smaple/delete/</code> and call it with your client application passing in the department id you want to delete. (<em>To learn how to call this method from PowerBuilder, refer to the following tutorial: <a href="">Call the Web API from PowerBuilder</a></em>)</p>
+<h2 id="call-the-web-api-from-powerbuilder">Call the Web API from PowerBuilder</h2>
+<h3 id="add-the-json-datawindow">Add the JSON DataWindow</h3>
+<p>A JSON DataWindow is a traditional DataWindow that has a Web API as its DataSource. You use the same functionalities on the client-side, but the data manipulation is done on the Web API server-side.</p>
+<p>Start PowerBuilder and using the <a href="https://www.appeon.com/support/documents/appeon_online_help/pb2018/getting_started/ch03s02.html">template application</a> created at <strong>“<a href="">Create a DataObject in PowerBuilder IDE</a>”</strong>. Put a Datawindow control on a sheet window. Set the DataObject to “<em>d_department</em>”. And add a button for each CRUD operation.</p>
+<h3 id="retrieve-the-json-datawindow">Retrieve the JSON DataWindow</h3>
+<p>The RESTClient object provides the ability to access the RESTful Web APIs. It can load the JSON-formatted string returned from the RESTful Web Service APIs into the DataWindow object.</p>
+<p>To retrieve a JSON DataWindow you first need to instantiate the RESTClient object. Add an instance variable of the RESTClient object.</p>
+<pre><code class="lang-vb">RESTClient inv_RestClient
+</code></pre>
+<p>On the Open event of your window, create the object variable.</p>
+<pre><code class="lang-vb">// Create the RESTClient object variable
+inv_RestClient	= CREATE RESTClient
+
+// Set the Request Headers to accept GZIP compression
+inv_RestClient.SetRequestHeader(&quot;Accept-Encoding&quot;, &quot;gzip&quot;)
+</code></pre>
+<p>On the source code window of your Retrieve button, add the RESTClient.RetrieveOne() function to call your Web API and load it directly into your DataWindow. (<em>If you intend to Retrieve more than one row, use RESTClient.Retrieve() instead</em>)</p>
+<pre><code class="lang-vb">// Retrieve the DW using the RESTClient
+inv_RestClient.RetrieveOne(dw_department, &quot;http://localhost:5000/api/sample/retrieveone/1&quot;)
+</code></pre>
+<p>Run your application. Press Ctrl+R. Click on the Retrieve button. (<em>Note: Your Web API needs to be running</em>)</p>
+<h3 id="insertupdate-and-delete-data-using-the-web-api">Insert/Update and Delete data using the Web API</h3>
+<p>On the source code window of your Insert/Update and Delete buttons, add the RESTClient.Submit() function to call your Web API and load it directly into your DataWindow. The Submit function calls the Web API using the HTTP verb POST. It automatically exports the DataWindow JSON, as well as all of it's Buffers, and sends only the changed rows to the Web API.</p>
+<p><strong>Insert</strong></p>
+<pre><code class="lang-vb">// Insert data into the JSON DataWindow with the RESTClient
+inv_RestClient.Submit(&quot;http://localhost:5000/api/sample/create&quot;, ls_response, dw_department)
+</code></pre>
+<p><strong>Update</strong></p>
+<pre><code class="lang-vb">// Update data from the JSON DataWindow with the RESTClient
+inv_RestClient.Submit(&quot;http://localhost:5000/api/sample/update&quot;, ls_response, dw_department)
+</code></pre>
+<p><strong>Delete</strong></p>
+<pre><code class="lang-vb">// Delete data from the JSON DataWindow with the RESTClient
+inv_RestClient.Submit(&quot;http://localhost:5000/api/sample/update&quot;, ls_response, dw_department)
+</code></pre>
+<p>Run your application. Press Ctrl+R. Click on the Retrieve button. (<em>Note: Your Web API needs to be running</em>)</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

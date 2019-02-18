@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IAdoDbTransactionManager Interface </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IAdoDbTransactionManager Interface ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../index.html">
+        	<img id="logo" src="../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="iadodbtransactionmanager-interface"><strong>IAdoDbTransactionManager Interface</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
+</div>
+<p>Provides methods to manage database transactions.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">   public interface IAdoDbTransactionManager;
+</code></pre>
+<h3 id="-method">** Method**</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Returns Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/BeginTransaction1.html">BeginTransaction(string name)</a></td>
+<td><a href="../../IAdoDbTransaction/IAdoDbTransaction.html">IAdoDbTransaction</a></td>
+<td>Starts a database transaction with the unspecified isolation level (<code>IsolationLevel.Unspecified</code>).</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/BeginTransaction2.html">BeginTransaction(IsolationLevel isolationLevel)</a></td>
+<td><a href="../../IAdoDbTransaction/IAdoDbTransaction.html">IAdoDbTransaction</a></td>
+<td>Starts a database transaction with the specified isolation level.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/UseTransaction.html">UseTransaction(string name, object value)</a></td>
+<td><a href="../../IAdoDbTransaction/IAdoDbTransaction.html">IAdoDbTransaction</a></td>
+<td>Uses a specified database transaction when no transaction is already started.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h4 id="example-1">Example 1</h4>
+<p>IAdoDbTransaction中的 Method和Property使用案例</p>
+<pre><code class="lang-C#">using Appeon.ApiDoc.Models.School;
+using Appeon.Data;
+using System;
+using System.Data;
+
+namespace Appeon.ApiDoc.IAdoDbTransactionManagerExamples
+{
+    public class IAdoDbTransactionManagerExample
+    {
+        private readonly SchoolContext _context;
+        
+        // 声明IAdoDbTransactionManager对象
+        private IAdoDbTransactionManager managerTrans;
+        
+        public IAdoDbTransactionManagerExample(SchoolContext context)
+        {
+            _context = context;
+
+            // 实例化IAdoDbTransactionManager对象
+            managerTrans = _context.CurrentConnection;
+        }
+
+        public void Example1()
+        {
+            IAdoDbTransaction transobject;
+
+            // 开启事务，并将当前事务赋值给IAdoDbTransaction对象
+            transobject = managerTrans.BeginTransaction();
+
+            // 获取事务ID与DbTransaction
+            var transId = transobject.TransactionId;
+            var dbtrans = transobject.DbTransaction;
+
+            // 在当前事务内执行进行数据保存操作
+            var mapper = _context.ModelMapper;
+
+            var person = new Person()
+            {
+                LastName = &quot;Senior&quot;,
+                FirstName = &quot;Letitia&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            try
+            {
+                mapper.TrackCreate(person);
+                mapper.SaveChanges();
+
+                // 提交数据库
+                transobject.Commit();
+
+                // 输出保存成功提示，及当前事务ID
+                Console.WriteLine(&quot;Save Data Success, TransactionId = {0}&quot;, transId);
+            }
+            catch (Exception e)
+            {
+                // 如保存出错，则进行事务回滚
+                transobject.Rollback();
+
+                // 输出错误信息，及出错的事务ID
+                Console.WriteLine(&quot;{0}, TransactionId = {1}&quot;, e.Message, transId);
+
+                // 重新设置DbTransaction
+                managerTrans.UseTransaction(dbtrans);
+            }
+
+            /* The code produces the following output:
+            
+            Save Data Success, TransactionId = 56ece99e-0498-4865-8103-9778adae7553
+            */
+        }
+    }
+}
+</code></pre>
+<h4 id="example-2">Example 2</h4>
+<p>IAdoDbTransaction中的 Method和Property使用案例指定隔离级别</p>
+<pre><code class="lang-C#">        public void Example2()
+        {
+            IAdoDbTransaction transobject;
+
+            // 开启事务，并将当前事务赋值给IAdoDbTransaction对象
+            // 并指定隔离级别
+            transobject = managerTrans.BeginTransaction(IsolationLevel.ReadCommitted);
+
+            // 获取事务ID与DbTransaction
+            var transId = transobject.TransactionId;
+            var dbtrans = transobject.DbTransaction;
+
+            // 在当前事务内执行进行数据保存操作
+            var mapper = _context.ModelMapper;
+
+            var person = new Person()
+            {
+                LastName = &quot;Senior&quot;,
+                FirstName = &quot;Letitia&quot;,
+                EnrollmentDate = new DateTime(2019, 1, 1),
+                Discriminator = &quot;Student&quot;
+            };
+
+            try
+            {
+                mapper.TrackCreate(person);
+                mapper.SaveChanges();
+
+                // 提交数据库
+                transobject.Commit();
+
+                // 输出保存成功提示，及当前事务ID
+                Console.WriteLine(&quot;Save Data Success, TransactionId = {0}&quot;, transId);
+            }
+            catch (Exception e)
+            {
+                // 如保存出错，则进行事务回滚
+                transobject.Rollback();
+
+                // 输出错误信息，及出错的事务ID
+                Console.WriteLine(&quot;{0}, TransactionId = {1}&quot;, e.Message, transId);
+
+                // 重新设置DbTransaction
+                managerTrans.UseTransaction(dbtrans);
+            }
+
+            /* The code produces the following output:
+            
+            Save Data Success, TransactionId = 56ece99e-0498-4865-8103-9778adae7553
+            */
+        }
+</code></pre>
+<h4 id="examples-refer-to">Example(s) Refer To</h4>
+<p>Model Class: <a href="../../SourceCode/Examples/Models/School/Person.html">Person</a> <br></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

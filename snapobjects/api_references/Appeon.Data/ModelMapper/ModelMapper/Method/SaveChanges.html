@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ModelMapper.SaveChanges(bool batchExecute = false) Method </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ModelMapper.SaveChanges(bool batchExecute = false) Method ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../../index.html">
+        	<img id="logo" src="../../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="modelmappersavechangesbool-batchexecute--false-method"><strong>ModelMapper.SaveChanges(bool batchExecute = false) Method</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha (current)</a></p>
+</div>
+<p>将ModelMapper实例已追踪的所有数据更改操作，在数据库执行。</p>
+<p>Updates the database by executing all of the data changes tracked by a ModelMapper instance.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">  public IDbResult SaveChanges(bool batchExecute = false);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>batchExecute</code> System.Boolean</p>
+<p>当存在多条待执行的SQL DML时，是批量一块执行还是一条一条执行。</p>
+<p>Whether to execute the SQL DML one by one or in a batch, when there are more than one SQL DML to be executed.</p>
+<p>TODO:需要进一步了解并测试该参数的意义，如果没有必要的话建议删除。</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../IDbResult/IDbResult.html">Appeon.Data.IDbResult</a></p>
+<p>返回一个接口，可以利用该接口的各种属性方便地获取在数据库执行后得到的结果。</p>
+<p>Returns an interface whose property can be used to conveniently get the result of the executed database operation.</p>
+<h3 id="备注"><strong>备注</strong></h3>
+<p>更新数据库成功后，ModelMapper将重置到初始状态，取消对Model等的追踪。</p>
+<p>When the database is updated successfully, ModelMapper is restored to the initial state which will not track Model etc.</p>
+<p>如果需要继续利用进行其他数据操作，请重新使用TrackCreate&lt;TModel&gt;(TModel model)等方法进行追踪。</p>
+<p>To continue using ModelMapper for other data operations, use the TrackCreate&lt;TModel&gt;(TModel model) method again to track the changes.</p>
+<h4 id="database-transaction"><strong>Database Transaction</strong></h4>
+<p>该方法默认创建一个数据库事务，并在该事务内执行所有待执行的SQL DML。</p>
+<p>This method will by default create a database transaction where all of the SQL DML will be executed.</p>
+<p>当任何异常出现，数据库事务将自动回滚。</p>
+<p>When any exceptions occur, the database transaction will be automatically rolled back.</p>
+<h4 id="validation"><strong>Validation</strong></h4>
+<p>在更新数据库前，会对Model中的数据进行校验，如果出现错误则抛出异常。</p>
+<p>Before updating the database, the system will validate the data in the Model. If any error, exceptions will be thrown.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<h3 id="applies-to"><strong>Applies to</strong></h3>
+<p>.NET Standard</p>
+<p>2.x</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/main.js"></script>
+  </body>
+</html>

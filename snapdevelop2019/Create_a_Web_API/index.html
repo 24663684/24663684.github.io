@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Create a Web API </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Create a Web API ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+        	<img id="logo" src="../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="create-a-web-api">Create a Web API</h1>
+
+<p>This tutorial teaches the basics of building a web API with ASP.NET Core in SnapDevelop.</p>
+<p>In this tutorial, you learn how to:</p>
+<ul>
+<li>Create a web API project.</li>
+<li>Test the API.</li>
+<li>Add a database context.</li>
+<li>Register the database context.</li>
+<li>Add a service.</li>
+<li>Call the service API from PowerBuilder.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><p>SnapDevelop 1.0</p>
+</li>
+<li><p>Sample database setup</p>
+<ol>
+<li>Download the database backup file from <a href="https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2012.bak">https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2012.bak</a>.</li>
+<li>Install SQL Server Express or SQL Server if it is not installed.</li>
+<li>Restore database using the downloaded database backup file.</li>
+</ol>
+</li>
+</ul>
+<h2 id="create-a-web-api-project">Create a web API project</h2>
+<p>Start SnapDevelop and select <strong>Create New Project</strong> from the <strong>Start</strong> page. Or, from the <strong>File</strong> menu, select <strong>New</strong> and then <strong>Project...</strong>.</p>
+<p>In the <strong>New Project</strong> dialog, select <strong>.NET Core</strong>, and In the list of project templates,  select <strong>ASP.NET Core Web API</strong>. Name the project &quot;WebAPI1&quot;, name the solution &quot;WebAPI Tutorials&quot; and click <strong>OK</strong>.</p>
+<p><img src="Images%5CCreate_a_web_API-Step_1.png" alt=""></p>
+<h2 id="test-the-api">Test the API</h2>
+<p>The project template creates a <code>sample</code> API. Call the <code>Get</code> method from a browser to test the app.</p>
+<p>Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample</code>.</p>
+<p><strong>If it's the first time to run you may need to wait several seconds for initiating .NET runtime after the browser launched.</strong></p>
+<p>The following JSON is returned:</p>
+<pre><code class="lang-json">[&quot;value1&quot;,&quot;value2&quot;]
+</code></pre>
+<h2 id="add-a-database-context">Add a database context</h2>
+<p>The <em>database context</em> is the class that manages database connections and transactions. This class is created by deriving from the <code>SnapObjects.Data.DataContext</code> class.</p>
+<p>Right-click the <em>WebAPI1</em> project and select <strong>Add</strong> &gt; <strong>New Item...</strong>. In the item template list select <strong>DataContext</strong>  and Name the class <em>DataContext1</em> and click <strong>OK</strong>.</p>
+<p><img src="Images%5CCreate_a_web_API-Step_2.png" alt=""></p>
+<p>In the <strong>DataContext Wizard</strong> dialog, click <strong>New Connection</strong>.</p>
+<p><img src="Images%5CCreate_a_web_API-Step_3.png" alt=""></p>
+<p>In the <strong>Connection Properties</strong> dialog, fill in database connection information and click <strong>OK</strong>.</p>
+<p><img src="Images%5CCreate_a_web_API-Step_4.png" alt=""></p>
+<p>Then back to the <strong>DataContext Wizard</strong> dialog, <strong>Connection String</strong> is generated by the <strong>Connection Properties</strong> dialog, click <strong>OK</strong>.</p>
+<p>The <strong>Connection String</strong> is saved in appsettings.json and the DataContext1 class is created.</p>
+<h2 id="register-the-database-context">Register the database context</h2>
+<p>In ASP.NET Core, services such as the DataContext must be registered with the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2">dependency injection (DI)</a> container. The container provides the service to controllers.</p>
+<p>Update <em>Startup.cs</em> according to the comments:</p>
+<pre><code class="lang-c#">// Uncomment the following line to connect to the SQL server database.
+// Note: Replace &quot;ContextName&quot; with the configured context name; replace &quot;key&quot; with the database connection name that exists in appsettings.json. The sample code is as follows:
+services.AddDataContext&lt;DataContext1&gt;(m =&gt; 	        m.UseSqlServer(Configuration[&quot;ConnectionStrings:AdventureWorks&quot;]));
+</code></pre>
+<p><img src="Images%5CCreate_a_web_API-Step_5.png" alt=""></p>
+<h2 id="add-a-service">Add a Service</h2>
+<p>Right-click the <em>WebAPI1</em> project and select <strong>Add</strong> &gt; <strong>New Item...</strong>. In the item template list select <strong>Service(ModelMapper)</strong>  and name the service <em>SampleService1</em> and click <strong>OK</strong>.</p>
+<p><img src="Images%5CCreate_a_web_API-Step_6.png" alt=""></p>
+<p>Choose a data context class (Created in <strong>Add a database context</strong>) that is used to connect database.</p>
+<p><img src="Images%5CCreate_a_web_API-Step_7.png" alt=""></p>
+<p>Click <strong>Add</strong>. The following classes and folds (only the first time) (included in red rectangle) will be created:</p>
+<p><img src="Images%5CCreate_a_web_API-Step_8.png" alt=""></p>
+<p>Update <em>Startup.cs</em> according to the comments:</p>
+<pre><code class="lang-c#">
+ // The service needs to be registered in the ConfigureServices method of the Startup class. Sample code as follows:
+// services.AddScoped&lt;ISampleService1Service, SampleService1Service&gt;();
+services.AddScoped&lt;ISampleService1Service, SampleService1Service&gt;();
+</code></pre>
+<p>Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample</code>. Change the url to <code>http://localhost:5000/api/sampleservice1/1</code></p>
+<p>and Click <strong>Refresh</strong> on the browser.</p>
+<p>The following JSON is returned:</p>
+<pre><code class="lang-json">{&quot;departmentId&quot;:1,&quot;name&quot;:&quot;Engineering&quot;,&quot;groupName&quot;:&quot;Research and Development&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;}
+</code></pre>
+<h2 id="call-the-service-api-from-powerbuilder">Call the service API from PowerBuilder</h2>
+<h3 id="add-the-json-datawindow">Add the JSON DataWindow</h3>
+<p>A JSON DataWindow is a traditional DataWindow that has a Web API as its Data Source. You use the same functionalities on the client-side, but the data manipulation is done on the Web API server-side.</p>
+<p>Start PowerBuilder and using the <a href="https://www.appeon.com/support/documents/appeon_online_help/pb2018/getting_started/ch03s02.html">template application</a> created at <strong>“<a href="">Create a DataObject in PowerBuilder IDE</a>”</strong>. Put a DataWindow control on a sheet window. Set the DataObject to “<em>d_department</em>”. And add a button for the retrieve operation.</p>
+<h3 id="retrieve-the-json-datawindow">Retrieve the JSON DataWindow</h3>
+<p>The RESTClient object provides the ability to access the RESTful Web APIs. It can load the JSON-formatted string returned from the RESTful Web Service APIs into the DataWindow object.</p>
+<p>To retrieve a JSON DataWindow you first need to instantiate the RESTClient object. Add an instance variable of the RESTClient object.</p>
+<pre><code class="lang-vb">RESTClient inv_RestClient
+</code></pre>
+<p>On the Open event of your window, create the object variable.</p>
+<pre><code class="lang-vb">// Create the RESTClient object variable
+inv_RestClient	= CREATE RESTClient
+</code></pre>
+<p>On the source code window of your Retrieve button, add the RESTClient.RetrieveOne() function to call your Web API and load it directly into your DataWindow. (<em>If you intend to Retrieve more than one row, use RESTClient.Retrieve() instead</em>)</p>
+<pre><code class="lang-vb">// Retrieve the DW using the RESTClient
+inv_RestClient.RetrieveOne(dw_department, &quot;http://localhost:5000/api/sample/retrieveone/1&quot;)
+</code></pre>
+<p>Run your application. Press Ctrl+R. Click on the Retrieve button. (<em>Note: Your Web API needs to be running</em>)</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ISqlJoinBuilder.LeftJoin(string table, string alias, string schema) &#26041;&#27861; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="ISqlJoinBuilder.LeftJoin(string table, string alias, string schema) &#26041;&#27861; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../../index.html">
+        	<img id="logo" src="../../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="isqljoinbuilderleftjoinstring-table-string-alias-string-schema-方法"><strong>ISqlJoinBuilder.LeftJoin(string table, string alias, string schema) 方法</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">当前版本(0.5.0-alpha) <img src="../../../../../../images/dropdown.png"></a></p>
+<div class="otherversions" value="versdiv">
+<p><a href="javascript:void(0)">0.5.0-alpha</a></p>
+<p><a href="javascript:void(0)">0.5.1-alpha(current)</a></p>
+</div>
+<p>使用LEFT OUTER联接运算符将原始表源与新表源联接以创建一个联接表。 需要为新表源指定架构和别名。</p>
+<p>Uses the LEFT OUTER JOIN operator to join the original table source and the new table source to create a joined table.
+You need to specify a schema and an alias for the new table source.</p>
+<p><strong>命名空间：</strong> Appeon.Data</p>
+<p><strong>程序集：</strong> Appeon.Data.dll</p>
+<h3 id="语法"><strong>语法</strong></h3>
+<pre><code class="lang-c#">  ISqlJoinOnBuilder LeftJoin(string table, string alias, string schema);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<p><code>table</code> System.String</p>
+<p>The new table source.</p>
+<p><code>alias</code> System.String</p>
+<p>The alias of the new table source.</p>
+<p><code>schema</code> System.String</p>
+<p>The schema of the new table source.</p>
+<p><strong>Returns</strong></p>
+<p><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">Appeon.Data.ISqlJoinOnBuilder</a></p>
+<p>Returns an <code>ISqlJoinOnBuilder</code> object which can be used to create the condition on which the join is based.</p>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>使用leftjoin将一个表与另外一表关联</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using System;
+
+namespace Appeon.ApiDoc.ISqlJoinBuilderExamples
+{
+    public class LeftJoinExample
+    {
+        private readonly SchoolContext _context;
+
+        public LeftJoinExample(SchoolContext dataContext)
+        {
+            // Set data context
+            _context = dataContext;
+        }
+
+        public void Example3()
+        {
+            var sqlQueryBuilder = new SqlQueryBuilder();
+
+            // 获取Department表中DepartmentID，Name;Course表中Title数据，
+            // Department和Course表关联条件为Department.DepartmentID = Course.DepartmentID
+            // 关联表Course的别名指定为CourseTable,指定Course表schema为dbo
+            sqlQueryBuilder
+                .Select(&quot;Department.DepartmentID&quot;)
+                .Select(&quot;Department.Name&quot;)
+                .Select(&quot;CourseTable.Title&quot;)
+                .From(&quot;Department&quot;)
+                .LeftJoin(&quot;Course&quot;, &quot;CourseTable&quot;, &quot;dbo&quot;)
+                .OnRaw(&quot;Department.DepartmentID = CourseTable.DepartmentID&quot;);
+
+            // 将sqlQueryBuilder语法转换成context对应数据库的可执行语句
+            string sql = sqlQueryBuilder.ToSqlString(_context);
+
+            Console.WriteLine(sql);
+            
+            /*This code example produces the following output:           
+              SELECT
+                [Department].[DepartmentID],
+                [Department].[Name],
+                [CourseTable].[Title]
+              FROM [Department]
+              Left JOIN [dbo].[Course] AS [CourseTable]
+              ON [Department].[DepartmentID] = [CourseTable].[DepartmentID]
+            */
+        }
+    }
+}
+</code></pre>
+<h3 id="版本信息"><strong>版本信息</strong></h3>
+<p>.Net Standard</p>
+<p>自2.x起可用</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../../styles/main.js"></script>
+  </body>
+</html>

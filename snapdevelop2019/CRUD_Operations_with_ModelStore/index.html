@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Create a Web API with C# ModelStore </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Create a Web API with C# ModelStore ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+        	<img id="logo" src="../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>[TOC]</p>
+<h1 id="create-a-web-api-with-c-modelstore">Create a Web API with C# ModelStore</h1>
+<p>This tutorial demonstrates the basics of creating, in SnapDevelop, a Web API with ASP.NET Core that will use C# ModelStore as its data manipulation component.</p>
+<p>In this tutorial, you will learn to:</p>
+<ul>
+<li>Create a Web API project</li>
+<li>Test the API</li>
+<li>Add a database context</li>
+<li>Register the database context</li>
+<li>Add a C# ModelStore Model</li>
+<li>Add a Service</li>
+<li>Perform CRUD operations using the Web API</li>
+<li>Call the Web API from PowerBuilder.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>SnapDevelop 1.0</li>
+<li>Sample database setup
+<ol>
+<li>Download the database backup file from <a href="https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2012.bak">https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2012.bak</a>.</li>
+<li>Install SQL Server Express or SQL Server if it is not installed.</li>
+<li>Restore database using the downloaded database backup file.</li>
+</ol>
+</li>
+</ul>
+<h2 id="create-a-web-api-project">Create a Web API project</h2>
+<p>Start SnapDevelop and select <strong>Create New Project</strong> from the <strong>Start</strong> page. Or, from the <strong>File</strong> menu, select <strong>New</strong> and then <strong>Project...</strong>.</p>
+<p>In the <strong>New Project</strong> dialog, select <strong>.NET Core</strong>, and in the list of project templates,  select <strong>ASP.NET Core Web API</strong>. Name the project &quot;WebAPI2&quot;, name the solution &quot;WebAPI MS Tutorial&quot; and click <strong>Ok</strong>.</p>
+<p><img src="assets/NewMSWebAPI.png" alt="img"></p>
+<h3 id="test-the-web-api">Test the Web API</h3>
+<p>The project template creates a <code>sample</code> Web API. Call the <code>GET</code> HTTP verb from a browser to test the app.</p>
+<p>Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample</code>.</p>
+<p><strong>If it's the first time to run you may need to wait several seconds for initiating .NET runtime after the browser launched.</strong></p>
+<p>The following JSON is returned:</p>
+<pre><code class="lang-json">[&quot;value1&quot;,&quot;value2&quot;]
+</code></pre>
+<h2 id="add-a-database-context">Add a database context</h2>
+<p>The <em>database context</em> is the class that manages database connections and transactions. This class is created by deriving from the <code>SnapObjects.Data.DataContext</code> class.</p>
+<p>Right-click the *WebAPI12 project and select <strong>Add</strong> &gt; <strong>New Item...</strong>. In the item template list select <strong>DataContext</strong>  and Name the class <em>DataContext1</em>.cs and click <strong>OK</strong>.</p>
+<p><img src="assets/NewDataContext-0188021.png" alt="img"></p>
+<p>In the <strong>DataContext Wizard</strong> dialog, click <strong>New Connection</strong>.</p>
+<p><img src="file:///Users/mxgolop/Downloads/Getting%20Started%20v3.0/C%23%20DataStore/assets/NewConnection.png?lastModify=1550185669" alt="img"></p>
+<p>In the <strong>Connection Properties</strong> dialog, fill in database connection information and click <strong>OK</strong>.</p>
+<p><img src="file:///Users/mxgolop/Downloads/Getting%20Started%20v3.0/C%23%20DataStore/assets/ConnectionProperties.png?lastModify=1550185669" alt="img"></p>
+<p>Then back to the <strong>DataContext Wizard</strong> dialog, <strong>Connection String</strong> is generated by the <strong>Connection Properties</strong> dialog, click <strong>OK</strong>.</p>
+<p>The <strong>Connection String</strong> is saved in <code>appsettings.json</code> and the <code>DataContext1</code> class is created.</p>
+<h2 id="register-the-database-context">Register the database context</h2>
+<p>In ASP.NET Core, services such as the DataContext must be registered with the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2">dependency injection (DI)</a> container. The container provides the service to controllers.</p>
+<p>Update <em>Startup.cs</em> according to the comments:</p>
+<pre><code class="lang-c#">// Uncomment the following line to connect to the SQL server database.
+// Note: Replace &quot;ContextName&quot; with the configured context name; replace &quot;key&quot; with the database connection name that exists in appsettings.json. The sample code is as follows:
+services.AddDataContext&lt;DataContext1&gt;(m =&gt;          m.UseSqlServer(Configuration[&quot;ConnectionStrings:AdventureWorks2012&quot;]));
+</code></pre>
+<p><img src="assets/RegisterDB.png" alt="img"></p>
+<h2 id="add-a-c-modelstore-model">Add a C# ModelStore Model</h2>
+<p>The C# ModelStore is a data manipulation component that can be used in place of the C# DataStore. It constructs data storage structures and defines data operations using Model Attributes. And it can be created and maintained using any C# IDE or even a simple text editor.</p>
+<h3 id="create-a-c-modelstore-model">Create a C# ModelStore Model</h3>
+<p>Right-click on the Web API project. Click <strong>Add</strong> &gt; <strong>New Folder</strong>. Name it <em>Models</em>. Then right-click on the new folder and click <strong>Add</strong> &gt; <strong>New Item</strong>.</p>
+<p>On the popup window select <strong>Class</strong> and name it <strong>Department.cs</strong> and click <strong>Ok</strong>.</p>
+<p><img src="assets/AddModel.png" alt="New Model"></p>
+<p>The Model Attributes specify the database tables the model class will be mapped to, as well as its mapping conditions. The Model Properties are the mappings to each individual column from the table. Add these Model Attributes and properties to your ModelStore.</p>
+<p><img src="assets/ModelStore-0196689.png" alt="Department Class"></p>
+<h2 id="add-a-service">Add a Service</h2>
+<p>The <em>interface</em> contains only the declaration of the methods, properties and events, but not the implementation.</p>
+<p>Right-click on the Web API Project. Then click <strong>Add</strong> &gt; <strong>New Folder</strong>. Name it <em>Services</em>. Now add a sub-folder to it and name it <em>Impl</em>. Next, Right-click on that folder and click on <strong>Add</strong> &gt; <strong>Interface</strong>.</p>
+<p><img src="assets/NewInterface-0255326.png" alt="img"></p>
+<p>Name it as <em>IDepartmentService.cs</em> and click <strong>Ok</strong>.</p>
+<p><img src="file:///Users/mxgolop/Downloads/Getting%20Started%20v3.0/C%23%20DataStore/assets/NewInterface.png?lastModify=1550185669" alt="img"></p>
+<p>Add the declaration of the methods we will implement on the service.</p>
+<p><img src="assets/Interface-0197264.png" alt="img"></p>
+<p>To add the <em>Service</em> right-click on the <em>Service</em> &gt; <em>Impl</em> sub-folder and click on <strong>Add</strong> &gt; <strong>Class</strong>. Name it <em>DepartmentService.cs</em> and click <strong>Ok</strong>. (<em>Notice the difference between the name of the interface &quot;<strong>I</strong>DepartmentService.cs&quot; and the name of the service &quot;DepartmentService.cs&quot;</em>)</p>
+<p>In ASP.NET Core, services such as the <code>DepartmentService</code> must be registered with the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2">dependency injection (DI)</a> container. The container provides the service to controllers.</p>
+<p>Update <em>Startup.cs</em> according to the comments:</p>
+<pre><code class="lang-c#"> // The service needs to be registered in the ConfigureServices method of the Startup class. Sample code as follows:
+// services.AddScoped&lt;IDepartmentService1Service, DepartmentService1Service&gt;();
+services.AddScoped&lt;IDepartmentService1Service, DepartmentService1Service&gt;();
+</code></pre>
+<h2 id="perform-crud-operations-using-the-web-api">Perform CRUD operations using the Web API</h2>
+<p>Since the C# ModelStore and PowerBuilder's DataStore are very similar, you perform CRUD operations in a similar way as you do in the Web API.</p>
+<p>The Web API requires one more component called <strong>Controller</strong>. This component was created when we created the Web API project. A <em>controller</em> determines what response to send back to a user when a user makes a browser request.</p>
+<p><img src="assets/SampleController.png" alt="img"></p>
+<h3 id="retrieve-the-c-modelstore">Retrieve the C# ModelStore</h3>
+<p>To retrieve data from the C# ModelStore we will use the <em>Retrieve()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="retrieve-method-in-the-service">Retrieve() method in the Service</h4>
+<p>Create an instance of ModelStore using specified Data Model, then call the ModelStore's Retrieve method to retrieve data.</p>
+<p><img src="assets/RetrieveService.png" alt="img"></p>
+<h4 id="retrieve-method-in-the-controller">Retrieve() method in the Controller</h4>
+<p>The Retrieve() method is called by the client using the HTTP verb GET. It returns the retrieved rows in JSON format.</p>
+<p><img src="assets/RetrieveController.png" alt="img"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added a <code>retrieve</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample/retrieve</code>.</p>
+<p>The following JSON is returned:</p>
+<pre><code class="lang-json">[{&quot;departmentId&quot;:1,&quot;name&quot;:&quot;Engineering&quot;,&quot;groupName&quot;:&quot;Research and Development&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:2,&quot;name&quot;:&quot;Tool Design&quot;,&quot;groupName&quot;:&quot;Research and Development&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:3,&quot;name&quot;:&quot;Sales&quot;,&quot;groupName&quot;:&quot;Sales and Marketing&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:4,&quot;name&quot;:&quot;Marketing&quot;,&quot;groupName&quot;:&quot;Sales and Marketing&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:5,&quot;name&quot;:&quot;Purchasing&quot;,&quot;groupName&quot;:&quot;Inventory Management&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:6,&quot;name&quot;:&quot;Research and Development&quot;,&quot;groupName&quot;:&quot;Research and Development&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:7,&quot;name&quot;:&quot;Production&quot;,&quot;groupName&quot;:&quot;Manufacturing&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:8,&quot;name&quot;:&quot;Production Control&quot;,&quot;groupName&quot;:&quot;Manufacturing&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:9,&quot;name&quot;:&quot;Human Resources&quot;,&quot;groupName&quot;:&quot;Executive General and Administration&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:10,&quot;name&quot;:&quot;Finance&quot;,&quot;groupName&quot;:&quot;Executive General and Administration&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:11,&quot;name&quot;:&quot;Information Services&quot;,&quot;groupName&quot;:&quot;Executive General and Administration&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:12,&quot;name&quot;:&quot;Document Control&quot;,&quot;groupName&quot;:&quot;Quality Assurance&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:13,&quot;name&quot;:&quot;Quality Assurance&quot;,&quot;groupName&quot;:&quot;Quality Assurance&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:14,&quot;name&quot;:&quot;Facilities and Maintenance&quot;,&quot;groupName&quot;:&quot;Executive General and Administration&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:15,&quot;name&quot;:&quot;Shipping and Receiving&quot;,&quot;groupName&quot;:&quot;Inventory Management&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;},{&quot;departmentId&quot;:16,&quot;name&quot;:&quot;Executive&quot;,&quot;groupName&quot;:&quot;Executive General and Administration&quot;,&quot;modifiedDate&quot;:&quot;2008-04-30T00:00:00&quot;}]
+</code></pre>
+<h3 id="createinsert-a-new-row-into-the-c-modelstore">Create/Insert a new row into the C# ModelStore</h3>
+<p>To insert data into the C# ModelStore we will use the <em>Create()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="create-method-in-the-service">Create() method in the Service</h4>
+<p>Create an instance of ModelStore using specified Data Model, then call the ModelStore's <em>Add()</em> method passing in the rows in JSON format. Call the <em>SaveChanges()</em> method of the ModelStore and return the count of Inserted Rows.</p>
+<p><img src="assets/CreateService.png" alt="img"></p>
+<h4 id="create-method-in-the-controller">Create() method in the Controller</h4>
+<p>The Create() method is called by the client using the HTTP verb POST. It accepts a JSON string that corresponds to the actual department table to create, and produces a response type 201 with the url of the <code>retrieveone</code> method and the new <code>department</code>. If an internal server error occurred it produces a response type 500.</p>
+<p><img src="assets/CreateMethod.png" alt="img"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added a <code>create</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample</code>.</p>
+<p>To consume this method of the Web API, change the url: <code>http://localhost:5000/api/smaple/create</code> and call it with your client application passing in the body of the request the JSON containing the row you want to Create/Insert. (<em>To learn how to call this method from PowerBuilder, refer to the following tutorial: <a href="">Call the Web API from PowerBuilder</a></em>)</p>
+<h3 id="update-changes-into-the-c-modelstore">Update changes into the C# ModelStore</h3>
+<p>To insert data into the C# ModelStore we will use the <em>Update()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="update-method-in-the-service">Update() method in the Service</h4>
+<p>Recieve, in JSON format, the rows to update. Call the <em>SaveChanges()</em> method of the Model Store and return the count of affected rows.</p>
+<p><img src="assets/UdpateService.png" alt="img"></p>
+<h4 id="update-method-in-the-controller">Update() method in the Controller</h4>
+<p>The <em>Update()</em> method is called by the client using the HTTP verb POST. It accepts a JSON string with the rows that correspond to the actual department table to update. Calls the <em>Update()</em> method of the service catching any posible erros. Then produces a response type 201 if the update was successful. If an internal server error occurred it produces a response type 500.</p>
+<p><img src="assets/UpdateController.png" alt="img"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added an <code>update</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample</code>.</p>
+<p>To consume this method of the Web API, change the url: <code>http://localhost:5000/api/smaple/update</code> and call it with your client application passing in the JSON containing the rows you want to Update. (<em>To learn how to call this method from PowerBuilder, refer to the following tutorial: Call the Web API from PowerBuilder</em>)</p>
+<h3 id="delete-changes-from-the-c-modelstore">Delete changes from the C# ModelStore</h3>
+<p>To delete data from the C# ModelStore we will use the <em>Delete()</em> method declared in the <em>Interface</em>.</p>
+<h4 id="delete-method-in-the-service">Delete() method in the Service</h4>
+<p>Create an instance of ModelStore by using the <code>Department</code> Model and the <em>data contex</em>. Retrieve the ModelStore using the recieved id and use the <code>RemoveAt()</code> method of the ModelStore to delete the row. Save the changes and return the deleted count..</p>
+<p><img src="assets/DeleteService.png" alt="img"></p>
+<h4 id="delete-method-in-the-controller">Delete() method in the Controller</h4>
+<p>The <em>Delete()</em> method is called by the client using the HTTP verb DELETE. It accepts an integer value that corresponds to the actual department id to delete, and produces a response type 201 if the delete was successful. If an internal server error occurred it produces a response type 500.</p>
+<p><img src="assets/DeleteController.png" alt="img"></p>
+<p>The project template creates a <code>sample</code> Web API and we have added a <code>delete</code> method. Press Ctrl+F5 to run the app. SnapDevelop launches a browser and navigates to <code>http://localhost:5000/api/sample/retrieveone/1</code>.</p>
+<p>To consume this method of the Web API, change the url: <code>http://localhost:5000/api/smaple/delete/</code> and call it with your client application passing in the department id you want to delete. (<em>To learn how to call this method from PowerBuilder, refer to the following tutorial: <a href="">Call the Web API from PowerBuilder</a></em>)</p>
+<h2 id="call-the-web-api-from-powerbuilder">Call the Web API from PowerBuilder</h2>
+<p>Start PowerBuilder and create a <a href="https://www.appeon.com/support/documents/appeon_online_help/pb2018/getting_started/ch03s02.html">template application</a> with no database connection. Then <a href="https://www.appeon.com/support/documents/appeon_online_help/pb2018/getting_started/ch09s01.html">add a new Grid DataWindow</a>, using the DataWindow Designer, that maps to the table: <code>HumanResources.Department</code>. Add a retrieval argument named <code>departmentId</code> that will be used in the SQL WHERE clause to filter by <code>DepartmentID</code>. Save the DataObject with the name <code>d_department</code>.</p>
+<h3 id="add-the-json-datawindow">Add the JSON DataWindow</h3>
+<p>A JSON DataWindow is a traditional DataWindow that has a Web API as its DataSource. You use the same functionalities on the client-side, but the data manipulation is done on the Web API server-side.</p>
+<p>Add the JSON DataWindow to your Window. And add a button for each CRUD operation.</p>
+<h3 id="retrieve-the-json-datawindow">Retrieve the JSON DataWindow</h3>
+<p>The RESTClient object provides the ability to access the RESTful Web APIs. It loads the JSON-formatted string returned from the RESTful Web Service APIs into the DataWindow object. The JSON string returned from the RESTFul Web Service APIs must have no more than 2 levels, and the top-level must be arrays, the second-level must be objects.</p>
+<p>To Retrieve a JSON DataWindow you first need to instantiate the RESTClient object. Add an instance variable of the RESTClient object.</p>
+<pre><code class="lang-vb">RESTClient inv_RestClient
+</code></pre>
+<p>On the Open event of your window, create the object variable.</p>
+<pre><code class="lang-vb">// Create the RESTClient object variable
+inv_RestClient	= CREATE RESTClient
+
+// Set the Request Headers to accept GZIP compression
+inv_RestClient.SetRequestHeader(&quot;Accept-Encoding&quot;, &quot;gzip&quot;)
+</code></pre>
+<p>On the source code window of your Retrieve button, add the RESTClient.Retrieve() function to call your Web API and load it directly into your DataWindow.</p>
+<pre><code class="lang-vb">// Retrieve the DW using the RESTClient
+inv_RestClient.RetrieveOne(dw_department, &quot;http://localhost:5000/api/sample/retrieveone/1&quot;)
+</code></pre>
+<p>Run your application. Press Ctrl+R. Click on the Retrieve button. (<em>Note: Your Web API needs to be running</em>)</p>
+<h3 id="insertupdate-and-delete-data-using-the-web-api">Insert/Update and Delete data using the Web API</h3>
+<p>On the source code window of your Insert/Update and Delete buttons, add the RESTClient.Submit() function to call your Web API and load it directly into your DataWindow. The Submit function calls the Web API using the HTTP verb POST. It automatically exports the DataWindow JSON, as well as all of it's Buffers, and sends only the changed rows to the Web API.</p>
+<p>The SendDeleteRequest function calls the Web API using the HTTP verb DELETE. You can also send your JSON data in the body of the request or you can send individual arguments on the URL.</p>
+<p><strong>Insert</strong></p>
+<pre><code class="lang-vb">// Insert data into the JSON DataWindow with the RESTClient
+inv_RestClient.Submit(&quot;http://localhost:5000/api/sample/create&quot;, ls_response, dw_department)
+</code></pre>
+<p><strong>Update</strong></p>
+<pre><code class="lang-vb">// Update data from the JSON DataWindow with the RESTClient
+inv_RestClient.Submit(&quot;http://localhost:5000/api/sample/update&quot;, ls_response, dw_department)
+</code></pre>
+<p><strong>Delete</strong></p>
+<pre><code class="lang-vb">// Delete data from the JSON DataWindow with the RESTClient
+li_rtn = inv_RestClient.SendDeleteRequest(&quot;http://localhost:5000/api/sample/delete/&quot; + li_dep_id, ls_response)
+
+// Check if the delete was successful by looking into the Return code of the RESTClient
+    IF li_rtn &lt;&gt; 1 THEN
+        // Rest of your code....
+</code></pre>
+<p>Run your application. Press Ctrl+R. Click on the Retrieve button. (<em>Note: Your Web API needs to be running</em>)</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

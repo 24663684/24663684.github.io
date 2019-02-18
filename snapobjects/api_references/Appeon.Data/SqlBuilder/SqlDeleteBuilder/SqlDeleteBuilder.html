@@ -1,0 +1,770 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SqlDeleteBuilder&#31867; </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="SqlDeleteBuilder&#31867; ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../../index.html">
+        	<img id="logo" src="../../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="sqldeletebuilder类"><strong>SqlDeleteBuilder类</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
+</div>
+代表一个用于构建SQL DELETE statement的SQL Builder object. 
+<p>The SQL DELETE statement可用于从数据库移除一行或者多行。</p>
+<p>Represents a SQL Builder object used to build a SQL DELETE statement.</p>
+<p>The SQL DELETE statements can be used to remove one or more rows from the database.</p>
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="实现接口"><strong>实现接口</strong></h3>
+<p><a href="../SqlBuilderBase/SqlBuilderBase.html">Appeon.Data.SqlBuilderBase</a></p>
+<p><a href="../../ISqlDeleteBuilder/ISqlDeleteBuilder.html">Appeon.Data.ISqlDeleteBuilder</a></p>
+<p><a href="../../ISqlFromBuilder/ISqlFromBuilder.html">Appeon.Data.ISqlFromBuilder</a></p>
+<p><a href="../../ISqlJoinBuilder/ISqlJoinBuilder.html">Appeon.Data.ISqlJoinBuilder</a></p>
+<p><a href="../../ISqlWhereBuilder/ISqlWhereBuilder.html">Appeon.Data.ISqlWhereBuilder</a></p>
+<p><a href="../../ISqlGroupBuilder/ISqlGroupBuilder.html">Appeon.Data.ISqlGroupBuilder</a></p>
+<p><a href="../../ISqlHavingBuilder/ISqlHavingBuilder.html">Appeon.Data.ISqlHavingBuilder</a></p>
+<p><a href="../../ISqlOrderBuilder/ISqlOrderBuilder.html">Appeon.Data.ISqlOrderBuilder</a></p>
+<p><a href="../../ISqlBuilder/ISqlBuilder.html">Appeon.Data.ISqlBuilder</a></p>
+<p><a href="../../ISqlBuilderBase/ISqlBuilderBase.html">Appeon.Data.ISqlBuilderBase</a></p>
+<p>System.ICloneable<a href="../../ISqlBuilder/ISqlBuilder.html">&lt;ISqlBuilder&gt;</a></p>
+<h3 id="语法"><strong>语法</strong></h3>
+<pre><code class="lang-c#"> public class SqlDeleteBuilder : SqlBuilderBase, ISqlDeleteBuilder, ISqlFromBuilder, ISqlJoinBuilder, ISqlWhereBuilder, ISqlGroupBuilder, ISqlHavingBuilder, ISqlOrderBuilder, ISqlBuilder, ISqlBuilderBase, ICloneable&lt;ISqlBuilder&gt;;
+</code></pre>
+<h3 id="构造函数"><strong>构造函数</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Constructor/SqlDeleteBuilder.html"> SqlDeleteBuilder(string name = &quot;&quot;)</a></td>
+<td>初始化一个SqlDeleteBuilder类的新实例。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="属性"><strong>属性</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/HasJoin.html">HasJoin</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/HasOn.html">HasOn</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/HasTable.html">HasTable</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/HasWhere.html">HasWhere</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/Name.html">Name</a></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/SqlType.html">SqlType</a></td>
+<td><a href="../../SqlStatementType/SqlStatementType.html">SqlStatementType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/UsedParameters.html">UsedParameters</a></td>
+<td>IReadOnlyDictionary&lt;string, <a href="../../ISqlParameter/ISqlParameter.html">ISqlParameter</a>&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法"><strong>方法</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>返回类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AddParameters.html">AddParameters(params ISqlParameter[] parameters)</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AsGroupBy.html">AsGroupBy()</a></td>
+<td><a href="../../ISqlGroupBuilder/ISqlGroupBuilder.html">ISqlGroupBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AsHaving.html">AsHaving()</a></td>
+<td><a href="../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AsJoin.html">AsJoin()</a></td>
+<td><a href="../../ISqlJoinOnAndOr/ISqlJoinOnAndOr.html">ISqlJoinOnAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AsOrderBy.html">AsOrderBy()</a></td>
+<td><a href="../../ISqlOrderThenBuilder/ISqlOrderThenBuilder.html">ISqlOrderThenBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/AsWhere.html">AsWhere()</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Clone.html">Clone()</a></td>
+<td><a href="../../ISqlBuilder/ISqlBuilder.html">ISqlBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Delete1.html">Delete(string table)</a></td>
+<td><a href="../../ISqlDeleteBuilder/ISqlDeleteBuilder.html">ISqlDeleteBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Delete2.html">Delete(string table, string schema)</a></td>
+<td><a href="../../ISqlDeleteBuilder/ISqlDeleteBuilder.html">ISqlDeleteBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/From1.html">From(string table, string alias)</a></td>
+<td><a href="../../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/From2.html">From(string table)</a></td>
+<td><a href="../../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/From3.html">From(string table, string alias, string schema)</a></td>
+<td><a href="../../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/From4.html">From(ISqlBuilder sqlBuilder, string alias)</a></td>
+<td><a href="../../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FromRaw1.html">FromRaw(string fromClause, string builderAlias)</a></td>
+<td><a href="../../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FromRaw2.html">FromRaw(string fromClause)</a></td>
+<td><a href="../../ISqlFromBuilder/ISqlFromBuilder.html">ISqlFromBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FullJoin1.html">FullJoin(ISqlBuilder sqlBuilder, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FullJoin2.html">FullJoin(string table, string alias, string schema)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FullJoin3.html">FullJoin(string table, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FullJoin4.html">FullJoin(string table)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FullJoinRaw1.html">FullJoinRaw(string joinClause, string builderAlias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/FullJoinRaw2.html">FullJoinRaw(string joinClaus)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetJoinType.html">GetJoinType(string tableName)</a></td>
+<td><a href="../../SqlJoinType/SqlJoinType.html">SqlJoinType</a>?</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetParameterPlacehold.html">GetParameterPlacehold(string name)</a></td>
+<td><a href="../../ISqlParameter/ISqlParameter.html">ISqlParameter</a>[]</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetRegisteredParameters.html">GetRegisteredParameters()</a></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GetTableAlias.html">GetTableAlias(string tableName)</a></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy1.html">GroupBy(string groupClause)</a></td>
+<td><a href="../../ISqlGroupBuilder/ISqlGroupBuilder.html">ISqlGroupBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy2.html">GroupBy(string groupClause, string alias)</a></td>
+<td><a href="../../ISqlGroupBuilder/ISqlGroupBuilder.html">ISqlGroupBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/GroupBy3.html">GroupBy(params string[] groupExpressions)</a></td>
+<td><a href="../../ISqlGroupBuilder/ISqlGroupBuilder.html">ISqlGroupBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having1.html">Having(ISqlHavingCondition condition)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having2.html">Having(string left, string right)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having3.html">Having(string left, SqlBinaryOperator sqlOperator, ISqlParameter parameter)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having4.html">Having(string left, ISqlParameter parameter)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having5.html">Having(ISqlHavingCondition condition, string havingName)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having6.html">Having(string left, SqlBinaryOperator sqlOperator, string right)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having7.html">Having(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Having8.html">Having(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingRaw1.html">HavingRaw(string havingClause, string havingName, params ISqlParameter[] parameters)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingRaw2.html">HavingRaw(string havingClause, params ISqlParameter[] parameters)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingValue1.html">HavingValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/HavingValue2.html">HavingValue(string left, object value)</a></td>
+<td><a href=".../../ISqlHavingAndOr/ISqlHavingAndOr.html">ISqlHavingAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InnerJoin1.html">InnerJoin(string table)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InnerJoin2.html">InnerJoin(string table, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InnerJoin3.html">InnerJoin(string table, string alias, string schema)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InnerJoin4.html">InnerJoin(ISqlBuilder sqlBuilder, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InnerJoinRaw1.html">InnerJoinRaw(string joinClause)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/InnerJoinRaw2.html">InnerJoinRaw(string joinClause, string builderAlias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Join1.html">Join(string table)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Join2.html">Join(string table, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Join3.html">Join(string table, string alias, string schema)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Join4.html">Join(ISqlBuilder sqlBuilder, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/JoinRaw1.html">JoinRaw(string joinClause)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/JoinRaw2.html">JoinRaw(string joinClause, string builderAlias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LeftJoin1.html">LeftJoin(string table, string alia)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LeftJoin2.html">LeftJoin(string table)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LeftJoin3.html">LeftJoin(ISqlBuilder sqlBuilder, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LeftJoin4.html">LeftJoin(string table, string alias, string schema)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LeftJoinRaw1.html">LeftJoinRaw(string joinClause, string builderAlias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/LeftJoinRaw2.html">LeftJoinRaw(string joinClause)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderByAscending.html">OrderByAscending(params string[] orderExpressions)</a></td>
+<td><a href="../../ISqlOrderThenBuilder/ISqlOrderThenBuilder.html">ISqlOrderThenBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderByDescending.html">OrderByDescending(params string[] orderExpression)</a></td>
+<td><a href="../../ISqlOrderThenBuilder/ISqlOrderThenBuilder.html">ISqlOrderThenBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderByRaw1.html">OrderByRaw(string orderClause, string alia)</a></td>
+<td><a href="../../ISqlOrderThenBuilder/ISqlOrderThenBuilder.html">ISqlOrderThenBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/OrderByRaw2.html">OrderByRaw(string orderClause)</a></td>
+<td><a href="../../ISqlOrderThenBuilder/ISqlOrderThenBuilder.html">ISqlOrderThenBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RemoveWhere1.html">RemoveWhere(string whereName)</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RemoveWhere2.html">RemoveWhere()</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Reset.html">Reset()</a></td>
+<td><a href="../../ISqlBuilder/ISqlBuilder.html">ISqlBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RightJoin1.html">RightJoin(string table, string alias, string schema)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RightJoin2.html">RightJoin(string table, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RightJoin3.html">RightJoin(string table)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RightJoin4.html">RightJoin(ISqlBuilder sqlBuilder, string alias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RightJoinRaw1.html">RightJoinRaw(string joinClause)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/RightJoinRaw2.html">RightJoinRaw(string joinClause, string builderAlias)</a></td>
+<td><a href="../../ISqlJoinOnBuilder/ISqlJoinOnBuilder.html">ISqlJoinOnBuilder</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ToReadOnly.html">ToReadOnly()</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/ToSqlString.html">ToSqlString(DataContext context)</a></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Validation.html">Validation(DataContext context, bool throwError = true)</a></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where1.html">Where(string left, SqlBinaryOperator sqlOperator, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where2.html">Where(ISqlWhereCondition condition, string whereName)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where3.html">Where(ISqlWhereCondition condition)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where4.html">Where(string left, ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where5.html">Where(string left, SqlBinaryOperator sqlOperator, string righ)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where6.html">Where(string left, SqlBinaryOperator sqlOperator, ISqlParameter paramete)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where7.html">Where(string left, ISqlParameter parameter)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Where8.html">Where(string left, string right)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereExists.html">WhereExists(ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereIsNotNull.html">WhereIsNotNull(string left)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereIsNull.html">WhereIsNull(string left)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereNotExists.html">WhereNotExists(ISqlBuilder sqlBuilder)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereRaw1.html">WhereRaw(string whereClause, string whereName, params ISqlParameter[] parameters)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereRaw2.html">WhereRaw(string whereClause, params ISqlParameter[] parameters)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereValue1.html">WhereValue(string left, SqlBinaryOperator sqlOperator, object value)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="../../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/WhereValue2.html">WhereValue(string left, object value)</a></td>
+<td><a href="../../ISqlWhereAndOr2/ISqlWhereAndOr.html">ISqlWhereAndOr</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="备注"><strong>备注</strong></h3>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../../styles/main.js"></script>
+  </body>
+</html>

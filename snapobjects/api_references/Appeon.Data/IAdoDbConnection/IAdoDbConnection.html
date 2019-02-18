@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IAdoDbConnection Interface </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="IAdoDbConnection Interface ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../../../index.html">
+        	<img id="logo" src="../../../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="iadodbconnection-interface"><strong>IAdoDbConnection Interface</strong></h2>
+
+<p><strong>.NET Standard 2.x |</strong>  <a href="javascript:void(0)" class="dropdown">Current Version (0.5.0-alpha) <img src="../../../../images/dropdown.png" class="dropdownpic"></a></p>
+<div class="otherversions" value="versdiv">
+<a href="javascript:void(0)">0.5.0-alpha</a>
+<a href="javascript:void(0)">0.5.1-alpha (current)</a>
+</div>
+Represents a connection to the database.
+<p><strong>Namespace:</strong> Appeon.Data</p>
+<p><strong>Assembly:</strong> Appeon.Data.dll</p>
+<h3 id="syntax"><strong>Syntax</strong></h3>
+<pre><code class="lang-c#">   public interface IAdoDbConnection : IAdoDbTransactionManager, IDisposable;
+</code></pre>
+<h3 id="property"><strong>Property</strong></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Returns Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/ConnectionString.html">ConnectionString</a></td>
+<td>string</td>
+<td>Gets the GUID of this <code>IAdoDbConnection</code> object.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/ConnectionId.html">ConnectionId</a></td>
+<td>Guid</td>
+<td>Gets the connection string used to open the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/DbConnection.html">DbConnection</a></td>
+<td>DbConnection</td>
+<td>Gets an <code>IAdoDbTransaction</code> object which represents the current database transaction.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/property.jpeg" alt=""></td>
+<td><a href="Property/CurrentTransaction.html">CurrentTransaction</a></td>
+<td><a href="../IAdoDbTransaction/IAdoDbTransaction.html">IAdoDbTransaction</a></td>
+<td>Gets the internal <code>DbConnection</code> object.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-method">** Method**</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Returns Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt="">       </td>
+<td><a href="Method/Close.html">Close()</a></td>
+<td>bool</td>
+<td>Closes the connection to the database.</td>
+</tr>
+<tr>
+<td><img src="../../../../images/method.jpeg" alt=""></td>
+<td><a href="Method/Open.html">Open()</a></td>
+<td>bool</td>
+<td>Opens the database connection using the connection string.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples"><strong>Examples</strong></h3>
+<p>IAdoDbConnection中的 Method和Property使用</p>
+<pre><code class="lang-C#">using Appeon.Data;
+using Appeon.Data.SqlServer;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Data.Common;
+using System.IO;
+
+namespace Appeon.ApiDoc.IAdoDbConnectionExamples
+{
+    public class IAdoDbConnectionExample
+    {
+        // 声明一个IConfiguration对象，用来获取配置文件信息
+        public IConfiguration Configuration { get; }
+
+        // 声明一个IAdoDbConnection对象
+        public IAdoDbConnection dbconn;
+
+        // 将IAdoDbConnection对象实例化
+        public IAdoDbConnectionExample()
+        {
+            // 获取appsettings.json文件路径
+            string path = Path.Combine(Directory.GetCurrentDirectory(),
+                &quot;appsettings.json&quot;);
+
+            // 创建一个ConfigurationBuilder对象，并注入json文件
+            var build = new ConfigurationBuilder();
+            build.AddJsonFile(path);
+
+            // Build IConfiguration对象
+            Configuration = build.Build();
+
+            // 使用IConfiguration对象获取school节点配置信息
+            string schoolconnect = Configuration.GetConnectionString(&quot;school&quot;);
+
+            // 根据指定配置信息连接数据库
+            dbconn = new SqlServerAdoDbConnection(schoolconnect);
+        }
+
+        public void Example()
+        {
+            // 打开数据库链接
+            dbconn.Open();
+
+            // 获取ConnectionId并输出
+            var id = dbconn.ConnectionId;
+            Console.WriteLine(&quot;ConnectionId = {0}&quot;, id);
+
+            // 获取ConnectionString并输出
+            string connString = dbconn.ConnectionString;
+            Console.WriteLine(&quot;ConnectionString = {0}&quot;, connString);
+
+            // 开始数据库事务
+            dbconn.BeginTransaction();
+
+            // 获取当前事务信息并输出
+            var transe = dbconn.CurrentTransaction;
+            Console.WriteLine(&quot;CurrentTransaction = {0}&quot;, transe.TransactionId);
+
+            // 释放当前AdoDbConnection资源，关闭数据库链接
+            dbconn.Dispose();
+            dbconn.Close();
+
+            // 以下代码演示使用当前AdoDbConnection对象的DbConnectionProperty创建一个DbCommand对象，并执行数据库查询
+            dbconn.Open();
+            var command = dbconn.DbConnection.CreateCommand();
+            command.CommandText = &quot;Select Name From Department &quot; +
+                &quot;Where DepartmentID = 1&quot;;
+
+            // 开始数据库事务
+            command.Transaction = dbconn.DbConnection.BeginTransaction();
+
+            // 执行查询
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+               
+            }
+            // 释放资源，关闭数据库链接
+            dbconn.Dispose();
+            dbconn.Close();
+
+            /*This code produces the following output:
+             
+            ConnectionId = f7b4bbd4-af87-41a6-9fcb-5c57b73a67fc
+            ConnectionString = Data Source=172.16.3.122;Initial Catalog=School;Integrated Security=False;User ID=dba;Password=sql;Pooling=True;Min Pool Size=0;Max Pool Size=100;ApplicationIntent=ReadWrite
+            CurrentTransaction = 031655e8-b94a-4558-bfac-96c7519f54c7
+             */
+        }
+    }
+}
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>
