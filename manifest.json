@@ -89,7 +89,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "DzPK23q8sFyIKGmZklHMOw=="
+          "hash": "JID1uSIzUjvj3XTpN5sp9g=="
         }
       },
       "is_incremental": true,
@@ -1207,7 +1207,7 @@
           "hash": "lZ5XwX5cWhLrFEH+1ekBFA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1223,6 +1223,18 @@
         }
       },
       "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "snapdevelop2019/CRUD_Operations_with_ModelMapper/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "snapdevelop2019/CRUD_Operations_with_ModelMapper/index.html",
+          "hash": "Hkxaf0nYtdys6k7IAOXaSg=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2932,9 +2944,6 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "snapdevelop2019/Getting_Started/What is it.md",
       "output": {
@@ -2947,6 +2956,237 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/Elevate_Theme.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/Elevate_Theme.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/Flat_Design_Gray.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/Flat_Design_Gray.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/SnapDevelop.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/SnapDevelop.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/Theme_JSON.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/Theme_JSON.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/cs_targets.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/cs_targets.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/cs_web_api-4825368.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/cs_web_api-4825368.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/cs_web_api.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/cs_web_api.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/csharp_editor-4825423.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/csharp_editor-4825423.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/csharp_editor.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/csharp_editor.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/db_connect.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/db_connect.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/dwimport.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/dwimport.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/export-4825631.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/export-4825631.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/export.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/export.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/exported.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/exported.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/generate_models-4825449.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/generate_models-4825449.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/generate_models.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/generate_models.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/migration.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/migration.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/newcstarget-4825335.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/newcstarget-4825335.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/newcstarget.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/newcstarget.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/webapi-4825396.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/webapi-4825396.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "snapdevelop2019/Getting_Started/assets/webapi.png",
+      "output": {
+        "resource": {
+          "relative_path": "snapdevelop2019/Getting_Started/assets/webapi.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "snapdevelop2019/Getting_Started/toc.yml",
       "output": {
@@ -2956,6 +3196,54 @@
         }
       },
       "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "snapdevelop2019/Secure_a_Web_API_with_JWT_Token/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "snapdevelop2019/Secure_a_Web_API_with_JWT_Token/index.html",
+          "hash": "G3To5A2kBDal3o4HS9veOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "snapdevelop2019/Tracking_Actions_in_ModelMapper/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "snapdevelop2019/Tracking_Actions_in_ModelMapper/index.html",
+          "hash": "BaOTbcdG/PeEk1HkIHBhEQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "snapdevelop2019/Using_Nested_Models_in_ModelMapper/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "snapdevelop2019/Using_Nested_Models_in_ModelMapper/index.html",
+          "hash": "6iOY8so0jVqROkI57Ydixw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "snapdevelop2019/Working_with_Transactions_in_SnapObjects/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "snapdevelop2019/Working_with_Transactions_in_SnapObjects/index.html",
+          "hash": "fT00bq7qtbjxbKt5Q+QEEw=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -38169,7 +38457,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "vricyta9Mj5+EANZOpE5yA=="
+          "hash": "tAG5VvOeqGNDb/BYlI55Iw=="
         }
       },
       "is_incremental": false,
@@ -38188,13 +38476,13 @@
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
           "incrementalPhase": "build"
         }
       }

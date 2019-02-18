@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Working with Transactions in SnapObjects </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Working with Transactions in SnapObjects ">
+    <meta name="generator" content="docfx 2.37.0.0">
+    
+    <link rel="shortcut icon" href="../../images/128x128.PNG">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+        	<img id="logo" src="../../images/logo-appeon.png" height="20" width="164.45" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="working-with-transactions-in-snapobjects">Working with Transactions in SnapObjects</h1>
+
+<p>This document will describe using transactions in SnapObjects. SnapObjects provides with four objects (DataStore, ModelStore, ModelMapper and SqlExecutor) to perform CRUD operations to database. All those objects Explicitly and/or implicitly use DataContext's Transaction API to manage transaction.</p>
+<h2 id="datacontext">DataContext</h2>
+<p>DataContext is the object to manage database connections and transactions.</p>
+<h3 id="transaction-api">Transaction API</h3>
+<pre><code class="lang-c#">//Creates a new transaction for the underlying database with the default isolationLevel
+//using CurrentConnection on the context and make it the CurrentTransaction
+public virtual IAdoDbTransaction BeginTransaction()
+    
+//Creates a new transaction for the underlying database with specified isolationLevel
+//using CurrentConnection on the context and make it the CurrentTransaction
+public virtual IAdoDbTransaction BeginTransaction(IsolationLevel isolationLevel)
+    
+//Commit the CurrentTransaction on the context
+public virtual void Commit()
+    
+//Rollback the CurrentTransaction on the context    
+public virtual void Rollback()
+</code></pre>
+<h3 id="create-an-instance-of-datacontext">Create an instance of DataContext</h3>
+<p>DataContext is an abstract class, you cannot directly instantiate  a DataContext, and you have to instantiate  a database specific DataContext. When a DataContext is instantiated  a database connection is automatically created and the connection is set to the DataContext's <strong>CurrentConnection</strong>.</p>
+<h4 id="sql-server-datacontext">SQL Server DataContext</h4>
+<p>Create in Web API via dependency injection.</p>
+<pre><code class="lang-c#">//Add this code in ConfigureServices(IServiceCollection services) method in Startup.cs
+//SampleDataContext is a user defined class derived from SqlServerDataContext
+services.AddDataContext&lt;SampleDataContext&gt;(m =&gt; m.UseSqlServer(Configuration[&quot;ConnectionStrings:Local&quot;]));
+</code></pre>
+<p>Create manually.</p>
+<pre><code class="lang-c#">var options = new SqlServerDataContextOptions(connectionString);
+using (var context = new SqlServerDataContext(options))
+{
+    context.BeginTransaction();
+    //CRUD code here
+    context.Commit();
+}
+</code></pre>
+<h4 id="oracle-datacontext">Oracle DataContext</h4>
+<p>Create in Web API via dependency injection.</p>
+<pre><code class="lang-c#">//Add this code in ConfigureServices(IServiceCollection services) method in Startup.cs
+//SampleDataContext is a user defined class derived from OracleDataContext
+services.AddDataContext&lt;SampleDataContext&gt;(m =&gt; m.UseOracle(Configuration[&quot;ConnectionStrings:Local&quot;]));
+</code></pre>
+<p>Create manually.</p>
+<pre><code class="lang-c#">var options = new OracleDataContextOptions(connectionString);
+using (var context = new OracleDataContext(options))
+{
+    context.BeginTransaction();
+    //CRUD code here
+    context.Commit();
+}
+</code></pre>
+<h4 id="postgresql-datacontext">PostgreSQL DataContext</h4>
+<p>Create in Web API via dependency injection.</p>
+<pre><code class="lang-c#">//Add this code in ConfigureServices(IServiceCollection services) method in Startup.cs
+//SampleDataContext is a user defined class derived from PostgreSqlDataContext
+services.AddDataContext&lt;SampleDataContext&gt;(m =&gt; m.UsePostgreSql(Configuration[&quot;ConnectionStrings:Local&quot;]));
+</code></pre>
+<p>Create manually.</p>
+<pre><code class="lang-c#">var options = new PostgreSqlDataContextOptions(connectionString);
+using (var context = new PostgreSqlDataContext(options))
+{
+    context.BeginTransaction();
+    //CRUD code here
+    context.Commit();
+}
+</code></pre>
+<h2 id="how-transactions-work-in-snapobjects">How Transactions work in SnapObjects</h2>
+<h3 id="datastore">DataStore</h3>
+<p>Whenever you execute DataStore's <strong>Update()</strong> to insert, update or delete data in the DataStore, when the <strong>Update()</strong> is executed in a transaction (context.<strong>BeginTransaction()</strong> is called before, and the transaction is not committed or rollbacked) all those operation will be wrapped in the transaction created by context.<strong>BeginTransaction()</strong> ; when the <strong>Update()</strong> is not executed in a transaction, all those operation will be wrapped in a automatically created transaction for the DataStore update.</p>
+<h3 id="modelstore">ModelStore</h3>
+<p>Whenever you execute ModelStore's <strong>SaveChanges()</strong> to insert, update or delete data in the ModelStore, the transaction behavior is same as DataStore.</p>
+<h3 id="modelmapper">ModelMapper</h3>
+<p>Whenever you execute ModelMapper's <strong>SaveChanges()</strong> , all tracked operations including model create/update/delete, SQL create/update/delete and action(s) (usually used to execute query) will be wrapped in the transaction created by context.<strong>BeginTransaction()</strong>  when it  is executed in a transaction (context.<strong>BeginTransaction()</strong> is called before, and the transaction is not committed or rollbacked); and when it is not executed in a transaction, the operations will be wrapped in a automatically created transaction for the ModelMapper.</p>
+<p>Unlike DataStore and ModelStore, one DataStore/ModelStore can only manage data of one type of DataObject/model (create/update/delete in one database table); ModelMapper can track different types of models, SQL create/update/delete and query (via action), this enable ModelMapper can automatically manage real-life transactions in business application.</p>
+<h3 id="sqlexecutor">SqlExecutor</h3>
+<p>Whenever you execute SqlExecutor's <strong>Execute()</strong> or <strong>ExecuteProcedure()</strong>, when the <strong>Execute()</strong> or <strong>ExecuteProcedure()</strong>** is executed in a transaction (context.<strong>BeginTransaction()</strong> is called before, and the transaction is not committed or rollbacked) the SQL or stored procedure will be wrapped in the transaction created by context.<strong>BeginTransaction()</strong> ; and when it is not executed in a transaction, the operations will be wrapped in a automatically created transaction for each SQL or stored procedure.</p>
+<h2 id="manage-transaction-using-datacontext-transaction-api">Manage Transaction using DataContext Transaction API</h2>
+<p><strong>DataContext.BeginTransaction()</strong> has two overrides – one which takes an explicit <a href="https://msdn.microsoft.com/library/system.data.isolationlevel.aspx">IsolationLevel</a> and one which takes no arguments and uses the default IsolationLevel from the underlying database provider. Both overrides return a <strong>AdoDbTransaction</strong> object which provides <strong>Commit()</strong> and <strong>Rollback()</strong> methods which perform commit and rollback on the underlying store transaction (DataContext's CurrentTransaction).</p>
+<p><strong>DataContext.Commit()</strong> commit DataContext's CurrentTransaction.</p>
+<p><strong>DataContext.Rollback()</strong> rollback DataContext's CurrentTransaction.</p>
+<p>The transaction is meant to be disposed once it has been committed or rolled back.</p>
+<h3 id="basic-transaction-example-pseudo-code">Basic transaction example (pseudo code):</h3>
+<pre><code class="lang-c#">_context.BeginTransaction();
+
+try
+{
+    //update datastore1
+    dataStore1.Update();
+    //update datastore2
+    dataStore2.Update();
+    
+    _context.Commit();
+}
+catch (Exception)
+{
+    _context.Rollback();
+}
+</code></pre>
+<h3 id="multiple-data-operation-objects-transaction-example-pseudo-code">Multiple Data Operation objects transaction example (pseudo code):</h3>
+<pre><code class="lang-c#">_context.BeginTransaction();
+
+try
+{
+    //update datastore1
+    dataStore1.Update();
+    //execute a Create/Update/Delete sql
+    _context.SqlExecutor.Execute(&quot;Raw Create/Update/Delete sql&quot;);
+    //update modelstore1
+    modelStore1.SaveChanges();
+    
+    //data changes by ModelMapper
+    _context.ModelMapper.TrackCreate(departmentModel);
+    _context.ModelMapper.TrackDelete(employeeModel);
+    _context.ModelMapper.SaveChanges();
+    
+    //all data operations above will be executed in one transaction
+    _context.Commit();
+}
+catch (Exception)
+{
+    _context.Rollback();
+}
+</code></pre>
+<h2 id="implicit-transaction-management-in-modelmapper">Implicit Transaction Management in ModelMapper</h2>
+<h3 id="execute-process-of-modelmappersavechanges">Execute process of ModelMapper.<strong>SaveChanges()</strong></h3>
+<ol>
+<li>Check if already run in a transaction, if yes use that transaction, if no create a new one</li>
+<li>Go through the tracked list one by one, if current tracked item is  model create/update/delete then generate SQL respectively and execute the SQL; if current tracked item is SQL create/update/delete (<strong>TrackSqlCUD()</strong>)  then execute the SQL directly; if it's action then execute the action directly. All those operations are executed in the transaction returned by step 1</li>
+<li>If everything went well commit the transaction, or rollback the transaction</li>
+<li>Clear the tracked list</li>
+</ol>
+<h3 id="implicit-transaction-example-pseudo-code">Implicit transaction example (pseudo code):</h3>
+<p>No transaction API is needed in user's code, the transaction APIs are called internally to create, and commit/rollback transaction.</p>
+<pre><code class="lang-c#">//add to tracked list only, no execution
+_context.ModelMapper.TrackCreate(departmentModel); 
+//add to tracked list only, no execution
+_context.ModelMapper.TrackUpdate(employeeModel);
+employeeModel.Score = 5;
+//add to tracked list only, no execution
+_context.ModelMapper.TrackSqlCUD(&quot;Raw Create/Update/Delete sql&quot;);
+
+//create a new transaction, execute operations above, and commit or rollback transaction
+_context.ModelMapper.SaveChanges();
+</code></pre>
+<p>The implicit transaction is only work when all data operations are performed using ModelMapper, in the following example the SQL is executed in a separate transaction.</p>
+<pre><code class="lang-c#">//add to tracked list only, no execution
+_context.ModelMapper.TrackCreate(departmentModel); 
+//add to tracked list only, no execution
+_context.ModelMapper.TrackUpdate(employeeModel);
+employeeModel.Score = 5;
+
+//using SqlExecutor to execute SQL, it will run in a separate transaction
+_context.SqlExecutor.Execute(&quot;Raw Create/Update/Delete sql&quot;);
+
+//create a new transaction, execute operations above exception for the SQL, and commit or rollback transaction
+_context.ModelMapper.SaveChanges();
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>Appeon</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
